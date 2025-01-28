@@ -6,5 +6,4 @@ export 'row.dart';
 export 'table.dart';
 
 export 'tables/tasks.dart';
-export 'tables/locations.dart';
 export 'tables/users.dart';
