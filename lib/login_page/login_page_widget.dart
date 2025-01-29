@@ -84,22 +84,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                 ),
                               ),
                               alignment: const AlignmentDirectional(-1.0, 0.0),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    32.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  'Логотип',
-                                  style: FlutterFlowTheme.of(context)
-                                      .displaySmall
-                                      .override(
-                                        fontFamily: 'Plus Jakarta Sans',
-                                        color: const Color(0xFF101213),
-                                        fontSize: 36.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                ),
-                              ),
                             ),
                             Align(
                               alignment: const AlignmentDirectional(0.0, 0.0),
@@ -334,8 +318,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                           }
 
                                           context.goNamedAuth(
-                                              'TaskListResponsive',
-                                              context.mounted);
+                                              'TaskListPage', context.mounted);
                                         },
                                         text: 'Войти',
                                         options: FFButtonOptions(

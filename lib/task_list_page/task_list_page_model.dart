@@ -1,10 +1,10 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'task_list_responsive_widget.dart' show TaskListResponsiveWidget;
+import 'task_list_page_widget.dart' show TaskListPageWidget;
 import 'package:flutter/material.dart';
 
-class TaskListResponsiveModel
-    extends FlutterFlowModel<TaskListResponsiveWidget> {
+class TaskListPageModel extends FlutterFlowModel<TaskListPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for ChoiceChips widget.
@@ -13,17 +13,20 @@ class TaskListResponsiveModel
       choiceChipsValueController?.value?.firstOrNull;
   set choiceChipsValue(String? val) =>
       choiceChipsValueController?.value = val != null ? [val] : [];
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
+  // State field(s) for TextDateFilter widget.
+  FocusNode? textDateFilterFocusNode;
+  TextEditingController? textDateFilterTextController;
+  String? Function(BuildContext, String?)?
+      textDateFilterTextControllerValidator;
+  DateTime? datePicked;
+  Stream<List<TasksRow>>? listViewSupabaseStream;
 
   @override
   void initState(BuildContext context) {}
 
   @override
   void dispose() {
-    textFieldFocusNode?.dispose();
-    textController?.dispose();
+    textDateFilterFocusNode?.dispose();
+    textDateFilterTextController?.dispose();
   }
 }

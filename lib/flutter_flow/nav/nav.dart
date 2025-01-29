@@ -75,26 +75,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? const TaskListResponsiveWidget()
-          : const LoginPageWidget(),
+      errorBuilder: (context, state) =>
+          appStateNotifier.loggedIn ? const TaskListPageWidget() : const LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? const TaskListResponsiveWidget()
+              ? const TaskListPageWidget()
               : const LoginPageWidget(),
         ),
         FFRoute(
           name: 'LoginPage',
           path: '/loginPage',
           builder: (context, params) => const LoginPageWidget(),
-        ),
-        FFRoute(
-          name: 'UserAddPage',
-          path: '/userAddPage',
-          builder: (context, params) => const UserAddPageWidget(),
         ),
         FFRoute(
           name: 'UserListPage',
@@ -107,9 +101,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const TaskEditPageWidget(),
         ),
         FFRoute(
-          name: 'TaskListResponsive',
-          path: '/taskListResponsive',
-          builder: (context, params) => const TaskListResponsiveWidget(),
+          name: 'TaskListPage',
+          path: '/taskListPage',
+          builder: (context, params) => const TaskListPageWidget(),
+        ),
+        FFRoute(
+          name: 'TaskUserListPage',
+          path: '/taskUserListPage',
+          builder: (context, params) => const TaskUserListPageWidget(),
+        ),
+        FFRoute(
+          name: 'UserAddPage',
+          path: '/userAddPage',
+          builder: (context, params) => const UserAddPageWidget(),
+        ),
+        FFRoute(
+          name: 'UserEditPage',
+          path: '/userEditPage',
+          builder: (context, params) => const UserEditPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

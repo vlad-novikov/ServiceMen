@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -71,8 +72,8 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                       color: Color(0xFF57636C),
                       size: 30.0,
                     ),
-                    onPressed: () {
-                      print('IconButton pressed ...');
+                    onPressed: () async {
+                      context.pushNamed('UserAddPage');
                     },
                   ),
                 ),
@@ -127,572 +128,159 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
-                      child: ListView(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 1.0),
-                            child: Container(
-                              width: 100.0,
-                              height: 72.0,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 0.0,
-                                    color: Color(0xFFE0E3E7),
-                                    offset: Offset(
-                                      0.0,
-                                      1.0,
-                                    ),
-                                  )
-                                ],
+                      child: StreamBuilder<List<UsersRow>>(
+                        stream: _model.listViewSupabaseStream ??= SupaFlow
+                            .client
+                            .from("users")
+                            .stream(primaryKey: ['id']).map((list) =>
+                                list.map((item) => UsersRow(item)).toList()),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).primary,
+                                  ),
+                                ),
                               ),
-                              child: Padding(
+                            );
+                          }
+                          List<UsersRow> listViewUsersRowList = snapshot.data!;
+
+                          return ListView.builder(
+                            padding: EdgeInsets.zero,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: listViewUsersRowList.length,
+                            itemBuilder: (context, listViewIndex) {
+                              final listViewUsersRow =
+                                  listViewUsersRowList[listViewIndex];
+                              return Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      width: 44.0,
-                                      height: 44.0,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0x4C4B39EF),
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                          color: const Color(0xFF4B39EF),
-                                          width: 2.0,
+                                    0.0, 0.0, 0.0, 1.0),
+                                child: Container(
+                                  width: 100.0,
+                                  height: 72.0,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 0.0,
+                                        color: Color(0xFFE0E3E7),
+                                        offset: Offset(
+                                          0.0,
+                                          1.0,
                                         ),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(2.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(44.0),
-                                          child: Image.network(
-                                            'https://picsum.photos/seed/183/600',
-                                            width: 44.0,
-                                            height: 44.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 0.0, 0.0, 0.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 4.0),
-                                              child: Text(
-                                                'Random Name',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyLarge
+                                      )
+                                    ],
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 0.0, 16.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    12.0, 0.0, 0.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context
+                                                    .pushNamed('UserEditPage');
+                                              },
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 4.0),
+                                                    child: Text(
+                                                      valueOrDefault<String>(
+                                                        listViewUsersRow
+                                                            .lastName,
+                                                        'Фамилия',
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                'Plus Jakarta Sans',
+                                                            color: const Color(
+                                                                0xFF14181B),
+                                                            fontSize: 16.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    valueOrDefault<String>(
+                                                      listViewUsersRow.phone,
+                                                      'Телефон',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMedium
                                                         .override(
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF14181B),
-                                                          fontSize: 16.0,
+                                                              const Color(0xFF57636C),
+                                                          fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
-                                            Text(
-                                              'user@randomname.com',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color:
-                                                            const Color(0xFF57636C),
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    const Icon(
-                                      Icons.chevron_right_rounded,
-                                      color: Color(0xFF57636C),
-                                      size: 24.0,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 1.0),
-                            child: Container(
-                              width: 100.0,
-                              height: 72.0,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 0.0,
-                                    color: Color(0xFFE0E3E7),
-                                    offset: Offset(
-                                      0.0,
-                                      1.0,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      width: 44.0,
-                                      height: 44.0,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0x4C4B39EF),
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                          color: const Color(0xFF4B39EF),
-                                          width: 2.0,
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(2.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(44.0),
-                                          child: Image.network(
-                                            'https://picsum.photos/seed/183/600',
-                                            width: 44.0,
-                                            height: 44.0,
-                                            fit: BoxFit.cover,
                                           ),
                                         ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 0.0, 0.0, 0.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 4.0),
-                                              child: Text(
-                                                'Random Name',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF14181B),
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
-                                              ),
-                                            ),
-                                            Text(
-                                              'user@randomname.com',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color:
-                                                            const Color(0xFF57636C),
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    const Icon(
-                                      Icons.chevron_right_rounded,
-                                      color: Color(0xFF57636C),
-                                      size: 24.0,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 1.0),
-                            child: Container(
-                              width: 100.0,
-                              height: 72.0,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 0.0,
-                                    color: Color(0xFFE0E3E7),
-                                    offset: Offset(
-                                      0.0,
-                                      1.0,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      width: 44.0,
-                                      height: 44.0,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0x4C4B39EF),
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                          color: const Color(0xFF4B39EF),
-                                          width: 2.0,
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(2.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(44.0),
-                                          child: Image.network(
-                                            'https://picsum.photos/seed/183/600',
-                                            width: 44.0,
-                                            height: 44.0,
-                                            fit: BoxFit.cover,
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed('UserListPage');
+                                          },
+                                          child: const Icon(
+                                            Icons.chevron_right_rounded,
+                                            color: Color(0xFF57636C),
+                                            size: 24.0,
                                           ),
                                         ),
-                                      ),
+                                      ],
                                     ),
-                                    Expanded(
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 0.0, 0.0, 0.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 4.0),
-                                              child: Text(
-                                                'Random Name',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF14181B),
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
-                                              ),
-                                            ),
-                                            Text(
-                                              'user@randomname.com',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color:
-                                                            const Color(0xFF57636C),
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    const Icon(
-                                      Icons.chevron_right_rounded,
-                                      color: Color(0xFF57636C),
-                                      size: 24.0,
-                                    ),
-                                  ],
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 1.0),
-                            child: Container(
-                              width: 100.0,
-                              height: 72.0,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 0.0,
-                                    color: Color(0xFFE0E3E7),
-                                    offset: Offset(
-                                      0.0,
-                                      1.0,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      width: 44.0,
-                                      height: 44.0,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0x4C4B39EF),
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                          color: const Color(0xFF4B39EF),
-                                          width: 2.0,
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(2.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(44.0),
-                                          child: Image.network(
-                                            'https://picsum.photos/seed/183/600',
-                                            width: 44.0,
-                                            height: 44.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 0.0, 0.0, 0.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 4.0),
-                                              child: Text(
-                                                'Random Name',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF14181B),
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
-                                              ),
-                                            ),
-                                            Text(
-                                              'user@randomname.com',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color:
-                                                            const Color(0xFF57636C),
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    const Icon(
-                                      Icons.chevron_right_rounded,
-                                      color: Color(0xFF57636C),
-                                      size: 24.0,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 1.0),
-                            child: Container(
-                              width: 100.0,
-                              height: 72.0,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 0.0,
-                                    color: Color(0xFFE0E3E7),
-                                    offset: Offset(
-                                      0.0,
-                                      1.0,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      width: 44.0,
-                                      height: 44.0,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0x4C4B39EF),
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                          color: const Color(0xFF4B39EF),
-                                          width: 2.0,
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(2.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(44.0),
-                                          child: Image.network(
-                                            'https://picsum.photos/seed/183/600',
-                                            width: 44.0,
-                                            height: 44.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 0.0, 0.0, 0.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 4.0),
-                                              child: Text(
-                                                'Random Name',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF14181B),
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
-                                              ),
-                                            ),
-                                            Text(
-                                              'user@randomname.com',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color:
-                                                            const Color(0xFF57636C),
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    const Icon(
-                                      Icons.chevron_right_rounded,
-                                      color: Color(0xFF57636C),
-                                      size: 24.0,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                              );
+                            },
+                          );
+                        },
                       ),
                     ),
                   ],

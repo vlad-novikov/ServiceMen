@@ -41,4 +41,7 @@ class TasksRow extends SupabaseDataRow {
 
   String? get taskStatus => getField<String>('task_status');
   set taskStatus(String? value) => setField<String>('task_status', value);
+
+  DateTime? get taskDate => getField<DateTime>('task_date');
+  set taskDate(DateTime? value) => setField<DateTime>('task_date', value);
 }
