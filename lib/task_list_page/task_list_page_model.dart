@@ -5,6 +5,10 @@ import 'task_list_page_widget.dart' show TaskListPageWidget;
 import 'package:flutter/material.dart';
 
 class TaskListPageModel extends FlutterFlowModel<TaskListPageWidget> {
+  ///  Local state fields for this page.
+
+  DateTime? curDate;
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for ChoiceChips widget.
@@ -13,11 +17,6 @@ class TaskListPageModel extends FlutterFlowModel<TaskListPageWidget> {
       choiceChipsValueController?.value?.firstOrNull;
   set choiceChipsValue(String? val) =>
       choiceChipsValueController?.value = val != null ? [val] : [];
-  // State field(s) for TextDateFilter widget.
-  FocusNode? textDateFilterFocusNode;
-  TextEditingController? textDateFilterTextController;
-  String? Function(BuildContext, String?)?
-      textDateFilterTextControllerValidator;
   DateTime? datePicked;
   Stream<List<TasksRow>>? listViewSupabaseStream;
 
@@ -25,8 +24,5 @@ class TaskListPageModel extends FlutterFlowModel<TaskListPageWidget> {
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    textDateFilterFocusNode?.dispose();
-    textDateFilterTextController?.dispose();
-  }
+  void dispose() {}
 }

@@ -50,7 +50,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
               backgroundColor: Colors.white,
               automaticallyImplyLeading: false,
               title: Text(
-                'Список Пользователей',
+                'Система  Управления Заявками на Сервисное Обслуживание',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: const Color(0xFF14181B),
@@ -110,15 +110,12 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 0.0, 12.0),
                             child: Text(
-                              'Выберите пользователя для просмотра\\редактирования',
+                              'Список сотрудников',
                               style: FlutterFlowTheme.of(context)
-                                  .labelMedium
+                                  .titleSmall
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    color: const Color(0xFF57636C),
-                                    fontSize: 14.0,
+                                    fontFamily: 'Inter Tight',
                                     letterSpacing: 0.0,
-                                    fontWeight: FontWeight.normal,
                                   ),
                             ),
                           ),
@@ -128,12 +125,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
-                      child: StreamBuilder<List<UsersRow>>(
-                        stream: _model.listViewSupabaseStream ??= SupaFlow
-                            .client
-                            .from("users")
-                            .stream(primaryKey: ['id']).map((list) =>
-                                list.map((item) => UsersRow(item)).toList()),
+                      child: FutureBuilder<List<UsersRow>>(
+                        future: UsersTable().queryRows(
+                          queryFn: (q) => q,
+                        ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
@@ -191,71 +186,57 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context
-                                                    .pushNamed('UserEditPage');
-                                              },
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 4.0),
-                                                    child: Text(
-                                                      valueOrDefault<String>(
-                                                        listViewUsersRow
-                                                            .lastName,
-                                                        'Фамилия',
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyLarge
-                                                          .override(
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
-                                                            color: const Color(
-                                                                0xFF14181B),
-                                                            fontSize: 16.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .normal,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                  Text(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 4.0),
+                                                  child: Text(
                                                     valueOrDefault<String>(
-                                                      listViewUsersRow.phone,
-                                                      'Телефон',
+                                                      listViewUsersRow.lastName,
+                                                      'Фамилия',
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .labelMedium
+                                                        .bodyLarge
                                                         .override(
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF57636C),
-                                                          fontSize: 14.0,
+                                                              const Color(0xFF14181B),
+                                                          fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
                                                   ),
-                                                ],
-                                              ),
+                                                ),
+                                                Text(
+                                                  valueOrDefault<String>(
+                                                    listViewUsersRow.phone,
+                                                    'Телефон',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        color:
+                                                            const Color(0xFF57636C),
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         ),
@@ -265,7 +246,15 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
-                                            context.pushNamed('UserListPage');
+                                            context.pushNamed(
+                                              'UserEditPage',
+                                              queryParameters: {
+                                                'currentUser': serializeParam(
+                                                  listViewUsersRow,
+                                                  ParamType.SupabaseRow,
+                                                ),
+                                              }.withoutNulls,
+                                            );
                                           },
                                           child: const Icon(
                                             Icons.chevron_right_rounded,

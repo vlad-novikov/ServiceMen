@@ -94,30 +94,24 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Авторизация',
+                                      'Система  Управления Заявками \nна Сервисное Обслуживание',
                                       style: FlutterFlowTheme.of(context)
-                                          .displaySmall
+                                          .headlineSmall
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            color: const Color(0xFF101213),
-                                            fontSize: 36.0,
+                                            fontFamily: 'Inter Tight',
                                             letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
                                           ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 0.0, 24.0),
                                       child: Text(
-                                        'Система  Управления Заявками \nна Сервисное Обслуживание',
+                                        'Авторизация',
                                         style: FlutterFlowTheme.of(context)
-                                            .labelMedium
+                                            .headlineMedium
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
-                                              color: const Color(0xFF57636C),
-                                              fontSize: 14.0,
+                                              fontFamily: 'Inter Tight',
                                               letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w500,
                                             ),
                                       ),
                                     ),

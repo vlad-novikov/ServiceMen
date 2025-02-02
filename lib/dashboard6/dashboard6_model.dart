@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'user_list_page_widget.dart' show UserListPageWidget;
+import 'dashboard6_widget.dart' show Dashboard6Widget;
 import 'package:flutter/material.dart';
 
-class UserListPageModel extends FlutterFlowModel<UserListPageWidget> {
+class Dashboard6Model extends FlutterFlowModel<Dashboard6Widget> {
   @override
   void initState(BuildContext context) {}
 

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '/backend/supabase/supabase.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -96,11 +97,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const UserListPageWidget(),
         ),
         FFRoute(
-          name: 'TaskEditPage',
-          path: '/taskEditPage',
-          builder: (context, params) => const TaskEditPageWidget(),
-        ),
-        FFRoute(
           name: 'TaskListPage',
           path: '/taskListPage',
           builder: (context, params) => const TaskListPageWidget(),
@@ -118,7 +114,37 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'UserEditPage',
           path: '/userEditPage',
-          builder: (context, params) => const UserEditPageWidget(),
+          builder: (context, params) => UserEditPageWidget(
+            currentUser: params.getParam<UsersRow>(
+              'currentUser',
+              ParamType.SupabaseRow,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'List07UserSearch',
+          path: '/list07UserSearch',
+          builder: (context, params) => const List07UserSearchWidget(),
+        ),
+        FFRoute(
+          name: 'Dashboard6',
+          path: '/dashboard6',
+          builder: (context, params) => const Dashboard6Widget(),
+        ),
+        FFRoute(
+          name: 'TaskEditPage',
+          path: '/taskEditPage',
+          builder: (context, params) => TaskEditPageWidget(
+            currentTask: params.getParam<TasksRow>(
+              'currentTask',
+              ParamType.SupabaseRow,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'Details10InvoicePayment',
+          path: '/details10InvoicePayment',
+          builder: (context, params) => const Details10InvoicePaymentWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -3,12 +3,18 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'user_edit_page_model.dart';
 export 'user_edit_page_model.dart';
 
 class UserEditPageWidget extends StatefulWidget {
-  const UserEditPageWidget({super.key});
+  const UserEditPageWidget({
+    super.key,
+    required this.currentUser,
+  });
+
+  final UsersRow? currentUser;
 
   @override
   State<UserEditPageWidget> createState() => _UserEditPageWidgetState();
@@ -24,16 +30,12 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
     super.initState();
     _model = createModel(context, () => UserEditPageModel());
 
-    _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
 
-    _model.textController3 ??= TextEditingController();
     _model.textFieldFocusNode3 ??= FocusNode();
 
-    _model.textController4 ??= TextEditingController();
     _model.textFieldFocusNode4 ??= FocusNode();
 
     _model.switchValue1 = true;
@@ -70,27 +72,54 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
             appBar: AppBar(
               backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
               automaticallyImplyLeading: false,
-              leading: FlutterFlowIconButton(
-                borderRadius: 8.0,
-                buttonSize: 40.0,
-                icon: Icon(
-                  Icons.arrow_back,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 24.0,
-                ),
-                onPressed: () {
-                  print('IconButton pressed ...');
-                },
-              ),
-              title: Text(
-                'Профиль пользователя',
-                style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Inter Tight',
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      letterSpacing: 0.0,
+              leading: Align(
+                alignment: const AlignmentDirectional(0.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    FlutterFlowIconButton(
+                      borderRadius: 8.0,
+                      buttonSize: 40.0,
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 24.0,
+                      ),
+                      onPressed: () async {
+                        context.safePop();
+                      },
                     ),
+                    FlutterFlowIconButton(
+                      borderRadius: 8.0,
+                      buttonSize: 40.0,
+                      icon: Icon(
+                        Icons.save,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 24.0,
+                      ),
+                      onPressed: () async {
+                        await UsersTable().update(
+                          data: {
+                            'first_name': _model.textController1.text,
+                            'last_name': _model.textController2.text,
+                          },
+                          matchingRows: (rows) => rows.eqOrNull(
+                            'id',
+                            widget.currentUser?.id,
+                          ),
+                        );
+                        safeSetState(() => _model.requestCompleter = null);
+                        await _model.waitForRequestCompleted();
+                      },
+                    ),
+                  ],
+                ),
               ),
               actions: const [],
+              flexibleSpace: FlexibleSpaceBar(
+                background: Container(),
+              ),
               centerTitle: false,
               elevation: 0.0,
             ),
@@ -120,9 +149,15 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 24.0, 24.0, 24.0),
                             child: FutureBuilder<List<UsersRow>>(
-                              future: UsersTable().querySingleRow(
-                                queryFn: (q) => q,
-                              ),
+                              future: (_model.requestCompleter ??=
+                                      Completer<List<UsersRow>>()
+                                        ..complete(UsersTable().querySingleRow(
+                                          queryFn: (q) => q.eqOrNull(
+                                            'id',
+                                            widget.currentUser?.id,
+                                          ),
+                                        )))
+                                  .future,
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
@@ -151,7 +186,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      'Личная информация',
+                                      'Профиль сотрудника',
                                       style: FlutterFlowTheme.of(context)
                                           .headlineSmall
                                           .override(
@@ -162,12 +197,15 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                           ),
                                     ),
                                     TextFormField(
-                                      controller: _model.textController1,
+                                      controller: _model.textController1 ??=
+                                          TextEditingController(
+                                        text: columnUsersRow?.firstName,
+                                      ),
                                       focusNode: _model.textFieldFocusNode1,
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Full Name',
+                                        labelText: 'Имя и Отчество',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -228,12 +266,15 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                           .asValidator(context),
                                     ),
                                     TextFormField(
-                                      controller: _model.textController2,
+                                      controller: _model.textController2 ??=
+                                          TextEditingController(
+                                        text: columnUsersRow?.lastName,
+                                      ),
                                       focusNode: _model.textFieldFocusNode2,
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Full Name',
+                                        labelText: 'Фамилия',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -294,12 +335,15 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                           .asValidator(context),
                                     ),
                                     TextFormField(
-                                      controller: _model.textController3,
+                                      controller: _model.textController3 ??=
+                                          TextEditingController(
+                                        text: columnUsersRow?.email,
+                                      ),
                                       focusNode: _model.textFieldFocusNode3,
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Email Address',
+                                        labelText: 'Электронная почта',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -361,12 +405,15 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                           .asValidator(context),
                                     ),
                                     TextFormField(
-                                      controller: _model.textController4,
+                                      controller: _model.textController4 ??=
+                                          TextEditingController(
+                                        text: columnUsersRow?.phone,
+                                      ),
                                       focusNode: _model.textFieldFocusNode4,
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Phone Number',
+                                        labelText: 'Мобильный телефон',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
