@@ -44,4 +44,25 @@ class TasksRow extends SupabaseDataRow {
 
   DateTime? get taskDate => getField<DateTime>('task_date');
   set taskDate(DateTime? value) => setField<DateTime>('task_date', value);
+
+  int? get importBatch => getField<int>('import_batch');
+  set importBatch(int? value) => setField<int>('import_batch', value);
+
+  int? get importLine => getField<int>('import_line');
+  set importLine(int? value) => setField<int>('import_line', value);
+
+  String? get transferReason => getField<String>('transfer_reason');
+  set transferReason(String? value) =>
+      setField<String>('transfer_reason', value);
+
+  DateTime? get transferDate => getField<DateTime>('transfer_date');
+  set transferDate(DateTime? value) =>
+      setField<DateTime>('transfer_date', value);
+
+  String? get transferPerson => getField<String>('transfer_person');
+  set transferPerson(String? value) =>
+      setField<String>('transfer_person', value);
+
+  int? get traineesNumber => getField<int>('trainees_number');
+  set traineesNumber(int? value) => setField<int>('trainees_number', value);
 }

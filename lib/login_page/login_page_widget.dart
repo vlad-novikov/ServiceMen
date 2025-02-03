@@ -94,7 +94,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Система  Управления Заявками \nна Сервисное Обслуживание',
+                                      'Система  Управления Заявками на Сервисное Обслуживание',
                                       style: FlutterFlowTheme.of(context)
                                           .headlineSmall
                                           .override(

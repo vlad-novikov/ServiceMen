@@ -40,10 +40,6 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   FocusNode? textFieldFocusNode8;
   TextEditingController? textController8;
   String? Function(BuildContext, String?)? textController8Validator;
-  // State field(s) for Switch widget.
-  bool? switchValue1;
-  // State field(s) for Switch widget.
-  bool? switchValue2;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode9;
   TextEditingController? textController9;
@@ -52,6 +48,10 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   FocusNode? textFieldFocusNode10;
   TextEditingController? textController10;
   String? Function(BuildContext, String?)? textController10Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode11;
+  TextEditingController? textController11;
+  String? Function(BuildContext, String?)? textController11Validator;
 
   @override
   void initState(BuildContext context) {}
@@ -87,6 +87,9 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
 
     textFieldFocusNode10?.dispose();
     textController10?.dispose();
+
+    textFieldFocusNode11?.dispose();
+    textController11?.dispose();
   }
 
   /// Additional helper methods.

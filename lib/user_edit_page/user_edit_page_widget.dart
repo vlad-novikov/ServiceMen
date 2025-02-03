@@ -80,23 +80,48 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                   children: [
                     FlutterFlowIconButton(
                       borderRadius: 8.0,
-                      buttonSize: 40.0,
+                      buttonSize: 80.0,
                       icon: Icon(
                         Icons.arrow_back,
                         color: FlutterFlowTheme.of(context).primaryText,
-                        size: 24.0,
+                        size: 48.0,
                       ),
                       onPressed: () async {
                         context.safePop();
                       },
                     ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Align(
+                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          child: Text(
+                            'Система  Управления Заявками на Сервисное Обслуживание',
+                            style: FlutterFlowTheme.of(context)
+                                .titleMedium
+                                .override(
+                                  fontFamily: 'Inter Tight',
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                        ),
+                        Text(
+                          'Сотрудник',
+                          style:
+                              FlutterFlowTheme.of(context).titleMedium.override(
+                                    fontFamily: 'Inter Tight',
+                                    letterSpacing: 0.0,
+                                  ),
+                        ),
+                      ],
+                    ),
                     FlutterFlowIconButton(
                       borderRadius: 8.0,
-                      buttonSize: 40.0,
+                      buttonSize: 80.0,
                       icon: Icon(
                         Icons.save,
                         color: FlutterFlowTheme.of(context).primaryText,
-                        size: 24.0,
+                        size: 48.0,
                       ),
                       onPressed: () async {
                         await UsersTable().update(

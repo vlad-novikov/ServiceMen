@@ -196,7 +196,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        context.pushNamed('UserListPage');
+                                        context.pushNamed('UserListPageBak');
                                       },
                                       child: AnimatedContainer(
                                         duration: const Duration(milliseconds: 200),
@@ -213,36 +213,45 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 0.0, 6.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              const Icon(
-                                                Icons.work,
-                                                color: Color(0xFF15161E),
-                                                size: 24.0,
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        12.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  'Сотрудники',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color:
-                                                            const Color(0xFF15161E),
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed('UserListPage');
+                                            },
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                const Icon(
+                                                  Icons.work,
+                                                  color: Color(0xFF15161E),
+                                                  size: 24.0,
                                                 ),
-                                              ),
-                                            ],
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Сотрудники',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color:
+                                                              const Color(0xFF15161E),
+                                                          fontSize: 14.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -413,22 +422,6 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                 ),
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  'Список заявок на текущий день',
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: 'Plus Jakarta Sans',
-                                        color: const Color(0xFF606A85),
-                                        fontSize: 14.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 12.0, 16.0, 16.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -509,11 +502,8 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Text(
-                                          valueOrDefault<String>(
-                                            dateTimeFormat("dd MMMM yyyy",
-                                                _model.datePicked),
-                                            'curDate',
-                                          ),
+                                          dateTimeFormat("dd MMMM yyyy",
+                                              _model.datePicked),
                                           style: FlutterFlowTheme.of(context)
                                               .titleLarge
                                               .override(
@@ -745,7 +735,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              'Номер',
+                                              'ID Терминала',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
