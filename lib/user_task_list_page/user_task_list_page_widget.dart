@@ -85,12 +85,16 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                     buttonSize: 40.0,
                     fillColor: Colors.white,
                     icon: const Icon(
-                      Icons.manage_search_rounded,
+                      Icons.logout_sharp,
                       color: Color(0xFF15161E),
                       size: 24.0,
                     ),
-                    onPressed: () {
-                      print('IconButton pressed ...');
+                    onPressed: () async {
+                      GoRouter.of(context).prepareAuthEvent();
+                      await authManager.signOut();
+                      GoRouter.of(context).clearRedirectLocation();
+
+                      context.goNamedAuth('LoginPage', context.mounted);
                     },
                   ),
                 ),

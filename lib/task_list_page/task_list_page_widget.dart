@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/dropdown_users_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -82,12 +83,16 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                     buttonSize: 40.0,
                     fillColor: Colors.white,
                     icon: const Icon(
-                      Icons.manage_search_rounded,
+                      Icons.logout,
                       color: Color(0xFF15161E),
                       size: 24.0,
                     ),
-                    onPressed: () {
-                      print('IconButton pressed ...');
+                    onPressed: () async {
+                      GoRouter.of(context).prepareAuthEvent();
+                      await authManager.signOut();
+                      GoRouter.of(context).clearRedirectLocation();
+
+                      context.goNamedAuth('LoginPage', context.mounted);
                     },
                   ),
                 ),
