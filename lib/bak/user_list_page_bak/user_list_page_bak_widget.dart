@@ -255,9 +255,9 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
                                               context.pushNamed(
                                                 'UserEditPage',
                                                 queryParameters: {
-                                                  'currentUser': serializeParam(
-                                                    listViewUsersRow,
-                                                    ParamType.SupabaseRow,
+                                                  'userID': serializeParam(
+                                                    '',
+                                                    ParamType.String,
                                                   ),
                                                 }.withoutNulls,
                                               );

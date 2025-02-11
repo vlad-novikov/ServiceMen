@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/dropdown_users_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -67,7 +68,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'TaskEditPage',
+        title: 'Карточкая Заявки',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () {
@@ -145,6 +146,29 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                         safeSetState(() => _model.requestCompleter = null);
                         await _model.waitForRequestCompleted();
                       },
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 16.0, 8.0),
+                      child: FlutterFlowIconButton(
+                        borderColor: const Color(0xFFE5E7EB),
+                        borderRadius: 12.0,
+                        borderWidth: 2.0,
+                        buttonSize: 40.0,
+                        fillColor: Colors.white,
+                        icon: const Icon(
+                          Icons.logout_sharp,
+                          color: Color(0xFF15161E),
+                          size: 24.0,
+                        ),
+                        onPressed: () async {
+                          GoRouter.of(context).prepareAuthEvent();
+                          await authManager.signOut();
+                          GoRouter.of(context).clearRedirectLocation();
+
+                          context.goNamedAuth('LoginPage', context.mounted);
+                        },
+                      ),
                     ),
                   ],
                 ),

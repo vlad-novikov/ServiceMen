@@ -88,7 +88,7 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
             : null;
 
         return Title(
-            title: 'entryPage',
+            title: 'Переключение...',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
             child: GestureDetector(
               onTap: () {

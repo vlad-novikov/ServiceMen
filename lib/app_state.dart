@@ -26,7 +26,7 @@ class FFAppState extends ChangeNotifier {
     _AppCurrDate = value;
   }
 
-  String _AppCurDateStr = '2025-2-1';
+  String _AppCurDateStr = '2025-02-01';
   String get AppCurDateStr => _AppCurDateStr;
   set AppCurDateStr(String value) {
     _AppCurDateStr = value;

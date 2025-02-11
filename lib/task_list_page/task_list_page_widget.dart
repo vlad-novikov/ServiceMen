@@ -50,7 +50,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
     context.watch<FFAppState>();
 
     return Title(
-        title: 'TaskListPage',
+        title: 'Заявки общие',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () {
@@ -568,7 +568,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                       _model.datePicked;
                                                   FFAppState().AppCurDateStr =
                                                       dateTimeFormat(
-                                                    "y-M-d",
+                                                    "yyyy-MM-dd",
                                                     _model.datePicked,
                                                     locale: FFLocalizations.of(
                                                             context)
@@ -578,6 +578,20 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
 
                                                   safeSetState(() {});
                                                 },
+                                              ),
+                                            ),
+                                            Opacity(
+                                              opacity: 0.1,
+                                              child: Text(
+                                                FFAppState().AppCurDateStr,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Inter Tight',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                               ),
                                             ),
                                           ],

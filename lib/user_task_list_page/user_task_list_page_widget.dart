@@ -33,7 +33,6 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
       _model.filterDate = getCurrentTimestamp;
       _model.pageDate = FFAppState().AppCurrDate;
       _model.pageUserId = currentUserUid;
-      _model.pageUserName = '';
       safeSetState(() {});
     });
 
@@ -52,7 +51,7 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
     context.watch<FFAppState>();
 
     return Title(
-        title: 'UserTaskListPage',
+        title: 'Заявки пользователя',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () {
@@ -632,7 +631,7 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                       FFAppState()
                                                               .AppCurDateStr =
                                                           dateTimeFormat(
-                                                        "y-M-d",
+                                                        "yyyy-MM-dd",
                                                         _model.datePicked,
                                                         locale:
                                                             FFLocalizations.of(
@@ -643,6 +642,20 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
 
                                                       safeSetState(() {});
                                                     },
+                                                  ),
+                                                ),
+                                                Opacity(
+                                                  opacity: 0.1,
+                                                  child: Text(
+                                                    FFAppState().AppCurDateStr,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Inter Tight',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ),
                                               ],

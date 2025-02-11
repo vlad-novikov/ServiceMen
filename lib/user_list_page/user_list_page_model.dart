@@ -11,6 +11,19 @@ class UserListPageModel extends FlutterFlowModel<UserListPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   Stream<List<UsersRow>>? listViewSupabaseStream;
+  // State field(s) for Checkbox widget.
+  Map<UsersRow, bool> checkboxValueMap1 = {};
+  List<UsersRow> get checkboxCheckedItems1 => checkboxValueMap1.entries
+      .where((e) => e.value)
+      .map((e) => e.key)
+      .toList();
+
+  // State field(s) for Checkbox widget.
+  Map<UsersRow, bool> checkboxValueMap2 = {};
+  List<UsersRow> get checkboxCheckedItems2 => checkboxValueMap2.entries
+      .where((e) => e.value)
+      .map((e) => e.key)
+      .toList();
 
   @override
   void initState(BuildContext context) {}

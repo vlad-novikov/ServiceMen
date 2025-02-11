@@ -97,7 +97,7 @@ class _UserAddPageWidgetState extends State<UserAddPageWidget>
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'UserAddPage',
+        title: 'Создание пользователя',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () {

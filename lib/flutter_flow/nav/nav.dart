@@ -87,7 +87,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         ),
         FFRoute(
           name: 'LoginPage',
-          path: '/loginPage',
+          path: '/login',
           builder: (context, params) => const LoginPageWidget(),
         ),
         FFRoute(
@@ -107,22 +107,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         ),
         FFRoute(
           name: 'UserAddPage',
-          path: '/userAddPage',
+          path: '/useradd',
           builder: (context, params) => const UserAddPageWidget(),
         ),
         FFRoute(
-          name: 'UserEditPage',
-          path: '/userEditPage',
-          builder: (context, params) => UserEditPageWidget(
-            currentUser: params.getParam<UsersRow>(
-              'currentUser',
-              ParamType.SupabaseRow,
-            ),
-          ),
-        ),
-        FFRoute(
           name: 'TaskEditPage',
-          path: '/taskEditPage',
+          path: '/task',
           builder: (context, params) => TaskEditPageWidget(
             currentTask: params.getParam<TasksRow>(
               'currentTask',
@@ -132,7 +122,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         ),
         FFRoute(
           name: 'UserListPage',
-          path: '/userListPage',
+          path: '/users',
           builder: (context, params) => const UserListPageWidget(),
         ),
         FFRoute(
@@ -150,6 +140,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'UserTaskListPage',
           path: '/usertasks',
           builder: (context, params) => const UserTaskListPageWidget(),
+        ),
+        FFRoute(
+          name: 'UserEditPage',
+          path: '/user',
+          builder: (context, params) => UserEditPageWidget(
+            userID: params.getParam(
+              'userID',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -318,7 +318,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/loginPage';
+            return '/login';
           }
           return null;
         },

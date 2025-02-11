@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -44,7 +45,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'UserListPage',
+        title: 'Пользователи',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () {
@@ -77,12 +78,16 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                     buttonSize: 40.0,
                     fillColor: Colors.white,
                     icon: const Icon(
-                      Icons.manage_search_rounded,
+                      Icons.logout_sharp,
                       color: Color(0xFF15161E),
                       size: 24.0,
                     ),
-                    onPressed: () {
-                      print('IconButton pressed ...');
+                    onPressed: () async {
+                      GoRouter.of(context).prepareAuthEvent();
+                      await authManager.signOut();
+                      GoRouter.of(context).clearRedirectLocation();
+
+                      context.goNamedAuth('LoginPage', context.mounted);
                     },
                   ),
                 ),
@@ -618,6 +623,32 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                           ),
                                         ),
                                       ),
+                                      Flexible(
+                                        flex: 2,
+                                        child: Align(
+                                          alignment:
+                                              const AlignmentDirectional(-1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 10.0, 0.0),
+                                            child: Text(
+                                              '',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .labelSmall
+                                                  .override(
+                                                    fontFamily:
+                                                        'Plus Jakarta Sans',
+                                                    color: const Color(0xFF606A85),
+                                                    fontSize: 12.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -843,66 +874,104 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                             ),
                                             Flexible(
                                               flex: 2,
-                                              child: Align(
-                                                alignment: const AlignmentDirectional(
-                                                    -1.0, 0.0),
-                                                child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 10.0, 0.0),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      listViewUsersRow.isDoer
-                                                          ?.toString(),
-                                                      'Исп.',
+                                              child: Theme(
+                                                data: ThemeData(
+                                                  checkboxTheme:
+                                                      CheckboxThemeData(
+                                                    visualDensity:
+                                                        VisualDensity.compact,
+                                                    materialTapTargetSize:
+                                                        MaterialTapTargetSize
+                                                            .shrinkWrap,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              4.0),
                                                     ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF606A85),
-                                                          fontSize: 12.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
                                                   ),
+                                                  unselectedWidgetColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
+                                                ),
+                                                child: Checkbox(
+                                                  value: _model
+                                                              .checkboxValueMap1[
+                                                          listViewUsersRow] ??=
+                                                      listViewUsersRow.isDoer!,
+                                                  onChanged: (newValue) async {
+                                                    safeSetState(() => _model
+                                                                .checkboxValueMap1[
+                                                            listViewUsersRow] =
+                                                        newValue!);
+                                                  },
+                                                  side: BorderSide(
+                                                    width: 2,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                  ),
+                                                  activeColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                  checkColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .info,
                                                 ),
                                               ),
                                             ),
                                             Flexible(
                                               flex: 2,
-                                              child: Align(
-                                                alignment: const AlignmentDirectional(
-                                                    -1.0, 0.0),
-                                                child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 10.0, 0.0),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      listViewUsersRow
-                                                          .isAdministrator
-                                                          ?.toString(),
-                                                      'Адм.',
+                                              child: Theme(
+                                                data: ThemeData(
+                                                  checkboxTheme:
+                                                      CheckboxThemeData(
+                                                    visualDensity:
+                                                        VisualDensity.compact,
+                                                    materialTapTargetSize:
+                                                        MaterialTapTargetSize
+                                                            .shrinkWrap,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              4.0),
                                                     ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF606A85),
-                                                          fontSize: 12.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
                                                   ),
+                                                  unselectedWidgetColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
+                                                ),
+                                                child: Checkbox(
+                                                  value: _model
+                                                              .checkboxValueMap2[
+                                                          listViewUsersRow] ??=
+                                                      listViewUsersRow
+                                                          .isAdministrator!,
+                                                  onChanged: (newValue) async {
+                                                    safeSetState(() => _model
+                                                                .checkboxValueMap2[
+                                                            listViewUsersRow] =
+                                                        newValue!);
+                                                  },
+                                                  side: BorderSide(
+                                                    width: 2,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                  ),
+                                                  activeColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                  checkColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .info,
                                                 ),
                                               ),
                                             ),
@@ -916,28 +985,30 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                 ),
                                               ),
                                             ),
-                                            InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context.pushNamed(
-                                                  'UserEditPage',
-                                                  queryParameters: {
-                                                    'currentUser':
-                                                        serializeParam(
-                                                      listViewUsersRow,
-                                                      ParamType.SupabaseRow,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: const Icon(
-                                                Icons.chevron_right_rounded,
-                                                color: Color(0xFF57636C),
-                                                size: 24.0,
+                                            Flexible(
+                                              flex: 2,
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  context.pushNamed(
+                                                    'UserEditPage',
+                                                    queryParameters: {
+                                                      'userID': serializeParam(
+                                                        listViewUsersRow.id,
+                                                        ParamType.String,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+                                                },
+                                                child: const Icon(
+                                                  Icons.chevron_right_rounded,
+                                                  color: Color(0xFF57636C),
+                                                  size: 24.0,
+                                                ),
                                               ),
                                             ),
                                           ],

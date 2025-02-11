@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -10,10 +11,10 @@ export 'user_edit_page_model.dart';
 class UserEditPageWidget extends StatefulWidget {
   const UserEditPageWidget({
     super.key,
-    required this.currentUser,
+    required this.userID,
   });
 
-  final UsersRow? currentUser;
+  final String? userID;
 
   @override
   State<UserEditPageWidget> createState() => _UserEditPageWidgetState();
@@ -50,7 +51,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'UserEditPage',
+        title: 'Карточка пользователя',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () {
@@ -106,6 +107,29 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                         ),
                       ],
                     ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 16.0, 8.0),
+                      child: FlutterFlowIconButton(
+                        borderColor: const Color(0xFFE5E7EB),
+                        borderRadius: 12.0,
+                        borderWidth: 2.0,
+                        buttonSize: 40.0,
+                        fillColor: Colors.white,
+                        icon: const Icon(
+                          Icons.logout_sharp,
+                          color: Color(0xFF15161E),
+                          size: 24.0,
+                        ),
+                        onPressed: () async {
+                          GoRouter.of(context).prepareAuthEvent();
+                          await authManager.signOut();
+                          GoRouter.of(context).clearRedirectLocation();
+
+                          context.goNamedAuth('LoginPage', context.mounted);
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -124,7 +148,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                   future: UsersTable().querySingleRow(
                     queryFn: (q) => q.eqOrNull(
                       'id',
-                      widget.currentUser?.id,
+                      widget.userID,
                     ),
                   ),
                   builder: (context, snapshot) {
