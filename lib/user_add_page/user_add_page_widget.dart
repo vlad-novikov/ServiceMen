@@ -459,7 +459,7 @@ class _UserAddPageWidgetState extends State<UserAddPageWidget>
                                                   }
 
                                                   context.goNamedAuth(
-                                                      'TaskListPage',
+                                                      'entryPage',
                                                       context.mounted);
                                                 },
                                                 text: 'Создать',

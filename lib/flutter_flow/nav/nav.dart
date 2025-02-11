@@ -77,14 +77,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const TaskListPageWidget() : const LoginPageWidget(),
+          appStateNotifier.loggedIn ? const EntryPageWidget() : const LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => appStateNotifier.loggedIn
-              ? const TaskListPageWidget()
-              : const LoginPageWidget(),
+          builder: (context, _) =>
+              appStateNotifier.loggedIn ? const EntryPageWidget() : const LoginPageWidget(),
         ),
         FFRoute(
           name: 'LoginPage',
@@ -97,14 +96,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const UserListPageBakWidget(),
         ),
         FFRoute(
-          name: 'TaskListPage',
-          path: '/taskListPage',
-          builder: (context, params) => const TaskListPageWidget(),
+          name: 'TaskListPageBak',
+          path: '/taskListPageBak',
+          builder: (context, params) => const TaskListPageBakWidget(),
         ),
         FFRoute(
-          name: 'TaskUserListPage',
-          path: '/taskUserListPage',
-          builder: (context, params) => const TaskUserListPageWidget(),
+          name: 'TaskUserListPageBak',
+          path: '/taskUserListPageBak',
+          builder: (context, params) => const TaskUserListPageBakWidget(),
         ),
         FFRoute(
           name: 'UserAddPage',
@@ -122,16 +121,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'List07UserSearch',
-          path: '/list07UserSearch',
-          builder: (context, params) => const List07UserSearchWidget(),
-        ),
-        FFRoute(
-          name: 'Dashboard6',
-          path: '/dashboard6',
-          builder: (context, params) => const Dashboard6Widget(),
-        ),
-        FFRoute(
           name: 'TaskEditPage',
           path: '/taskEditPage',
           builder: (context, params) => TaskEditPageWidget(
@@ -142,14 +131,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'Details10InvoicePayment',
-          path: '/details10InvoicePayment',
-          builder: (context, params) => const Details10InvoicePaymentWidget(),
-        ),
-        FFRoute(
           name: 'UserListPage',
           path: '/userListPage',
           builder: (context, params) => const UserListPageWidget(),
+        ),
+        FFRoute(
+          name: 'entryPage',
+          path: '/entry',
+          requireAuth: true,
+          builder: (context, params) => const EntryPageWidget(),
+        ),
+        FFRoute(
+          name: 'TaskListPage',
+          path: '/tasks',
+          builder: (context, params) => const TaskListPageWidget(),
+        ),
+        FFRoute(
+          name: 'UserTaskListPage',
+          path: '/usertasks',
+          builder: (context, params) => const UserTaskListPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

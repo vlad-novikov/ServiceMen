@@ -312,7 +312,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                           }
 
                                           context.goNamedAuth(
-                                              'TaskListPage', context.mounted);
+                                              'entryPage', context.mounted);
                                         },
                                         text: 'Войти',
                                         options: FFButtonOptions(

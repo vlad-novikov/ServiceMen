@@ -5,29 +5,29 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'user_list_page_model.dart';
-export 'user_list_page_model.dart';
+import 'task_list_page_bak_model.dart';
+export 'task_list_page_bak_model.dart';
 
-class UserListPageWidget extends StatefulWidget {
-  const UserListPageWidget({super.key});
+class TaskListPageBakWidget extends StatefulWidget {
+  const TaskListPageBakWidget({super.key});
 
   @override
-  State<UserListPageWidget> createState() => _UserListPageWidgetState();
+  State<TaskListPageBakWidget> createState() => _TaskListPageBakWidgetState();
 }
 
-class _UserListPageWidgetState extends State<UserListPageWidget> {
-  late UserListPageModel _model;
+class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
+  late TaskListPageBakModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => UserListPageModel());
+    _model = createModel(context, () => TaskListPageBakModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.curDate = getCurrentTimestamp;
+      _model.filterDate = getCurrentTimestamp;
       safeSetState(() {});
     });
 
@@ -44,7 +44,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'UserListPage',
+        title: 'TaskListPageBak',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () {
@@ -133,7 +133,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                       width: double.infinity,
                                       height: 44.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFF1F4F8),
+                                        color: const Color(0x4D9489F5),
                                         borderRadius:
                                             BorderRadius.circular(12.0),
                                         shape: BoxShape.rectangle,
@@ -141,57 +141,46 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                       child: Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             8.0, 0.0, 6.0, 0.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            context
-                                                .pushNamed('TaskListPageBak');
-                                          },
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              const Icon(
-                                                Icons.checklist_rounded,
-                                                color: Color(0xFF6F61EF),
-                                                size: 24.0,
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            const Icon(
+                                              Icons.checklist_rounded,
+                                              color: Color(0xFF6F61EF),
+                                              size: 24.0,
+                                            ),
+                                            Container(
+                                              height: 32.0,
+                                              decoration: BoxDecoration(
+                                                color: const Color(0xFF6F61EF),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
                                               ),
-                                              Container(
-                                                height: 32.0,
-                                                decoration: BoxDecoration(
-                                                  color: const Color(0xFF6F61EF),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                            ),
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        12.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'Заявки',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        color:
+                                                            const Color(0xFF15161E),
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
                                                 ),
                                               ),
-                                              Expanded(
-                                                child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          12.0, 0.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    'Заявки',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF15161E),
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ),
@@ -213,7 +202,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                         width: double.infinity,
                                         height: 44.0,
                                         decoration: BoxDecoration(
-                                          color: const Color(0x4D9489F5),
+                                          color: const Color(0xFFF1F4F8),
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                           shape: BoxShape.rectangle,
@@ -222,36 +211,45 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 0.0, 6.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              const Icon(
-                                                Icons.work,
-                                                color: Color(0xFF15161E),
-                                                size: 24.0,
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        12.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  'Сотрудники',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color:
-                                                            const Color(0xFF15161E),
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed('UserListPage');
+                                            },
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                const Icon(
+                                                  Icons.work,
+                                                  color: Color(0xFF15161E),
+                                                  size: 24.0,
                                                 ),
-                                              ),
-                                            ],
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Сотрудники',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color:
+                                                              const Color(0xFF15161E),
+                                                          fontSize: 14.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -408,7 +406,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 0.0, 4.0),
                                   child: Text(
-                                    'Сотрудники',
+                                    'Текущие Заявки',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineMedium
                                         .override(
@@ -420,6 +418,132 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                         ),
                                   ),
                                 ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 12.0, 16.0, 16.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          valueOrDefault<String>(
+                                            dateTimeFormat(
+                                              "dd-MMM-yyyy",
+                                              _model.filterDate,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ),
+                                            'CurDate()',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleLarge
+                                              .override(
+                                                fontFamily: 'Inter Tight',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 0.0, 0.0),
+                                          child: FlutterFlowIconButton(
+                                            borderRadius: 8.0,
+                                            buttonSize: 40.0,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            icon: Icon(
+                                              Icons.calendar_month,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .info,
+                                              size: 24.0,
+                                            ),
+                                            onPressed: () async {
+                                              final datePickedDate =
+                                                  await showDatePicker(
+                                                context: context,
+                                                initialDate:
+                                                    (_model.filterDate ??
+                                                        DateTime.now()),
+                                                firstDate: DateTime(1900),
+                                                lastDate: DateTime(2050),
+                                                builder: (context, child) {
+                                                  return wrapInMaterialDatePickerTheme(
+                                                    context,
+                                                    child!,
+                                                    headerBackgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                    headerForegroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .info,
+                                                    headerTextStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineLarge
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Inter Tight',
+                                                              fontSize: 32.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                            ),
+                                                    pickerBackgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryBackground,
+                                                    pickerForegroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText,
+                                                    selectedDateTimeBackgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                    selectedDateTimeForegroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .info,
+                                                    actionButtonForegroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText,
+                                                    iconSize: 24.0,
+                                                  );
+                                                },
+                                              );
+
+                                              if (datePickedDate != null) {
+                                                safeSetState(() {
+                                                  _model.datePicked = DateTime(
+                                                    datePickedDate.year,
+                                                    datePickedDate.month,
+                                                    datePickedDate.day,
+                                                  );
+                                                });
+                                              }
+                                              _model.filterDate =
+                                                  _model.datePicked;
+                                              safeSetState(() {});
+                                            },
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
                               Container(
                                 width: double.infinity,
                                 height: 40.0,
@@ -435,7 +559,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Flexible(
-                                        flex: 1,
+                                        flex: 4,
                                         child: Align(
                                           alignment:
                                               const AlignmentDirectional(-1.0, 0.0),
@@ -444,7 +568,34 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              '№ ',
+                                              '№ пп',
+                                              textAlign: TextAlign.start,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .labelSmall
+                                                  .override(
+                                                    fontFamily:
+                                                        'Plus Jakarta Sans',
+                                                    color: const Color(0xFF606A85),
+                                                    fontSize: 12.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Flexible(
+                                        flex: 2,
+                                        child: Align(
+                                          alignment:
+                                              const AlignmentDirectional(-1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 10.0, 0.0),
+                                            child: Text(
+                                              'Дата',
                                               textAlign: TextAlign.start,
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -471,7 +622,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              'Фамилия',
+                                              'Название ТП',
                                               textAlign: TextAlign.start,
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -498,7 +649,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     30.0, 0.0, 30.0, 0.0),
                                             child: Text(
-                                              'Имя',
+                                              'Телефон',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -524,7 +675,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 20.0, 0.0),
                                             child: Text(
-                                              'Эл. Почта',
+                                              'Вид работ',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -550,7 +701,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              'Телефон',
+                                              'ID Терминала',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -567,7 +718,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                         ),
                                       ),
                                       Flexible(
-                                        flex: 2,
+                                        flex: 4,
                                         child: Align(
                                           alignment:
                                               const AlignmentDirectional(-1.0, 0.0),
@@ -576,7 +727,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              'Исп.',
+                                              'Адрес',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -593,7 +744,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                         ),
                                       ),
                                       Flexible(
-                                        flex: 2,
+                                        flex: 4,
                                         child: Align(
                                           alignment:
                                               const AlignmentDirectional(-1.0, 0.0),
@@ -602,7 +753,33 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              'Адм.',
+                                              'Исполнитель',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .labelSmall
+                                                  .override(
+                                                    fontFamily:
+                                                        'Plus Jakarta Sans',
+                                                    color: const Color(0xFF606A85),
+                                                    fontSize: 12.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Flexible(
+                                        flex: 4,
+                                        child: Align(
+                                          alignment:
+                                              const AlignmentDirectional(-1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 10.0, 0.0),
+                                            child: Text(
+                                              'Статус',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -631,14 +808,20 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                   ),
                                 ),
                               ),
-                              StreamBuilder<List<UsersRow>>(
-                                stream: _model.listViewSupabaseStream ??=
+                              StreamBuilder<List<TasksRow>>(
+                                stream: _model.listViewTasksSupabaseStream ??=
                                     SupaFlow.client
-                                        .from("users")
-                                        .stream(primaryKey: ['id']).map(
-                                            (list) => list
-                                                .map((item) => UsersRow(item))
-                                                .toList()),
+                                        .from("tasks")
+                                        .stream(primaryKey: ['id'])
+                                        .eqOrNull(
+                                          'task_date',
+                                          supaSerialize<DateTime>(
+                                              _model.filterDate),
+                                        )
+                                        .limit(100)
+                                        .map((list) => list
+                                            .map((item) => TasksRow(item))
+                                            .toList()),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
@@ -656,7 +839,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                       ),
                                     );
                                   }
-                                  List<UsersRow> listViewUsersRowList =
+                                  List<TasksRow> listViewTasksTasksRowList =
                                       snapshot.data!;
 
                                   return ListView.separated(
@@ -668,12 +851,13 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                     ),
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
-                                    itemCount: listViewUsersRowList.length,
+                                    itemCount: listViewTasksTasksRowList.length,
                                     separatorBuilder: (_, __) =>
                                         const SizedBox(height: 1.0),
-                                    itemBuilder: (context, listViewIndex) {
-                                      final listViewUsersRow =
-                                          listViewUsersRowList[listViewIndex];
+                                    itemBuilder: (context, listViewTasksIndex) {
+                                      final listViewTasksTasksRow =
+                                          listViewTasksTasksRowList[
+                                              listViewTasksIndex];
                                       return Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 12.0, 16.0, 12.0),
@@ -681,7 +865,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Flexible(
-                                              flex: 1,
+                                              flex: 4,
                                               child: Align(
                                                 alignment: const AlignmentDirectional(
                                                     -1.0, 0.0),
@@ -692,7 +876,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                   child: Text(
                                                     valueOrDefault<String>(
                                                       (valueOrDefault<int>(
-                                                                listViewIndex,
+                                                                listViewTasksIndex,
                                                                 0,
                                                               ) +
                                                               1)
@@ -717,7 +901,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                               ),
                                             ),
                                             Flexible(
-                                              flex: 4,
+                                              flex: 2,
                                               child: Align(
                                                 alignment: const AlignmentDirectional(
                                                     -1.0, 0.0),
@@ -726,9 +910,14 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                       .fromSTEB(
                                                           10.0, 0.0, 10.0, 0.0),
                                                   child: Text(
-                                                    valueOrDefault<String>(
-                                                      listViewUsersRow.lastName,
-                                                      'Фамилия',
+                                                    dateTimeFormat(
+                                                      "dd.MM.yy",
+                                                      listViewTasksTasksRow
+                                                          .taskDate!,
+                                                      locale:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .languageCode,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -758,9 +947,9 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                           10.0, 0.0, 10.0, 0.0),
                                                   child: Text(
                                                     valueOrDefault<String>(
-                                                      listViewUsersRow
-                                                          .firstName,
-                                                      'Имя',
+                                                      listViewTasksTasksRow
+                                                          .locationName,
+                                                      'Название',
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -790,38 +979,8 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                           10.0, 0.0, 10.0, 0.0),
                                                   child: Text(
                                                     valueOrDefault<String>(
-                                                      listViewUsersRow.email,
-                                                      'Почта',
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF606A85),
-                                                          fontSize: 12.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Flexible(
-                                              flex: 4,
-                                              child: Align(
-                                                alignment: const AlignmentDirectional(
-                                                    -1.0, 0.0),
-                                                child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 10.0, 0.0),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      listViewUsersRow.phone,
+                                                      listViewTasksTasksRow
+                                                          .locationPhone,
                                                       'Телефон',
                                                     ),
                                                     style: FlutterFlowTheme.of(
@@ -842,7 +1001,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                               ),
                                             ),
                                             Flexible(
-                                              flex: 2,
+                                              flex: 4,
                                               child: Align(
                                                 alignment: const AlignmentDirectional(
                                                     -1.0, 0.0),
@@ -852,9 +1011,9 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                           10.0, 0.0, 10.0, 0.0),
                                                   child: Text(
                                                     valueOrDefault<String>(
-                                                      listViewUsersRow.isDoer
-                                                          ?.toString(),
-                                                      'Исп.',
+                                                      listViewTasksTasksRow
+                                                          .taskCategory,
+                                                      'Вид работ',
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -874,7 +1033,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                               ),
                                             ),
                                             Flexible(
-                                              flex: 2,
+                                              flex: 4,
                                               child: Align(
                                                 alignment: const AlignmentDirectional(
                                                     -1.0, 0.0),
@@ -884,10 +1043,9 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                           10.0, 0.0, 10.0, 0.0),
                                                   child: Text(
                                                     valueOrDefault<String>(
-                                                      listViewUsersRow
-                                                          .isAdministrator
-                                                          ?.toString(),
-                                                      'Адм.',
+                                                      listViewTasksTasksRow
+                                                          .equipmentId,
+                                                      'Номер',
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -906,14 +1064,127 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                 ),
                                               ),
                                             ),
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                color: const Color(0x4C39D2C0),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                border: Border.all(
-                                                  color: const Color(0xFF39D2C0),
+                                            Flexible(
+                                              flex: 4,
+                                              child: Align(
+                                                alignment: const AlignmentDirectional(
+                                                    -1.0, 0.0),
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 10.0, 0.0),
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      listViewTasksTasksRow
+                                                          .locationAddress,
+                                                      'Адрес',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color:
+                                                              const Color(0xFF606A85),
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                  ),
                                                 ),
+                                              ),
+                                            ),
+                                            Flexible(
+                                              flex: 4,
+                                              child: Align(
+                                                alignment: const AlignmentDirectional(
+                                                    -1.0, 0.0),
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 10.0, 0.0),
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      listViewTasksTasksRow
+                                                          .taskDoer,
+                                                      'Исполнитель',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color:
+                                                              const Color(0xFF606A85),
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Flexible(
+                                              flex: 4,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: [
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                      color: const Color(0x4C39D2C0),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                      border: Border.all(
+                                                        color:
+                                                            const Color(0xFF39D2C0),
+                                                      ),
+                                                    ),
+                                                    child: Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8.0,
+                                                                    4.0,
+                                                                    8.0,
+                                                                    4.0),
+                                                        child: Text(
+                                                          valueOrDefault<
+                                                              String>(
+                                                            listViewTasksTasksRow
+                                                                .taskStatus,
+                                                            'Статус',
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodySmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Plus Jakarta Sans',
+                                                                color: const Color(
+                                                                    0xFF15161E),
+                                                                fontSize: 12.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                             InkWell(
@@ -924,11 +1195,11 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                   Colors.transparent,
                                               onTap: () async {
                                                 context.pushNamed(
-                                                  'UserEditPage',
+                                                  'TaskEditPage',
                                                   queryParameters: {
-                                                    'currentUser':
+                                                    'currentTask':
                                                         serializeParam(
-                                                      listViewUsersRow,
+                                                      listViewTasksTasksRow,
                                                       ParamType.SupabaseRow,
                                                     ),
                                                   }.withoutNulls,

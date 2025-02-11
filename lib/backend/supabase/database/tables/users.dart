@@ -31,4 +31,25 @@ class UsersRow extends SupabaseDataRow {
 
   String? get phone => getField<String>('phone');
   set phone(String? value) => setField<String>('phone', value);
+
+  bool? get isImporter => getField<bool>('is_importer');
+  set isImporter(bool? value) => setField<bool>('is_importer', value);
+
+  bool? get isAssignee => getField<bool>('is_assignee');
+  set isAssignee(bool? value) => setField<bool>('is_assignee', value);
+
+  bool? get isDoer => getField<bool>('is_doer');
+  set isDoer(bool? value) => setField<bool>('is_doer', value);
+
+  bool? get isAuditor => getField<bool>('is_auditor');
+  set isAuditor(bool? value) => setField<bool>('is_auditor', value);
+
+  bool? get isAdministrator => getField<bool>('is_administrator');
+  set isAdministrator(bool? value) => setField<bool>('is_administrator', value);
+
+  String? get role => getField<String>('role');
+  set role(String? value) => setField<String>('role', value);
+
+  bool? get isActive => getField<bool>('is_active');
+  set isActive(bool? value) => setField<bool>('is_active', value);
 }

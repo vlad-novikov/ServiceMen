@@ -1,4 +1,5 @@
 import '/backend/supabase/supabase.dart';
+import '/components/dropdown_users_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -50,6 +51,8 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
     _model.textFieldFocusNode10 ??= FocusNode();
 
     _model.textFieldFocusNode11 ??= FocusNode();
+
+    _model.textFieldFocusNode12 ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -496,13 +499,13 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                     TextFormField(
                                       controller: _model.textController5 ??=
                                           TextEditingController(
-                                        text: columnTasksRow?.taskCategory,
+                                        text: columnTasksRow?.locationPhone,
                                       ),
                                       focusNode: _model.textFieldFocusNode5,
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Тип Операции',
+                                        labelText: 'Договор эквайринга',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -566,13 +569,13 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                     TextFormField(
                                       controller: _model.textController6 ??=
                                           TextEditingController(
-                                        text: columnTasksRow?.taskDoer,
+                                        text: columnTasksRow?.taskDateStr,
                                       ),
                                       focusNode: _model.textFieldFocusNode6,
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Исполнитель',
+                                        labelText: 'Тип связи',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -636,13 +639,13 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                     TextFormField(
                                       controller: _model.textController7 ??=
                                           TextEditingController(
-                                        text: columnTasksRow?.taskStatus,
+                                        text: columnTasksRow?.taskCategory,
                                       ),
                                       focusNode: _model.textFieldFocusNode7,
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Результат',
+                                        labelText: 'Тип Операции',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -703,30 +706,31 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                       validator: _model.textController7Validator
                                           .asValidator(context),
                                     ),
-                                    Align(
-                                      alignment:
-                                          const AlignmentDirectional(-1.0, 0.0),
-                                      child: Text(
-                                        'Обучение',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Inter Tight',
-                                              letterSpacing: 0.0,
-                                            ),
+                                    SizedBox(
+                                      height: 48.53,
+                                      child: Align(
+                                        alignment:
+                                            const AlignmentDirectional(-1.0, 0.0),
+                                        child: wrapWithModel(
+                                          model: _model.dropdownUsersModel,
+                                          updateCallback: () =>
+                                              safeSetState(() {}),
+                                          child: DropdownUsersWidget(
+                                            userName: columnTasksRow?.taskDoer,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                     TextFormField(
                                       controller: _model.textController8 ??=
                                           TextEditingController(
-                                        text: columnTasksRow?.traineesNumber
-                                            ?.toString(),
+                                        text: columnTasksRow?.taskStatus,
                                       ),
                                       focusNode: _model.textFieldFocusNode8,
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Количество обучаемых',
+                                        labelText: 'Результат',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -791,7 +795,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                       alignment:
                                           const AlignmentDirectional(-1.0, 0.0),
                                       child: Text(
-                                        'Перенос',
+                                        'Обучение',
                                         style: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
@@ -803,13 +807,14 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                     TextFormField(
                                       controller: _model.textController9 ??=
                                           TextEditingController(
-                                        text: columnTasksRow?.transferReason,
+                                        text: columnTasksRow?.traineesNumber
+                                            ?.toString(),
                                       ),
                                       focusNode: _model.textFieldFocusNode9,
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Причина переноса',
+                                        labelText: 'Количество обучаемых',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -870,16 +875,29 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                       validator: _model.textController9Validator
                                           .asValidator(context),
                                     ),
+                                    Align(
+                                      alignment:
+                                          const AlignmentDirectional(-1.0, 0.0),
+                                      child: Text(
+                                        'Перенос',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Inter Tight',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ),
                                     TextFormField(
                                       controller: _model.textController10 ??=
                                           TextEditingController(
-                                        text: columnTasksRow?.transferPerson,
+                                        text: columnTasksRow?.transferReason,
                                       ),
                                       focusNode: _model.textFieldFocusNode10,
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Контакт по переносу',
+                                        labelText: 'Причина переноса',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -944,10 +962,81 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                     TextFormField(
                                       controller: _model.textController11 ??=
                                           TextEditingController(
+                                        text: columnTasksRow?.transferPerson,
+                                      ),
+                                      focusNode: _model.textFieldFocusNode11,
+                                      autofocus: false,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        labelText: 'Контакт по переносу',
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
+                                            ),
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
+                                            ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        errorBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        filled: true,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      minLines: 1,
+                                      keyboardType: TextInputType.phone,
+                                      validator: _model
+                                          .textController11Validator
+                                          .asValidator(context),
+                                    ),
+                                    TextFormField(
+                                      controller: _model.textController12 ??=
+                                          TextEditingController(
                                         text: columnTasksRow?.transferDate
                                             ?.toString(),
                                       ),
-                                      focusNode: _model.textFieldFocusNode11,
+                                      focusNode: _model.textFieldFocusNode12,
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
@@ -1010,8 +1099,11 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                       minLines: 1,
                                       keyboardType: TextInputType.phone,
                                       validator: _model
-                                          .textController11Validator
+                                          .textController12Validator
                                           .asValidator(context),
+                                    ),
+                                    Container(
+                                      height: 200.0,
                                     ),
                                   ].divide(const SizedBox(height: 16.0)),
                                 );

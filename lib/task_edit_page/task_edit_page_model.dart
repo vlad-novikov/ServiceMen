@@ -1,4 +1,5 @@
 import '/backend/supabase/supabase.dart';
+import '/components/dropdown_users_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
 import 'task_edit_page_widget.dart' show TaskEditPageWidget;
@@ -36,6 +37,8 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   FocusNode? textFieldFocusNode7;
   TextEditingController? textController7;
   String? Function(BuildContext, String?)? textController7Validator;
+  // Model for dropdown_users component.
+  late DropdownUsersModel dropdownUsersModel;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode8;
   TextEditingController? textController8;
@@ -52,9 +55,15 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   FocusNode? textFieldFocusNode11;
   TextEditingController? textController11;
   String? Function(BuildContext, String?)? textController11Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode12;
+  TextEditingController? textController12;
+  String? Function(BuildContext, String?)? textController12Validator;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    dropdownUsersModel = createModel(context, () => DropdownUsersModel());
+  }
 
   @override
   void dispose() {
@@ -79,6 +88,7 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
     textFieldFocusNode7?.dispose();
     textController7?.dispose();
 
+    dropdownUsersModel.dispose();
     textFieldFocusNode8?.dispose();
     textController8?.dispose();
 
@@ -90,6 +100,9 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
 
     textFieldFocusNode11?.dispose();
     textController11?.dispose();
+
+    textFieldFocusNode12?.dispose();
+    textController12?.dispose();
   }
 
   /// Additional helper methods.

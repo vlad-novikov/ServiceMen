@@ -1,17 +1,17 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'task_list_page_widget.dart' show TaskListPageWidget;
+import 'task_list_page_bak_widget.dart' show TaskListPageBakWidget;
 import 'package:flutter/material.dart';
 
-class TaskListPageModel extends FlutterFlowModel<TaskListPageWidget> {
+class TaskListPageBakModel extends FlutterFlowModel<TaskListPageBakWidget> {
   ///  Local state fields for this page.
 
   DateTime? filterDate;
 
-  DateTime? pageDate;
-
   ///  State fields for stateful widgets in this page.
 
   DateTime? datePicked;
+  Stream<List<TasksRow>>? listViewTasksSupabaseStream;
 
   @override
   void initState(BuildContext context) {}

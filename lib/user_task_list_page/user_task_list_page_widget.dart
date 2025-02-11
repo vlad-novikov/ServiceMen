@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/dropdown_users_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -7,30 +8,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'task_list_page_model.dart';
-export 'task_list_page_model.dart';
+import 'user_task_list_page_model.dart';
+export 'user_task_list_page_model.dart';
 
-class TaskListPageWidget extends StatefulWidget {
-  const TaskListPageWidget({super.key});
+class UserTaskListPageWidget extends StatefulWidget {
+  const UserTaskListPageWidget({super.key});
 
   @override
-  State<TaskListPageWidget> createState() => _TaskListPageWidgetState();
+  State<UserTaskListPageWidget> createState() => _UserTaskListPageWidgetState();
 }
 
-class _TaskListPageWidgetState extends State<TaskListPageWidget> {
-  late TaskListPageModel _model;
+class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
+  late UserTaskListPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TaskListPageModel());
+    _model = createModel(context, () => UserTaskListPageModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.filterDate = getCurrentTimestamp;
       _model.pageDate = FFAppState().AppCurrDate;
+      _model.pageUserId = currentUserUid;
+      _model.pageUserName = '';
       safeSetState(() {});
     });
 
@@ -49,7 +52,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
     context.watch<FFAppState>();
 
     return Title(
-        title: 'TaskListPage',
+        title: 'UserTaskListPage',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () {
@@ -432,152 +435,217 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 12.0, 16.0, 16.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
+                                    child: FutureBuilder<List<UsersRow>>(
+                                      future: UsersTable().querySingleRow(
+                                        queryFn: (q) => q.eqOrNull(
+                                          'id',
+                                          currentUserUid,
+                                        ),
+                                      ),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        List<UsersRow> rowUsersRowList =
+                                            snapshot.data!;
+
+                                        final rowUsersRow =
+                                            rowUsersRowList.isNotEmpty
+                                                ? rowUsersRowList.first
+                                                : null;
+
+                                        return Row(
                                           mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text(
-                                              'Заявки на дату: ',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Text(
+                                                  'Мои заявки: ',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .titleLarge
                                                       .override(
                                                         fontFamily:
                                                             'Inter Tight',
                                                         letterSpacing: 0.0,
                                                       ),
-                                            ),
-                                            Text(
-                                              valueOrDefault<String>(
-                                                dateTimeFormat(
-                                                  "dd-MMM-yyyy",
-                                                  FFAppState().AppCurrDate,
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
                                                 ),
-                                                'CurDate()',
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Inter Tight',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 0.0),
-                                              child: FlutterFlowIconButton(
-                                                borderRadius: 8.0,
-                                                buttonSize: 40.0,
-                                                fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                icon: Icon(
-                                                  Icons.calendar_month,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .info,
-                                                  size: 24.0,
-                                                ),
-                                                onPressed: () async {
-                                                  final datePickedDate =
-                                                      await showDatePicker(
-                                                    context: context,
-                                                    initialDate:
-                                                        (_model.filterDate ??
-                                                            DateTime.now()),
-                                                    firstDate: DateTime(1900),
-                                                    lastDate: DateTime(2050),
-                                                    builder: (context, child) {
-                                                      return wrapInMaterialDatePickerTheme(
-                                                        context,
-                                                        child!,
-                                                        headerBackgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        headerForegroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        headerTextStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineLarge
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Inter Tight',
-                                                                  fontSize:
-                                                                      32.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                        pickerBackgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryBackground,
-                                                        pickerForegroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        selectedDateTimeBackgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        selectedDateTimeForegroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        actionButtonForegroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        iconSize: 24.0,
-                                                      );
-                                                    },
-                                                  );
-
-                                                  if (datePickedDate != null) {
-                                                    safeSetState(() {
-                                                      _model.datePicked =
-                                                          DateTime(
-                                                        datePickedDate.year,
-                                                        datePickedDate.month,
-                                                        datePickedDate.day,
-                                                      );
-                                                    });
-                                                  }
-                                                  FFAppState().AppCurrDate =
-                                                      _model.datePicked;
-                                                  FFAppState().AppCurDateStr =
-                                                      dateTimeFormat(
-                                                    "y-M-d",
-                                                    _model.datePicked,
-                                                    locale: FFLocalizations.of(
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 10.0, 0.0),
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      rowUsersRow?.lastName,
+                                                      'Фамилия ИО',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
                                                             context)
-                                                        .languageCode,
-                                                  );
-                                                  safeSetState(() {});
+                                                        .titleLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Inter Tight',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  valueOrDefault<String>(
+                                                    dateTimeFormat(
+                                                      "dd-MMM-yyyy",
+                                                      FFAppState().AppCurrDate,
+                                                      locale:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .languageCode,
+                                                    ),
+                                                    'CurDate()',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            'Inter Tight',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: FlutterFlowIconButton(
+                                                    borderRadius: 8.0,
+                                                    buttonSize: 40.0,
+                                                    fillColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                    icon: Icon(
+                                                      Icons.calendar_month,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                      size: 24.0,
+                                                    ),
+                                                    onPressed: () async {
+                                                      final datePickedDate =
+                                                          await showDatePicker(
+                                                        context: context,
+                                                        initialDate: (_model
+                                                                .filterDate ??
+                                                            DateTime.now()),
+                                                        firstDate:
+                                                            DateTime(1900),
+                                                        lastDate:
+                                                            DateTime(2050),
+                                                        builder:
+                                                            (context, child) {
+                                                          return wrapInMaterialDatePickerTheme(
+                                                            context,
+                                                            child!,
+                                                            headerBackgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                            headerForegroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                            headerTextStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineLarge
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Inter Tight',
+                                                                      fontSize:
+                                                                          32.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                            pickerBackgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                            pickerForegroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                            selectedDateTimeBackgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                            selectedDateTimeForegroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                            actionButtonForegroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                            iconSize: 24.0,
+                                                          );
+                                                        },
+                                                      );
 
-                                                  safeSetState(() {});
-                                                },
-                                              ),
+                                                      if (datePickedDate !=
+                                                          null) {
+                                                        safeSetState(() {
+                                                          _model.datePicked =
+                                                              DateTime(
+                                                            datePickedDate
+                                                                .year,
+                                                            datePickedDate
+                                                                .month,
+                                                            datePickedDate.day,
+                                                          );
+                                                        });
+                                                      }
+                                                      FFAppState().AppCurrDate =
+                                                          _model.datePicked;
+                                                      FFAppState()
+                                                              .AppCurDateStr =
+                                                          dateTimeFormat(
+                                                        "y-M-d",
+                                                        _model.datePicked,
+                                                        locale:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      );
+                                                      safeSetState(() {});
+
+                                                      safeSetState(() {});
+                                                    },
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ],
-                                        ),
-                                      ],
+                                        );
+                                      },
                                     ),
                                   ),
                                   Container(
@@ -1167,13 +1235,13 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                   flex: 4,
                                                   child: DropdownUsersWidget(
                                                     key: Key(
-                                                        'Keytuf_${mainContentVarIndex}_of_${mainContentVar.length}'),
+                                                        'Keyywe_${mainContentVarIndex}_of_${mainContentVar.length}'),
                                                     userName: mainContentVarItem
                                                         .taskDoer,
                                                   ),
                                                 ),
                                                 Flexible(
-                                                  flex: 4,
+                                                  flex: 2,
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,

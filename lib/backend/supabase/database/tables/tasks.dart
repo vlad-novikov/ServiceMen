@@ -65,4 +65,7 @@ class TasksRow extends SupabaseDataRow {
 
   int? get traineesNumber => getField<int>('trainees_number');
   set traineesNumber(int? value) => setField<int>('trainees_number', value);
+
+  String? get taskDateStr => getField<String>('task_date_str');
+  set taskDateStr(String? value) => setField<String>('task_date_str', value);
 }

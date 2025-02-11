@@ -20,27 +20,21 @@ class FFAppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  String _TaskName = 'ООО \"ГРАНД\"';
-  String get TaskName => _TaskName;
-  set TaskName(String value) {
-    _TaskName = value;
+  DateTime? _AppCurrDate = DateTime.fromMillisecondsSinceEpoch(1738357200000);
+  DateTime? get AppCurrDate => _AppCurrDate;
+  set AppCurrDate(DateTime? value) {
+    _AppCurrDate = value;
   }
 
-  String _TaskAddress = 'СПБ, наб. Синопская д. 10';
-  String get TaskAddress => _TaskAddress;
-  set TaskAddress(String value) {
-    _TaskAddress = value;
+  String _AppCurDateStr = '2025-2-1';
+  String get AppCurDateStr => _AppCurDateStr;
+  set AppCurDateStr(String value) {
+    _AppCurDateStr = value;
   }
 
-  String _TaskType = 'СО';
-  String get TaskType => _TaskType;
-  set TaskType(String value) {
-    _TaskType = value;
-  }
-
-  String _TaskObjectId = 'P3200372';
-  String get TaskObjectId => _TaskObjectId;
-  set TaskObjectId(String value) {
-    _TaskObjectId = value;
+  String _AppCurName = 'Фамилия';
+  String get AppCurName => _AppCurName;
+  set AppCurName(String value) {
+    _AppCurName = value;
   }
 }

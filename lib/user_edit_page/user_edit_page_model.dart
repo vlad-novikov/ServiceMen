@@ -1,13 +1,10 @@
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dart:async';
 import 'user_edit_page_widget.dart' show UserEditPageWidget;
 import 'package:flutter/material.dart';
 
 class UserEditPageModel extends FlutterFlowModel<UserEditPageWidget> {
   ///  State fields for stateful widgets in this page.
 
-  Completer<List<UsersRow>>? requestCompleter;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
@@ -24,18 +21,18 @@ class UserEditPageModel extends FlutterFlowModel<UserEditPageWidget> {
   FocusNode? textFieldFocusNode4;
   TextEditingController? textController4;
   String? Function(BuildContext, String?)? textController4Validator;
-  // State field(s) for Switch widget.
-  bool? switchValue1;
-  // State field(s) for Switch widget.
-  bool? switchValue2;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode5;
-  TextEditingController? textController5;
-  String? Function(BuildContext, String?)? textController5Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode6;
-  TextEditingController? textController6;
-  String? Function(BuildContext, String?)? textController6Validator;
+  // State field(s) for SwitchIsAdminisytator widget.
+  bool? switchIsAdminisytatorValue;
+  // State field(s) for SwitchIsImporter widget.
+  bool? switchIsImporterValue;
+  // State field(s) for SwitchIsApplyee widget.
+  bool? switchIsApplyeeValue;
+  // State field(s) for SwitchIsDoer widget.
+  bool? switchIsDoerValue;
+  // State field(s) for SwitchIsAuditor widget.
+  bool? switchIsAuditorValue;
+  // State field(s) for SwitchIsAdministrator widget.
+  bool? switchIsAdministratorValue;
 
   @override
   void initState(BuildContext context) {}
@@ -53,27 +50,5 @@ class UserEditPageModel extends FlutterFlowModel<UserEditPageWidget> {
 
     textFieldFocusNode4?.dispose();
     textController4?.dispose();
-
-    textFieldFocusNode5?.dispose();
-    textController5?.dispose();
-
-    textFieldFocusNode6?.dispose();
-    textController6?.dispose();
-  }
-
-  /// Additional helper methods.
-  Future waitForRequestCompleted({
-    double minWait = 0,
-    double maxWait = double.infinity,
-  }) async {
-    final stopwatch = Stopwatch()..start();
-    while (true) {
-      await Future.delayed(const Duration(milliseconds: 50));
-      final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter?.isCompleted ?? false;
-      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
-        break;
-      }
-    }
   }
 }

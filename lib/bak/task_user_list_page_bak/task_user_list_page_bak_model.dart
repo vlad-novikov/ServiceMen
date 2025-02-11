@@ -1,9 +1,10 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'task_user_list_page_widget.dart' show TaskUserListPageWidget;
+import 'task_user_list_page_bak_widget.dart' show TaskUserListPageBakWidget;
 import 'package:flutter/material.dart';
 
-class TaskUserListPageModel extends FlutterFlowModel<TaskUserListPageWidget> {
+class TaskUserListPageBakModel
+    extends FlutterFlowModel<TaskUserListPageBakWidget> {
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for TabBar widget.

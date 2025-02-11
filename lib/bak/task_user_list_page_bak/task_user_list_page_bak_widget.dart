@@ -7,19 +7,20 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'task_user_list_page_model.dart';
-export 'task_user_list_page_model.dart';
+import 'task_user_list_page_bak_model.dart';
+export 'task_user_list_page_bak_model.dart';
 
-class TaskUserListPageWidget extends StatefulWidget {
-  const TaskUserListPageWidget({super.key});
+class TaskUserListPageBakWidget extends StatefulWidget {
+  const TaskUserListPageBakWidget({super.key});
 
   @override
-  State<TaskUserListPageWidget> createState() => _TaskUserListPageWidgetState();
+  State<TaskUserListPageBakWidget> createState() =>
+      _TaskUserListPageBakWidgetState();
 }
 
-class _TaskUserListPageWidgetState extends State<TaskUserListPageWidget>
+class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
     with TickerProviderStateMixin {
-  late TaskUserListPageModel _model;
+  late TaskUserListPageBakModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -28,7 +29,7 @@ class _TaskUserListPageWidgetState extends State<TaskUserListPageWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TaskUserListPageModel());
+    _model = createModel(context, () => TaskUserListPageBakModel());
 
     _model.tabBarController = TabController(
       vsync: this,
@@ -70,7 +71,7 @@ class _TaskUserListPageWidgetState extends State<TaskUserListPageWidget>
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'TaskUserListPage',
+        title: 'TaskUserListPageBak',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () {
