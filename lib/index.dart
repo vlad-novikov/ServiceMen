@@ -14,3 +14,4 @@ export '/task_list_page/task_list_page_widget.dart' show TaskListPageWidget;
 export '/user_task_list_page/user_task_list_page_widget.dart'
     show UserTaskListPageWidget;
 export '/user_edit_page/user_edit_page_widget.dart' show UserEditPageWidget;
+export '/report_page/report_page_widget.dart' show ReportPageWidget;

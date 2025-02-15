@@ -62,7 +62,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                 'Система  Управления Заявками на Сервисное Обслуживание',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
-                      color: const Color(0xFF15161E),
+                      color: Color(0xFF15161E),
                       fontSize: 24.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w500,
@@ -70,14 +70,14 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
               ),
               actions: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 16.0, 8.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 16.0, 8.0),
                   child: FlutterFlowIconButton(
-                    borderColor: const Color(0xFFE5E7EB),
+                    borderColor: Color(0xFFE5E7EB),
                     borderRadius: 12.0,
                     borderWidth: 2.0,
                     buttonSize: 40.0,
                     fillColor: Colors.white,
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.logout_sharp,
                       color: Color(0xFF15161E),
                       size: 24.0,
@@ -110,15 +110,15 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                       width: 270.0,
                       height: double.infinity,
                       decoration: BoxDecoration(
-                        color: const Color(0xFFF1F4F8),
+                        color: Color(0xFFF1F4F8),
                         borderRadius: BorderRadius.circular(0.0),
                         border: Border.all(
-                          color: const Color(0xFFE5E7EB),
+                          color: Color(0xFFE5E7EB),
                           width: 1.0,
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 24.0, 0.0, 16.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -130,21 +130,21 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: AnimatedContainer(
-                                      duration: const Duration(milliseconds: 200),
+                                      duration: Duration(milliseconds: 200),
                                       curve: Curves.easeInOut,
                                       width: double.infinity,
                                       height: 44.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFF1F4F8),
+                                        color: Color(0xFFF1F4F8),
                                         borderRadius:
                                             BorderRadius.circular(12.0),
                                         shape: BoxShape.rectangle,
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 0.0, 6.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -158,7 +158,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              const Icon(
+                                              Icon(
                                                 Icons.checklist_rounded,
                                                 color: Color(0xFF6F61EF),
                                                 size: 24.0,
@@ -166,7 +166,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                               Container(
                                                 height: 32.0,
                                                 decoration: BoxDecoration(
-                                                  color: const Color(0xFF6F61EF),
+                                                  color: Color(0xFF6F61EF),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
@@ -174,7 +174,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                               ),
                                               Expanded(
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: Text(
@@ -186,7 +186,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF15161E),
+                                                              Color(0xFF15161E),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -202,7 +202,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
@@ -213,30 +213,30 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                         context.pushNamed('UserListPageBak');
                                       },
                                       child: AnimatedContainer(
-                                        duration: const Duration(milliseconds: 200),
+                                        duration: Duration(milliseconds: 200),
                                         curve: Curves.easeInOut,
                                         width: double.infinity,
                                         height: 44.0,
                                         decoration: BoxDecoration(
-                                          color: const Color(0x4D9489F5),
+                                          color: Color(0x4D9489F5),
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                           shape: BoxShape.rectangle,
                                         ),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 0.0, 6.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              const Icon(
+                                              Icon(
                                                 Icons.work,
                                                 color: Color(0xFF15161E),
                                                 size: 24.0,
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -248,7 +248,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                         fontFamily:
                                                             'Plus Jakarta Sans',
                                                         color:
-                                                            const Color(0xFF15161E),
+                                                            Color(0xFF15161E),
                                                         fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -263,32 +263,32 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: AnimatedContainer(
-                                      duration: const Duration(milliseconds: 200),
+                                      duration: Duration(milliseconds: 200),
                                       curve: Curves.easeInOut,
                                       width: double.infinity,
                                       height: 44.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFF1F4F8),
+                                        color: Color(0xFFF1F4F8),
                                         borderRadius:
                                             BorderRadius.circular(12.0),
                                         shape: BoxShape.rectangle,
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 0.0, 6.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            const FaIcon(
+                                            FaIcon(
                                               FontAwesomeIcons.fileImport,
                                               color: Color(0xFF15161E),
                                               size: 24.0,
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
@@ -300,7 +300,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF15161E),
+                                                              Color(0xFF15161E),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -314,32 +314,32 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: AnimatedContainer(
-                                      duration: const Duration(milliseconds: 200),
+                                      duration: Duration(milliseconds: 200),
                                       curve: Curves.easeInOut,
                                       width: double.infinity,
                                       height: 44.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFF1F4F8),
+                                        color: Color(0xFFF1F4F8),
                                         borderRadius:
                                             BorderRadius.circular(12.0),
                                         shape: BoxShape.rectangle,
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 0.0, 6.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            const FaIcon(
+                                            FaIcon(
                                               FontAwesomeIcons.fileExport,
                                               color: Color(0xFF15161E),
                                               size: 24.0,
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
@@ -351,7 +351,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF15161E),
+                                                              Color(0xFF15161E),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -364,15 +364,15 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                       ),
                                     ),
                                   ),
-                                ].divide(const SizedBox(height: 12.0)),
+                                ].divide(SizedBox(height: 12.0)),
                               ),
                             ),
-                            const Divider(
+                            Divider(
                               height: 12.0,
                               thickness: 2.0,
                               color: Color(0xFFE5E7EB),
                             ),
-                            const Padding(
+                            Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 16.0, 0.0),
                               child: Row(
@@ -393,13 +393,13 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                     ),
                   Expanded(
                     child: Align(
-                      alignment: const AlignmentDirectional(0.0, -1.0),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Container(
                         width: double.infinity,
-                        constraints: const BoxConstraints(
+                        constraints: BoxConstraints(
                           maxWidth: 970.0,
                         ),
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -410,7 +410,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                 phone: false,
                               ))
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 0.0, 4.0),
                                   child: Text(
                                     'Сотрудники',
@@ -418,7 +418,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                         .headlineMedium
                                         .override(
                                           fontFamily: 'Outfit',
-                                          color: const Color(0xFF15161E),
+                                          color: Color(0xFF15161E),
                                           fontSize: 24.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
@@ -429,12 +429,12 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                 width: double.infinity,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFF1F4F8),
+                                  color: Color(0xFFF1F4F8),
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
-                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                alignment: AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -443,10 +443,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                         flex: 1,
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
                                               '№ ',
@@ -457,7 +457,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: const Color(0xFF606A85),
+                                                    color: Color(0xFF606A85),
                                                     fontSize: 12.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
@@ -470,10 +470,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                         flex: 4,
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
                                               'Фамилия',
@@ -484,7 +484,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: const Color(0xFF606A85),
+                                                    color: Color(0xFF606A85),
                                                     fontSize: 12.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
@@ -497,10 +497,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                         flex: 4,
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     30.0, 0.0, 30.0, 0.0),
                                             child: Text(
                                               'Имя',
@@ -510,7 +510,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: const Color(0xFF606A85),
+                                                    color: Color(0xFF606A85),
                                                     fontSize: 12.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
@@ -523,10 +523,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                         flex: 4,
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 20.0, 0.0),
                                             child: Text(
                                               'Эл. Почта',
@@ -536,7 +536,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: const Color(0xFF606A85),
+                                                    color: Color(0xFF606A85),
                                                     fontSize: 12.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
@@ -549,10 +549,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                         flex: 4,
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
                                               'Телефон',
@@ -562,7 +562,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: const Color(0xFF606A85),
+                                                    color: Color(0xFF606A85),
                                                     fontSize: 12.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
@@ -575,10 +575,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                         flex: 2,
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
                                               'Исп.',
@@ -588,7 +588,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: const Color(0xFF606A85),
+                                                    color: Color(0xFF606A85),
                                                     fontSize: 12.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
@@ -601,10 +601,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                         flex: 2,
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
                                               'Адм.',
@@ -614,7 +614,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: const Color(0xFF606A85),
+                                                    color: Color(0xFF606A85),
                                                     fontSize: 12.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
@@ -627,10 +627,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                         flex: 2,
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
                                               '',
@@ -640,7 +640,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: const Color(0xFF606A85),
+                                                    color: Color(0xFF606A85),
                                                     fontSize: 12.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
@@ -655,10 +655,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                  color: const Color(0x4C39D2C0),
+                                  color: Color(0x4C39D2C0),
                                   borderRadius: BorderRadius.circular(8.0),
                                   border: Border.all(
-                                    color: const Color(0xFF39D2C0),
+                                    color: Color(0xFF39D2C0),
                                   ),
                                 ),
                               ),
@@ -691,7 +691,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                       snapshot.data!;
 
                                   return ListView.separated(
-                                    padding: const EdgeInsets.fromLTRB(
+                                    padding: EdgeInsets.fromLTRB(
                                       0,
                                       0.0,
                                       0,
@@ -701,12 +701,12 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                     scrollDirection: Axis.vertical,
                                     itemCount: listViewUsersRowList.length,
                                     separatorBuilder: (_, __) =>
-                                        const SizedBox(height: 1.0),
+                                        SizedBox(height: 1.0),
                                     itemBuilder: (context, listViewIndex) {
                                       final listViewUsersRow =
                                           listViewUsersRowList[listViewIndex];
                                       return Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 12.0, 16.0, 12.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -714,10 +714,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                             Flexible(
                                               flex: 1,
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 10.0, 0.0),
                                                   child: Text(
@@ -737,7 +737,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF606A85),
+                                                              Color(0xFF606A85),
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -750,10 +750,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                             Flexible(
                                               flex: 4,
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 10.0, 0.0),
                                                   child: Text(
@@ -768,7 +768,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF606A85),
+                                                              Color(0xFF606A85),
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -781,10 +781,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                             Flexible(
                                               flex: 4,
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 10.0, 0.0),
                                                   child: Text(
@@ -800,7 +800,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF606A85),
+                                                              Color(0xFF606A85),
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -813,10 +813,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                             Flexible(
                                               flex: 4,
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 10.0, 0.0),
                                                   child: Text(
@@ -831,7 +831,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF606A85),
+                                                              Color(0xFF606A85),
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -844,10 +844,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                             Flexible(
                                               flex: 4,
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 10.0, 0.0),
                                                   child: Text(
@@ -862,7 +862,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF606A85),
+                                                              Color(0xFF606A85),
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -977,11 +977,11 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                             ),
                                             Container(
                                               decoration: BoxDecoration(
-                                                color: const Color(0x4C39D2C0),
+                                                color: Color(0x4C39D2C0),
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                                 border: Border.all(
-                                                  color: const Color(0xFF39D2C0),
+                                                  color: Color(0xFF39D2C0),
                                                 ),
                                               ),
                                             ),
@@ -1004,7 +1004,7 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                     }.withoutNulls,
                                                   );
                                                 },
-                                                child: const Icon(
+                                                child: Icon(
                                                   Icons.chevron_right_rounded,
                                                   color: Color(0xFF57636C),
                                                   size: 24.0,

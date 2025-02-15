@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '/backend/supabase/supabase.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -77,69 +76,69 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const EntryPageWidget() : const LoginPageWidget(),
+          appStateNotifier.loggedIn ? EntryPageWidget() : LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const EntryPageWidget() : const LoginPageWidget(),
+              appStateNotifier.loggedIn ? EntryPageWidget() : LoginPageWidget(),
         ),
         FFRoute(
           name: 'LoginPage',
           path: '/login',
-          builder: (context, params) => const LoginPageWidget(),
+          builder: (context, params) => LoginPageWidget(),
         ),
         FFRoute(
           name: 'UserListPageBak',
           path: '/userListPageBak',
-          builder: (context, params) => const UserListPageBakWidget(),
+          builder: (context, params) => UserListPageBakWidget(),
         ),
         FFRoute(
           name: 'TaskListPageBak',
           path: '/taskListPageBak',
-          builder: (context, params) => const TaskListPageBakWidget(),
+          builder: (context, params) => TaskListPageBakWidget(),
         ),
         FFRoute(
           name: 'TaskUserListPageBak',
           path: '/taskUserListPageBak',
-          builder: (context, params) => const TaskUserListPageBakWidget(),
+          builder: (context, params) => TaskUserListPageBakWidget(),
         ),
         FFRoute(
           name: 'UserAddPage',
           path: '/useradd',
-          builder: (context, params) => const UserAddPageWidget(),
+          builder: (context, params) => UserAddPageWidget(),
         ),
         FFRoute(
           name: 'TaskEditPage',
           path: '/task',
           builder: (context, params) => TaskEditPageWidget(
-            currentTask: params.getParam<TasksRow>(
-              'currentTask',
-              ParamType.SupabaseRow,
+            taskID: params.getParam(
+              'taskID',
+              ParamType.int,
             ),
           ),
         ),
         FFRoute(
           name: 'UserListPage',
           path: '/users',
-          builder: (context, params) => const UserListPageWidget(),
+          builder: (context, params) => UserListPageWidget(),
         ),
         FFRoute(
           name: 'entryPage',
           path: '/entry',
           requireAuth: true,
-          builder: (context, params) => const EntryPageWidget(),
+          builder: (context, params) => EntryPageWidget(),
         ),
         FFRoute(
           name: 'TaskListPage',
           path: '/tasks',
-          builder: (context, params) => const TaskListPageWidget(),
+          builder: (context, params) => TaskListPageWidget(),
         ),
         FFRoute(
           name: 'UserTaskListPage',
           path: '/usertasks',
-          builder: (context, params) => const UserTaskListPageWidget(),
+          builder: (context, params) => UserTaskListPageWidget(),
         ),
         FFRoute(
           name: 'UserEditPage',
@@ -150,6 +149,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'ReportPage',
+          path: '/reports',
+          builder: (context, params) => ReportPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -385,7 +389,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

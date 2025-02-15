@@ -45,7 +45,7 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
           },
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFF1F4F8),
+            backgroundColor: Color(0xFFF1F4F8),
             appBar: AppBar(
               backgroundColor: Colors.white,
               automaticallyImplyLeading: false,
@@ -53,7 +53,7 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
                 'Система  Управления Заявками на Сервисное Обслуживание',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
-                      color: const Color(0xFF14181B),
+                      color: Color(0xFF14181B),
                       fontSize: 24.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.normal,
@@ -61,13 +61,13 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
               ),
               actions: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                   child: FlutterFlowIconButton(
                     borderColor: Colors.transparent,
                     borderRadius: 30.0,
                     borderWidth: 1.0,
                     buttonSize: 60.0,
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.add_circle_outline_rounded,
                       color: Color(0xFF57636C),
                       size: 30.0,
@@ -84,14 +84,14 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
             body: SafeArea(
               top: true,
               child: Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Container(
                         width: double.infinity,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
                             BoxShadow(
@@ -109,7 +109,7 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 0.0, 12.0),
                               child: Text(
                                 'Список сотрудников',
@@ -126,7 +126,7 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
                         child: FutureBuilder<List<UsersRow>>(
                           future: UsersTable().queryRows(
                             queryFn: (q) => q,
@@ -158,12 +158,12 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
                                 final listViewUsersRow =
                                     listViewUsersRowList[listViewIndex];
                                 return Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 1.0),
                                   child: Container(
                                     width: 100.0,
                                     height: 72.0,
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                       color: Colors.white,
                                       boxShadow: [
                                         BoxShadow(
@@ -177,7 +177,7 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
                                       ],
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -186,7 +186,7 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
                                         children: [
                                           Expanded(
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Column(
@@ -198,7 +198,7 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 4.0),
                                                     child: Text(
@@ -213,7 +213,7 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Plus Jakarta Sans',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF14181B),
                                                             fontSize: 16.0,
                                                             letterSpacing: 0.0,
@@ -235,7 +235,7 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF57636C),
+                                                              Color(0xFF57636C),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -262,7 +262,7 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
                                                 }.withoutNulls,
                                               );
                                             },
-                                            child: const Icon(
+                                            child: Icon(
                                               Icons.chevron_right_rounded,
                                               color: Color(0xFF57636C),
                                               size: 24.0,

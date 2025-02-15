@@ -10,7 +10,7 @@ class ViewTodayTasksTable extends SupabaseTable<ViewTodayTasksRow> {
 }
 
 class ViewTodayTasksRow extends SupabaseDataRow {
-  ViewTodayTasksRow(super.data);
+  ViewTodayTasksRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => ViewTodayTasksTable();

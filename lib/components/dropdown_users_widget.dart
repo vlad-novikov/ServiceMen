@@ -101,7 +101,7 @@ class _DropdownUsersWidgetState extends State<DropdownUsersWidget> {
           borderColor: Colors.transparent,
           borderWidth: 0.0,
           borderRadius: 8.0,
-          margin: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+          margin: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
           hidesUnderline: true,
           isOverButton: false,
           isSearchable: true,

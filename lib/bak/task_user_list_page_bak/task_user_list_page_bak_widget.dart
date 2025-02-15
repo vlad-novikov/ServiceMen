@@ -45,8 +45,8 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(-40.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(-40.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -94,8 +94,8 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                     width: 270.0,
                     height: double.infinity,
                     decoration: BoxDecoration(
-                      color: const Color(0xFF6F61EF),
-                      boxShadow: const [
+                      color: Color(0xFF6F61EF),
+                      boxShadow: [
                         BoxShadow(
                           blurRadius: 0.0,
                           color: Color(0xFFE5E7EB),
@@ -117,17 +117,17 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                       ),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 24.0),
                               child: Container(
                                 width: double.infinity,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   color: Color(0x4D9489F5),
                                   boxShadow: [
                                     BoxShadow(
@@ -143,19 +143,19 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 24.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          const Icon(
+                                          Icon(
                                             Icons.add_task_rounded,
                                             color: Colors.white,
                                             size: 32.0,
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               'check.io',
@@ -176,7 +176,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 20.0, 16.0, 16.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -185,23 +185,23 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                             width: 44.0,
                                             height: 44.0,
                                             decoration: BoxDecoration(
-                                              color: const Color(0x4D9489F5),
+                                              color: Color(0x4D9489F5),
                                               borderRadius:
                                                   BorderRadius.circular(12.0),
                                               border: Border.all(
-                                                color: const Color(0xFF6F61EF),
+                                                color: Color(0xFF6F61EF),
                                                 width: 2.0,
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsets.all(2.0),
+                                              padding: EdgeInsets.all(2.0),
                                               child: ClipRRect(
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                                 child: CachedNetworkImage(
-                                                  fadeInDuration: const Duration(
+                                                  fadeInDuration: Duration(
                                                       milliseconds: 500),
-                                                  fadeOutDuration: const Duration(
+                                                  fadeOutDuration: Duration(
                                                       milliseconds: 500),
                                                   imageUrl:
                                                       'https://images.unsplash.com/photo-1624561172888-ac93c696e10c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fHVzZXJzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
@@ -214,7 +214,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                           ),
                                           Expanded(
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Column(
@@ -239,7 +239,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -250,7 +250,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Plus Jakarta Sans',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0x9AFFFFFF),
                                                             fontSize: 12.0,
                                                             letterSpacing: 0.0,
@@ -263,7 +263,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                               ),
                                             ),
                                           ),
-                                          const Icon(
+                                          Icon(
                                             Icons.notifications_none,
                                             color: Colors.white,
                                             size: 28.0,
@@ -276,28 +276,28 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 16.0, 12.0),
                               child: Container(
                                 width: double.infinity,
                                 height: 50.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0x4D9489F5),
+                                  color: Color(0x4D9489F5),
                                   borderRadius: BorderRadius.circular(12.0),
                                   shape: BoxShape.rectangle,
                                   border: Border.all(
-                                    color: const Color(0xFF6F61EF),
+                                    color: Color(0xFF6F61EF),
                                     width: 1.0,
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 12.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 12.0, 12.0, 12.0),
                                         child: Container(
                                           width: 4.0,
@@ -309,13 +309,13 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                           ),
                                         ),
                                       ),
-                                      const Icon(
+                                      Icon(
                                         Icons.stacked_bar_chart_rounded,
                                         color: Colors.white,
                                         size: 28.0,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Dashboard',
@@ -336,42 +336,42 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 16.0, 12.0),
                               child: Container(
                                 width: double.infinity,
                                 height: 50.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFF6F61EF),
+                                  color: Color(0xFF6F61EF),
                                   borderRadius: BorderRadius.circular(12.0),
                                   shape: BoxShape.rectangle,
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 12.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 12.0, 12.0, 12.0),
                                         child: Container(
                                           width: 4.0,
                                           height: 100.0,
                                           decoration: BoxDecoration(
-                                            color: const Color(0x4D9489F5),
+                                            color: Color(0x4D9489F5),
                                             borderRadius:
                                                 BorderRadius.circular(12.0),
                                           ),
                                         ),
                                       ),
-                                      const Icon(
+                                      Icon(
                                         Icons.attach_money_rounded,
                                         color: Colors.white,
                                         size: 28.0,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Transactions',
@@ -392,42 +392,42 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 16.0, 12.0),
                               child: Container(
                                 width: double.infinity,
                                 height: 50.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFF6F61EF),
+                                  color: Color(0xFF6F61EF),
                                   borderRadius: BorderRadius.circular(12.0),
                                   shape: BoxShape.rectangle,
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 12.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 12.0, 12.0, 12.0),
                                         child: Container(
                                           width: 4.0,
                                           height: 100.0,
                                           decoration: BoxDecoration(
-                                            color: const Color(0x4D9489F5),
+                                            color: Color(0x4D9489F5),
                                             borderRadius:
                                                 BorderRadius.circular(12.0),
                                           ),
                                         ),
                                       ),
-                                      const Icon(
+                                      Icon(
                                         Icons.folder_open,
                                         color: Colors.white,
                                         size: 28.0,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Projects',
@@ -448,42 +448,42 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 16.0, 12.0),
                               child: Container(
                                 width: double.infinity,
                                 height: 50.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFF6F61EF),
+                                  color: Color(0xFF6F61EF),
                                   borderRadius: BorderRadius.circular(12.0),
                                   shape: BoxShape.rectangle,
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 12.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 12.0, 12.0, 12.0),
                                         child: Container(
                                           width: 4.0,
                                           height: 100.0,
                                           decoration: BoxDecoration(
-                                            color: const Color(0x4D9489F5),
+                                            color: Color(0x4D9489F5),
                                             borderRadius:
                                                 BorderRadius.circular(12.0),
                                           ),
                                         ),
                                       ),
-                                      const Icon(
+                                      Icon(
                                         Icons.groups,
                                         color: Colors.white,
                                         size: 28.0,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Users',
@@ -505,40 +505,40 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 16.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Divider(
+                                    Divider(
                                       height: 12.0,
                                       thickness: 2.0,
                                       color: Color(0x4D9489F5),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 12.0, 0.0),
                                       child: Container(
                                         width: 80.0,
                                         height: 40.0,
                                         decoration: BoxDecoration(
-                                          color: const Color(0x4D9489F5),
+                                          color: Color(0x4D9489F5),
                                           borderRadius:
                                               BorderRadius.circular(20.0),
                                           border: Border.all(
-                                            color: const Color(0x4D9489F5),
+                                            color: Color(0x4D9489F5),
                                             width: 1.0,
                                           ),
                                         ),
                                         child: Padding(
-                                          padding: const EdgeInsets.all(2.0),
+                                          padding: EdgeInsets.all(2.0),
                                           child: Stack(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             children: [
-                                              const Align(
+                                              Align(
                                                 alignment: AlignmentDirectional(
                                                     -0.9, 0.0),
                                                 child: Padding(
@@ -552,7 +552,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                   ),
                                                 ),
                                               ),
-                                              const Align(
+                                              Align(
                                                 alignment: AlignmentDirectional(
                                                     1.0, 0.0),
                                                 child: Padding(
@@ -567,14 +567,14 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                 ),
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     1.0, 0.0),
                                                 child: Container(
                                                   width: 36.0,
                                                   height: 36.0,
                                                   decoration: BoxDecoration(
                                                     color: Colors.white,
-                                                    boxShadow: const [
+                                                    boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 4.0,
                                                         color:
@@ -600,7 +600,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                         ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(height: 12.0)),
+                                  ].divide(SizedBox(height: 12.0)),
                                 ),
                               ),
                             ),
@@ -611,25 +611,25 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                   ),
                 Expanded(
                   child: Align(
-                    alignment: const AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
                       child: Container(
-                        constraints: const BoxConstraints(
+                        constraints: BoxConstraints(
                           maxWidth: 600.0,
                         ),
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Colors.white,
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(4.0),
+                          padding: EdgeInsets.all(4.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -643,7 +643,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                             .displaySmall
                                             .override(
                                               fontFamily: 'Outfit',
-                                              color: const Color(0xFF15161E),
+                                              color: Color(0xFF15161E),
                                               fontSize: 36.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
@@ -657,7 +657,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                 child: Column(
                                   children: [
                                     Align(
-                                      alignment: const Alignment(-1.0, 0),
+                                      alignment: Alignment(-1.0, 0),
                                       child: FlutterFlowButtonTabBar(
                                         useToggleButtonStyle: false,
                                         isScrollable: true,
@@ -665,7 +665,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                             .bodyLarge
                                             .override(
                                               fontFamily: 'Plus Jakarta Sans',
-                                              color: const Color(0xFF15161E),
+                                              color: Color(0xFF15161E),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
@@ -676,26 +676,26 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                 .override(
                                                   fontFamily:
                                                       'Plus Jakarta Sans',
-                                                  color: const Color(0xFF606A85),
+                                                  color: Color(0xFF606A85),
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
-                                        labelColor: const Color(0xFF15161E),
-                                        unselectedLabelColor: const Color(0xFF606A85),
-                                        backgroundColor: const Color(0x4D9489F5),
+                                        labelColor: Color(0xFF15161E),
+                                        unselectedLabelColor: Color(0xFF606A85),
+                                        backgroundColor: Color(0x4D9489F5),
                                         unselectedBackgroundColor: Colors.white,
-                                        borderColor: const Color(0xFF6F61EF),
+                                        borderColor: Color(0xFF6F61EF),
                                         borderWidth: 2.0,
                                         borderRadius: 12.0,
                                         elevation: 0.0,
                                         labelPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 16.0, 0.0, 16.0, 0.0),
                                         buttonMargin:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 16.0, 0.0),
-                                        tabs: const [
+                                        tabs: [
                                           Tab(
                                             text: 'Сегодня',
                                           ),
@@ -722,9 +722,9 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 16.0, 0.0, 16.0),
                                               child: Container(
@@ -735,11 +735,11 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                       BorderRadius.circular(
                                                           8.0),
                                                   border: Border.all(
-                                                    color: const Color(0xFFE5E7EB),
+                                                    color: Color(0xFFE5E7EB),
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(16.0, 24.0,
                                                           16.0, 24.0),
                                                   child: Column(
@@ -750,7 +750,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
-                                                          const Padding(
+                                                          Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
@@ -769,7 +769,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                           Expanded(
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           0.0,
@@ -783,7 +783,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                     .override(
                                                                       fontFamily:
                                                                           'Outfit',
-                                                                      color: const Color(
+                                                                      color: Color(
                                                                           0xFF15161E),
                                                                       fontSize:
                                                                           22.0,
@@ -800,7 +800,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                             height: 32.0,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFFF1F4F8),
                                                               borderRadius:
                                                                   BorderRadius
@@ -808,11 +808,11 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                           12.0),
                                                             ),
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           0.0,
@@ -826,7 +826,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                     .override(
                                                                       fontFamily:
                                                                           'Plus Jakarta Sans',
-                                                                      color: const Color(
+                                                                      color: Color(
                                                                           0xFF15161E),
                                                                       fontSize:
                                                                           14.0,
@@ -843,7 +843,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     8.0,
@@ -906,13 +906,13 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                 return Container(
                                                                   width: 100.0,
                                                                   decoration:
-                                                                      const BoxDecoration(
+                                                                      BoxDecoration(
                                                                     color: Colors
                                                                         .white,
                                                                   ),
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             12.0,
@@ -936,7 +936,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                               ),
                                                                             ),
                                                                             unselectedWidgetColor:
-                                                                                const Color(0xFFE0E3E7),
+                                                                                Color(0xFFE0E3E7),
                                                                           ),
                                                                           child:
                                                                               Checkbox(
@@ -947,12 +947,12 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                               safeSetState(() => _model.checkboxValueMap1[listViewTasksRow] = newValue!);
                                                                             },
                                                                             side:
-                                                                                const BorderSide(
+                                                                                BorderSide(
                                                                               width: 2,
                                                                               color: Color(0xFFE0E3E7),
                                                                             ),
                                                                             activeColor:
-                                                                                const Color(0xFF6F61EF),
+                                                                                Color(0xFF6F61EF),
                                                                             checkColor:
                                                                                 Colors.white,
                                                                           ),
@@ -968,7 +968,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                 CrossAxisAlignment.start,
                                                                             children: [
                                                                               Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 0.0, 0.0),
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 0.0, 0.0),
                                                                                 child: Text(
                                                                                   valueOrDefault<String>(
                                                                                     listViewTasksRow.locationAddress,
@@ -976,7 +976,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                   ),
                                                                                   style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                         fontFamily: 'Plus Jakarta Sans',
-                                                                                        color: const Color(0xFF15161E),
+                                                                                        color: Color(0xFF15161E),
                                                                                         fontSize: 16.0,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.w500,
@@ -988,7 +988,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                 children: [
                                                                                   Padding(
-                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 0.0, 0.0),
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 0.0, 0.0),
                                                                                     child: Text(
                                                                                       valueOrDefault<String>(
                                                                                         listViewTasksRow.locationPhone,
@@ -996,7 +996,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                       ),
                                                                                       style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                             fontFamily: 'Plus Jakarta Sans',
-                                                                                            color: const Color(0xFF606A85),
+                                                                                            color: Color(0xFF606A85),
                                                                                             fontSize: 14.0,
                                                                                             letterSpacing: 0.0,
                                                                                             fontWeight: FontWeight.w500,
@@ -1004,7 +1004,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                     ),
                                                                                   ),
                                                                                   Padding(
-                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                                                     child: Container(
                                                                                       width: 100.0,
                                                                                       height: 28.0,
@@ -1012,7 +1012,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                       ),
                                                                                       child: Padding(
-                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                                                                         child: Text(
                                                                                           valueOrDefault<String>(
                                                                                             listViewTasksRow.taskCategory,
@@ -1020,7 +1020,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Plus Jakarta Sans',
-                                                                                                color: const Color(0xFF15161E),
+                                                                                                color: Color(0xFF15161E),
                                                                                                 fontSize: 14.0,
                                                                                                 letterSpacing: 0.0,
                                                                                                 fontWeight: FontWeight.w500,
@@ -1030,16 +1030,16 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                     ),
                                                                                   ),
                                                                                   Padding(
-                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                                                     child: Container(
                                                                                       height: 28.0,
                                                                                       decoration: BoxDecoration(
-                                                                                        color: const Color(0xFFF1F4F8),
+                                                                                        color: Color(0xFFF1F4F8),
                                                                                         borderRadius: BorderRadius.circular(8.0),
                                                                                       ),
-                                                                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                      alignment: AlignmentDirectional(0.0, 0.0),
                                                                                       child: Padding(
-                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                                                                         child: Text(
                                                                                           valueOrDefault<String>(
                                                                                             listViewTasksRow.taskStatus,
@@ -1047,7 +1047,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Plus Jakarta Sans',
-                                                                                                color: const Color(0xFF15161E),
+                                                                                                color: Color(0xFF15161E),
                                                                                                 fontSize: 14.0,
                                                                                                 letterSpacing: 0.0,
                                                                                                 fontWeight: FontWeight.w500,
@@ -1078,9 +1078,9 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                           ),
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 16.0, 0.0, 16.0),
                                               child: Container(
@@ -1091,11 +1091,11 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                       BorderRadius.circular(
                                                           8.0),
                                                   border: Border.all(
-                                                    color: const Color(0xFFE5E7EB),
+                                                    color: Color(0xFFE5E7EB),
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(16.0, 24.0,
                                                           16.0, 24.0),
                                                   child: Column(
@@ -1106,7 +1106,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
-                                                          const Padding(
+                                                          Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
@@ -1125,7 +1125,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                           Expanded(
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           0.0,
@@ -1139,7 +1139,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                     .override(
                                                                       fontFamily:
                                                                           'Outfit',
-                                                                      color: const Color(
+                                                                      color: Color(
                                                                           0xFF15161E),
                                                                       fontSize:
                                                                           22.0,
@@ -1156,7 +1156,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                             height: 32.0,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFFF1F4F8),
                                                               borderRadius:
                                                                   BorderRadius
@@ -1164,11 +1164,11 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                           12.0),
                                                             ),
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           0.0,
@@ -1182,7 +1182,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                     .override(
                                                                       fontFamily:
                                                                           'Plus Jakarta Sans',
-                                                                      color: const Color(
+                                                                      color: Color(
                                                                           0xFF15161E),
                                                                       fontSize:
                                                                           14.0,
@@ -1199,7 +1199,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     8.0,
@@ -1215,13 +1215,13 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                             Container(
                                                               width: 100.0,
                                                               decoration:
-                                                                  const BoxDecoration(
+                                                                  BoxDecoration(
                                                                 color: Colors
                                                                     .white,
                                                               ),
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             12.0,
@@ -1247,7 +1247,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                           ),
                                                                         ),
                                                                         unselectedWidgetColor:
-                                                                            const Color(0xFFE0E3E7),
+                                                                            Color(0xFFE0E3E7),
                                                                       ),
                                                                       child:
                                                                           Checkbox(
@@ -1259,14 +1259,14 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                               _model.checkboxValue4 = newValue!);
                                                                         },
                                                                         side:
-                                                                            const BorderSide(
+                                                                            BorderSide(
                                                                           width:
                                                                               2,
                                                                           color:
                                                                               Color(0xFFE0E3E7),
                                                                         ),
                                                                         activeColor:
-                                                                            const Color(0xFF6F61EF),
+                                                                            Color(0xFF6F61EF),
                                                                         checkColor:
                                                                             Colors.white,
                                                                       ),
@@ -1282,7 +1282,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                             CrossAxisAlignment.start,
                                                                         children: [
                                                                           Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 12.0,
                                                                                 8.0,
                                                                                 0.0,
@@ -1292,7 +1292,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                               'Update our command Palette to be more usable.',
                                                                               style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                     fontFamily: 'Plus Jakarta Sans',
-                                                                                    color: const Color(0xFF15161E),
+                                                                                    color: Color(0xFF15161E),
                                                                                     fontSize: 16.0,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.w500,
@@ -1306,12 +1306,12 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                 MainAxisAlignment.spaceBetween,
                                                                             children: [
                                                                               Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 0.0, 0.0),
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 0.0, 0.0),
                                                                                 child: Text(
                                                                                   '18 Jan, 2023',
                                                                                   style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                         fontFamily: 'Plus Jakarta Sans',
-                                                                                        color: const Color(0xFF606A85),
+                                                                                        color: Color(0xFF606A85),
                                                                                         fontSize: 14.0,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.w500,
@@ -1319,21 +1319,21 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                 ),
                                                                               ),
                                                                               Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                                                 child: Container(
                                                                                   height: 28.0,
                                                                                   decoration: BoxDecoration(
-                                                                                    color: const Color(0xFFF1F4F8),
+                                                                                    color: Color(0xFFF1F4F8),
                                                                                     borderRadius: BorderRadius.circular(8.0),
                                                                                   ),
-                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
                                                                                   child: Padding(
-                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                                                                     child: Text(
                                                                                       'Product',
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Plus Jakarta Sans',
-                                                                                            color: const Color(0xFF15161E),
+                                                                                            color: Color(0xFF15161E),
                                                                                             fontSize: 14.0,
                                                                                             letterSpacing: 0.0,
                                                                                             fontWeight: FontWeight.w500,
@@ -1354,13 +1354,13 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                             Container(
                                                               width: 100.0,
                                                               decoration:
-                                                                  const BoxDecoration(
+                                                                  BoxDecoration(
                                                                 color: Colors
                                                                     .white,
                                                               ),
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             12.0,
@@ -1386,7 +1386,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                           ),
                                                                         ),
                                                                         unselectedWidgetColor:
-                                                                            const Color(0xFF606A85),
+                                                                            Color(0xFF606A85),
                                                                       ),
                                                                       child:
                                                                           Checkbox(
@@ -1398,14 +1398,14 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                               _model.checkboxValue5 = newValue!);
                                                                         },
                                                                         side:
-                                                                            const BorderSide(
+                                                                            BorderSide(
                                                                           width:
                                                                               2,
                                                                           color:
                                                                               Color(0xFF606A85),
                                                                         ),
                                                                         activeColor:
-                                                                            const Color(0xFF6F61EF),
+                                                                            Color(0xFF6F61EF),
                                                                         checkColor:
                                                                             Colors.white,
                                                                       ),
@@ -1421,7 +1421,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                             CrossAxisAlignment.start,
                                                                         children: [
                                                                           Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 12.0,
                                                                                 8.0,
                                                                                 0.0,
@@ -1431,7 +1431,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                               'Build out a design system in FlutterFlow',
                                                                               style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                     fontFamily: 'Plus Jakarta Sans',
-                                                                                    color: const Color(0xFF15161E),
+                                                                                    color: Color(0xFF15161E),
                                                                                     fontSize: 16.0,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.w500,
@@ -1445,12 +1445,12 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                 MainAxisAlignment.spaceBetween,
                                                                             children: [
                                                                               Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 0.0, 0.0),
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 0.0, 0.0),
                                                                                 child: Text(
                                                                                   '16 Jan, 2023',
                                                                                   style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                         fontFamily: 'Plus Jakarta Sans',
-                                                                                        color: const Color(0xFF606A85),
+                                                                                        color: Color(0xFF606A85),
                                                                                         fontSize: 14.0,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.w500,
@@ -1458,21 +1458,21 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                 ),
                                                                               ),
                                                                               Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                                                 child: Container(
                                                                                   height: 28.0,
                                                                                   decoration: BoxDecoration(
-                                                                                    color: const Color(0xFFF1F4F8),
+                                                                                    color: Color(0xFFF1F4F8),
                                                                                     borderRadius: BorderRadius.circular(8.0),
                                                                                   ),
-                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
                                                                                   child: Padding(
-                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                                                                     child: Text(
                                                                                       'Design System',
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Plus Jakarta Sans',
-                                                                                            color: const Color(0xFF15161E),
+                                                                                            color: Color(0xFF15161E),
                                                                                             fontSize: 14.0,
                                                                                             letterSpacing: 0.0,
                                                                                             fontWeight: FontWeight.w500,
@@ -1493,13 +1493,13 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                             Container(
                                                               width: 100.0,
                                                               decoration:
-                                                                  const BoxDecoration(
+                                                                  BoxDecoration(
                                                                 color: Colors
                                                                     .white,
                                                               ),
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             12.0,
@@ -1525,7 +1525,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                           ),
                                                                         ),
                                                                         unselectedWidgetColor:
-                                                                            const Color(0xFF606A85),
+                                                                            Color(0xFF606A85),
                                                                       ),
                                                                       child:
                                                                           Checkbox(
@@ -1537,14 +1537,14 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                               _model.checkboxValue6 = newValue!);
                                                                         },
                                                                         side:
-                                                                            const BorderSide(
+                                                                            BorderSide(
                                                                           width:
                                                                               2,
                                                                           color:
                                                                               Color(0xFF606A85),
                                                                         ),
                                                                         activeColor:
-                                                                            const Color(0xFF6F61EF),
+                                                                            Color(0xFF6F61EF),
                                                                         checkColor:
                                                                             Colors.white,
                                                                       ),
@@ -1560,7 +1560,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                             CrossAxisAlignment.start,
                                                                         children: [
                                                                           Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 12.0,
                                                                                 8.0,
                                                                                 0.0,
@@ -1570,7 +1570,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                               'Complete 100 Templates',
                                                                               style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                     fontFamily: 'Plus Jakarta Sans',
-                                                                                    color: const Color(0xFF15161E),
+                                                                                    color: Color(0xFF15161E),
                                                                                     fontSize: 16.0,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.w600,
@@ -1584,12 +1584,12 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                 MainAxisAlignment.spaceBetween,
                                                                             children: [
                                                                               Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 0.0, 0.0),
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 0.0, 0.0),
                                                                                 child: Text(
                                                                                   '15 Jan, 2023',
                                                                                   style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                         fontFamily: 'Plus Jakarta Sans',
-                                                                                        color: const Color(0xFF606A85),
+                                                                                        color: Color(0xFF606A85),
                                                                                         fontSize: 14.0,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.w500,
@@ -1597,21 +1597,21 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                 ),
                                                                               ),
                                                                               Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                                                                                 child: Container(
                                                                                   height: 28.0,
                                                                                   decoration: BoxDecoration(
-                                                                                    color: const Color(0xFFF1F4F8),
+                                                                                    color: Color(0xFFF1F4F8),
                                                                                     borderRadius: BorderRadius.circular(8.0),
                                                                                   ),
-                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
                                                                                   child: Padding(
-                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                                                                     child: Text(
                                                                                       'FF Development',
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Plus Jakarta Sans',
-                                                                                            color: const Color(0xFF15161E),
+                                                                                            color: Color(0xFF15161E),
                                                                                             fontSize: 14.0,
                                                                                             letterSpacing: 0.0,
                                                                                             fontWeight: FontWeight.w500,
@@ -1668,7 +1668,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                       height: double.infinity,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        boxShadow: const [
+                        boxShadow: [
                           BoxShadow(
                             blurRadius: 3.0,
                             color: Color(0x33000000),
@@ -1679,7 +1679,7 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                           )
                         ],
                         border: Border.all(
-                          color: const Color(0xFFF1F4F8),
+                          color: Color(0xFFF1F4F8),
                         ),
                       ),
                     ),

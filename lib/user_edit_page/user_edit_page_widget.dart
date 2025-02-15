@@ -65,7 +65,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
               backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
               automaticallyImplyLeading: false,
               leading: Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,7 +86,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             'Система  Управления Заявками на Сервисное Обслуживание',
                             style: FlutterFlowTheme.of(context)
@@ -109,14 +109,14 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 16.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 16.0, 8.0),
                       child: FlutterFlowIconButton(
-                        borderColor: const Color(0xFFE5E7EB),
+                        borderColor: Color(0xFFE5E7EB),
                         borderRadius: 12.0,
                         borderWidth: 2.0,
                         buttonSize: 40.0,
                         fillColor: Colors.white,
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.logout_sharp,
                           color: Color(0xFF15161E),
                           size: 24.0,
@@ -133,7 +133,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                   ],
                 ),
               ),
-              actions: const [],
+              actions: [],
               flexibleSpace: FlexibleSpaceBar(
                 background: Container(),
               ),
@@ -143,7 +143,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
             body: SafeArea(
               top: true,
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
                 child: FutureBuilder<List<UsersRow>>(
                   future: UsersTable().querySingleRow(
                     queryFn: (q) => q.eqOrNull(
@@ -191,7 +191,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                 borderRadius: BorderRadius.circular(16.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 24.0, 24.0, 24.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -239,7 +239,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -247,7 +247,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -255,7 +255,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -308,7 +308,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -316,7 +316,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -324,7 +324,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -377,7 +377,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -385,7 +385,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -393,7 +393,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -447,7 +447,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -455,7 +455,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -463,7 +463,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -485,7 +485,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                       validator: _model.textController4Validator
                                           .asValidator(context),
                                     ),
-                                  ].divide(const SizedBox(height: 16.0)),
+                                  ].divide(SizedBox(height: 16.0)),
                                 ),
                               ),
                             ),
@@ -504,7 +504,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                 borderRadius: BorderRadius.circular(16.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 24.0, 24.0, 24.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -744,7 +744,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                         ),
                                       ],
                                     ),
-                                  ].divide(const SizedBox(height: 16.0)),
+                                  ].divide(SizedBox(height: 16.0)),
                                 ),
                               ),
                             ),
@@ -756,15 +756,15 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                 flex: 4,
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    context.safePop();
+                                    context.pushNamed('UserListPage');
                                   },
                                   text: 'Выйти',
                                   options: FFButtonOptions(
                                     width:
                                         MediaQuery.sizeOf(context).width * 1.0,
                                     height: 56.0,
-                                    padding: const EdgeInsets.all(8.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsets.all(8.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -794,17 +794,21 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                         'phone': _model.textController4.text,
                                         'is_importer': false,
                                       },
-                                      matchingRows: (rows) => rows,
+                                      matchingRows: (rows) => rows.eqOrNull(
+                                        'id',
+                                        columnUsersRow?.id,
+                                      ),
                                     );
-                                    context.safePop();
+
+                                    context.pushNamed('UserListPage');
                                   },
                                   text: 'Сохранить и выйти',
                                   options: FFButtonOptions(
                                     width:
                                         MediaQuery.sizeOf(context).width * 1.0,
                                     height: 56.0,
-                                    padding: const EdgeInsets.all(8.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsets.all(8.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -822,7 +826,7 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                               ),
                             ],
                           ),
-                        ].divide(const SizedBox(height: 24.0)),
+                        ].divide(SizedBox(height: 24.0)),
                       ),
                     );
                   },

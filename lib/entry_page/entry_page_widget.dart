@@ -108,10 +108,10 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                         child: Container(
                           width: 100.0,
                           height: double.infinity,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             color: Colors.white,
                           ),
-                          alignment: const AlignmentDirectional(0.0, -1.0),
+                          alignment: AlignmentDirectional(0.0, -1.0),
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -120,7 +120,7 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                                 Container(
                                   width: double.infinity,
                                   height: 140.0,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(16.0),
@@ -129,12 +129,12 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                                       topRight: Radius.circular(0.0),
                                     ),
                                   ),
-                                  alignment: const AlignmentDirectional(-1.0, 0.0),
+                                  alignment: AlignmentDirectional(-1.0, 0.0),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(32.0),
+                                    padding: EdgeInsets.all(32.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
@@ -142,7 +142,7 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 12.0, 0.0, 24.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
@@ -171,7 +171,7 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(
+                                        Container(
                                           width: 200.0,
                                           child: Builder(builder: (_) {
                                             if (!textField1FocusListenerRegistered) {
@@ -199,7 +199,7 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                                               onChanged: (_) =>
                                                   EasyDebounce.debounce(
                                                 '_model.textField1TextController',
-                                                const Duration(milliseconds: 2000),
+                                                Duration(milliseconds: 2000),
                                                 () async {
                                                   if (entryPageUsersRow!
                                                       .isDoer!) {
@@ -232,7 +232,7 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                                                         ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -242,7 +242,7 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -294,7 +294,7 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                                             );
                                           }),
                                         ),
-                                        SizedBox(
+                                        Container(
                                           width: 200.0,
                                           child: TextFormField(
                                             controller:
@@ -321,7 +321,7 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 1.0,
                                                 ),
@@ -329,7 +329,7 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                                                     BorderRadius.circular(8.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 1.0,
                                                 ),

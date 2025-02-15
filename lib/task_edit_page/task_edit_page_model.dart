@@ -1,14 +1,11 @@
-import '/backend/supabase/supabase.dart';
 import '/components/dropdown_users_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dart:async';
 import 'task_edit_page_widget.dart' show TaskEditPageWidget;
 import 'package:flutter/material.dart';
 
 class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   ///  State fields for stateful widgets in this page.
 
-  Completer<List<TasksRow>>? requestCompleter;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
@@ -33,12 +30,12 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   FocusNode? textFieldFocusNode6;
   TextEditingController? textController6;
   String? Function(BuildContext, String?)? textController6Validator;
+  // Model for dropdown_users component.
+  late DropdownUsersModel dropdownUsersModel;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode7;
   TextEditingController? textController7;
   String? Function(BuildContext, String?)? textController7Validator;
-  // Model for dropdown_users component.
-  late DropdownUsersModel dropdownUsersModel;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode8;
   TextEditingController? textController8;
@@ -55,10 +52,6 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   FocusNode? textFieldFocusNode11;
   TextEditingController? textController11;
   String? Function(BuildContext, String?)? textController11Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode12;
-  TextEditingController? textController12;
-  String? Function(BuildContext, String?)? textController12Validator;
 
   @override
   void initState(BuildContext context) {
@@ -85,10 +78,10 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
     textFieldFocusNode6?.dispose();
     textController6?.dispose();
 
+    dropdownUsersModel.dispose();
     textFieldFocusNode7?.dispose();
     textController7?.dispose();
 
-    dropdownUsersModel.dispose();
     textFieldFocusNode8?.dispose();
     textController8?.dispose();
 
@@ -100,24 +93,5 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
 
     textFieldFocusNode11?.dispose();
     textController11?.dispose();
-
-    textFieldFocusNode12?.dispose();
-    textController12?.dispose();
-  }
-
-  /// Additional helper methods.
-  Future waitForRequestCompleted({
-    double minWait = 0,
-    double maxWait = double.infinity,
-  }) async {
-    final stopwatch = Stopwatch()..start();
-    while (true) {
-      await Future.delayed(const Duration(milliseconds: 50));
-      final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter?.isCompleted ?? false;
-      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
-        break;
-      }
-    }
   }
 }
