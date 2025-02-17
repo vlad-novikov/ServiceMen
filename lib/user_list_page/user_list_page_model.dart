@@ -1,4 +1,5 @@
 import '/backend/supabase/supabase.dart';
+import '/components/side_navigation_component_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'user_list_page_widget.dart' show UserListPageWidget;
 import 'package:flutter/material.dart';
@@ -10,6 +11,8 @@ class UserListPageModel extends FlutterFlowModel<UserListPageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Model for SideNavigationComponent component.
+  late SideNavigationComponentModel sideNavigationComponentModel;
   Stream<List<UsersRow>>? listViewSupabaseStream;
   // State field(s) for Checkbox widget.
   Map<UsersRow, bool> checkboxValueMap1 = {};
@@ -26,8 +29,13 @@ class UserListPageModel extends FlutterFlowModel<UserListPageWidget> {
       .toList();
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    sideNavigationComponentModel =
+        createModel(context, () => SideNavigationComponentModel());
+  }
 
   @override
-  void dispose() {}
+  void dispose() {
+    sideNavigationComponentModel.dispose();
+  }
 }

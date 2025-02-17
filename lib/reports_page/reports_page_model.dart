@@ -1,10 +1,11 @@
 import '/components/date_filter_component_widget.dart';
 import '/components/side_navigation_component_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'task_list_page_widget.dart' show TaskListPageWidget;
+import '/flutter_flow/form_field_controller.dart';
+import 'reports_page_widget.dart' show ReportsPageWidget;
 import 'package:flutter/material.dart';
 
-class TaskListPageModel extends FlutterFlowModel<TaskListPageWidget> {
+class ReportsPageModel extends FlutterFlowModel<ReportsPageWidget> {
   ///  Local state fields for this page.
 
   DateTime? filterDate;
@@ -17,10 +18,12 @@ class TaskListPageModel extends FlutterFlowModel<TaskListPageWidget> {
   late SideNavigationComponentModel sideNavigationComponentModel;
   // Model for DateFilterComponent component.
   late DateFilterComponentModel dateFilterComponentModel;
-  // Stores action output result for [Alert Dialog - Custom Dialog] action in Text widget.
-  String? doerName;
-  // Stores action output result for [Alert Dialog - Custom Dialog] action in Container widget.
-  String? statusName;
+  // State field(s) for ChoiceChips widget.
+  FormFieldController<List<String>>? choiceChipsValueController;
+  String? get choiceChipsValue =>
+      choiceChipsValueController?.value?.firstOrNull;
+  set choiceChipsValue(String? val) =>
+      choiceChipsValueController?.value = val != null ? [val] : [];
 
   @override
   void initState(BuildContext context) {

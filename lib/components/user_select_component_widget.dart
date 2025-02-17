@@ -73,7 +73,7 @@ class _UserSelectComponentWidgetState extends State<UserSelectComponentWidget> {
 
           return Container(
             width: 300.0,
-            height: 500.0,
+            height: 400.0,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
               boxShadow: [

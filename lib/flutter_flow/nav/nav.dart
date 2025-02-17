@@ -150,9 +150,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'ReportPage',
+          name: 'ReportPageCopy',
           path: '/reports',
-          builder: (context, params) => ReportPageWidget(),
+          builder: (context, params) => ReportPageCopyWidget(),
+        ),
+        FFRoute(
+          name: 'ReportsPage',
+          path: '/report',
+          builder: (context, params) => ReportsPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

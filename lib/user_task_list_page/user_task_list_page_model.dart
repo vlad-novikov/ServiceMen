@@ -1,3 +1,4 @@
+import '/components/date_filter_component_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'user_task_list_page_widget.dart' show UserTaskListPageWidget;
 import 'package:flutter/material.dart';
@@ -15,11 +16,19 @@ class UserTaskListPageModel extends FlutterFlowModel<UserTaskListPageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  DateTime? datePicked;
+  // Model for DateFilterComponent component.
+  late DateFilterComponentModel dateFilterComponentModel;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in Container widget.
+  String? statusName;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    dateFilterComponentModel =
+        createModel(context, () => DateFilterComponentModel());
+  }
 
   @override
-  void dispose() {}
+  void dispose() {
+    dateFilterComponentModel.dispose();
+  }
 }

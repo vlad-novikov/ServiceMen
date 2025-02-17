@@ -37,28 +37,32 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   FocusNode? textFieldFocusNode8;
   TextEditingController? textController8;
   String? Function(BuildContext, String?)? textController8Validator;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in Container widget.
+  String? doerName;
+  // State field(s) for TextDoerName widget.
+  FocusNode? textDoerNameFocusNode;
+  TextEditingController? textDoerNameTextController;
+  String? Function(BuildContext, String?)? textDoerNameTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode9;
-  TextEditingController? textController9;
-  String? Function(BuildContext, String?)? textController9Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode10;
   TextEditingController? textController10;
   String? Function(BuildContext, String?)? textController10Validator;
+  // State field(s) for Switch widget.
+  bool? switchValue;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode11;
+  FocusNode? textFieldFocusNode10;
   TextEditingController? textController11;
   String? Function(BuildContext, String?)? textController11Validator;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode12;
+  FocusNode? textFieldFocusNode11;
   TextEditingController? textController12;
   String? Function(BuildContext, String?)? textController12Validator;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode13;
+  FocusNode? textFieldFocusNode12;
   TextEditingController? textController13;
   String? Function(BuildContext, String?)? textController13Validator;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode14;
+  FocusNode? textFieldFocusNode13;
   TextEditingController? textController14;
   String? Function(BuildContext, String?)? textController14Validator;
 
@@ -91,22 +95,22 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
     textFieldFocusNode8?.dispose();
     textController8?.dispose();
 
-    textFieldFocusNode9?.dispose();
-    textController9?.dispose();
+    textDoerNameFocusNode?.dispose();
+    textDoerNameTextController?.dispose();
 
-    textFieldFocusNode10?.dispose();
+    textFieldFocusNode9?.dispose();
     textController10?.dispose();
 
-    textFieldFocusNode11?.dispose();
+    textFieldFocusNode10?.dispose();
     textController11?.dispose();
 
-    textFieldFocusNode12?.dispose();
+    textFieldFocusNode11?.dispose();
     textController12?.dispose();
 
-    textFieldFocusNode13?.dispose();
+    textFieldFocusNode12?.dispose();
     textController13?.dispose();
 
-    textFieldFocusNode14?.dispose();
+    textFieldFocusNode13?.dispose();
     textController14?.dispose();
   }
 }

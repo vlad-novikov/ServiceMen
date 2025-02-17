@@ -1,6 +1,7 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/dropdown_users_widget.dart';
+import '/components/date_filter_component_widget.dart';
+import '/components/status_select_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -65,7 +66,7 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
               backgroundColor: Colors.white,
               automaticallyImplyLeading: false,
               title: Text(
-                'Система  Управления Заявками на Сервисное Обслуживание',
+                'Мои заявки',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: Color(0xFF15161E),
@@ -111,6 +112,8 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                     context: context,
                     phone: false,
                     tablet: false,
+                    tabletLandscape: false,
+                    desktop: false,
                   ))
                     Container(
                       width: 270.0,
@@ -476,196 +479,15 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Text(
-                                                  'Мои заявки: ',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .titleLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Inter Tight',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 10.0, 0.0),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      rowUsersRow?.lastName,
-                                                      'Фамилия ИО',
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .titleLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Inter Tight',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  valueOrDefault<String>(
-                                                    dateTimeFormat(
-                                                      "dd-MMM-yyyy",
-                                                      FFAppState().AppCurrDate,
-                                                      locale:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .languageCode,
-                                                    ),
-                                                    'CurDate()',
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .titleLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Inter Tight',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 0.0, 0.0),
-                                                  child: FlutterFlowIconButton(
-                                                    borderRadius: 8.0,
-                                                    buttonSize: 40.0,
-                                                    fillColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary,
-                                                    icon: Icon(
-                                                      Icons.calendar_month,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .info,
-                                                      size: 24.0,
-                                                    ),
-                                                    onPressed: () async {
-                                                      final _datePickedDate =
-                                                          await showDatePicker(
-                                                        context: context,
-                                                        initialDate: (_model
-                                                                .filterDate ??
-                                                            DateTime.now()),
-                                                        firstDate:
-                                                            DateTime(1900),
-                                                        lastDate:
-                                                            DateTime(2050),
-                                                        builder:
-                                                            (context, child) {
-                                                          return wrapInMaterialDatePickerTheme(
-                                                            context,
-                                                            child!,
-                                                            headerBackgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                            headerForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                            headerTextStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineLarge
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Inter Tight',
-                                                                      fontSize:
-                                                                          32.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                    ),
-                                                            pickerBackgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                            pickerForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                            selectedDateTimeBackgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                            selectedDateTimeForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                            actionButtonForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                            iconSize: 24.0,
-                                                          );
-                                                        },
-                                                      );
-
-                                                      if (_datePickedDate !=
-                                                          null) {
-                                                        safeSetState(() {
-                                                          _model.datePicked =
-                                                              DateTime(
-                                                            _datePickedDate
-                                                                .year,
-                                                            _datePickedDate
-                                                                .month,
-                                                            _datePickedDate.day,
-                                                          );
-                                                        });
-                                                      } else if (_model
-                                                              .datePicked !=
-                                                          null) {
-                                                        safeSetState(() {
-                                                          _model.datePicked =
-                                                              _model.filterDate;
-                                                        });
-                                                      }
-                                                      FFAppState().AppCurrDate =
-                                                          _model.datePicked;
-                                                      FFAppState()
-                                                              .AppCurDateStr =
-                                                          dateTimeFormat(
-                                                        "yyyy-MM-dd",
-                                                        _model.datePicked,
-                                                        locale:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .languageCode,
-                                                      );
-                                                      safeSetState(() {});
-
-                                                      safeSetState(() {});
-                                                    },
-                                                  ),
-                                                ),
-                                                Opacity(
-                                                  opacity: 0.1,
-                                                  child: Text(
-                                                    FFAppState().AppCurDateStr,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .titleLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Inter Tight',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                ),
-                                              ],
+                                            Expanded(
+                                              child: wrapWithModel(
+                                                model: _model
+                                                    .dateFilterComponentModel,
+                                                updateCallback: () =>
+                                                    safeSetState(() {}),
+                                                child:
+                                                    DateFilterComponentWidget(),
+                                              ),
                                             ),
                                           ],
                                         );
@@ -895,34 +717,6 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
-                                                  'Исполнитель',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color:
-                                                            Color(0xFF606A85),
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Flexible(
-                                            flex: 4,
-                                            child: Align(
-                                              alignment: AlignmentDirectional(
-                                                  -1.0, 0.0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 10.0, 0.0),
-                                                child: Text(
                                                   'Статус',
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -1033,7 +827,7 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                                   0.0),
                                                       child: Text(
                                                         dateTimeFormat(
-                                                          "dd.MM.yy",
+                                                          "dd.MM",
                                                           mainContentVarItem
                                                               .taskDate!,
                                                           locale:
@@ -1256,15 +1050,6 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                   ),
                                                 ),
                                                 Flexible(
-                                                  flex: 4,
-                                                  child: DropdownUsersWidget(
-                                                    key: Key(
-                                                        'Keyywe_${mainContentVarIndex}_of_${mainContentVar.length}'),
-                                                    userName: mainContentVarItem
-                                                        .taskDoer,
-                                                  ),
-                                                ),
-                                                Flexible(
                                                   flex: 2,
                                                   child: Row(
                                                     mainAxisSize:
@@ -1272,87 +1057,136 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                     mainAxisAlignment:
                                                         MainAxisAlignment.end,
                                                     children: [
-                                                      Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color:
-                                                              Color(0x4C39D2C0),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          border: Border.all(
-                                                            color: Color(
-                                                                0xFF39D2C0),
-                                                          ),
-                                                        ),
-                                                        child: Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        8.0,
-                                                                        4.0,
-                                                                        8.0,
-                                                                        4.0),
-                                                            child: Text(
-                                                              valueOrDefault<
-                                                                  String>(
-                                                                mainContentVarItem
-                                                                    .taskStatus,
-                                                                'Статус',
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodySmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Plus Jakarta Sans',
-                                                                    color: Color(
-                                                                        0xFF15161E),
-                                                                    fontSize:
-                                                                        12.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
+                                                      Builder(
+                                                        builder: (context) =>
+                                                            InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      GestureDetector(
+                                                                    onTap: () {
+                                                                      FocusScope.of(
+                                                                              dialogContext)
+                                                                          .unfocus();
+                                                                      FocusManager
+                                                                          .instance
+                                                                          .primaryFocus
+                                                                          ?.unfocus();
+                                                                    },
+                                                                    child:
+                                                                        StatusSelectComponentWidget(),
                                                                   ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                safeSetState(() =>
+                                                                    _model.statusName =
+                                                                        value));
+
+                                                            if (_model.statusName !=
+                                                                    null &&
+                                                                _model.statusName !=
+                                                                    '') {
+                                                              await TasksTable()
+                                                                  .update(
+                                                                data: {
+                                                                  'task_status':
+                                                                      _model
+                                                                          .statusName,
+                                                                },
+                                                                matchingRows:
+                                                                    (rows) => rows
+                                                                        .eqOrNull(
+                                                                  'id',
+                                                                  mainContentVarItem
+                                                                      .id,
+                                                                ),
+                                                              );
+                                                            }
+
+                                                            safeSetState(() {});
+                                                          },
+                                                          child: Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: Color(
+                                                                  0x4C39D2C0),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              border:
+                                                                  Border.all(
+                                                                color: Color(
+                                                                    0xFF39D2C0),
+                                                              ),
+                                                            ),
+                                                            child: Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      0.0, 0.0),
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            8.0,
+                                                                            4.0,
+                                                                            8.0,
+                                                                            4.0),
+                                                                child: Text(
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    mainContentVarItem
+                                                                        .taskStatus,
+                                                                    'Статус',
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Plus Jakarta Sans',
+                                                                        color: Color(
+                                                                            0xFF15161E),
+                                                                        fontSize:
+                                                                            12.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                      ),
+                                                                ),
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
                                                       ),
                                                     ],
-                                                  ),
-                                                ),
-                                                InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    context.pushNamed(
-                                                      'TaskEditPage',
-                                                      queryParameters: {
-                                                        'taskID':
-                                                            serializeParam(
-                                                          mainContentVarItem.id,
-                                                          ParamType.int,
-                                                        ),
-                                                      }.withoutNulls,
-                                                    );
-                                                  },
-                                                  child: Icon(
-                                                    Icons.chevron_right_rounded,
-                                                    color: Color(0xFF57636C),
-                                                    size: 24.0,
                                                   ),
                                                 ),
                                               ],

@@ -2,34 +2,33 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/date_filter_component_widget.dart';
 import '/components/side_navigation_component_widget.dart';
-import '/components/status_select_component_widget.dart';
-import '/components/user_select_component_widget.dart';
+import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:aligned_dialog/aligned_dialog.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
-import 'task_list_page_model.dart';
-export 'task_list_page_model.dart';
+import 'reports_page_model.dart';
+export 'reports_page_model.dart';
 
-class TaskListPageWidget extends StatefulWidget {
-  const TaskListPageWidget({super.key});
+class ReportsPageWidget extends StatefulWidget {
+  const ReportsPageWidget({super.key});
 
   @override
-  State<TaskListPageWidget> createState() => _TaskListPageWidgetState();
+  State<ReportsPageWidget> createState() => _ReportsPageWidgetState();
 }
 
-class _TaskListPageWidgetState extends State<TaskListPageWidget> {
-  late TaskListPageModel _model;
+class _ReportsPageWidgetState extends State<ReportsPageWidget> {
+  late ReportsPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TaskListPageModel());
+    _model = createModel(context, () => ReportsPageModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -67,7 +66,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
               backgroundColor: Colors.white,
               automaticallyImplyLeading: false,
               title: Text(
-                'Заявки и исполнители',
+                'Отчёты',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: Color(0xFF15161E),
@@ -170,6 +169,75 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                           child: DateFilterComponentWidget(
                                             parameter1:
                                                 FFAppState().AppCurrDate,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: FlutterFlowChoiceChips(
+                                            options: [
+                                              ChipData('1 день'),
+                                              ChipData('Неделя'),
+                                              ChipData('2 недели')
+                                            ],
+                                            onChanged: (val) => safeSetState(
+                                                () => _model.choiceChipsValue =
+                                                    val?.firstOrNull),
+                                            selectedChipStyle: ChipStyle(
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .info,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              iconColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .info,
+                                              iconSize: 16.0,
+                                              elevation: 0.0,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            unselectedChipStyle: ChipStyle(
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              iconColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              iconSize: 16.0,
+                                              elevation: 0.0,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            chipSpacing: 8.0,
+                                            rowSpacing: 8.0,
+                                            multiselect: false,
+                                            alignment: WrapAlignment.start,
+                                            controller: _model
+                                                    .choiceChipsValueController ??=
+                                                FormFieldController<
+                                                    List<String>>(
+                                              [],
+                                            ),
+                                            wrapped: true,
                                           ),
                                         ),
                                       ],
@@ -284,65 +352,9 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        30.0, 0.0, 30.0, 0.0),
-                                                child: Text(
-                                                  'Телефон',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color:
-                                                            Color(0xFF606A85),
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Flexible(
-                                            flex: 4,
-                                            child: Align(
-                                              alignment: AlignmentDirectional(
-                                                  -1.0, 0.0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
                                                         0.0, 0.0, 20.0, 0.0),
                                                 child: Text(
                                                   'Вид работ',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color:
-                                                            Color(0xFF606A85),
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Flexible(
-                                            flex: 4,
-                                            child: Align(
-                                              alignment: AlignmentDirectional(
-                                                  -1.0, 0.0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 10.0, 0.0),
-                                                child: Text(
-                                                  'ID Терминала',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelSmall
@@ -426,7 +438,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
-                                                  'Статус',
+                                                  'Комментарий',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelSmall
@@ -447,6 +459,20 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                         ],
                                       ),
                                     ),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        'Выполнено',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .override(
+                                              fontFamily: 'Inter Tight',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ],
                                   ),
                                   Builder(
                                     builder: (context) {
@@ -619,8 +645,327 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                       child: Text(
                                                         valueOrDefault<String>(
                                                           mainContentVarItem
-                                                              .locationPhone,
-                                                          'Телефон',
+                                                              .taskCategory,
+                                                          'Вид работ',
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelSmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Plus Jakarta Sans',
+                                                              color: Color(
+                                                                  0xFF606A85),
+                                                              fontSize: 12.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Flexible(
+                                                  flex: 4,
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          mainContentVarItem
+                                                              .locationAddress,
+                                                          'Адрес',
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelSmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Plus Jakarta Sans',
+                                                              color: Color(
+                                                                  0xFF606A85),
+                                                              fontSize: 12.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Flexible(
+                                                  flex: 4,
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          mainContentVarItem
+                                                              .taskDoer,
+                                                          'Исполнитель',
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelSmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Plus Jakarta Sans',
+                                                              color: Color(
+                                                                  0xFF606A85),
+                                                              fontSize: 12.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Flexible(
+                                                  flex: 4,
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          mainContentVarItem
+                                                              .transferPerson,
+                                                          'Комментарий',
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelSmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Plus Jakarta Sans',
+                                                              color: Color(
+                                                                  0xFF606A85),
+                                                              fontSize: 12.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    context.pushNamed(
+                                                      'TaskEditPage',
+                                                      queryParameters: {
+                                                        'taskID':
+                                                            serializeParam(
+                                                          mainContentVarItem.id,
+                                                          ParamType.int,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  child: Icon(
+                                                    Icons.chevron_right_rounded,
+                                                    color: Color(0xFF57636C),
+                                                    size: 24.0,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        'Не выполнено',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .override(
+                                              fontFamily: 'Inter Tight',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                  Builder(
+                                    builder: (context) {
+                                      final mainContentVar =
+                                          mainContentTasksRowList.toList();
+
+                                      return ListView.separated(
+                                        padding: EdgeInsets.fromLTRB(
+                                          0,
+                                          0.0,
+                                          0,
+                                          44.0,
+                                        ),
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: mainContentVar.length,
+                                        separatorBuilder: (_, __) =>
+                                            SizedBox(height: 1.0),
+                                        itemBuilder:
+                                            (context, mainContentVarIndex) {
+                                          final mainContentVarItem =
+                                              mainContentVar[
+                                                  mainContentVarIndex];
+                                          return Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 12.0, 16.0, 12.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Flexible(
+                                                  flex: 1,
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          (valueOrDefault<int>(
+                                                                    mainContentVarIndex,
+                                                                    0,
+                                                                  ) +
+                                                                  1)
+                                                              .toString(),
+                                                          '0',
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelSmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Plus Jakarta Sans',
+                                                              color: Color(
+                                                                  0xFF606A85),
+                                                              fontSize: 12.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Flexible(
+                                                  flex: 2,
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        dateTimeFormat(
+                                                          "dd.MM",
+                                                          mainContentVarItem
+                                                              .taskDate!,
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelSmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Plus Jakarta Sans',
+                                                              color: Color(
+                                                                  0xFF606A85),
+                                                              fontSize: 12.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Flexible(
+                                                  flex: 4,
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          mainContentVarItem
+                                                              .locationName,
+                                                          'Название',
                                                         ),
                                                         style: FlutterFlowTheme
                                                                 .of(context)
@@ -697,8 +1042,8 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                       child: Text(
                                                         valueOrDefault<String>(
                                                           mainContentVarItem
-                                                              .equipmentId,
-                                                          'Номер',
+                                                              .locationAddress,
+                                                          'Адрес',
                                                         ),
                                                         style: FlutterFlowTheme
                                                                 .of(context)
@@ -736,8 +1081,8 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                       child: Text(
                                                         valueOrDefault<String>(
                                                           mainContentVarItem
-                                                              .locationAddress,
-                                                          'Адрес',
+                                                              .taskDoer,
+                                                          'Исполнитель',
                                                         ),
                                                         style: FlutterFlowTheme
                                                                 .of(context)
@@ -764,126 +1109,35 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                     alignment:
                                                         AlignmentDirectional(
                                                             -1.0, 0.0),
-                                                    child: Builder(
-                                                      builder: (context) =>
-                                                          Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10.0,
-                                                                    0.0,
-                                                                    10.0,
-                                                                    0.0),
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            await showAlignedDialog(
-                                                              context: context,
-                                                              isGlobal: false,
-                                                              avoidOverflow:
-                                                                  true,
-                                                              targetAnchor:
-                                                                  AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                              followerAnchor:
-                                                                  AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                              builder:
-                                                                  (dialogContext) {
-                                                                return Material(
-                                                                  color: Colors
-                                                                      .transparent,
-                                                                  child:
-                                                                      GestureDetector(
-                                                                    onTap: () {
-                                                                      FocusScope.of(
-                                                                              dialogContext)
-                                                                          .unfocus();
-                                                                      FocusManager
-                                                                          .instance
-                                                                          .primaryFocus
-                                                                          ?.unfocus();
-                                                                    },
-                                                                    child:
-                                                                        UserSelectComponentWidget(),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            ).then((value) =>
-                                                                safeSetState(() =>
-                                                                    _model.doerName =
-                                                                        value));
-
-                                                            if (_model.doerName !=
-                                                                    null &&
-                                                                _model.doerName !=
-                                                                    '') {
-                                                              await TasksTable()
-                                                                  .update(
-                                                                data: {
-                                                                  'task_doer':
-                                                                      _model
-                                                                          .doerName,
-                                                                },
-                                                                matchingRows:
-                                                                    (rows) => rows
-                                                                        .eqOrNull(
-                                                                  'id',
-                                                                  valueOrDefault<
-                                                                      int>(
-                                                                    mainContentVarItem
-                                                                        .id,
-                                                                    0,
-                                                                  ),
-                                                                ),
-                                                              );
-
-                                                              safeSetState(
-                                                                  () {});
-                                                            }
-
-                                                            safeSetState(() {});
-                                                          },
-                                                          child: Text(
-                                                            valueOrDefault<
-                                                                String>(
-                                                              mainContentVarItem
-                                                                  .taskDoer,
-                                                              'Исполнитель',
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelSmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Plus Jakarta Sans',
-                                                                  color: Color(
-                                                                      0xFF606A85),
-                                                                  fontSize:
-                                                                      12.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
-                                                          ),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          mainContentVarItem
+                                                              .transferPerson,
+                                                          'Комментарий',
                                                         ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelSmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Plus Jakarta Sans',
+                                                              color: Color(
+                                                                  0xFF606A85),
+                                                              fontSize: 12.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
                                                       ),
                                                     ),
                                                   ),
@@ -896,153 +1150,40 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                     mainAxisAlignment:
                                                         MainAxisAlignment.end,
                                                     children: [
-                                                      Builder(
-                                                        builder: (context) =>
-                                                            InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (dialogContext) {
-                                                                return Dialog(
-                                                                  elevation: 0,
-                                                                  insetPadding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                  backgroundColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  alignment: AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                                  child:
-                                                                      GestureDetector(
-                                                                    onTap: () {
-                                                                      FocusScope.of(
-                                                                              dialogContext)
-                                                                          .unfocus();
-                                                                      FocusManager
-                                                                          .instance
-                                                                          .primaryFocus
-                                                                          ?.unfocus();
-                                                                    },
-                                                                    child:
-                                                                        StatusSelectComponentWidget(),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            ).then((value) =>
-                                                                safeSetState(() =>
-                                                                    _model.statusName =
-                                                                        value));
-
-                                                            if (_model.statusName !=
-                                                                    null &&
-                                                                _model.statusName !=
-                                                                    '') {
-                                                              await TasksTable()
-                                                                  .update(
-                                                                data: {
-                                                                  'task_status':
-                                                                      _model
-                                                                          .statusName,
-                                                                },
-                                                                matchingRows:
-                                                                    (rows) => rows
-                                                                        .eqOrNull(
-                                                                  'id',
-                                                                  mainContentVarItem
-                                                                      .id,
-                                                                ),
-                                                              );
-                                                            }
-
-                                                            safeSetState(() {});
-                                                          },
-                                                          child: Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: () {
-                                                                if (mainContentVarItem
+                                                      Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: () {
+                                                            if (mainContentVarItem
+                                                                        .taskStatus ==
+                                                                    'готово'
+                                                                ? true
+                                                                : false) {
+                                                              return FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondary;
+                                                            } else if ((mainContentVarItem
                                                                             .taskStatus ==
-                                                                        'готово'
+                                                                        'назначение'
                                                                     ? true
-                                                                    : false) {
-                                                                  return FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondary;
-                                                                } else if ((mainContentVarItem.taskStatus ==
-                                                                            'назначение'
-                                                                        ? true
-                                                                        : false)
-                                                                    ? true
-                                                                    : false) {
-                                                                  return FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .warning;
-                                                                } else {
-                                                                  return Color(
-                                                                      0x00000000);
-                                                                }
-                                                              }(),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                              border:
-                                                                  Border.all(
-                                                                color: Color(
-                                                                    0xFF39D2C0),
-                                                              ),
-                                                            ),
-                                                            child: Align(
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      0.0, 0.0),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8.0,
-                                                                            4.0,
-                                                                            8.0,
-                                                                            4.0),
-                                                                child: Text(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    mainContentVarItem
-                                                                        .taskStatus,
-                                                                    'Статус',
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodySmall
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Plus Jakarta Sans',
-                                                                        color: Color(
-                                                                            0xFF15161E),
-                                                                        fontSize:
-                                                                            12.0,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                            ),
+                                                                    : false)
+                                                                ? true
+                                                                : false) {
+                                                              return FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .warning;
+                                                            } else {
+                                                              return Color(
+                                                                  0x00000000);
+                                                            }
+                                                          }(),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          border: Border.all(
+                                                            color: Color(
+                                                                0xFF39D2C0),
                                                           ),
                                                         ),
                                                       ),

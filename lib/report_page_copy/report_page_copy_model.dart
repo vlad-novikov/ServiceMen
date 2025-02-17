@@ -1,10 +1,10 @@
 import '/backend/supabase/supabase.dart';
-import '/flutter_flow/flutter_flow_data_table.dart';
+import '/components/date_filter_component_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'report_page_widget.dart' show ReportPageWidget;
+import 'report_page_copy_widget.dart' show ReportPageCopyWidget;
 import 'package:flutter/material.dart';
 
-class ReportPageModel extends FlutterFlowModel<ReportPageWidget> {
+class ReportPageCopyModel extends FlutterFlowModel<ReportPageCopyWidget> {
   ///  Local state fields for this page.
 
   DateTime? filterDate;
@@ -22,16 +22,17 @@ class ReportPageModel extends FlutterFlowModel<ReportPageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  DateTime? datePicked;
-  // State field(s) for PaginatedDataTable widget.
-  final paginatedDataTableController =
-      FlutterFlowDataTableController<TasksRow>();
+  // Model for DateFilterComponent component.
+  late DateFilterComponentModel dateFilterComponentModel;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    dateFilterComponentModel =
+        createModel(context, () => DateFilterComponentModel());
+  }
 
   @override
   void dispose() {
-    paginatedDataTableController.dispose();
+    dateFilterComponentModel.dispose();
   }
 }
