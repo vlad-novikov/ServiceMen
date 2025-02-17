@@ -1,10 +1,11 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/dropdown_users_widget.dart';
+import '/components/user_select_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -1254,11 +1255,132 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                 ),
                                                 Flexible(
                                                   flex: 4,
-                                                  child: DropdownUsersWidget(
-                                                    key: Key(
-                                                        'Keytuf_${mainContentVarIndex}_of_${mainContentVar.length}'),
-                                                    userName: mainContentVarItem
-                                                        .taskDoer,
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Builder(
+                                                      builder: (context) =>
+                                                          Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    10.0,
+                                                                    0.0,
+                                                                    10.0,
+                                                                    0.0),
+                                                        child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            await showAlignedDialog(
+                                                              context: context,
+                                                              isGlobal: false,
+                                                              avoidOverflow:
+                                                                  true,
+                                                              targetAnchor:
+                                                                  AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                              followerAnchor:
+                                                                  AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Material(
+                                                                  color: Colors
+                                                                      .transparent,
+                                                                  child:
+                                                                      GestureDetector(
+                                                                    onTap: () {
+                                                                      FocusScope.of(
+                                                                              dialogContext)
+                                                                          .unfocus();
+                                                                      FocusManager
+                                                                          .instance
+                                                                          .primaryFocus
+                                                                          ?.unfocus();
+                                                                    },
+                                                                    child:
+                                                                        UserSelectComponentWidget(),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                safeSetState(() =>
+                                                                    _model.doerName =
+                                                                        value));
+
+                                                            if (_model.doerName !=
+                                                                    null &&
+                                                                _model.doerName !=
+                                                                    '') {
+                                                              await TasksTable()
+                                                                  .update(
+                                                                data: {
+                                                                  'task_doer':
+                                                                      _model
+                                                                          .doerName,
+                                                                },
+                                                                matchingRows:
+                                                                    (rows) => rows
+                                                                        .eqOrNull(
+                                                                  'id',
+                                                                  valueOrDefault<
+                                                                      int>(
+                                                                    mainContentVarItem
+                                                                        .id,
+                                                                    0,
+                                                                  ),
+                                                                ),
+                                                              );
+
+                                                              safeSetState(
+                                                                  () {});
+                                                            }
+
+                                                            safeSetState(() {});
+                                                          },
+                                                          child: Text(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              mainContentVarItem
+                                                                  .taskDoer,
+                                                              'Исполнитель',
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Plus Jakarta Sans',
+                                                                  color: Color(
+                                                                      0xFF606A85),
+                                                                  fontSize:
+                                                                      12.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
                                                 Flexible(
@@ -1272,8 +1394,30 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                       Container(
                                                         decoration:
                                                             BoxDecoration(
-                                                          color:
-                                                              Color(0x4C39D2C0),
+                                                          color: () {
+                                                            if (mainContentVarItem
+                                                                        .taskStatus ==
+                                                                    'готово'
+                                                                ? true
+                                                                : false) {
+                                                              return FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondary;
+                                                            } else if ((mainContentVarItem
+                                                                            .taskStatus ==
+                                                                        'назначение'
+                                                                    ? true
+                                                                    : false)
+                                                                ? true
+                                                                : false) {
+                                                              return FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .warning;
+                                                            } else {
+                                                              return Color(
+                                                                  0x00000000);
+                                                            }
+                                                          }(),
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(

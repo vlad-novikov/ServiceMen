@@ -12,6 +12,8 @@ class TaskListPageModel extends FlutterFlowModel<TaskListPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   DateTime? datePicked;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in Text widget.
+  String? doerName;
 
   @override
   void initState(BuildContext context) {}

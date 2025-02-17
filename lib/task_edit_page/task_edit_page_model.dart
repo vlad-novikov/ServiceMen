@@ -1,4 +1,3 @@
-import '/components/dropdown_users_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'task_edit_page_widget.dart' show TaskEditPageWidget;
 import 'package:flutter/material.dart';
@@ -30,8 +29,6 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   FocusNode? textFieldFocusNode6;
   TextEditingController? textController6;
   String? Function(BuildContext, String?)? textController6Validator;
-  // Model for dropdown_users component.
-  late DropdownUsersModel dropdownUsersModel;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode7;
   TextEditingController? textController7;
@@ -52,11 +49,21 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   FocusNode? textFieldFocusNode11;
   TextEditingController? textController11;
   String? Function(BuildContext, String?)? textController11Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode12;
+  TextEditingController? textController12;
+  String? Function(BuildContext, String?)? textController12Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode13;
+  TextEditingController? textController13;
+  String? Function(BuildContext, String?)? textController13Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode14;
+  TextEditingController? textController14;
+  String? Function(BuildContext, String?)? textController14Validator;
 
   @override
-  void initState(BuildContext context) {
-    dropdownUsersModel = createModel(context, () => DropdownUsersModel());
-  }
+  void initState(BuildContext context) {}
 
   @override
   void dispose() {
@@ -78,7 +85,6 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
     textFieldFocusNode6?.dispose();
     textController6?.dispose();
 
-    dropdownUsersModel.dispose();
     textFieldFocusNode7?.dispose();
     textController7?.dispose();
 
@@ -93,5 +99,14 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
 
     textFieldFocusNode11?.dispose();
     textController11?.dispose();
+
+    textFieldFocusNode12?.dispose();
+    textController12?.dispose();
+
+    textFieldFocusNode13?.dispose();
+    textController13?.dispose();
+
+    textFieldFocusNode14?.dispose();
+    textController14?.dispose();
   }
 }
