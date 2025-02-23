@@ -1,19 +1,16 @@
 import '/components/date_filter_component_widget.dart';
 import '/components/side_navigation_component_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/form_field_controller.dart';
 import '/index.dart';
-import 'reports_page_widget.dart' show ReportsPageWidget;
+import 'import_page_widget.dart' show ImportPageWidget;
 import 'package:flutter/material.dart';
 
-class ReportsPageModel extends FlutterFlowModel<ReportsPageWidget> {
+class ImportPageModel extends FlutterFlowModel<ImportPageWidget> {
   ///  Local state fields for this page.
 
   DateTime? filterDate;
 
   DateTime? pageDate;
-
-  String doneStatus = 'выполнено';
 
   ///  State fields for stateful widgets in this page.
 
@@ -21,12 +18,12 @@ class ReportsPageModel extends FlutterFlowModel<ReportsPageWidget> {
   late SideNavigationComponentModel sideNavigationComponentModel;
   // Model for DateFilterComponent component.
   late DateFilterComponentModel dateFilterComponentModel;
-  // State field(s) for ChoiceChips widget.
-  FormFieldController<List<String>>? choiceChipsValueController;
-  String? get choiceChipsValue =>
-      choiceChipsValueController?.value?.firstOrNull;
-  set choiceChipsValue(String? val) =>
-      choiceChipsValueController?.value = val != null ? [val] : [];
+  // Stores action output result for [Custom Action - uploadExcelFile] action in Button widget.
+  dynamic excelJSON;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in Text widget.
+  String? doerName;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in Container widget.
+  String? statusName;
 
   @override
   void initState(BuildContext context) {

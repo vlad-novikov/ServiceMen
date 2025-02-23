@@ -2,6 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -10,6 +11,9 @@ export 'entry_page_model.dart';
 
 class EntryPageWidget extends StatefulWidget {
   const EntryPageWidget({super.key});
+
+  static String routeName = 'entryPage';
+  static String routePath = '/entry';
 
   @override
   State<EntryPageWidget> createState() => _EntryPageWidgetState();
@@ -152,14 +156,19 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                                             onTap: () async {
                                               if (entryPageUsersRow!.isDoer!) {
                                                 context.pushNamed(
-                                                    'UserTaskListPage');
+                                                    UserTaskListPageWidget
+                                                        .routeName);
                                               } else {
-                                                context
-                                                    .pushNamed('TaskListPage');
+                                                context.pushNamed(
+                                                    TaskListPageWidget
+                                                        .routeName);
                                               }
                                             },
                                             child: Text(
-                                              'Загружаем приложение...',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                't1nxyqu2' /* Загружаем приложение... */,
+                                              ),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .headlineMedium
@@ -183,10 +192,12 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                                                   if (entryPageUsersRow!
                                                       .isDoer!) {
                                                     context.pushNamed(
-                                                        'UserTaskListPage');
+                                                        UserTaskListPageWidget
+                                                            .routeName);
                                                   } else {
                                                     context.pushNamed(
-                                                        'TaskListPage');
+                                                        TaskListPageWidget
+                                                            .routeName);
                                                   }
                                                 },
                                               );
@@ -204,10 +215,12 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                                                   if (entryPageUsersRow!
                                                       .isDoer!) {
                                                     context.pushNamed(
-                                                        'UserTaskListPage');
+                                                        UserTaskListPageWidget
+                                                            .routeName);
                                                   } else {
                                                     context.pushNamed(
-                                                        'TaskListPage');
+                                                        TaskListPageWidget
+                                                            .routeName);
                                                   }
                                                 },
                                               ),
@@ -222,7 +235,11 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                                                           fontFamily: 'Inter',
                                                           letterSpacing: 0.0,
                                                         ),
-                                                hintText: 'TextField',
+                                                hintText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'zee1t70y' /* TextField */,
+                                                ),
                                                 hintStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium
@@ -312,7 +329,11 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                                                         fontFamily: 'Inter',
                                                         letterSpacing: 0.0,
                                                       ),
-                                              hintText: 'TextField',
+                                              hintText:
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                'izfirosd' /* TextField */,
+                                              ),
                                               hintStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium

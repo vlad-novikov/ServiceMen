@@ -98,7 +98,9 @@ class _UserSelectComponentWidgetState extends State<UserSelectComponentWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 8.0),
                     child: Text(
-                      'Выберите исполнителя',
+                      FFLocalizations.of(context).getText(
+                        'wxnf25kf' /* Выберите исполнителя */,
+                      ),
                       style: FlutterFlowTheme.of(context).bodyLarge.override(
                             fontFamily: 'Inter',
                             letterSpacing: 0.0,
@@ -255,7 +257,9 @@ class _UserSelectComponentWidgetState extends State<UserSelectComponentWidget> {
                                       Navigator.pop(context);
                                     },
                                     child: Text(
-                                      'Закрыть',
+                                      FFLocalizations.of(context).getText(
+                                        'o5sagby2' /* Закрыть */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

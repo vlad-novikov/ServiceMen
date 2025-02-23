@@ -6,5 +6,4 @@ export 'row.dart';
 export 'table.dart';
 
 export 'tables/tasks.dart';
-export 'tables/view_today_tasks.dart';
 export 'tables/users.dart';

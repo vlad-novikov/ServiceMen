@@ -4,6 +4,7 @@ import '/components/date_filter_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -13,6 +14,9 @@ export 'report_page_copy_model.dart';
 
 class ReportPageCopyWidget extends StatefulWidget {
   const ReportPageCopyWidget({super.key});
+
+  static String routeName = 'ReportPageCopy';
+  static String routePath = '/reports11';
 
   @override
   State<ReportPageCopyWidget> createState() => _ReportPageCopyWidgetState();
@@ -64,7 +68,9 @@ class _ReportPageCopyWidgetState extends State<ReportPageCopyWidget> {
               backgroundColor: Colors.white,
               automaticallyImplyLeading: false,
               title: Text(
-                'Отчет по работе',
+                FFLocalizations.of(context).getText(
+                  '6hycovfi' /* Отчет по работе */,
+                ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: Color(0xFF15161E),
@@ -92,7 +98,8 @@ class _ReportPageCopyWidgetState extends State<ReportPageCopyWidget> {
                       await authManager.signOut();
                       GoRouter.of(context).clearRedirectLocation();
 
-                      context.goNamedAuth('LoginPage', context.mounted);
+                      context.goNamedAuth(
+                          LoginPageWidget.routeName, context.mounted);
                     },
                   ),
                 ),
@@ -173,7 +180,10 @@ class _ReportPageCopyWidgetState extends State<ReportPageCopyWidget> {
                                                     .fromSTEB(
                                                         12.0, 0.0, 0.0, 0.0),
                                                 child: Text(
-                                                  'Заявки',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'pm7z9l9h' /* Заявки */,
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -204,7 +214,8 @@ class _ReportPageCopyWidgetState extends State<ReportPageCopyWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        context.pushNamed('UserListPageBak');
+                                        context.pushNamed(
+                                            UserListPageBakWidget.routeName);
                                       },
                                       child: AnimatedContainer(
                                         duration: Duration(milliseconds: 200),
@@ -227,7 +238,8 @@ class _ReportPageCopyWidgetState extends State<ReportPageCopyWidget> {
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              context.pushNamed('UserListPage');
+                                              context.pushNamed(
+                                                  UserListPageWidget.routeName);
                                             },
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -242,7 +254,10 @@ class _ReportPageCopyWidgetState extends State<ReportPageCopyWidget> {
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    'Сотрудники',
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '0tp4cfev' /* Сотрудники */,
+                                                    ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -295,7 +310,10 @@ class _ReportPageCopyWidgetState extends State<ReportPageCopyWidget> {
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'Загрузка',
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  '5w8igeb6' /* Загрузка */,
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -346,7 +364,10 @@ class _ReportPageCopyWidgetState extends State<ReportPageCopyWidget> {
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'Отчеты',
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'ijmzo2dy' /* Отчеты */,
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -493,7 +514,11 @@ class _ReportPageCopyWidgetState extends State<ReportPageCopyWidget> {
                                                       MainAxisSize.max,
                                                   children: [
                                                     Text(
-                                                      'Выполнено',
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'hd2hpaho' /* Выполнено */,
+                                                      ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium

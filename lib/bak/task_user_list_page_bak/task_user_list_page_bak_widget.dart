@@ -13,6 +13,9 @@ export 'task_user_list_page_bak_model.dart';
 class TaskUserListPageBakWidget extends StatefulWidget {
   const TaskUserListPageBakWidget({super.key});
 
+  static String routeName = 'TaskUserListPageBak';
+  static String routePath = '/taskUserListPageBak';
+
   @override
   State<TaskUserListPageBakWidget> createState() =>
       _TaskUserListPageBakWidgetState();
@@ -158,7 +161,10 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              'check.io',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'wkloc1ve' /* check.io */,
+                                              ),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .headlineMedium
@@ -223,7 +229,10 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    'Andrew D.',
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'eh7m70vr' /* Andrew D. */,
+                                                    ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyLarge
@@ -243,7 +252,11 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'admin@gmail.com',
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'p7y9lp1c' /* admin@gmail.com */,
+                                                      ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .labelSmall
@@ -318,7 +331,9 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
-                                          'Dashboard',
+                                          FFLocalizations.of(context).getText(
+                                            'q5uybjyi' /* Dashboard */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .titleSmall
                                               .override(
@@ -374,7 +389,9 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
-                                          'Transactions',
+                                          FFLocalizations.of(context).getText(
+                                            'hlg68y6u' /* Transactions */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .labelMedium
                                               .override(
@@ -430,7 +447,9 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
-                                          'Projects',
+                                          FFLocalizations.of(context).getText(
+                                            'r0u8m6yu' /* Projects */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .labelMedium
                                               .override(
@@ -486,7 +505,9 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
-                                          'Users',
+                                          FFLocalizations.of(context).getText(
+                                            'swo1k6m0' /* Users */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .titleSmall
                                               .override(
@@ -697,13 +718,22 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                 0.0, 0.0, 16.0, 0.0),
                                         tabs: [
                                           Tab(
-                                            text: 'Сегодня',
+                                            text: FFLocalizations.of(context)
+                                                .getText(
+                                              '1wr6546p' /* Сегодня */,
+                                            ),
                                           ),
                                           Tab(
-                                            text: 'Неделя',
+                                            text: FFLocalizations.of(context)
+                                                .getText(
+                                              'ze3jnpbx' /* Неделя */,
+                                            ),
                                           ),
                                           Tab(
-                                            text: '2 Недели',
+                                            text: FFLocalizations.of(context)
+                                                .getText(
+                                              'd7z26zjz' /* 2 Недели */,
+                                            ),
                                           ),
                                         ],
                                         controller: _model.tabBarController,
@@ -776,7 +806,11 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                           0.0,
                                                                           0.0),
                                                               child: Text(
-                                                                'Мои задания',
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  '0ejhj6p8' /* Мои задания */,
+                                                                ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .headlineSmall
@@ -819,7 +853,11 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                           12.0,
                                                                           0.0),
                                                               child: Text(
-                                                                '12',
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'z8ihjebu' /* 12 */,
+                                                                ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -1132,7 +1170,11 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                           0.0,
                                                                           0.0),
                                                               child: Text(
-                                                                'Due this week',
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'k0xmiigd' /* Due this week */,
+                                                                ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .headlineSmall
@@ -1175,7 +1217,11 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                           12.0,
                                                                           0.0),
                                                               child: Text(
-                                                                '12',
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'vcd00ivd' /* 12 */,
+                                                                ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -1289,7 +1335,9 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                 0.0),
                                                                             child:
                                                                                 Text(
-                                                                              'Update our command Palette to be more usable.',
+                                                                              FFLocalizations.of(context).getText(
+                                                                                '9i9m1cbc' /* Update our command Palette to ... */,
+                                                                              ),
                                                                               style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                     fontFamily: 'Plus Jakarta Sans',
                                                                                     color: Color(0xFF15161E),
@@ -1308,7 +1356,9 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                               Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 0.0, 0.0),
                                                                                 child: Text(
-                                                                                  '18 Jan, 2023',
+                                                                                  FFLocalizations.of(context).getText(
+                                                                                    '6uqdllhe' /* 18 Jan, 2023 */,
+                                                                                  ),
                                                                                   style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                         fontFamily: 'Plus Jakarta Sans',
                                                                                         color: Color(0xFF606A85),
@@ -1330,7 +1380,9 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                   child: Padding(
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                                                                     child: Text(
-                                                                                      'Product',
+                                                                                      FFLocalizations.of(context).getText(
+                                                                                        '6k0woe4x' /* Product */,
+                                                                                      ),
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Plus Jakarta Sans',
                                                                                             color: Color(0xFF15161E),
@@ -1428,7 +1480,9 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                 0.0),
                                                                             child:
                                                                                 Text(
-                                                                              'Build out a design system in FlutterFlow',
+                                                                              FFLocalizations.of(context).getText(
+                                                                                'zvtv74tq' /* Build out a design system in F... */,
+                                                                              ),
                                                                               style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                     fontFamily: 'Plus Jakarta Sans',
                                                                                     color: Color(0xFF15161E),
@@ -1447,7 +1501,9 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                               Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 0.0, 0.0),
                                                                                 child: Text(
-                                                                                  '16 Jan, 2023',
+                                                                                  FFLocalizations.of(context).getText(
+                                                                                    'otwshttz' /* 16 Jan, 2023 */,
+                                                                                  ),
                                                                                   style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                         fontFamily: 'Plus Jakarta Sans',
                                                                                         color: Color(0xFF606A85),
@@ -1469,7 +1525,9 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                   child: Padding(
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                                                                     child: Text(
-                                                                                      'Design System',
+                                                                                      FFLocalizations.of(context).getText(
+                                                                                        '5pn40wka' /* Design System */,
+                                                                                      ),
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Plus Jakarta Sans',
                                                                                             color: Color(0xFF15161E),
@@ -1567,7 +1625,9 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                 0.0),
                                                                             child:
                                                                                 Text(
-                                                                              'Complete 100 Templates',
+                                                                              FFLocalizations.of(context).getText(
+                                                                                'l8fn4xa5' /* Complete 100 Templates */,
+                                                                              ),
                                                                               style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                     fontFamily: 'Plus Jakarta Sans',
                                                                                     color: Color(0xFF15161E),
@@ -1586,7 +1646,9 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                               Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 0.0, 0.0),
                                                                                 child: Text(
-                                                                                  '15 Jan, 2023',
+                                                                                  FFLocalizations.of(context).getText(
+                                                                                    'laiiazht' /* 15 Jan, 2023 */,
+                                                                                  ),
                                                                                   style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                         fontFamily: 'Plus Jakarta Sans',
                                                                                         color: Color(0xFF606A85),
@@ -1608,7 +1670,9 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                   child: Padding(
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                                                                     child: Text(
-                                                                                      'FF Development',
+                                                                                      FFLocalizations.of(context).getText(
+                                                                                        'n8woknvl' /* FF Development */,
+                                                                                      ),
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Plus Jakarta Sans',
                                                                                             color: Color(0xFF15161E),

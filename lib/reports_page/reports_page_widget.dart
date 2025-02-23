@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,9 @@ export 'reports_page_model.dart';
 
 class ReportsPageWidget extends StatefulWidget {
   const ReportsPageWidget({super.key});
+
+  static String routeName = 'ReportsPage';
+  static String routePath = '/reports';
 
   @override
   State<ReportsPageWidget> createState() => _ReportsPageWidgetState();
@@ -66,7 +70,9 @@ class _ReportsPageWidgetState extends State<ReportsPageWidget> {
               backgroundColor: Colors.white,
               automaticallyImplyLeading: false,
               title: Text(
-                'Отчёты',
+                FFLocalizations.of(context).getText(
+                  'x5g2r2hx' /* Отчёты */,
+                ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: Color(0xFF15161E),
@@ -94,7 +100,8 @@ class _ReportsPageWidgetState extends State<ReportsPageWidget> {
                       await authManager.signOut();
                       GoRouter.of(context).clearRedirectLocation();
 
-                      context.goNamedAuth('LoginPage', context.mounted);
+                      context.goNamedAuth(
+                          LoginPageWidget.routeName, context.mounted);
                     },
                   ),
                 ),
@@ -174,9 +181,21 @@ class _ReportsPageWidgetState extends State<ReportsPageWidget> {
                                         Expanded(
                                           child: FlutterFlowChoiceChips(
                                             options: [
-                                              ChipData('1 день'),
-                                              ChipData('Неделя'),
-                                              ChipData('2 недели')
+                                              ChipData(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                'rh3miqt1' /* 1 день */,
+                                              )),
+                                              ChipData(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                'hnxte6pf' /* Неделя */,
+                                              )),
+                                              ChipData(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                'tqvrbkkp' /* 2 недели */,
+                                              ))
                                             ],
                                             onChanged: (val) => safeSetState(
                                                 () => _model.choiceChipsValue =
@@ -267,7 +286,10 @@ class _ReportsPageWidgetState extends State<ReportsPageWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
-                                                  '№',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'ewf463q9' /* № */,
+                                                  ),
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -296,7 +318,10 @@ class _ReportsPageWidgetState extends State<ReportsPageWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
-                                                  'Дата',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'nd8aqp71' /* Дата */,
+                                                  ),
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -325,7 +350,10 @@ class _ReportsPageWidgetState extends State<ReportsPageWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
-                                                  'Название ТП',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '5nqe6a82' /* Название ТП */,
+                                                  ),
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -354,7 +382,10 @@ class _ReportsPageWidgetState extends State<ReportsPageWidget> {
                                                     .fromSTEB(
                                                         0.0, 0.0, 20.0, 0.0),
                                                 child: Text(
-                                                  'Вид работ',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'o10ssvxg' /* Вид работ */,
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelSmall
@@ -382,7 +413,10 @@ class _ReportsPageWidgetState extends State<ReportsPageWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
-                                                  'Адрес',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '6n3v0ojg' /* Адрес */,
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelSmall
@@ -410,7 +444,10 @@ class _ReportsPageWidgetState extends State<ReportsPageWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
-                                                  'Исполнитель',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'il2nmxzp' /* Исполнитель */,
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelSmall
@@ -438,7 +475,10 @@ class _ReportsPageWidgetState extends State<ReportsPageWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
-                                                  'Комментарий',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'h7mqfqg4' /* Комментарий */,
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelSmall
@@ -464,7 +504,9 @@ class _ReportsPageWidgetState extends State<ReportsPageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        'Выполнено',
+                                        FFLocalizations.of(context).getText(
+                                          'bvudjzb3' /* Выполнено */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .titleMedium
                                             .override(
@@ -795,7 +837,8 @@ class _ReportsPageWidgetState extends State<ReportsPageWidget> {
                                                       Colors.transparent,
                                                   onTap: () async {
                                                     context.pushNamed(
-                                                      'TaskEditPage',
+                                                      TaskEditPageWidget
+                                                          .routeName,
                                                       queryParameters: {
                                                         'taskID':
                                                             serializeParam(
@@ -822,7 +865,9 @@ class _ReportsPageWidgetState extends State<ReportsPageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        'Не выполнено',
+                                        FFLocalizations.of(context).getText(
+                                          'xwnip2pw' /* Не выполнено */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .titleMedium
                                             .override(
@@ -1201,7 +1246,8 @@ class _ReportsPageWidgetState extends State<ReportsPageWidget> {
                                                       Colors.transparent,
                                                   onTap: () async {
                                                     context.pushNamed(
-                                                      'TaskEditPage',
+                                                      TaskEditPageWidget
+                                                          .routeName,
                                                       queryParameters: {
                                                         'taskID':
                                                             serializeParam(

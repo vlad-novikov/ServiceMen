@@ -4,6 +4,7 @@ import '/components/side_navigation_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'user_list_page_model.dart';
@@ -11,6 +12,9 @@ export 'user_list_page_model.dart';
 
 class UserListPageWidget extends StatefulWidget {
   const UserListPageWidget({super.key});
+
+  static String routeName = 'UserListPage';
+  static String routePath = '/users';
 
   @override
   State<UserListPageWidget> createState() => _UserListPageWidgetState();
@@ -59,7 +63,9 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
               backgroundColor: Colors.white,
               automaticallyImplyLeading: false,
               title: Text(
-                'Система  Управления Заявками на Сервисное Обслуживание',
+                FFLocalizations.of(context).getText(
+                  '87t6y9bc' /* Система  Управления Заявками */,
+                ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: Color(0xFF15161E),
@@ -87,7 +93,8 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                       await authManager.signOut();
                       GoRouter.of(context).clearRedirectLocation();
 
-                      context.goNamedAuth('LoginPage', context.mounted);
+                      context.goNamedAuth(
+                          LoginPageWidget.routeName, context.mounted);
                     },
                   ),
                 ),
@@ -120,26 +127,6 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              if (responsiveVisibility(
-                                context: context,
-                                phone: false,
-                              ))
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 16.0, 0.0, 4.0),
-                                  child: Text(
-                                    'Сотрудники',
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineMedium
-                                        .override(
-                                          fontFamily: 'Outfit',
-                                          color: Color(0xFF15161E),
-                                          fontSize: 24.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                  ),
-                                ),
                               Container(
                                 width: double.infinity,
                                 height: 40.0,
@@ -164,7 +151,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              '№ ',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '3jfzhvwb' /* №  */,
+                                              ),
                                               textAlign: TextAlign.start,
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -191,7 +181,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              'Фамилия',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'cywe79wk' /* Фамилия */,
+                                              ),
                                               textAlign: TextAlign.start,
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -218,7 +211,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     30.0, 0.0, 30.0, 0.0),
                                             child: Text(
-                                              'Имя',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'g0msqf6c' /* Имя */,
+                                              ),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -244,7 +240,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 20.0, 0.0),
                                             child: Text(
-                                              'Эл. Почта',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '7yiw4kui' /* Эл. Почта */,
+                                              ),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -270,7 +269,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              'Телефон',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'l4n1ejx1' /* Телефон */,
+                                              ),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -296,7 +298,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              'Исп.',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'x5nhar9h' /* Исп. */,
+                                              ),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -322,7 +327,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              'Адм.',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                't6oxbkkv' /* Адм. */,
+                                              ),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -348,7 +356,10 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              '',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'ymldx3sw' /*  */,
+                                              ),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -710,7 +721,8 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                     Colors.transparent,
                                                 onTap: () async {
                                                   context.pushNamed(
-                                                    'UserEditPage',
+                                                    UserEditPageWidget
+                                                        .routeName,
                                                     queryParameters: {
                                                       'userID': serializeParam(
                                                         listViewUsersRow.id,

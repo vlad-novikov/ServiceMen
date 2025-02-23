@@ -2,6 +2,7 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,6 +11,9 @@ export 'task_list_page_bak_model.dart';
 
 class TaskListPageBakWidget extends StatefulWidget {
   const TaskListPageBakWidget({super.key});
+
+  static String routeName = 'TaskListPageBak';
+  static String routePath = '/taskListPageBak';
 
   @override
   State<TaskListPageBakWidget> createState() => _TaskListPageBakWidgetState();
@@ -58,7 +62,9 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
               backgroundColor: Colors.white,
               automaticallyImplyLeading: false,
               title: Text(
-                'Система  Управления Заявками на Сервисное Обслуживание',
+                FFLocalizations.of(context).getText(
+                  'rxnwh9z5' /* Система  Управления Заявками н... */,
+                ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: Color(0xFF15161E),
@@ -163,7 +169,10 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
                                                     .fromSTEB(
                                                         12.0, 0.0, 0.0, 0.0),
                                                 child: Text(
-                                                  'Заявки',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '8ozdabq1' /* Заявки */,
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -194,7 +203,8 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        context.pushNamed('UserListPageBak');
+                                        context.pushNamed(
+                                            UserListPageBakWidget.routeName);
                                       },
                                       child: AnimatedContainer(
                                         duration: Duration(milliseconds: 200),
@@ -217,7 +227,8 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              context.pushNamed('UserListPage');
+                                              context.pushNamed(
+                                                  UserListPageWidget.routeName);
                                             },
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -232,7 +243,10 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    'Сотрудники',
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'wq27b8rx' /* Сотрудники */,
+                                                    ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -285,7 +299,10 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'Загрузка',
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'myvi7uf7' /* Загрузка */,
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -336,7 +353,10 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'Отчеты',
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'gb4bzdga' /* Отчеты */,
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -406,7 +426,9 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 0.0, 4.0),
                                   child: Text(
-                                    'Текущие Заявки',
+                                    FFLocalizations.of(context).getText(
+                                      'yc01l3tw' /* Текущие Заявки */,
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .headlineMedium
                                         .override(
@@ -574,7 +596,10 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              '№ пп',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'jm3yxqh2' /* № пп */,
+                                              ),
                                               textAlign: TextAlign.start,
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -601,7 +626,10 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              'Дата',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'k39uqat1' /* Дата */,
+                                              ),
                                               textAlign: TextAlign.start,
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -628,7 +656,10 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              'Название ТП',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '7fze6h8c' /* Название ТП */,
+                                              ),
                                               textAlign: TextAlign.start,
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -655,7 +686,10 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     30.0, 0.0, 30.0, 0.0),
                                             child: Text(
-                                              'Телефон',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'iyzgx9fe' /* Телефон */,
+                                              ),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -681,7 +715,10 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 20.0, 0.0),
                                             child: Text(
-                                              'Вид работ',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'xg5uclko' /* Вид работ */,
+                                              ),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -707,7 +744,10 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              'ID Терминала',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'wdtoq5vb' /* ID Терминала */,
+                                              ),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -733,7 +773,10 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              'Адрес',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'f2snyw9d' /* Адрес */,
+                                              ),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -759,7 +802,10 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              'Исполнитель',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'ydrjmuea' /* Исполнитель */,
+                                              ),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -785,7 +831,10 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
-                                              'Статус',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '7deqe9jx' /* Статус */,
+                                              ),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -1201,7 +1250,7 @@ class _TaskListPageBakWidgetState extends State<TaskListPageBakWidget> {
                                                   Colors.transparent,
                                               onTap: () async {
                                                 context.pushNamed(
-                                                  'TaskEditPage',
+                                                  TaskEditPageWidget.routeName,
                                                   queryParameters: {
                                                     'taskID': serializeParam(
                                                       listViewTasksTasksRow.id,

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'user_add_page_model.dart';
@@ -10,6 +11,9 @@ export 'user_add_page_model.dart';
 
 class UserAddPageWidget extends StatefulWidget {
   const UserAddPageWidget({super.key});
+
+  static String routeName = 'UserAddPage';
+  static String routePath = '/useradd';
 
   @override
   State<UserAddPageWidget> createState() => _UserAddPageWidgetState();
@@ -187,7 +191,9 @@ class _UserAddPageWidgetState extends State<UserAddPageWidget>
                                               ),
                                             ),
                                           Text(
-                                            'Добавить пользователя',
+                                            FFLocalizations.of(context).getText(
+                                              'xg8fpfhr' /* Добавить пользователя */,
+                                            ),
                                             textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineMedium
@@ -205,7 +211,10 @@ class _UserAddPageWidgetState extends State<UserAddPageWidget>
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 24.0),
                                             child: Text(
-                                              '.',
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '3kkxh9zw' /* . */,
+                                              ),
                                               textAlign: TextAlign.start,
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -237,7 +246,11 @@ class _UserAddPageWidgetState extends State<UserAddPageWidget>
                                                 ],
                                                 obscureText: false,
                                                 decoration: InputDecoration(
-                                                  labelText: 'Email',
+                                                  labelText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'hjg58wft' /* Email */,
+                                                  ),
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .labelLarge
@@ -335,7 +348,11 @@ class _UserAddPageWidgetState extends State<UserAddPageWidget>
                                                 obscureText: !_model
                                                     .passwordCreateVisibility,
                                                 decoration: InputDecoration(
-                                                  labelText: 'Password',
+                                                  labelText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'qemh1yl9' /* Password */,
+                                                  ),
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .labelLarge
@@ -459,10 +476,14 @@ class _UserAddPageWidgetState extends State<UserAddPageWidget>
                                                   }
 
                                                   context.goNamedAuth(
-                                                      'entryPage',
+                                                      EntryPageWidget.routeName,
                                                       context.mounted);
                                                 },
-                                                text: 'Создать',
+                                                text:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  '4f26n6tu' /* Создать */,
+                                                ),
                                                 options: FFButtonOptions(
                                                   width: 230.0,
                                                   height: 52.0,

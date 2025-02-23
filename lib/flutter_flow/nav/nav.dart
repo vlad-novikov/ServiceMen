@@ -3,11 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
-import '/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+
+import '/index.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -84,33 +86,33 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? EntryPageWidget() : LoginPageWidget(),
         ),
         FFRoute(
-          name: 'LoginPage',
-          path: '/login',
+          name: LoginPageWidget.routeName,
+          path: LoginPageWidget.routePath,
           builder: (context, params) => LoginPageWidget(),
         ),
         FFRoute(
-          name: 'UserListPageBak',
-          path: '/userListPageBak',
+          name: UserListPageBakWidget.routeName,
+          path: UserListPageBakWidget.routePath,
           builder: (context, params) => UserListPageBakWidget(),
         ),
         FFRoute(
-          name: 'TaskListPageBak',
-          path: '/taskListPageBak',
+          name: TaskListPageBakWidget.routeName,
+          path: TaskListPageBakWidget.routePath,
           builder: (context, params) => TaskListPageBakWidget(),
         ),
         FFRoute(
-          name: 'TaskUserListPageBak',
-          path: '/taskUserListPageBak',
+          name: TaskUserListPageBakWidget.routeName,
+          path: TaskUserListPageBakWidget.routePath,
           builder: (context, params) => TaskUserListPageBakWidget(),
         ),
         FFRoute(
-          name: 'UserAddPage',
-          path: '/useradd',
+          name: UserAddPageWidget.routeName,
+          path: UserAddPageWidget.routePath,
           builder: (context, params) => UserAddPageWidget(),
         ),
         FFRoute(
-          name: 'TaskEditPage',
-          path: '/task',
+          name: TaskEditPageWidget.routeName,
+          path: TaskEditPageWidget.routePath,
           builder: (context, params) => TaskEditPageWidget(
             taskID: params.getParam(
               'taskID',
@@ -119,29 +121,29 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'UserListPage',
-          path: '/users',
+          name: UserListPageWidget.routeName,
+          path: UserListPageWidget.routePath,
           builder: (context, params) => UserListPageWidget(),
         ),
         FFRoute(
-          name: 'entryPage',
-          path: '/entry',
+          name: EntryPageWidget.routeName,
+          path: EntryPageWidget.routePath,
           requireAuth: true,
           builder: (context, params) => EntryPageWidget(),
         ),
         FFRoute(
-          name: 'TaskListPage',
-          path: '/tasks',
+          name: TaskListPageWidget.routeName,
+          path: TaskListPageWidget.routePath,
           builder: (context, params) => TaskListPageWidget(),
         ),
         FFRoute(
-          name: 'UserTaskListPage',
-          path: '/usertasks',
+          name: UserTaskListPageWidget.routeName,
+          path: UserTaskListPageWidget.routePath,
           builder: (context, params) => UserTaskListPageWidget(),
         ),
         FFRoute(
-          name: 'UserEditPage',
-          path: '/user',
+          name: UserEditPageWidget.routeName,
+          path: UserEditPageWidget.routePath,
           builder: (context, params) => UserEditPageWidget(
             userID: params.getParam(
               'userID',
@@ -150,14 +152,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'ReportPageCopy',
-          path: '/reports',
+          name: ReportPageCopyWidget.routeName,
+          path: ReportPageCopyWidget.routePath,
           builder: (context, params) => ReportPageCopyWidget(),
         ),
         FFRoute(
-          name: 'ReportsPage',
-          path: '/report',
+          name: ReportsPageWidget.routeName,
+          path: ReportsPageWidget.routePath,
           builder: (context, params) => ReportsPageWidget(),
+        ),
+        FFRoute(
+          name: ImportPageWidget.routeName,
+          path: ImportPageWidget.routePath,
+          builder: (context, params) => ImportPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -276,6 +283,7 @@ class FFParameters {
     String paramName,
     ParamType type, {
     bool isList = false,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -293,6 +301,7 @@ class FFParameters {
       param,
       type,
       isList,
+      structBuilder: structBuilder,
     );
   }
 }

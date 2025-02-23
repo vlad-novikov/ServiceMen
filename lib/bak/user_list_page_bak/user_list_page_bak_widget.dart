@@ -2,12 +2,16 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'user_list_page_bak_model.dart';
 export 'user_list_page_bak_model.dart';
 
 class UserListPageBakWidget extends StatefulWidget {
   const UserListPageBakWidget({super.key});
+
+  static String routeName = 'UserListPageBak';
+  static String routePath = '/userListPageBak';
 
   @override
   State<UserListPageBakWidget> createState() => _UserListPageBakWidgetState();
@@ -50,7 +54,9 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
               backgroundColor: Colors.white,
               automaticallyImplyLeading: false,
               title: Text(
-                'Система  Управления Заявками на Сервисное Обслуживание',
+                FFLocalizations.of(context).getText(
+                  'fd44ta9n' /* Система  Управления Заявками н... */,
+                ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: Color(0xFF14181B),
@@ -73,7 +79,7 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
                       size: 30.0,
                     ),
                     onPressed: () async {
-                      context.pushNamed('UserAddPage');
+                      context.pushNamed(UserAddPageWidget.routeName);
                     },
                   ),
                 ),
@@ -112,7 +118,9 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 0.0, 12.0),
                               child: Text(
-                                'Список сотрудников',
+                                FFLocalizations.of(context).getText(
+                                  '8g12gy1w' /* Список сотрудников */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
@@ -253,7 +261,7 @@ class _UserListPageBakWidgetState extends State<UserListPageBakWidget> {
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
                                               context.pushNamed(
-                                                'UserEditPage',
+                                                UserEditPageWidget.routeName,
                                                 queryParameters: {
                                                   'userID': serializeParam(
                                                     '',

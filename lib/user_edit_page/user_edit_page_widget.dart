@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'user_edit_page_model.dart';
 export 'user_edit_page_model.dart';
@@ -15,6 +16,9 @@ class UserEditPageWidget extends StatefulWidget {
   });
 
   final String? userID;
+
+  static String routeName = 'UserEditPage';
+  static String routePath = '/user';
 
   @override
   State<UserEditPageWidget> createState() => _UserEditPageWidgetState();
@@ -88,7 +92,9 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                         Align(
                           alignment: AlignmentDirectional(0.0, 0.0),
                           child: Text(
-                            'Система  Управления Заявками на Сервисное Обслуживание',
+                            FFLocalizations.of(context).getText(
+                              '9yn7k3sp' /* Система  Управления Заявками н... */,
+                            ),
                             style: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
@@ -98,7 +104,9 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                           ),
                         ),
                         Text(
-                          'Сотрудник',
+                          FFLocalizations.of(context).getText(
+                            'sbkmwvfd' /* Сотрудник */,
+                          ),
                           style:
                               FlutterFlowTheme.of(context).titleMedium.override(
                                     fontFamily: 'Inter Tight',
@@ -126,7 +134,8 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                           await authManager.signOut();
                           GoRouter.of(context).clearRedirectLocation();
 
-                          context.goNamedAuth('LoginPage', context.mounted);
+                          context.goNamedAuth(
+                              LoginPageWidget.routeName, context.mounted);
                         },
                       ),
                     ),
@@ -197,7 +206,9 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      'Профиль сотрудника',
+                                      FFLocalizations.of(context).getText(
+                                        'pcc7zt5u' /* Профиль сотрудника */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .headlineSmall
                                           .override(
@@ -216,7 +227,10 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Имя и Отчество',
+                                        labelText:
+                                            FFLocalizations.of(context).getText(
+                                          'bu2dg7j5' /* Имя и Отчество */,
+                                        ),
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -285,7 +299,10 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Фамилия',
+                                        labelText:
+                                            FFLocalizations.of(context).getText(
+                                          '747xy92z' /* Фамилия */,
+                                        ),
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -354,7 +371,10 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Электронная почта',
+                                        labelText:
+                                            FFLocalizations.of(context).getText(
+                                          'qkj44d8y' /* Электронная почта */,
+                                        ),
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -424,7 +444,10 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Мобильный телефон',
+                                        labelText:
+                                            FFLocalizations.of(context).getText(
+                                          'wfxtgn5v' /* Мобильный телефон */,
+                                        ),
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -510,7 +533,9 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      'Права в Приложении',
+                                      FFLocalizations.of(context).getText(
+                                        '4ancyzv9' /* Права в Приложении */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .headlineSmall
                                           .override(
@@ -526,7 +551,9 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Активен',
+                                          FFLocalizations.of(context).getText(
+                                            'cpsp7muc' /* Активен */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
@@ -564,7 +591,9 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Загрузка\\Выгрузка',
+                                          FFLocalizations.of(context).getText(
+                                            'n5dkqpe8' /* Загрузка\Выгрузка */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
@@ -602,7 +631,9 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Назначение заявок',
+                                          FFLocalizations.of(context).getText(
+                                            'j6i07i1t' /* Назначение заявок */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
@@ -639,7 +670,9 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Выполнение заявок',
+                                          FFLocalizations.of(context).getText(
+                                            'a6cl2k8h' /* Выполнение заявок */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
@@ -675,7 +708,9 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Аудит выполнения',
+                                          FFLocalizations.of(context).getText(
+                                            'e89sbmgg' /* Аудит выполнения */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
@@ -712,7 +747,9 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Администрирование',
+                                          FFLocalizations.of(context).getText(
+                                            'zei4f0j1' /* Администрирование */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
@@ -756,9 +793,12 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                 flex: 4,
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    context.pushNamed('UserListPage');
+                                    context.pushNamed(
+                                        UserListPageWidget.routeName);
                                   },
-                                  text: 'Выйти',
+                                  text: FFLocalizations.of(context).getText(
+                                    '181nonad' /* Выйти */,
+                                  ),
                                   options: FFButtonOptions(
                                     width:
                                         MediaQuery.sizeOf(context).width * 1.0,
@@ -800,9 +840,12 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                       ),
                                     );
 
-                                    context.pushNamed('UserListPage');
+                                    context.pushNamed(
+                                        UserListPageWidget.routeName);
                                   },
-                                  text: 'Сохранить и выйти',
+                                  text: FFLocalizations.of(context).getText(
+                                    'ioyc0ohw' /* Сохранить и выйти */,
+                                  ),
                                   options: FFButtonOptions(
                                     width:
                                         MediaQuery.sizeOf(context).width * 1.0,

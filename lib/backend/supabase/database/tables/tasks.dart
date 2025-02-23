@@ -45,12 +45,6 @@ class TasksRow extends SupabaseDataRow {
   DateTime? get taskDate => getField<DateTime>('task_date');
   set taskDate(DateTime? value) => setField<DateTime>('task_date', value);
 
-  int? get importBatch => getField<int>('import_batch');
-  set importBatch(int? value) => setField<int>('import_batch', value);
-
-  int? get importLine => getField<int>('import_line');
-  set importLine(int? value) => setField<int>('import_line', value);
-
   String? get transferReason => getField<String>('transfer_reason');
   set transferReason(String? value) =>
       setField<String>('transfer_reason', value);
@@ -68,4 +62,17 @@ class TasksRow extends SupabaseDataRow {
 
   String? get taskDateStr => getField<String>('task_date_str');
   set taskDateStr(String? value) => setField<String>('task_date_str', value);
+
+  String? get locationContract => getField<String>('location_contract');
+  set locationContract(String? value) =>
+      setField<String>('location_contract', value);
+
+  String? get taskDescr => getField<String>('task_descr');
+  set taskDescr(String? value) => setField<String>('task_descr', value);
+
+  String? get locationLink => getField<String>('location_link');
+  set locationLink(String? value) => setField<String>('location_link', value);
+
+  bool? get locationDoc => getField<bool>('location_doc');
+  set locationDoc(bool? value) => setField<bool>('location_doc', value);
 }

@@ -67,7 +67,9 @@ class _StatusSelectComponentWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 8.0),
                 child: Text(
-                  'Выберите статус',
+                  FFLocalizations.of(context).getText(
+                    'rhanbnju' /* Выберите статус */,
+                  ),
                   style: FlutterFlowTheme.of(context).bodyLarge.override(
                         fontFamily: 'Inter',
                         letterSpacing: 0.0,
@@ -127,7 +129,9 @@ class _StatusSelectComponentWidgetState
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Назначение',
+                                      FFLocalizations.of(context).getText(
+                                        'n33tiluc' /* Назначение */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -189,7 +193,9 @@ class _StatusSelectComponentWidgetState
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Выполнение',
+                                      FFLocalizations.of(context).getText(
+                                        'ha7rjf5u' /* Выполнение */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -251,7 +257,9 @@ class _StatusSelectComponentWidgetState
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Завершено',
+                                      FFLocalizations.of(context).getText(
+                                        'poz7q9m0' /* Завершено */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -313,7 +321,9 @@ class _StatusSelectComponentWidgetState
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Перенос',
+                                      FFLocalizations.of(context).getText(
+                                        'dxh3158z' /* Перенос */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -369,7 +379,9 @@ class _StatusSelectComponentWidgetState
                                   Navigator.pop(context);
                                 },
                                 child: Text(
-                                  'Закрыть',
+                                  FFLocalizations.of(context).getText(
+                                    'faa2yw50' /* Закрыть */,
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(

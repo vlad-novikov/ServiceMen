@@ -5,6 +5,7 @@ import '/components/status_select_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -14,6 +15,9 @@ export 'user_task_list_page_model.dart';
 
 class UserTaskListPageWidget extends StatefulWidget {
   const UserTaskListPageWidget({super.key});
+
+  static String routeName = 'UserTaskListPage';
+  static String routePath = '/usertasks';
 
   @override
   State<UserTaskListPageWidget> createState() => _UserTaskListPageWidgetState();
@@ -66,7 +70,9 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
               backgroundColor: Colors.white,
               automaticallyImplyLeading: false,
               title: Text(
-                'Мои заявки',
+                FFLocalizations.of(context).getText(
+                  'q19xp77y' /* Мои заявки */,
+                ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: Color(0xFF15161E),
@@ -94,7 +100,8 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                       await authManager.signOut();
                       GoRouter.of(context).clearRedirectLocation();
 
-                      context.goNamedAuth('LoginPage', context.mounted);
+                      context.goNamedAuth(
+                          LoginPageWidget.routeName, context.mounted);
                     },
                   ),
                 ),
@@ -177,7 +184,10 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                     .fromSTEB(
                                                         12.0, 0.0, 0.0, 0.0),
                                                 child: Text(
-                                                  'Заявки',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '49kntp36' /* Заявки */,
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -208,7 +218,8 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        context.pushNamed('UserListPageBak');
+                                        context.pushNamed(
+                                            UserListPageBakWidget.routeName);
                                       },
                                       child: AnimatedContainer(
                                         duration: Duration(milliseconds: 200),
@@ -231,7 +242,8 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              context.pushNamed('UserListPage');
+                                              context.pushNamed(
+                                                  UserListPageWidget.routeName);
                                             },
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -246,7 +258,10 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    'Сотрудники',
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'eu449v1j' /* Сотрудники */,
+                                                    ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -299,7 +314,10 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'Загрузка',
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'w42olvt8' /* Загрузка */,
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -350,7 +368,10 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'Отчеты',
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  '5wvoafto' /* Отчеты */,
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -518,7 +539,10 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
-                                                  '№',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '8trc8c7s' /* № */,
+                                                  ),
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -547,7 +571,10 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
-                                                  'Дата',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'uc9e8l0p' /* Дата */,
+                                                  ),
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -576,7 +603,10 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
-                                                  'Название ТП',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'wtvifokn' /* Название ТП */,
+                                                  ),
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -605,7 +635,10 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                     .fromSTEB(
                                                         30.0, 0.0, 30.0, 0.0),
                                                 child: Text(
-                                                  'Телефон',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'xd4rec8r' /* Телефон */,
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelSmall
@@ -633,7 +666,10 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                     .fromSTEB(
                                                         0.0, 0.0, 20.0, 0.0),
                                                 child: Text(
-                                                  'Вид работ',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'q610qwth' /* Вид работ */,
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelSmall
@@ -661,7 +697,10 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
-                                                  'ID Терминала',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'tm6j846z' /* ID Терминала */,
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelSmall
@@ -689,7 +728,10 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
-                                                  'Адрес',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'x7q2tda4' /* Адрес */,
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelSmall
@@ -717,7 +759,10 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
-                                                  'Статус',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'gas429yt' /* Статус */,
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelSmall

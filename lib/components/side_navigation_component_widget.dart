@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'side_navigation_component_model.dart';
@@ -90,7 +91,7 @@ class _SideNavigationComponentWidgetState
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed('TaskListPage');
+                              context.pushNamed(TaskListPageWidget.routeName);
                             },
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -103,7 +104,6 @@ class _SideNavigationComponentWidgetState
                                 Container(
                                   height: 32.0,
                                   decoration: BoxDecoration(
-                                    color: Color(0xFF6F61EF),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                 ),
@@ -112,13 +112,19 @@ class _SideNavigationComponentWidgetState
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 0.0, 0.0),
                                     child: Text(
-                                      'Заявки',
+                                      FFLocalizations.of(context).getText(
+                                        '03dtywdk' /* Заявки */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Plus Jakarta Sans',
                                             color: Color(0xFF15161E),
-                                            fontSize: 14.0,
+                                            fontSize:
+                                                getCurrentRoute(context) ==
+                                                        '/tasks'
+                                                    ? 18.0
+                                                    : 14.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
                                           ),
@@ -153,7 +159,7 @@ class _SideNavigationComponentWidgetState
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed('UserListPage');
+                              context.pushNamed(UserListPageWidget.routeName);
                             },
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -167,13 +173,18 @@ class _SideNavigationComponentWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 0.0, 0.0),
                                   child: Text(
-                                    'Сотрудники',
+                                    FFLocalizations.of(context).getText(
+                                      'gzdpume1' /* Сотрудники */,
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Plus Jakarta Sans',
                                           color: Color(0xFF15161E),
-                                          fontSize: 14.0,
+                                          fontSize: getCurrentRoute(context) ==
+                                                  '/users'
+                                              ? 18.0
+                                              : 14.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -201,31 +212,45 @@ class _SideNavigationComponentWidgetState
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               8.0, 0.0, 6.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.fileImport,
-                                color: Color(0xFF15161E),
-                                size: 24.0,
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  'Загрузка',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Plus Jakarta Sans',
-                                        color: Color(0xFF15161E),
-                                        fontSize: 14.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w500,
-                                      ),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(ImportPageWidget.routeName);
+                            },
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                FaIcon(
+                                  FontAwesomeIcons.fileImport,
+                                  color: Color(0xFF15161E),
+                                  size: 24.0,
                                 ),
-                              ),
-                            ],
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 0.0, 0.0, 0.0),
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'l89k8tok' /* Загрузка */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          color: Color(0xFF15161E),
+                                          fontSize: getCurrentRoute(context) ==
+                                                  '/import'
+                                              ? 18.0
+                                              : 14.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -252,7 +277,7 @@ class _SideNavigationComponentWidgetState
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed('ReportsPage');
+                              context.pushNamed(ReportsPageWidget.routeName);
                             },
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -266,13 +291,18 @@ class _SideNavigationComponentWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 0.0, 0.0),
                                   child: Text(
-                                    'Отчеты',
+                                    FFLocalizations.of(context).getText(
+                                      'n4bkjr93' /* Отчеты */,
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Plus Jakarta Sans',
                                           color: Color(0xFF15161E),
-                                          fontSize: 14.0,
+                                          fontSize: getCurrentRoute(context) ==
+                                                  '/reports'
+                                              ? 18.0
+                                              : 14.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                         ),

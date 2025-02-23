@@ -2,12 +2,16 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'login_page_model.dart';
 export 'login_page_model.dart';
 
 class LoginPageWidget extends StatefulWidget {
   const LoginPageWidget({super.key});
+
+  static String routeName = 'LoginPage';
+  static String routePath = '/login';
 
   @override
   State<LoginPageWidget> createState() => _LoginPageWidgetState();
@@ -94,7 +98,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Система  Управления Заявками на Сервисное Обслуживание',
+                                      FFLocalizations.of(context).getText(
+                                        'mi0ptr7q' /* Система  Управления Заявками н... */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .headlineSmall
                                           .override(
@@ -106,7 +112,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 0.0, 24.0),
                                       child: Text(
-                                        'Авторизация',
+                                        FFLocalizations.of(context).getText(
+                                          'a7x6cubj' /* Авторизация */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .headlineMedium
                                             .override(
@@ -129,7 +137,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                           autofillHints: [AutofillHints.email],
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText: 'Email',
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'pnzkzteh' /* Эл.почта */,
+                                            ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
@@ -211,7 +223,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                           obscureText:
                                               !_model.passwordVisibility,
                                           decoration: InputDecoration(
-                                            labelText: 'Password',
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '1akar5sm' /* Пароль */,
+                                            ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
@@ -312,9 +328,71 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                           }
 
                                           context.goNamedAuth(
-                                              'entryPage', context.mounted);
+                                              EntryPageWidget.routeName,
+                                              context.mounted);
                                         },
-                                        text: 'Войти',
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          'lpr2x7hm' /* Войти */,
+                                        ),
+                                        options: FFButtonOptions(
+                                          width: 370.0,
+                                          height: 44.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: Color(0xFF4B39EF),
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily:
+                                                        'Plus Jakarta Sans',
+                                                    color: Colors.white,
+                                                    fontSize: 16.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 16.0),
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          GoRouter.of(context)
+                                              .prepareAuthEvent();
+
+                                          final user =
+                                              await authManager.signInWithEmail(
+                                            context,
+                                            _model.emailAddressTextController
+                                                .text,
+                                            _model.passwordTextController.text,
+                                          );
+                                          if (user == null) {
+                                            return;
+                                          }
+
+                                          context.goNamedAuth(
+                                              EntryPageWidget.routeName,
+                                              context.mounted);
+                                        },
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          'iacg01ld' /* Войти */,
+                                        ),
                                         options: FFButtonOptions(
                                           width: 370.0,
                                           height: 44.0,

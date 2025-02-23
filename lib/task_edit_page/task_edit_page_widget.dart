@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'task_edit_page_model.dart';
 export 'task_edit_page_model.dart';
@@ -16,6 +17,9 @@ class TaskEditPageWidget extends StatefulWidget {
   });
 
   final int? taskID;
+
+  static String routeName = 'TaskEditPage';
+  static String routePath = '/task';
 
   @override
   State<TaskEditPageWidget> createState() => _TaskEditPageWidgetState();
@@ -108,7 +112,9 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                   Align(
                     alignment: AlignmentDirectional(-1.0, 0.0),
                     child: Text(
-                      'Заявка',
+                      FFLocalizations.of(context).getText(
+                        'if9u43hz' /* Заявка */,
+                      ),
                       style: FlutterFlowTheme.of(context).titleMedium.override(
                             fontFamily: 'Inter Tight',
                             letterSpacing: 0.0,
@@ -142,7 +148,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                 GoRouter.of(context).clearRedirectLocation();
 
                                 context.goNamedAuth(
-                                    'LoginPage', context.mounted);
+                                    LoginPageWidget.routeName, context.mounted);
                               },
                             ),
                           ),
@@ -205,7 +211,9 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                   Align(
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Text(
-                                      'Информация о ТСП',
+                                      FFLocalizations.of(context).getText(
+                                        'kybg95d9' /* Информация о ТСП */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
@@ -228,7 +236,10 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                         autofocus: false,
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          labelText: 'Название ТСП',
+                                          labelText: FFLocalizations.of(context)
+                                              .getText(
+                                            'ucbq2o1r' /* Название ТСП */,
+                                          ),
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium
@@ -311,7 +322,10 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                         autofocus: false,
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          labelText: 'Адрес ТСП',
+                                          labelText: FFLocalizations.of(context)
+                                              .getText(
+                                            'r1ywds96' /* Адрес ТСП */,
+                                          ),
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium
@@ -393,7 +407,10 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                         autofocus: false,
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          labelText: 'Телефон',
+                                          labelText: FFLocalizations.of(context)
+                                              .getText(
+                                            'zkh7vgxp' /* Телефон */,
+                                          ),
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium
@@ -478,7 +495,9 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                       alignment:
                                           AlignmentDirectional(-1.0, 0.0),
                                       child: Text(
-                                        'Информация об оборудовании',
+                                        FFLocalizations.of(context).getText(
+                                          'yowhb1nw' /* Информация об оборудовании */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
@@ -501,7 +520,11 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText: 'Номер РР',
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'i9gverpq' /* Номер РР */,
+                                            ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
@@ -584,7 +607,11 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText: 'Договор эквайринга',
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'gne4taaz' /* Договор эквайринга */,
+                                            ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
@@ -666,7 +693,11 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText: 'Тип связи',
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'putk2tvr' /* Тип связи */,
+                                            ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
@@ -749,7 +780,11 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText: 'Причина неисправности',
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '0dli5mna' /* Причина неисправности */,
+                                            ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
@@ -841,7 +876,9 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                       alignment:
                                           AlignmentDirectional(-1.0, 0.0),
                                       child: Text(
-                                        'Выполнение',
+                                        FFLocalizations.of(context).getText(
+                                          'yyrqn4du' /* Выполнение */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
@@ -863,7 +900,11 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText: 'Вид работ',
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'pjhjmpzu' /* Вид работ */,
+                                            ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
@@ -995,7 +1036,11 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 isDense: true,
-                                                labelText: 'Исполнитель',
+                                                labelText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'okpa75kk' /* Исполнитель */,
+                                                ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -1095,7 +1140,11 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText: 'Статус',
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '6l92lupm' /* Статус */,
+                                            ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
@@ -1174,7 +1223,10 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                           children: [
                                             Expanded(
                                               child: Text(
-                                                'Документы в ТСП',
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'ukz984qh' /* Документы в ТСП */,
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyLarge
@@ -1224,7 +1276,11 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText: 'Число обучаемых',
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '7sn3rmqc' /* Число обучаемых */,
+                                            ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
@@ -1305,7 +1361,9 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                   Align(
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Text(
-                                      'Перенос',
+                                      FFLocalizations.of(context).getText(
+                                        'tbucemny' /* Перенос */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
@@ -1328,7 +1386,10 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                         autofocus: false,
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          labelText: 'Причина переноса',
+                                          labelText: FFLocalizations.of(context)
+                                              .getText(
+                                            'w3xkl8bo' /* Причина переноса */,
+                                          ),
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium
@@ -1411,7 +1472,10 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                         autofocus: false,
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          labelText: 'Контакт по переносу',
+                                          labelText: FFLocalizations.of(context)
+                                              .getText(
+                                            '35zykl8t' /* Контакт по переносу */,
+                                          ),
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium
@@ -1494,7 +1558,10 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                         autofocus: false,
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          labelText: 'Дата переноса',
+                                          labelText: FFLocalizations.of(context)
+                                              .getText(
+                                            '913idvl5' /* Дата переноса */,
+                                          ),
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium
@@ -1579,9 +1646,12 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                     10.0, 0.0, 10.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    context.pushNamed('TaskListPage');
+                                    context.pushNamed(
+                                        TaskListPageWidget.routeName);
                                   },
-                                  text: 'Выйти',
+                                  text: FFLocalizations.of(context).getText(
+                                    '8cvq83ql' /* Выйти */,
+                                  ),
                                   options: FFButtonOptions(
                                     width:
                                         MediaQuery.sizeOf(context).width * 1.0,
@@ -1637,9 +1707,12 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                       ),
                                     );
 
-                                    context.pushNamed('TaskListPage');
+                                    context.pushNamed(
+                                        TaskListPageWidget.routeName);
                                   },
-                                  text: 'Сохранить и выйти',
+                                  text: FFLocalizations.of(context).getText(
+                                    '1wp44xee' /* Сохранить и выйти */,
+                                  ),
                                   options: FFButtonOptions(
                                     width:
                                         MediaQuery.sizeOf(context).width * 1.0,

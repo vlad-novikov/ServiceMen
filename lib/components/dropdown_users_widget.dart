@@ -89,8 +89,12 @@ class _DropdownUsersWidgetState extends State<DropdownUsersWidget> {
                 fontFamily: 'Inter',
                 letterSpacing: 0.0,
               ),
-          hintText: 'Исполнитель',
-          searchHintText: 'Search...',
+          hintText: FFLocalizations.of(context).getText(
+            'u4bnu9xu' /* Исполнитель */,
+          ),
+          searchHintText: FFLocalizations.of(context).getText(
+            '0d23n1sh' /* Search... */,
+          ),
           icon: Icon(
             Icons.keyboard_arrow_down_rounded,
             color: FlutterFlowTheme.of(context).secondaryText,
