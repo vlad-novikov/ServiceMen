@@ -101,7 +101,7 @@ class _StatusSelectComponentWidgetState
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          Navigator.pop(context, 'Назначение');
+                          Navigator.pop(context, 'Требует назначения');
                         },
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -130,7 +130,7 @@ class _StatusSelectComponentWidgetState
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'n33tiluc' /* Назначение */,
+                                        'n33tiluc' /* Требует назначения */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -165,7 +165,7 @@ class _StatusSelectComponentWidgetState
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          Navigator.pop(context, 'выполнение');
+                          Navigator.pop(context, 'В работе');
                         },
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -194,7 +194,7 @@ class _StatusSelectComponentWidgetState
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'ha7rjf5u' /* Выполнение */,
+                                        'ha7rjf5u' /* В работе */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -258,7 +258,7 @@ class _StatusSelectComponentWidgetState
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'poz7q9m0' /* Завершено */,
+                                        'poz7q9m0' /* Выполнено */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -293,7 +293,7 @@ class _StatusSelectComponentWidgetState
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          Navigator.pop(context, 'перенос');
+                          Navigator.pop(context, 'Не выполнено');
                         },
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -322,7 +322,71 @@ class _StatusSelectComponentWidgetState
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'dxh3158z' /* Перенос */,
+                                        'dxh3158z' /* Не выполнено */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  AnimatedContainer(
+                    duration: Duration(milliseconds: 150),
+                    curve: Curves.easeInOut,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          Navigator.pop(context, 'Не выполнено (перенос)');
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 8.0, 0.0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(40.0),
+                                child: Image.asset(
+                                  'assets/images/icons8-status-96.png',
+                                  width: 32.0,
+                                  height: 32.0,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    4.0, 0.0, 0.0, 0.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      FFLocalizations.of(context).getText(
+                                        'n7xwew2w' /* Не выполнено (перенос) */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium

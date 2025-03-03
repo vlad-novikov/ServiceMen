@@ -55,15 +55,17 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
 
     _model.textFieldFocusNode9 ??= FocusNode();
 
-    _model.switchValue = true;
-
     _model.textFieldFocusNode10 ??= FocusNode();
+
+    _model.switchValue = true;
 
     _model.textFieldFocusNode11 ??= FocusNode();
 
     _model.textFieldFocusNode12 ??= FocusNode();
 
     _model.textFieldFocusNode13 ??= FocusNode();
+
+    _model.textFieldFocusNode14 ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -1134,7 +1136,8 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                           controller:
                                               _model.textController10 ??=
                                                   TextEditingController(
-                                            text: columnTasksRow?.taskStatus,
+                                            text:
+                                                columnTasksRow?.doerDescription,
                                           ),
                                           focusNode: _model.textFieldFocusNode9,
                                           autofocus: false,
@@ -1143,7 +1146,97 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                             labelText:
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                              '6l92lupm' /* Статус */,
+                                              '6l92lupm' /* Комментарий исполнителя */,
+                                            ),
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Inter',
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Inter',
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            filled: true,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryBackground,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily: 'Inter',
+                                                letterSpacing: 0.0,
+                                              ),
+                                          maxLines: 5,
+                                          minLines: 1,
+                                          keyboardType: TextInputType.phone,
+                                          validator: _model
+                                              .textController10Validator
+                                              .asValidator(context),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 5.0, 20.0, 5.0),
+                                        child: TextFormField(
+                                          controller:
+                                              _model.textController11 ??=
+                                                  TextEditingController(
+                                            text: columnTasksRow?.taskStatus,
+                                          ),
+                                          focusNode:
+                                              _model.textFieldFocusNode10,
+                                          autofocus: false,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'ydno50kj' /* Статус */,
                                             ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
@@ -1208,7 +1301,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                           minLines: 1,
                                           keyboardType: TextInputType.phone,
                                           validator: _model
-                                              .textController10Validator
+                                              .textController11Validator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -1266,13 +1359,13 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                             20.0, 5.0, 20.0, 5.0),
                                         child: TextFormField(
                                           controller:
-                                              _model.textController11 ??=
+                                              _model.textController12 ??=
                                                   TextEditingController(
                                             text: columnTasksRow?.traineesNumber
                                                 ?.toString(),
                                           ),
                                           focusNode:
-                                              _model.textFieldFocusNode10,
+                                              _model.textFieldFocusNode11,
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
@@ -1344,7 +1437,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                           minLines: 1,
                                           keyboardType: TextInputType.phone,
                                           validator: _model
-                                              .textController11Validator
+                                              .textController12Validator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -1378,11 +1471,11 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 5.0, 20.0, 5.0),
                                       child: TextFormField(
-                                        controller: _model.textController12 ??=
+                                        controller: _model.textController13 ??=
                                             TextEditingController(
                                           text: columnTasksRow?.transferReason,
                                         ),
-                                        focusNode: _model.textFieldFocusNode11,
+                                        focusNode: _model.textFieldFocusNode12,
                                         autofocus: false,
                                         obscureText: false,
                                         decoration: InputDecoration(
@@ -1453,7 +1546,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                         minLines: 1,
                                         keyboardType: TextInputType.phone,
                                         validator: _model
-                                            .textController12Validator
+                                            .textController13Validator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -1464,11 +1557,11 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 5.0, 20.0, 5.0),
                                       child: TextFormField(
-                                        controller: _model.textController13 ??=
+                                        controller: _model.textController14 ??=
                                             TextEditingController(
                                           text: columnTasksRow?.transferPerson,
                                         ),
-                                        focusNode: _model.textFieldFocusNode12,
+                                        focusNode: _model.textFieldFocusNode13,
                                         autofocus: false,
                                         obscureText: false,
                                         decoration: InputDecoration(
@@ -1539,7 +1632,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                         minLines: 1,
                                         keyboardType: TextInputType.phone,
                                         validator: _model
-                                            .textController13Validator
+                                            .textController14Validator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -1549,12 +1642,12 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 5.0, 20.0, 5.0),
                                       child: TextFormField(
-                                        controller: _model.textController14 ??=
+                                        controller: _model.textController15 ??=
                                             TextEditingController(
                                           text: columnTasksRow?.transferDate
                                               ?.toString(),
                                         ),
-                                        focusNode: _model.textFieldFocusNode13,
+                                        focusNode: _model.textFieldFocusNode14,
                                         autofocus: false,
                                         obscureText: false,
                                         decoration: InputDecoration(
@@ -1625,7 +1718,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                         minLines: 1,
                                         keyboardType: TextInputType.phone,
                                         validator: _model
-                                            .textController14Validator
+                                            .textController15Validator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -1695,11 +1788,11 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                         'task_status':
                                             _model.textController10.text,
                                         'transfer_reason':
-                                            _model.textController12.text,
-                                        'transfer_person':
                                             _model.textController13.text,
+                                        'transfer_person':
+                                            _model.textController14.text,
                                         'trainees_number': int.tryParse(
-                                            _model.textController11.text),
+                                            _model.textController12.text),
                                       },
                                       matchingRows: (rows) => rows.eqOrNull(
                                         'id',

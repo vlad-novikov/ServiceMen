@@ -1,13 +1,14 @@
 import 'package:collection/collection.dart';
 
-enum ImportExcelHeaders {
-  line1Number,
-  LocationName,
-  LocationPhone,
-  TaskCategory,
-  EquipmentId,
-  LocationAddress,
-  TaskDescription,
+enum EnumImportHeaders {
+  Line,
+  Name,
+  Phone,
+  Category,
+  Id,
+  Address,
+  Description,
+  Date,
 }
 
 extension FFEnumExtensions<T extends Enum> on T {
@@ -21,8 +22,8 @@ extension FFEnumListExtensions<T extends Enum> on Iterable<T> {
 
 T? deserializeEnum<T>(String? value) {
   switch (T) {
-    case (ImportExcelHeaders):
-      return ImportExcelHeaders.values.deserialize(value) as T?;
+    case (EnumImportHeaders):
+      return EnumImportHeaders.values.deserialize(value) as T?;
     default:
       return null;
   }

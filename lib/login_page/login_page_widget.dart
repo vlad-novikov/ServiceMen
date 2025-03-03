@@ -99,7 +99,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'mi0ptr7q' /* Система  Управления Заявками н... */,
+                                        'mi0ptr7q' /* Система  Управления Заявками */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .headlineSmall
@@ -366,67 +366,23 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                         ),
                                       ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 16.0),
-                                      child: FFButtonWidget(
-                                        onPressed: () async {
-                                          GoRouter.of(context)
-                                              .prepareAuthEvent();
-
-                                          final user =
-                                              await authManager.signInWithEmail(
-                                            context,
-                                            _model.emailAddressTextController
-                                                .text,
-                                            _model.passwordTextController.text,
-                                          );
-                                          if (user == null) {
-                                            return;
-                                          }
-
-                                          context.goNamedAuth(
-                                              EntryPageWidget.routeName,
-                                              context.mounted);
-                                        },
-                                        text:
-                                            FFLocalizations.of(context).getText(
-                                          'iacg01ld' /* Войти */,
-                                        ),
-                                        options: FFButtonOptions(
-                                          width: 370.0,
-                                          height: 44.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: Color(0xFF4B39EF),
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily:
-                                                        'Plus Jakarta Sans',
-                                                    color: Colors.white,
-                                                    fontSize: 16.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                          elevation: 3.0,
-                                          borderSide: BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                      ),
-                                    ),
                                   ],
                                 ),
                               ),
+                            ),
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: Image.asset(
+                                    'assets/images/atm-machine.png',
+                                    width: 100.0,
+                                    height: 100.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),

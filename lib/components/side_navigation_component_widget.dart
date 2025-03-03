@@ -78,7 +78,6 @@ class _SideNavigationComponentWidgetState
                         width: double.infinity,
                         height: 44.0,
                         decoration: BoxDecoration(
-                          color: Color(0x4D9489F5),
                           borderRadius: BorderRadius.circular(12.0),
                           shape: BoxShape.rectangle,
                         ),
@@ -100,12 +99,6 @@ class _SideNavigationComponentWidgetState
                                   Icons.checklist_rounded,
                                   color: Color(0xFF6F61EF),
                                   size: 24.0,
-                                ),
-                                Container(
-                                  height: 32.0,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
                                 ),
                                 Expanded(
                                   child: Padding(

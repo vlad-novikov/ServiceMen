@@ -75,4 +75,11 @@ class TasksRow extends SupabaseDataRow {
 
   bool? get locationDoc => getField<bool>('location_doc');
   set locationDoc(bool? value) => setField<bool>('location_doc', value);
+
+  int? get lineNo => getField<int>('line_no');
+  set lineNo(int? value) => setField<int>('line_no', value);
+
+  String? get doerDescription => getField<String>('doer_description');
+  set doerDescription(String? value) =>
+      setField<String>('doer_description', value);
 }

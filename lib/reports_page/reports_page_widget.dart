@@ -71,7 +71,7 @@ class _ReportsPageWidgetState extends State<ReportsPageWidget> {
               automaticallyImplyLeading: false,
               title: Text(
                 FFLocalizations.of(context).getText(
-                  'x5g2r2hx' /* Отчёты */,
+                  'x5g2r2hx' /* Система управления заявками */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',

@@ -147,7 +147,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // LoginPage
   {
     'mi0ptr7q': {
-      'ru': 'Система  Управления Заявками на Сервисное Обслуживание',
+      'ru': 'Система  Управления Заявками',
       'en': 'Task management system',
     },
     'a7x6cubj': {
@@ -163,10 +163,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Password',
     },
     'lpr2x7hm': {
-      'ru': 'Войти',
-      'en': '',
-    },
-    'iacg01ld': {
       'ru': 'Войти',
       'en': '',
     },
@@ -494,6 +490,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     '6l92lupm': {
+      'ru': 'Комментарий исполнителя',
+      'en': '',
+    },
+    'ydno50kj': {
       'ru': 'Статус',
       'en': '',
     },
@@ -598,16 +598,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': '№',
       'en': '#',
     },
-    '0brkz1ci': {
-      'ru': 'Дата',
-      'en': 'Date',
-    },
     'kyboxrj8': {
       'ru': 'Название ТП',
       'en': 'TP Name',
     },
     '3bc9159r': {
-      'ru': 'Телефон',
+      'ru': 'Описание',
       'en': 'Mobile',
     },
     'zxmyhhdl': {
@@ -631,7 +627,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Status',
     },
     'eylvyzd2': {
-      'ru': 'Заявки и исполнители',
+      'ru': 'Система управления заявками',
       'en': 'Tasks and Doers',
     },
     'kcb6b2ry': {
@@ -847,7 +843,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'x5g2r2hx': {
-      'ru': 'Отчёты',
+      'ru': 'Система управления заявками',
       'en': '',
     },
     '59w7vseq': {
@@ -858,44 +854,32 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // ImportPage
   {
     'z3l3bnin': {
-      'ru': 'Импорт',
+      'ru': 'Прочитать',
       'en': '',
     },
-    's3jxacdv': {
-      'ru': '№',
-      'en': '#',
+    'dr8zgc38': {
+      'ru': 'Категория',
+      'en': 'Address',
     },
-    'hhhqbuyq': {
-      'ru': 'Дата',
-      'en': 'Date',
+    'gj489ogj': {
+      'ru': 'Строка',
+      'en': '',
     },
-    'nwgnqsdv': {
-      'ru': 'Название ТП',
-      'en': 'TP Name',
-    },
-    'c68bp1sb': {
-      'ru': 'Телефон',
-      'en': 'Mobile',
+    'en6se2qo': {
+      'ru': 'Наименование',
+      'en': '',
     },
     'gohvchs6': {
-      'ru': 'Вид работ',
+      'ru': 'Адрес',
       'en': 'Task Category',
     },
     'b2u1160v': {
       'ru': 'ID Терминала',
       'en': 'Terminal ID',
     },
-    'dr8zgc38': {
-      'ru': 'Адрес',
-      'en': 'Address',
-    },
     'ufnx8u1o': {
-      'ru': 'Исполнитель',
+      'ru': 'Описание',
       'en': 'Doer',
-    },
-    'ha8m327q': {
-      'ru': 'Статус',
-      'en': 'Status',
     },
     'cj684s3t': {
       'ru': 'Заявки и исполнители',
@@ -954,19 +938,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'n33tiluc': {
-      'ru': 'Назначение',
+      'ru': 'Требует назначения',
       'en': '',
     },
     'ha7rjf5u': {
-      'ru': 'Выполнение',
+      'ru': 'В работе',
       'en': '',
     },
     'poz7q9m0': {
-      'ru': 'Завершено',
+      'ru': 'Выполнено',
       'en': '',
     },
     'dxh3158z': {
-      'ru': 'Перенос',
+      'ru': 'Не выполнено',
+      'en': '',
+    },
+    'n7xwew2w': {
+      'ru': 'Не выполнено (перенос)',
       'en': '',
     },
     'faa2yw50': {

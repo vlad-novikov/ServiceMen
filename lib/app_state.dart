@@ -97,32 +97,44 @@ class FFAppState extends ChangeNotifier {
     yValues.insert(index, value);
   }
 
-  List<DataTaskStruct> _AppTasks = [];
-  List<DataTaskStruct> get AppTasks => _AppTasks;
-  set AppTasks(List<DataTaskStruct> value) {
-    _AppTasks = value;
+  List<TypeImportStruct> _AppImport = [];
+  List<TypeImportStruct> get AppImport => _AppImport;
+  set AppImport(List<TypeImportStruct> value) {
+    _AppImport = value;
   }
 
-  void addToAppTasks(DataTaskStruct value) {
-    AppTasks.add(value);
+  void addToAppImport(TypeImportStruct value) {
+    AppImport.add(value);
   }
 
-  void removeFromAppTasks(DataTaskStruct value) {
-    AppTasks.remove(value);
+  void removeFromAppImport(TypeImportStruct value) {
+    AppImport.remove(value);
   }
 
-  void removeAtIndexFromAppTasks(int index) {
-    AppTasks.removeAt(index);
+  void removeAtIndexFromAppImport(int index) {
+    AppImport.removeAt(index);
   }
 
-  void updateAppTasksAtIndex(
+  void updateAppImportAtIndex(
     int index,
-    DataTaskStruct Function(DataTaskStruct) updateFn,
+    TypeImportStruct Function(TypeImportStruct) updateFn,
   ) {
-    AppTasks[index] = updateFn(_AppTasks[index]);
+    AppImport[index] = updateFn(_AppImport[index]);
   }
 
-  void insertAtIndexInAppTasks(int index, DataTaskStruct value) {
-    AppTasks.insert(index, value);
+  void insertAtIndexInAppImport(int index, TypeImportStruct value) {
+    AppImport.insert(index, value);
+  }
+
+  String _test1 = '';
+  String get test1 => _test1;
+  set test1(String value) {
+    _test1 = value;
+  }
+
+  String _test2 = '';
+  String get test2 => _test2;
+  set test2(String value) {
+    _test2 = value;
   }
 }

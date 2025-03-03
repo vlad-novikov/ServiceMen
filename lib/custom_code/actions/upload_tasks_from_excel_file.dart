@@ -36,15 +36,29 @@ Future<dynamic> uploadTasksFromExcelFile(
 
     for (var i = 1; i < rows!.length; i++) {
       Map<String, dynamic> rowMap = {}; // set current row empty
-      for (var j = 0; j < rows[i].length; j++) {
+      for (var j = 0; j < 7; j++) {
         // Get the header value for this column
-        var header = rows[0][j]!.value.toString();
+        EnumImportHeaders EnumHeader = EnumImportHeaders.values[j];
+        var header = EnumHeader.name;
+        header = '\"' + header + '\"';
         // Get the cell value for this column
         var cellValue = rows[i][j]!.value.toString();
-
+        cellValue = cellValue.replaceAll('\"', '\'');
+        cellValue = cellValue.replaceAll('\t', ' ');
+        cellValue = cellValue.replaceAll('\n', ' ');
+        cellValue = cellValue.replaceAll('\r', ' ');
+        //cellValue = '\"' + cellValue + '\"';
         // Add the cell value to the row map using the header as the key
         rowMap[header] = cellValue;
       }
+      ;
+
+      // column #7 is 'date', we take date value from first row of worksheet
+      var dateValue = rows[0][1]!.value.toString();
+      List<String> dateValues = dateValue.split(" ");
+      dateValue = dateValues[0];
+      var dateHeader = EnumImportHeaders.values[7].name;
+      rowMap[dateHeader] = dateValue;
       jsonData.add(rowMap);
     }
     Map<String, dynamic> excelMap = {"data": jsonData};

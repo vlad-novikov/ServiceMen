@@ -72,7 +72,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
               automaticallyImplyLeading: false,
               title: Text(
                 FFLocalizations.of(context).getText(
-                  'eylvyzd2' /* Заявки и исполнители */,
+                  'eylvyzd2' /* Система управления заявками */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
@@ -242,38 +242,6 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                             ),
                                           ),
                                           Flexible(
-                                            flex: 2,
-                                            child: Align(
-                                              alignment: AlignmentDirectional(
-                                                  -1.0, 0.0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 10.0, 0.0),
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '0brkz1ci' /* Дата */,
-                                                  ),
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color:
-                                                            Color(0xFF606A85),
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Flexible(
                                             flex: 4,
                                             child: Align(
                                               alignment: AlignmentDirectional(
@@ -313,11 +281,11 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        30.0, 0.0, 30.0, 0.0),
+                                                        10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    '3bc9159r' /* Телефон */,
+                                                    '3bc9159r' /* Описание */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -568,49 +536,6 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                   ),
                                                 ),
                                                 Flexible(
-                                                  flex: 2,
-                                                  child: Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            -1.0, 0.0),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  10.0,
-                                                                  0.0,
-                                                                  10.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        dateTimeFormat(
-                                                          "dd.MM",
-                                                          mainContentVarItem
-                                                              .taskDate!,
-                                                          locale:
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .languageCode,
-                                                        ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .labelSmall
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Plus Jakarta Sans',
-                                                              color: Color(
-                                                                  0xFF606A85),
-                                                              fontSize: 12.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Flexible(
                                                   flex: 4,
                                                   child: Align(
                                                     alignment:
@@ -666,8 +591,8 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                       child: Text(
                                                         valueOrDefault<String>(
                                                           mainContentVarItem
-                                                              .locationPhone,
-                                                          'Телефон',
+                                                              .taskDescr,
+                                                          'Описание',
                                                         ),
                                                         style: FlutterFlowTheme
                                                                 .of(context)
