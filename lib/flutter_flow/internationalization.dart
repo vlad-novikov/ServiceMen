@@ -594,6 +594,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // TaskListPage
   {
+    'hjrhtxcj': {
+      'ru': 'Загрузить',
+      'en': '',
+    },
+    'fl11zizp': {
+      'ru': 'Выгрузить',
+      'en': '',
+    },
     'q3ry8b92': {
       'ru': '№',
       'en': '#',
@@ -890,6 +898,69 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
     },
   },
+  // TestPage
+  {
+    '7zilf0xp': {
+      'ru': 'Прочитать',
+      'en': '',
+    },
+    '59uvht8f': {
+      'ru': 'GetId',
+      'en': '',
+    },
+    'l89g6cko': {
+      'ru': 'MAX',
+      'en': '',
+    },
+    'hm9zg3xt': {
+      'ru': 'ToBase',
+      'en': '',
+    },
+    'e08y0486': {
+      'ru': 'ToExcel',
+      'en': '',
+    },
+    '3jasl2up': {
+      'ru': 'Select',
+      'en': '',
+    },
+    '6jiw4iqm': {
+      'ru': 'Select',
+      'en': '',
+    },
+    'mf0tsemm': {
+      'ru': 'Категория',
+      'en': 'Address',
+    },
+    'kz9cevb2': {
+      'ru': 'Строка',
+      'en': '',
+    },
+    'i66hwxqh': {
+      'ru': 'Наименование',
+      'en': '',
+    },
+    'yhq9u33k': {
+      'ru': 'Адрес',
+      'en': 'Task Category',
+    },
+    'q3ny1m0h': {
+      'ru': 'ID Терминала',
+      'en': 'Terminal ID',
+    },
+    'nvfv0rsa': {
+      'ru': 'Описание',
+      'en': 'Doer',
+    },
+    'mt9h00tc': {
+      'ru': 'ТЕСТИРОВАНИЕ',
+      'en': 'Tasks and Doers',
+    },
+    'h6cg30x8': {
+      'ru': 'Главня',
+      'en': 'Home',
+    },
+  },
   // dropdown_users
   {
     'u4bnu9xu': {
@@ -970,10 +1041,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'gzdpume1': {
       'ru': 'Сотрудники',
-      'en': '',
-    },
-    'l89k8tok': {
-      'ru': 'Загрузка',
       'en': '',
     },
     'n4bkjr93': {

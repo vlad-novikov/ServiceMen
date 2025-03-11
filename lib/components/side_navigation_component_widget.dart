@@ -158,7 +158,7 @@ class _SideNavigationComponentWidgetState
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Icon(
-                                  Icons.work,
+                                  Icons.people,
                                   color: Color(0xFF15161E),
                                   size: 24.0,
                                 ),
@@ -176,65 +176,6 @@ class _SideNavigationComponentWidgetState
                                           color: Color(0xFF15161E),
                                           fontSize: getCurrentRoute(context) ==
                                                   '/users'
-                                              ? 18.0
-                                              : 14.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      child: AnimatedContainer(
-                        duration: Duration(milliseconds: 200),
-                        curve: Curves.easeInOut,
-                        width: double.infinity,
-                        height: 44.0,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFF1F4F8),
-                          borderRadius: BorderRadius.circular(12.0),
-                          shape: BoxShape.rectangle,
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              8.0, 0.0, 6.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              context.pushNamed(ImportPageWidget.routeName);
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                FaIcon(
-                                  FontAwesomeIcons.fileImport,
-                                  color: Color(0xFF15161E),
-                                  size: 24.0,
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 0.0, 0.0, 0.0),
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'l89k8tok' /* Загрузка */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          color: Color(0xFF15161E),
-                                          fontSize: getCurrentRoute(context) ==
-                                                  '/import'
                                               ? 18.0
                                               : 14.0,
                                           letterSpacing: 0.0,
@@ -321,10 +262,19 @@ class _SideNavigationComponentWidgetState
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(
-                      Icons.menu_open_rounded,
-                      color: Color(0xFF606A85),
-                      size: 24.0,
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed(TestPageWidget.routeName);
+                      },
+                      child: Icon(
+                        Icons.menu_open_rounded,
+                        color: Color(0xFF606A85),
+                        size: 24.0,
+                      ),
                     ),
                   ],
                 ),

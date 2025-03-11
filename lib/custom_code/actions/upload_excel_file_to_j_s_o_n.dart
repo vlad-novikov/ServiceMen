@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:excel/excel.dart';
 import 'package:file_picker/file_picker.dart';
 
-Future<dynamic> uploadTasksFromExcelFile(
+Future<dynamic> uploadExcelFileToJSON(
     Future<dynamic> Function() showSnackbar) async {
   // Add your function code here!
   try {
@@ -54,15 +54,23 @@ Future<dynamic> uploadTasksFromExcelFile(
       ;
 
       // column #7 is 'date', we take date value from first row of worksheet
+      // converting date format in string from dmy to ymd
       var dateValue = rows[0][1]!.value.toString();
-      List<String> dateValues = dateValue.split(" ");
-      dateValue = dateValues[0];
+      FFAppState().test2 = 'Converting string to date' + dateValue;
+      DateFormat format = new DateFormat("dd.MM.yyyy");
+      DateTime datetimeDate = format.parse(dateValue);
+      var stringDate = DateFormat('yyyy-MM-dd').format(datetimeDate);
+      dateValue = stringDate;
+      FFAppState().test2 = 'JSON ДАТА ' + dateValue;
       var dateHeader = EnumImportHeaders.values[7].name;
+      //dateHeader = '\"' + dateHeader + '\"';
       rowMap[dateHeader] = dateValue;
+      FFAppState().test2 = 'JSON ДАТА ' + dateValue + '. Date added to Map';
       jsonData.add(rowMap);
+      FFAppState().test2 = 'JSON ДАТА ' + dateValue + 'Map added to JSON';
     }
     Map<String, dynamic> excelMap = {"data": jsonData};
-
+    FFAppState().test2 = 'excelMap created.';
     return excelMap;
   } catch (e) {
     // showSnackbar();

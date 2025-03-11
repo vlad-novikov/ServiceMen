@@ -10,9 +10,8 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future mapJSONtoDataType(dynamic jsonImport) async {
+Future uploadJSONToCustomDataType(dynamic jsonImport) async {
   // Add your function code here!
-  FFAppState().test1 = '1';
   int u = 0;
   var stringDate = '';
   FFAppState().AppImport = [];
@@ -20,7 +19,14 @@ Future mapJSONtoDataType(dynamic jsonImport) async {
   jsons.forEach((json) {
     u = u + 1;
     var task = TypeImportStruct();
-    task.date = FFAppState().AppCurrDate;
+    //FFAppState().test2 = 'JSON before set task.date ' + json['Date'];
+    try {
+      task.date = DateTime.parse(json['Date']);
+    } catch (error) {
+      FFAppState().test1 = 'Date conversion ERROR ' + error.toString();
+    }
+    //FFAppState().test2 = 'JSON after set task.date ' + json['Date'];
+    //task.date = FFAppState().AppCurrDate;
     task.line = stringToIntegerFunction(json['\"Line\"']);
     task.name = json['\"Name\"'];
     task.address = json['\"Address\"'];
@@ -28,7 +34,8 @@ Future mapJSONtoDataType(dynamic jsonImport) async {
     task.category = json['\"Category\"'];
     task.description = json['\"Description\"'];
     FFAppState().AppImport.add(task);
+    //FFAppState().test2 = 'Task after add  ' + task.toString();
   });
-  FFAppState().test1 =
-      "Итераций:" + u.toString() + " Элементов:" + jsons.length.toString();
+  //FFAppState().test1 =   "Итераций:" + u.toString() + " Элементов:" + jsons.length.toString();
+  // FFAppState().test1 = 'JSON ' + jsons[0].toString();
 }

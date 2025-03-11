@@ -32,7 +32,3 @@ int? stringToIntegerFunction(String strVal) {
   int intVal = int.tryParse(strVal) ?? 9999;
   return intVal;
 }
-
-int? getLastLineOnDate(String? dateValue) {
-  return 0;
-}

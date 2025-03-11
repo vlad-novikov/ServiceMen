@@ -11,6 +11,17 @@ enum EnumImportHeaders {
   Date,
 }
 
+enum EnumExportHeaders {
+  Date,
+  Line,
+  Name,
+  Address,
+  Phone,
+  Category,
+  Id,
+  Description,
+}
+
 extension FFEnumExtensions<T extends Enum> on T {
   String serialize() => name;
 }
@@ -24,6 +35,8 @@ T? deserializeEnum<T>(String? value) {
   switch (T) {
     case (EnumImportHeaders):
       return EnumImportHeaders.values.deserialize(value) as T?;
+    case (EnumExportHeaders):
+      return EnumExportHeaders.values.deserialize(value) as T?;
     default:
       return null;
   }

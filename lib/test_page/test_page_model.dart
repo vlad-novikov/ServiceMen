@@ -4,10 +4,10 @@ import '/components/date_filter_component_widget.dart';
 import '/components/side_navigation_component_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
-import 'import_page_widget.dart' show ImportPageWidget;
+import 'test_page_widget.dart' show TestPageWidget;
 import 'package:flutter/material.dart';
 
-class ImportPageModel extends FlutterFlowModel<ImportPageWidget> {
+class TestPageModel extends FlutterFlowModel<TestPageWidget> {
   ///  Local state fields for this page.
 
   DateTime? filterDate;
@@ -31,10 +31,10 @@ class ImportPageModel extends FlutterFlowModel<ImportPageWidget> {
   late DateFilterComponentModel dateFilterComponentModel;
   // Stores action output result for [Custom Action - uploadExcelFileToJSON] action in ButtonReadXLSX widget.
   dynamic jsonImport;
-  // Stores action output result for [Alert Dialog - Custom Dialog] action in Text widget.
-  String? doerName;
-  // Stores action output result for [Alert Dialog - Custom Dialog] action in Container widget.
-  String? statusName;
+  // Stores action output result for [Custom Action - getTaskIdByDateAndLine] action in ButtonGetId widget.
+  int? tttt;
+  // Stores action output result for [Custom Action - getMaxLineToDate] action in ButtonMax widget.
+  int? maxLine;
 
   @override
   void initState(BuildContext context) {
