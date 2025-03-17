@@ -42,8 +42,8 @@ class _StatusSelectComponentWidgetState
     return Padding(
       padding: EdgeInsets.all(16.0),
       child: Container(
-        width: 300.0,
-        height: 500.0,
+        width: 250.0,
+        height: 370.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
           boxShadow: [
@@ -112,7 +112,7 @@ class _StatusSelectComponentWidgetState
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(40.0),
                                 child: Image.asset(
-                                  'assets/images/icons8-status-96.png',
+                                  'assets/images/icons8-check-mark-48-blue.png',
                                   width: 32.0,
                                   height: 32.0,
                                   fit: BoxFit.cover,
@@ -176,7 +176,7 @@ class _StatusSelectComponentWidgetState
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(40.0),
                                 child: Image.asset(
-                                  'assets/images/icons8-status-96.png',
+                                  'assets/images/icons8-check-mark-48-black.png',
                                   width: 32.0,
                                   height: 32.0,
                                   fit: BoxFit.cover,
@@ -229,7 +229,7 @@ class _StatusSelectComponentWidgetState
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          Navigator.pop(context, 'завершено');
+                          Navigator.pop(context, 'Выполнено');
                         },
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -304,7 +304,7 @@ class _StatusSelectComponentWidgetState
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(40.0),
                                 child: Image.asset(
-                                  'assets/images/icons8-status-96.png',
+                                  'assets/images/icons8-check-mark-48-red.png',
                                   width: 32.0,
                                   height: 32.0,
                                   fit: BoxFit.cover,
@@ -368,7 +368,7 @@ class _StatusSelectComponentWidgetState
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(40.0),
                                 child: Image.asset(
-                                  'assets/images/icons8-status-96.png',
+                                  'assets/images/icons8-check-mark-48-yellow.png',
                                   width: 32.0,
                                   height: 32.0,
                                   fit: BoxFit.cover,

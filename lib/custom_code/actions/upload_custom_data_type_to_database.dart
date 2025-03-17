@@ -15,12 +15,16 @@ import 'package:flutter/material.dart';
 Future uploadCustomDataTypeToDatabase() async {
   // Add your function code here!
   var tasks = FFAppState().AppImport;
+  // JSON bug in web app - wrong sorting order. So we add sorting string by comparing the line no
+  tasks.sort((a, b) => a.line.compareTo(b.line));
+
   int totalLines = 0;
   int newLines = 0;
   tasks.forEach((task) async {
     totalLines++;
     var baseId = await getTaskIdByDateAndLine(task.date!, task.line);
     if (baseId == null) {
+      FFAppState().message = FFAppState().message + task.line.toString();
       insertSingleTask(task); // insert line that does not exist
       newLines = newLines + 1;
     }

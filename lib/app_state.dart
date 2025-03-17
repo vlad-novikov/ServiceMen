@@ -21,13 +21,13 @@ class FFAppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  DateTime? _AppCurrDate = DateTime.fromMillisecondsSinceEpoch(1738357200000);
+  DateTime? _AppCurrDate;
   DateTime? get AppCurrDate => _AppCurrDate;
   set AppCurrDate(DateTime? value) {
     _AppCurrDate = value;
   }
 
-  String _AppCurDateStr = '2025-02-01';
+  String _AppCurDateStr = '';
   String get AppCurDateStr => _AppCurDateStr;
   set AppCurDateStr(String value) {
     _AppCurDateStr = value;
@@ -136,5 +136,12 @@ class FFAppState extends ChangeNotifier {
   String get test2 => _test2;
   set test2(String value) {
     _test2 = value;
+  }
+
+  /// Output debugging information
+  String _message = '';
+  String get message => _message;
+  set message(String value) {
+    _message = value;
   }
 }

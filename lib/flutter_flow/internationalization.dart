@@ -489,12 +489,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Исполнитель',
       'en': '',
     },
+    'fb0qv9xz': {
+      'ru': '',
+      'en': '',
+    },
     '6l92lupm': {
       'ru': 'Комментарий исполнителя',
       'en': '',
     },
     'ydno50kj': {
       'ru': 'Статус',
+      'en': '',
+    },
+    'l7jqpo9w': {
+      'ru': '',
       'en': '',
     },
     'ukz984qh': {
@@ -517,16 +525,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Контакт по переносу',
       'en': '',
     },
-    '913idvl5': {
+    '1o4qt49j': {
       'ru': 'Дата переноса',
-      'en': '',
-    },
-    '8cvq83ql': {
-      'ru': 'Выйти',
-      'en': '',
-    },
-    '1wp44xee': {
-      'ru': 'Сохранить и выйти',
       'en': '',
     },
   },
@@ -600,6 +600,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'fl11zizp': {
       'ru': 'Выгрузить',
+      'en': '',
+    },
+    'n6doa9wq': {
+      'ru': ' ',
       'en': '',
     },
     'q3ry8b92': {
@@ -924,8 +928,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Select',
       'en': '',
     },
-    '6jiw4iqm': {
-      'ru': 'Select',
+    '3bexmzq7': {
+      'ru': 'New import',
       'en': '',
     },
     'mf0tsemm': {

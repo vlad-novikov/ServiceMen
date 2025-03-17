@@ -21,9 +21,12 @@ DateTime dateMinusDay(DateTime fromDate) {
   return fromDate.add(Duration(days: -1));
 }
 
-DateTime? stringToDateFunction(String stringDate) {
-  DateFormat format = DateFormat("dd.MM.yyyy");
-  DateTime dateTime = format.tryParse(stringDate) ?? DateTime.utc(2001, 1, 1);
+DateTime? stringDateToDateTime(
+  String stringDate,
+  String dateFormat,
+) {
+  DateFormat format = DateFormat(dateFormat);
+  DateTime? dateTime = format.tryParse(stringDate) ?? null;
   return dateTime;
 }
 
@@ -31,4 +34,14 @@ int? stringToIntegerFunction(String strVal) {
   //if (strVal == null)  return 999;
   int intVal = int.tryParse(strVal) ?? 9999;
   return intVal;
+}
+
+String clearString(String input) {
+// remove useless symbols
+  String output = input.replaceAll('\"', '\'');
+  output = output.replaceAll('\t', ' ');
+  output = output.replaceAll('\n', ' ');
+  output = output.replaceAll('\r', ' ');
+  output = output.trim();
+  return output;
 }

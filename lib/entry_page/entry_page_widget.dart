@@ -6,6 +6,7 @@ import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
 import 'entry_page_model.dart';
 export 'entry_page_model.dart';
 
@@ -32,6 +33,7 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      FFAppState().AppCurrDate = getCurrentTimestamp;
       await Future.delayed(const Duration(milliseconds: 3000));
       safeSetState(() {
         _model.textField1TextController?.text = '...переключаемся..';
@@ -60,6 +62,8 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return FutureBuilder<List<UsersRow>>(
       future: UsersTable().querySingleRow(
         queryFn: (q) => q.eqOrNull(

@@ -313,7 +313,7 @@ class _TestPageWidgetState extends State<TestPageWidget> {
                                           child: FFButtonWidget(
                                             onPressed: () async {
                                               _model.tttt = await actions
-                                                  .getTaskIdByDateAndLine(
+                                                  .existenceCheckByDateAndLine(
                                                 FFAppState().AppCurrDate!,
                                                 2,
                                               );
@@ -594,14 +594,15 @@ class _TestPageWidgetState extends State<TestPageWidget> {
                                             10.0, 0.0, 10.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            await actions.aaaTest();
+                                            await actions
+                                                .importExcelToDatabase();
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
-                                            '6jiw4iqm' /* Select */,
+                                            '3bexmzq7' /* New import */,
                                           ),
                                           icon: Icon(
-                                            Icons.remove_red_eye,
+                                            Icons.mood,
                                             size: 15.0,
                                           ),
                                           options: FFButtonOptions(

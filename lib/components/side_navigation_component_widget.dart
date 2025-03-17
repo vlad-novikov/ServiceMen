@@ -48,7 +48,7 @@ class _SideNavigationComponentWidgetState
         tablet: false,
       ),
       child: Container(
-        width: 270.0,
+        width: 180.0,
         height: double.infinity,
         decoration: BoxDecoration(
           color: Color(0xFFF1F4F8),

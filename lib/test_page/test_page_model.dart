@@ -31,8 +31,8 @@ class TestPageModel extends FlutterFlowModel<TestPageWidget> {
   late DateFilterComponentModel dateFilterComponentModel;
   // Stores action output result for [Custom Action - uploadExcelFileToJSON] action in ButtonReadXLSX widget.
   dynamic jsonImport;
-  // Stores action output result for [Custom Action - getTaskIdByDateAndLine] action in ButtonGetId widget.
-  int? tttt;
+  // Stores action output result for [Custom Action - existenceCheckByDateAndLine] action in ButtonGetId widget.
+  bool? tttt;
   // Stores action output result for [Custom Action - getMaxLineToDate] action in ButtonMax widget.
   int? maxLine;
 

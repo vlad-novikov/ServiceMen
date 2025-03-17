@@ -10,11 +10,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
-import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'task_list_page_model.dart';
@@ -39,13 +37,6 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TaskListPageModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.filterDate = getCurrentTimestamp;
-      _model.pageDate = FFAppState().AppCurrDate;
-      safeSetState(() {});
-    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -128,13 +119,15 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                   ),
                   Expanded(
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
+                      alignment: AlignmentDirectional(-1.0, -1.0),
                       child: FutureBuilder<List<TasksRow>>(
                         future: TasksTable().queryRows(
-                          queryFn: (q) => q.eqOrNull(
-                            'task_date_str',
-                            FFAppState().AppCurDateStr,
-                          ),
+                          queryFn: (q) => q
+                              .eqOrNull(
+                                'task_date_str',
+                                FFAppState().AppCurDateStr,
+                              )
+                              .order('line_no', ascending: true),
                           limit: 100,
                         ),
                         builder: (context, snapshot) {
@@ -191,17 +184,17 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                           child: FFButtonWidget(
                                             onPressed: () async {
                                               var _shouldSetState = false;
-                                              _model.jsonImport = await actions
-                                                  .uploadExcelFileToJSON(
-                                                () async {},
-                                              );
+                                              _model.importResult =
+                                                  await actions
+                                                      .importExcelToDatabase();
                                               _shouldSetState = true;
-                                              if (_model.jsonImport == null) {
+                                              if (_model.importResult != null &&
+                                                  _model.importResult != '') {
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
                                                   SnackBar(
                                                     content: Text(
-                                                      'Ничего не выбрано',
+                                                      'Файл не выбран. Импорт остановлен.',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .labelLarge
@@ -229,17 +222,13 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                     .showSnackBar(
                                                   SnackBar(
                                                     content: Text(
-                                                      'Выбран файл',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .labelLarge
-                                                          .override(
-                                                            fontFamily: 'Inter',
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
+                                                      'Импорт завершён.',
+                                                      style: TextStyle(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
                                                                 .primaryText,
-                                                            letterSpacing: 0.0,
-                                                          ),
+                                                      ),
                                                     ),
                                                     duration: Duration(
                                                         milliseconds: 4000),
@@ -251,48 +240,6 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                 );
                                               }
 
-                                              await actions
-                                                  .uploadJSONToCustomDataType(
-                                                _model.jsonImport!,
-                                              );
-                                              await actions
-                                                  .uploadCustomDataTypeToDatabase();
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                    'Импорт состоялся',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelLarge
-                                                        .override(
-                                                          fontFamily: 'Inter',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                  duration: Duration(
-                                                      milliseconds: 4000),
-                                                  backgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondary,
-                                                ),
-                                              );
-                                              FFAppState().AppCurrDate =
-                                                  functions.datePlusDay(
-                                                      FFAppState()
-                                                          .AppCurrDate!);
-                                              safeSetState(() {});
-                                              FFAppState().AppCurrDate =
-                                                  functions.dateMinusDay(
-                                                      FFAppState()
-                                                          .AppCurrDate!);
-                                              safeSetState(() {});
-
-                                              safeSetState(() {});
                                               if (_shouldSetState)
                                                 safeSetState(() {});
                                             },
@@ -401,6 +348,24 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                       ],
                                     ),
                                   ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'n6doa9wq' /*   */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Inter',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                   Container(
                                     width: double.infinity,
                                     height: 40.0,
@@ -411,7 +376,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 0.0, 0.0),
+                                          16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -448,7 +413,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                             ),
                                           ),
                                           Flexible(
-                                            flex: 4,
+                                            flex: 6,
                                             child: Align(
                                               alignment: AlignmentDirectional(
                                                   -1.0, 0.0),
@@ -480,7 +445,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                             ),
                                           ),
                                           Flexible(
-                                            flex: 4,
+                                            flex: 8,
                                             child: Align(
                                               alignment: AlignmentDirectional(
                                                   -1.0, 0.0),
@@ -518,7 +483,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 0.0, 20.0, 0.0),
+                                                        10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
@@ -573,7 +538,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                             ),
                                           ),
                                           Flexible(
-                                            flex: 4,
+                                            flex: 8,
                                             child: Align(
                                               alignment: AlignmentDirectional(
                                                   -1.0, 0.0),
@@ -604,7 +569,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                             ),
                                           ),
                                           Flexible(
-                                            flex: 4,
+                                            flex: 3,
                                             child: Align(
                                               alignment: AlignmentDirectional(
                                                   -1.0, 0.0),
@@ -714,12 +679,9 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                                   0.0),
                                                       child: Text(
                                                         valueOrDefault<String>(
-                                                          (valueOrDefault<int>(
-                                                                    mainContentVarIndex,
-                                                                    0,
-                                                                  ) +
-                                                                  1)
-                                                              .toString(),
+                                                          mainContentVarItem
+                                                              .lineNo
+                                                              ?.toString(),
                                                           '0',
                                                         ),
                                                         style: FlutterFlowTheme
@@ -742,7 +704,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                   ),
                                                 ),
                                                 Flexible(
-                                                  flex: 4,
+                                                  flex: 6,
                                                   child: Align(
                                                     alignment:
                                                         AlignmentDirectional(
@@ -781,7 +743,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                   ),
                                                 ),
                                                 Flexible(
-                                                  flex: 4,
+                                                  flex: 8,
                                                   child: Align(
                                                     alignment:
                                                         AlignmentDirectional(
@@ -800,6 +762,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                               .taskDescr,
                                                           'Описание',
                                                         ),
+                                                        maxLines: 3,
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .labelSmall
@@ -898,7 +861,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                   ),
                                                 ),
                                                 Flexible(
-                                                  flex: 4,
+                                                  flex: 8,
                                                   child: Align(
                                                     alignment:
                                                         AlignmentDirectional(
@@ -917,6 +880,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                               .locationAddress,
                                                           'Адрес',
                                                         ),
+                                                        maxLines: 3,
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .labelSmall
@@ -937,7 +901,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                   ),
                                                 ),
                                                 Flexible(
-                                                  flex: 4,
+                                                  flex: 3,
                                                   child: Align(
                                                     alignment:
                                                         AlignmentDirectional(
@@ -1007,6 +971,29 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                                     _model.doerName =
                                                                         value));
 
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .showSnackBar(
+                                                              SnackBar(
+                                                                content: Text(
+                                                                  _model
+                                                                      .doerName!,
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                  ),
+                                                                ),
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        4000),
+                                                                backgroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondary,
+                                                              ),
+                                                            );
                                                             if (_model.doerName !=
                                                                     null &&
                                                                 _model.doerName !=
@@ -1067,12 +1054,12 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                   ),
                                                 ),
                                                 Flexible(
-                                                  flex: 4,
+                                                  flex: 3,
                                                   child: Row(
                                                     mainAxisSize:
-                                                        MainAxisSize.max,
+                                                        MainAxisSize.min,
                                                     mainAxisAlignment:
-                                                        MainAxisAlignment.end,
+                                                        MainAxisAlignment.start,
                                                     children: [
                                                       Builder(
                                                         builder: (context) =>
@@ -1153,22 +1140,29 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                                 BoxDecoration(
                                                               color: () {
                                                                 if (mainContentVarItem
-                                                                            .taskStatus ==
-                                                                        'готово'
-                                                                    ? true
-                                                                    : false) {
+                                                                        .taskStatus ==
+                                                                    'Выполнено') {
                                                                   return FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondary;
-                                                                } else if ((mainContentVarItem.taskStatus ==
-                                                                            'назначение'
-                                                                        ? true
-                                                                        : false)
-                                                                    ? true
-                                                                    : false) {
+                                                                } else if (mainContentVarItem
+                                                                        .taskStatus ==
+                                                                    'Требует назначения') {
                                                                   return FlutterFlowTheme.of(
                                                                           context)
                                                                       .warning;
+                                                                } else if (mainContentVarItem
+                                                                        .taskStatus ==
+                                                                    'Не выполнено') {
+                                                                  return FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .tertiary;
+                                                                } else if (mainContentVarItem
+                                                                        .taskStatus ==
+                                                                    'Не выполнено (перенос)') {
+                                                                  return FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .tertiary;
                                                                 } else {
                                                                   return Color(
                                                                       0x00000000);
@@ -1184,6 +1178,9 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                                     0xFF39D2C0),
                                                               ),
                                                             ),
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
                                                             child: Align(
                                                               alignment:
                                                                   AlignmentDirectional(
@@ -1192,9 +1189,9 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                                 padding:
                                                                     EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            8.0,
                                                                             4.0,
-                                                                            8.0,
+                                                                            4.0,
+                                                                            40.0,
                                                                             4.0),
                                                                 child: Text(
                                                                   valueOrDefault<
@@ -1203,6 +1200,10 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                                         .taskStatus,
                                                                     'Статус',
                                                                   ),
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .center,
+                                                                  maxLines: 2,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodySmall

@@ -18,8 +18,8 @@ class TaskListPageModel extends FlutterFlowModel<TaskListPageWidget> {
   late SideNavigationComponentModel sideNavigationComponentModel;
   // Model for DateFilterComponent component.
   late DateFilterComponentModel dateFilterComponentModel;
-  // Stores action output result for [Custom Action - uploadExcelFileToJSON] action in ButtonReadXLSX widget.
-  dynamic jsonImport;
+  // Stores action output result for [Custom Action - importExcelToDatabase] action in ButtonReadXLSX widget.
+  String? importResult;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in Text widget.
   String? doerName;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in Container widget.

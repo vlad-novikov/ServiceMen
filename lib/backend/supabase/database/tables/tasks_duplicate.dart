@@ -1,18 +1,19 @@
 import '../database.dart';
 
-class TasksTable extends SupabaseTable<TasksRow> {
+class TasksDuplicateTable extends SupabaseTable<TasksDuplicateRow> {
   @override
-  String get tableName => 'tasks';
+  String get tableName => 'tasks_duplicate';
 
   @override
-  TasksRow createRow(Map<String, dynamic> data) => TasksRow(data);
+  TasksDuplicateRow createRow(Map<String, dynamic> data) =>
+      TasksDuplicateRow(data);
 }
 
-class TasksRow extends SupabaseDataRow {
-  TasksRow(Map<String, dynamic> data) : super(data);
+class TasksDuplicateRow extends SupabaseDataRow {
+  TasksDuplicateRow(Map<String, dynamic> data) : super(data);
 
   @override
-  SupabaseTable get table => TasksTable();
+  SupabaseTable get table => TasksDuplicateTable();
 
   int get id => getField<int>('id')!;
   set id(int value) => setField<int>('id', value);
@@ -86,8 +87,4 @@ class TasksRow extends SupabaseDataRow {
   String? get taskDateNameStr => getField<String>('task_date_name_str');
   set taskDateNameStr(String? value) =>
       setField<String>('task_date_name_str', value);
-
-  DateTime? get transferDatetime => getField<DateTime>('transfer_datetime');
-  set transferDatetime(DateTime? value) =>
-      setField<DateTime>('transfer_datetime', value);
 }

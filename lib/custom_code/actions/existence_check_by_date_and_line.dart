@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 
 // DO NOT REMOVE OR MODIFY THE  CODE ABOVE!
 
-Future<int?> getTaskIdByDateAndLine(
+Future<bool> existenceCheckByDateAndLine(
   DateTime taskDate,
   int taskLine,
 ) async {
@@ -30,10 +30,9 @@ Future<int?> getTaskIdByDateAndLine(
       .maybeSingle();
   FFAppState().test1 = 'step 3 ' + response.toString();
   if (response == null) {
-    return null;
+    return false;
   } else {
-    int? returnInt = response['id']?.toInteger();
-    FFAppState().test1 = 'response is ' + returnInt.toString();
-    return returnInt;
+    FFAppState().test1 = 'step 4 EXISTS';
+    return true;
   }
 }

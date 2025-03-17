@@ -19,7 +19,7 @@ Future uploadJSONToCustomDataType(dynamic jsonImport) async {
   jsons.forEach((json) {
     u = u + 1;
     var task = TypeImportStruct();
-    //FFAppState().test2 = 'JSON before set task.date ' + json['Date'];
+    FFAppState().message = ' JSON Line ' + json['\"Line\"'];
     try {
       task.date = DateTime.parse(json['Date']);
     } catch (error) {
