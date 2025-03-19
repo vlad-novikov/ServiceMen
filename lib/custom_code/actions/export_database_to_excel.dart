@@ -73,7 +73,7 @@ Future exportDatabaseToExcel(BuildContext context, DateTime taskDate) async {
               "task_category, task_status, transfer_reason, transfer_date, " +
               "task_doer, doer_description, transfer_person")
       .eq('task_date', taskDate)
-      .eq('task_status', 'Выполнено')
+      .eq('task_status', 'выполнено')
       .order('line_no', ascending: true);
   FFAppState().test1 = 'Export step 1 done ';
 
@@ -120,7 +120,7 @@ Future exportDatabaseToExcel(BuildContext context, DateTime taskDate) async {
   }
 
 //---------- FAILED ----------------------------
-// Execute query for Completed tasks
+// Execute query for Failed tasks
   FFAppState().test1 = 'Export step 1 ';
   final response2 = await client
       .from('tasks')
@@ -129,7 +129,7 @@ Future exportDatabaseToExcel(BuildContext context, DateTime taskDate) async {
               "task_category, task_status, transfer_reason, transfer_date, " +
               "task_doer, doer_description, transfer_person")
       .eq('task_date', taskDate)
-      .eq('task_status', 'Не выполнено')
+      .eq('task_status', 'не выполнено')
       .order('line_no', ascending: true);
   FFAppState().test1 = 'Export step 1 done ';
 
@@ -205,7 +205,8 @@ Future exportDatabaseToExcel(BuildContext context, DateTime taskDate) async {
               "task_category, task_status, transfer_reason, transfer_date, " +
               "task_doer, doer_description, transfer_person")
       .eq('task_date', taskDate)
-      .eq('task_status', 'Не выполнено (перенос)')
+      .eq('task_status', 'не выполнено')
+      .eq('task_transfer', 'перенос')
       .order('line_no', ascending: true);
   FFAppState().test1 = 'Export step 1 done ';
 
