@@ -437,10 +437,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // TaskEditPage
   {
-    'if9u43hz': {
-      'ru': 'Заявка',
-      'en': '',
-    },
     'kybg95d9': {
       'ru': 'Информация о ТСП',
       'en': '',
@@ -457,6 +453,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Телефон',
       'en': '',
     },
+    'gne4taaz': {
+      'ru': 'Договор эквайринга',
+      'en': '',
+    },
     'yowhb1nw': {
       'ru': 'Информация об оборудовании',
       'en': '',
@@ -465,8 +465,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Номер РР',
       'en': '',
     },
-    'gne4taaz': {
-      'ru': 'Договор эквайринга',
+    'fg5taxos': {
+      'ru': 'Модель',
       'en': '',
     },
     'putk2tvr': {
@@ -501,6 +501,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Статус',
       'en': '',
     },
+    'upst8cya': {
+      'ru': '',
+      'en': '',
+    },
     'l7jqpo9w': {
       'ru': '',
       'en': '',
@@ -521,12 +525,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Причина переноса',
       'en': '',
     },
-    '35zykl8t': {
+    '1o4qt49j': {
+      'ru': 'Дата переноса',
+      'en': '',
+    },
+    '1r9lacg4': {
       'ru': 'Контакт по переносу',
       'en': '',
     },
-    '1o4qt49j': {
-      'ru': 'Дата переноса',
+    'e9v7xk9d': {
+      'ru': 'Телефон',
+      'en': '',
+    },
+    'rx8izb3v': {
+      'ru': 'Контакт по переносу',
+      'en': '',
+    },
+    'z4pxvg0p': {
+      'ru': 'Телефон',
       'en': '',
     },
   },
@@ -599,7 +615,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'fl11zizp': {
-      'ru': 'Выгрузить',
+      'ru': 'Отчёт',
+      'en': '',
+    },
+    'wq0isda1': {
+      'ru': 'Банк',
       'en': '',
     },
     'n6doa9wq': {
@@ -930,6 +950,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3bexmzq7': {
       'ru': 'New import',
+      'en': '',
+    },
+    'a1dre6nj': {
+      'ru': 'to CRM',
       'en': '',
     },
     'mf0tsemm': {

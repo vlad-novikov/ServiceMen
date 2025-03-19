@@ -1,18 +1,19 @@
 import '../database.dart';
 
-class TasksTable extends SupabaseTable<TasksRow> {
+class TasksDuplicate2Table extends SupabaseTable<TasksDuplicate2Row> {
   @override
-  String get tableName => 'tasks';
+  String get tableName => 'tasks_duplicate_2';
 
   @override
-  TasksRow createRow(Map<String, dynamic> data) => TasksRow(data);
+  TasksDuplicate2Row createRow(Map<String, dynamic> data) =>
+      TasksDuplicate2Row(data);
 }
 
-class TasksRow extends SupabaseDataRow {
-  TasksRow(Map<String, dynamic> data) : super(data);
+class TasksDuplicate2Row extends SupabaseDataRow {
+  TasksDuplicate2Row(Map<String, dynamic> data) : super(data);
 
   @override
-  SupabaseTable get table => TasksTable();
+  SupabaseTable get table => TasksDuplicate2Table();
 
   int get id => getField<int>('id')!;
   set id(int value) => setField<int>('id', value);
@@ -70,9 +71,8 @@ class TasksRow extends SupabaseDataRow {
   String? get taskDescr => getField<String>('task_descr');
   set taskDescr(String? value) => setField<String>('task_descr', value);
 
-  String? get equipmentConnection => getField<String>('equipment_connection');
-  set equipmentConnection(String? value) =>
-      setField<String>('equipment_connection', value);
+  String? get locationLink => getField<String>('location_link');
+  set locationLink(String? value) => setField<String>('location_link', value);
 
   bool? get locationDoc => getField<bool>('location_doc');
   set locationDoc(bool? value) => setField<bool>('location_doc', value);
@@ -91,26 +91,4 @@ class TasksRow extends SupabaseDataRow {
   DateTime? get transferDatetime => getField<DateTime>('transfer_datetime');
   set transferDatetime(DateTime? value) =>
       setField<DateTime>('transfer_datetime', value);
-
-  String? get equipmentModel => getField<String>('equipment_model');
-  set equipmentModel(String? value) =>
-      setField<String>('equipment_model', value);
-
-  String? get transferPerson2 => getField<String>('transfer_person_2');
-  set transferPerson2(String? value) =>
-      setField<String>('transfer_person_2', value);
-
-  String? get transferDescription => getField<String>('transfer_description');
-  set transferDescription(String? value) =>
-      setField<String>('transfer_description', value);
-
-  String? get transferPhone => getField<String>('transfer_phone');
-  set transferPhone(String? value) => setField<String>('transfer_phone', value);
-
-  String? get transferPhone2 => getField<String>('transfer_phone_2');
-  set transferPhone2(String? value) =>
-      setField<String>('transfer_phone_2', value);
-
-  String? get taskTransfer => getField<String>('task_transfer');
-  set taskTransfer(String? value) => setField<String>('task_transfer', value);
 }

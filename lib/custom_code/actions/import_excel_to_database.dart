@@ -52,11 +52,11 @@ Future<String?> importExcelToDatabase() async {
       row = [];
       addRow = true; // row is added by default
       badRow = false;
-      for (var j = 0; j < 7; j++) {
+      for (var j = 0; j < 21; j++) {
         // Get the cell value for this column
         var cellValue = clearString(rows[i][j]!.value.toString());
-        if ((cellValue?.isEmpty ?? true) | (cellValue == 'null')) {
-          // if any value in row is null or empty, we skip this row
+        if ((j < 3) && ((cellValue?.isEmpty ?? true) | (cellValue == ''))) {
+          // if any value in first 3 columns of row is null or empty, we skip this row
           badRow = true;
         } else {
           try {
@@ -71,6 +71,11 @@ Future<String?> importExcelToDatabase() async {
       if (taskLine == null) {
         return null;
       }
+
+      String taskStatus = row[10].toString();
+      if (taskStatus == '') {
+        taskStatus = 'требует назначения';
+      }
       // check if record with this date and line exists
       bool taskExists = await existenceCheckByDateAndLine(taskDate, taskLine);
       addRow = !(badRow || taskExists);
@@ -84,7 +89,13 @@ Future<String?> importExcelToDatabase() async {
           'task_category': row[3],
           'equipment_id': row[4],
           'location_address': row[5],
-          'task_descr': row[6]
+          'task_descr': row[6],
+          'equipment_connection': row[7],
+          'equipment_model': row[8],
+          'location_contract': row[9],
+          'task_status': taskStatus,
+          'task_transfer': row[11],
+          'transfer_reason': row[13]
         }).select();
         if (response == null) {
           return null;

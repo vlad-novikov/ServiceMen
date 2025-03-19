@@ -1,5 +1,6 @@
 export 'upload_excel_file_to_j_s_o_n.dart' show uploadExcelFileToJSON;
 export 'save_file.dart' show saveFile;
+export 'export_database_to_excel_c_r_m.dart' show exportDatabaseToExcelCRM;
 export 'get_max_line_to_date.dart' show getMaxLineToDate;
 export 'upload_j_s_o_n_to_custom_data_type.dart'
     show uploadJSONToCustomDataType;

@@ -43,5 +43,26 @@ String clearString(String input) {
   output = output.replaceAll('\n', ' ');
   output = output.replaceAll('\r', ' ');
   output = output.trim();
+  if (output == 'null') {
+    output = '';
+  }
+  ;
   return output;
+}
+
+String datetimeToExcelStringDate(DateTime? dt) {
+  var ds = '';
+  if (dt != null) {
+    ds = dt.toString();
+    dt = stringDateToDateTime(ds, 'yyyy-MM-dd');
+    ds = DateFormat('dd.MM.yyyy').format(dt!); // convert date to Excel format
+  }
+  return ds;
+//
+}
+
+String addressToURL(String address) {
+  String url = address.replaceAll(' ', '%20');
+  url = 'https://yandex.ru/maps/?mode=search&text=' + url;
+  return url;
 }

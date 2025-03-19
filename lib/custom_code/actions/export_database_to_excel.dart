@@ -16,7 +16,7 @@ import 'dart:io';
 
 Future exportDatabaseToExcel(BuildContext context, DateTime taskDate) async {
   // Add your function code here!
-  // unit db client anf excel
+  // This action export data filtered by single date and grouped by status
   final client = SupaFlow.client;
   var excel = ex.Excel.createExcel();
   ex.Sheet excelSheet = excel['Отчёт'];
@@ -86,32 +86,12 @@ Future exportDatabaseToExcel(BuildContext context, DateTime taskDate) async {
 
   // write Completed rows to sheet
   for (var i = 0; i < response1.length; i++) {
-    FFAppState().test2 = FFAppState().test2 +
-        ' i=' +
-        i.toString() +
-        ' of ' +
-        response1.length.toString();
     var row = response1[i];
-    // var ds = row['task_date'].toString();
-    //var dt = stringDateToDateTime(ds, 'yyyy-MM-dd');
-    var ds1 = '';
-    if (row['task_date'] != null) {
-      ds1 = row['task_date'].toString() ?? '';
-      var dt1 = stringDateToDateTime(ds1, 'yyyy-MM-dd');
-      ds1 =
-          DateFormat('dd.MM.yyyy').format(dt1!); // convert date to Excel format
-    }
 
-    var ds2 = '';
-    if (row['transfer_date'] != null) {
-      ds2 = row['transfer_date'].toString() ?? '';
-      var dt2 = stringDateToDateTime(ds2, 'yyyy-MM-dd');
-      ds2 =
-          DateFormat('dd.MM.yyyy').format(dt2!); // convert date to Excel format
-    }
+    var ds1 = datetimeToExcelStringDate(row['task_date']);
+    var ds2 = datetimeToExcelStringDate(row['transfer_date']);
+
     FFAppState().test1 = row['line_no'].toString() + ' - ' + row.toString();
-
-    //arr.add(DateCellValue(year: dt2!.year, month: dt2!.month, day: dt2!.day));
 
     excelSheet.appendRow([
       ex.TextCellValue(row['task_status'].toString()),

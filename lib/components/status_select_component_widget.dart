@@ -101,7 +101,7 @@ class _StatusSelectComponentWidgetState
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          Navigator.pop(context, 'Требует назначения');
+                          Navigator.pop(context, 'требует назначения');
                         },
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -165,7 +165,7 @@ class _StatusSelectComponentWidgetState
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          Navigator.pop(context, 'В работе');
+                          Navigator.pop(context, 'в работе');
                         },
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -229,7 +229,7 @@ class _StatusSelectComponentWidgetState
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          Navigator.pop(context, 'Выполнено');
+                          Navigator.pop(context, 'выполнено');
                         },
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -293,7 +293,7 @@ class _StatusSelectComponentWidgetState
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          Navigator.pop(context, 'Не выполнено');
+                          Navigator.pop(context, 'не выполнено');
                         },
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -357,7 +357,7 @@ class _StatusSelectComponentWidgetState
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          Navigator.pop(context, 'Не выполнено (перенос)');
+                          Navigator.pop(context, 'не выполнено (перенос)');
                         },
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
