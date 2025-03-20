@@ -485,18 +485,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Вид работ',
       'en': '',
     },
-    'okpa75kk': {
-      'ru': 'Исполнитель',
-      'en': '',
-    },
-    'fb0qv9xz': {
-      'ru': '',
-      'en': '',
-    },
-    '6l92lupm': {
-      'ru': 'Комментарий исполнителя',
-      'en': '',
-    },
     'ydno50kj': {
       'ru': 'Статус',
       'en': '',
@@ -505,8 +493,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': '',
       'en': '',
     },
-    'l7jqpo9w': {
-      'ru': '',
+    'okpa75kk': {
+      'ru': 'Исполнитель',
       'en': '',
     },
     'ukz984qh': {
@@ -515,6 +503,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '7sn3rmqc': {
       'ru': 'Число обучаемых',
+      'en': '',
+    },
+    '6l92lupm': {
+      'ru': 'Комментарий исполнителя',
       'en': '',
     },
     'tbucemny': {

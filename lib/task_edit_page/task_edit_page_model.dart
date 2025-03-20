@@ -29,16 +29,15 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   TextEditingController? textFieldContractTextController;
   String? Function(BuildContext, String?)?
       textFieldContractTextControllerValidator;
-  // State field(s) for TextFieldEquipment widget.
-  FocusNode? textFieldEquipmentFocusNode1;
-  TextEditingController? textFieldEquipmentTextController1;
+  // State field(s) for TextFieldId widget.
+  FocusNode? textFieldIdFocusNode;
+  TextEditingController? textFieldIdTextController;
+  String? Function(BuildContext, String?)? textFieldIdTextControllerValidator;
+  // State field(s) for TextFieldModel widget.
+  FocusNode? textFieldModelFocusNode;
+  TextEditingController? textFieldModelTextController;
   String? Function(BuildContext, String?)?
-      textFieldEquipmentTextController1Validator;
-  // State field(s) for TextFieldEquipment widget.
-  FocusNode? textFieldEquipmentFocusNode2;
-  TextEditingController? textFieldEquipmentTextController2;
-  String? Function(BuildContext, String?)?
-      textFieldEquipmentTextController2Validator;
+      textFieldModelTextControllerValidator;
   // State field(s) for TextFieldConnection widget.
   FocusNode? textFieldConnectionFocusNode;
   TextEditingController? textFieldConnectionTextController;
@@ -52,35 +51,35 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   FocusNode? textFieldFocusNode5;
   TextEditingController? textController9;
   String? Function(BuildContext, String?)? textController9Validator;
-  // State field(s) for TextDoer widget.
-  FocusNode? textDoerFocusNode;
-  TextEditingController? textDoerTextController;
-  String? Function(BuildContext, String?)? textDoerTextControllerValidator;
-  // Stores action output result for [Alert Dialog - Custom Dialog] action in Button widget.
-  String? doerName;
-  // State field(s) for TextDoerDescription widget.
-  FocusNode? textDoerDescriptionFocusNode;
-  TextEditingController? textDoerDescriptionTextController;
-  String? Function(BuildContext, String?)?
-      textDoerDescriptionTextControllerValidator;
   // State field(s) for TextTaskStatus widget.
   FocusNode? textTaskStatusFocusNode;
   TextEditingController? textTaskStatusTextController;
   String? Function(BuildContext, String?)?
       textTaskStatusTextControllerValidator;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in IconButton widget.
+  String? statusName;
   // State field(s) for TextTaskTransfer widget.
   FocusNode? textTaskTransferFocusNode;
   TextEditingController? textTaskTransferTextController;
   String? Function(BuildContext, String?)?
       textTaskTransferTextControllerValidator;
-  // Stores action output result for [Alert Dialog - Custom Dialog] action in Button widget.
-  String? statusName;
+  // State field(s) for TextDoer widget.
+  FocusNode? textDoerFocusNode;
+  TextEditingController? textDoerTextController;
+  String? Function(BuildContext, String?)? textDoerTextControllerValidator;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in IconButton widget.
+  String? doerName;
   // State field(s) for Switch widget.
   bool? switchValue;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode6;
-  TextEditingController? textController14;
-  String? Function(BuildContext, String?)? textController14Validator;
+  TextEditingController? textController13;
+  String? Function(BuildContext, String?)? textController13Validator;
+  // State field(s) for TextDoerDescription widget.
+  FocusNode? textDoerDescriptionFocusNode;
+  TextEditingController? textDoerDescriptionTextController;
+  String? Function(BuildContext, String?)?
+      textDoerDescriptionTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode7;
   TextEditingController? textController15;
@@ -91,11 +90,11 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   final textFieldTransferDateMask = MaskTextInputFormatter(mask: '##.##.####');
   String? Function(BuildContext, String?)?
       textFieldTransferDateTextControllerValidator;
-  DateTime? datePicked;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode8;
   TextEditingController? textController17;
   String? Function(BuildContext, String?)? textController17Validator;
+  DateTime? datePicked;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode9;
   TextEditingController? textController18;
@@ -126,11 +125,11 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
     textFieldContractFocusNode?.dispose();
     textFieldContractTextController?.dispose();
 
-    textFieldEquipmentFocusNode1?.dispose();
-    textFieldEquipmentTextController1?.dispose();
+    textFieldIdFocusNode?.dispose();
+    textFieldIdTextController?.dispose();
 
-    textFieldEquipmentFocusNode2?.dispose();
-    textFieldEquipmentTextController2?.dispose();
+    textFieldModelFocusNode?.dispose();
+    textFieldModelTextController?.dispose();
 
     textFieldConnectionFocusNode?.dispose();
     textFieldConnectionTextController?.dispose();
@@ -141,20 +140,20 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
     textFieldFocusNode5?.dispose();
     textController9?.dispose();
 
-    textDoerFocusNode?.dispose();
-    textDoerTextController?.dispose();
-
-    textDoerDescriptionFocusNode?.dispose();
-    textDoerDescriptionTextController?.dispose();
-
     textTaskStatusFocusNode?.dispose();
     textTaskStatusTextController?.dispose();
 
     textTaskTransferFocusNode?.dispose();
     textTaskTransferTextController?.dispose();
 
+    textDoerFocusNode?.dispose();
+    textDoerTextController?.dispose();
+
     textFieldFocusNode6?.dispose();
-    textController14?.dispose();
+    textController13?.dispose();
+
+    textDoerDescriptionFocusNode?.dispose();
+    textDoerDescriptionTextController?.dispose();
 
     textFieldFocusNode7?.dispose();
     textController15?.dispose();
