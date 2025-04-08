@@ -1,4 +1,3 @@
-import '';
 import '/backend/supabase/supabase.dart';
 import '/components/status_select_component_widget.dart';
 import '/components/user_select_component_widget.dart';

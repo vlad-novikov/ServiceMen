@@ -1,4 +1,3 @@
-import '';
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/date_filter_component_widget.dart';
