@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+// THIS UNIT EXPORTS TASKS REPORT TO EXCEL
+
 import 'package:file_picker/file_picker.dart';
 import 'package:excel/excel.dart' as ex;
 import 'dart:io';
@@ -17,6 +19,9 @@ import 'dart:io';
 Future exportDatabaseToExcel(BuildContext context, DateTime taskDate) async {
   // Add your function code here!
   // This action export data filtered by single date and grouped by status
+  // Export Database Table rows to excel report
+  var info = FFAppState().test1;
+  info = 'Started export report for the date ' + taskDate.toString();
   final client = SupaFlow.client;
   var excel = ex.Excel.createExcel();
   ex.Sheet excelSheet = excel['Отчёт'];
@@ -106,7 +111,13 @@ Future exportDatabaseToExcel(BuildContext context, DateTime taskDate) async {
       ex.TextCellValue(ds2),
       ex.TextCellValue(row['doer_description'].toString()),
       ex.TextCellValue(row['task_doer'].toString()),
-      ex.TextCellValue(row['transfer_person'].toString())
+      ex.TextCellValue(row['transfer_person'].toString()),
+      ex.TextCellValue(row['transfer_person2'].toString()),
+      ex.TextCellValue(row['transfer_phone2'].toString()),
+      ex.TextCellValue(row['transfer_comment'].toString()),
+      ex.TextCellValue(row['transfer_comment2'].toString()),
+      ex.TextCellValue(row['equipment_id2'].toString()),
+      ex.TextCellValue(row['crm_id'].toString())
     ]);
 
     // Format appended  row

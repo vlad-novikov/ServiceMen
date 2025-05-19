@@ -20,6 +20,12 @@ class TasksRow extends SupabaseDataRow {
   DateTime get createdAt => getField<DateTime>('created_at')!;
   set createdAt(DateTime value) => setField<DateTime>('created_at', value);
 
+  int? get lineNo => getField<int>('line_no');
+  set lineNo(int? value) => setField<int>('line_no', value);
+
+  String? get crmId => getField<String>('crm_id');
+  set crmId(String? value) => setField<String>('crm_id', value);
+
   String? get locationName => getField<String>('location_name');
   set locationName(String? value) => setField<String>('location_name', value);
 
@@ -30,8 +36,36 @@ class TasksRow extends SupabaseDataRow {
   set locationAddress(String? value) =>
       setField<String>('location_address', value);
 
+  String? get locationContract => getField<String>('location_contract');
+  set locationContract(String? value) =>
+      setField<String>('location_contract', value);
+
+  bool? get locationDoc => getField<bool>('location_doc');
+  set locationDoc(bool? value) => setField<bool>('location_doc', value);
+
   String? get equipmentId => getField<String>('equipment_id');
   set equipmentId(String? value) => setField<String>('equipment_id', value);
+
+  String? get equipmentId2 => getField<String>('equipment_id2');
+  set equipmentId2(String? value) => setField<String>('equipment_id2', value);
+
+  String? get equipmentModel => getField<String>('equipment_model');
+  set equipmentModel(String? value) =>
+      setField<String>('equipment_model', value);
+
+  String? get equipmentConnection => getField<String>('equipment_connection');
+  set equipmentConnection(String? value) =>
+      setField<String>('equipment_connection', value);
+
+  DateTime? get taskDate => getField<DateTime>('task_date');
+  set taskDate(DateTime? value) => setField<DateTime>('task_date', value);
+
+  String? get taskDateStr => getField<String>('task_date_str');
+  set taskDateStr(String? value) => setField<String>('task_date_str', value);
+
+  String? get taskDateNameStr => getField<String>('task_date_name_str');
+  set taskDateNameStr(String? value) =>
+      setField<String>('task_date_name_str', value);
 
   String? get taskCategory => getField<String>('task_category');
   set taskCategory(String? value) => setField<String>('task_category', value);
@@ -42,8 +76,18 @@ class TasksRow extends SupabaseDataRow {
   String? get taskStatus => getField<String>('task_status');
   set taskStatus(String? value) => setField<String>('task_status', value);
 
-  DateTime? get taskDate => getField<DateTime>('task_date');
-  set taskDate(DateTime? value) => setField<DateTime>('task_date', value);
+  String? get taskDescr => getField<String>('task_descr');
+  set taskDescr(String? value) => setField<String>('task_descr', value);
+
+  String? get doerDescription => getField<String>('doer_description');
+  set doerDescription(String? value) =>
+      setField<String>('doer_description', value);
+
+  int? get traineesNumber => getField<int>('trainees_number');
+  set traineesNumber(int? value) => setField<int>('trainees_number', value);
+
+  String? get taskTransfer => getField<String>('task_transfer');
+  set taskTransfer(String? value) => setField<String>('task_transfer', value);
 
   String? get transferReason => getField<String>('transfer_reason');
   set transferReason(String? value) =>
@@ -53,64 +97,34 @@ class TasksRow extends SupabaseDataRow {
   set transferDate(DateTime? value) =>
       setField<DateTime>('transfer_date', value);
 
-  String? get transferPerson => getField<String>('transfer_person');
-  set transferPerson(String? value) =>
-      setField<String>('transfer_person', value);
-
-  int? get traineesNumber => getField<int>('trainees_number');
-  set traineesNumber(int? value) => setField<int>('trainees_number', value);
-
-  String? get taskDateStr => getField<String>('task_date_str');
-  set taskDateStr(String? value) => setField<String>('task_date_str', value);
-
-  String? get locationContract => getField<String>('location_contract');
-  set locationContract(String? value) =>
-      setField<String>('location_contract', value);
-
-  String? get taskDescr => getField<String>('task_descr');
-  set taskDescr(String? value) => setField<String>('task_descr', value);
-
-  String? get equipmentConnection => getField<String>('equipment_connection');
-  set equipmentConnection(String? value) =>
-      setField<String>('equipment_connection', value);
-
-  bool? get locationDoc => getField<bool>('location_doc');
-  set locationDoc(bool? value) => setField<bool>('location_doc', value);
-
-  int? get lineNo => getField<int>('line_no');
-  set lineNo(int? value) => setField<int>('line_no', value);
-
-  String? get doerDescription => getField<String>('doer_description');
-  set doerDescription(String? value) =>
-      setField<String>('doer_description', value);
-
-  String? get taskDateNameStr => getField<String>('task_date_name_str');
-  set taskDateNameStr(String? value) =>
-      setField<String>('task_date_name_str', value);
-
   DateTime? get transferDatetime => getField<DateTime>('transfer_datetime');
   set transferDatetime(DateTime? value) =>
       setField<DateTime>('transfer_datetime', value);
-
-  String? get equipmentModel => getField<String>('equipment_model');
-  set equipmentModel(String? value) =>
-      setField<String>('equipment_model', value);
-
-  String? get transferPerson2 => getField<String>('transfer_person_2');
-  set transferPerson2(String? value) =>
-      setField<String>('transfer_person_2', value);
 
   String? get transferDescription => getField<String>('transfer_description');
   set transferDescription(String? value) =>
       setField<String>('transfer_description', value);
 
+  String? get transferPerson => getField<String>('transfer_person');
+  set transferPerson(String? value) =>
+      setField<String>('transfer_person', value);
+
   String? get transferPhone => getField<String>('transfer_phone');
   set transferPhone(String? value) => setField<String>('transfer_phone', value);
+
+  String? get transferPerson2 => getField<String>('transfer_person_2');
+  set transferPerson2(String? value) =>
+      setField<String>('transfer_person_2', value);
 
   String? get transferPhone2 => getField<String>('transfer_phone_2');
   set transferPhone2(String? value) =>
       setField<String>('transfer_phone_2', value);
 
-  String? get taskTransfer => getField<String>('task_transfer');
-  set taskTransfer(String? value) => setField<String>('task_transfer', value);
+  String? get transferComment => getField<String>('transfer_comment');
+  set transferComment(String? value) =>
+      setField<String>('transfer_comment', value);
+
+  String? get transferComment2 => getField<String>('transfer_comment2');
+  set transferComment2(String? value) =>
+      setField<String>('transfer_comment2', value);
 }

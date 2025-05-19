@@ -470,10 +470,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'putk2tvr': {
+      'ru': 'Номер #2',
+      'en': '',
+    },
+    'mquxr67x': {
       'ru': 'Тип связи',
       'en': '',
     },
-    '0dli5mna': {
+    'anndvcau': {
       'ru': 'Причина неисправности',
       'en': '',
     },
@@ -483,6 +487,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'pjhjmpzu': {
       'ru': 'Вид работ',
+      'en': '',
+    },
+    '0espr69a': {
+      'ru': 'CRM ID',
       'en': '',
     },
     'ydno50kj': {
@@ -521,20 +529,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Дата переноса',
       'en': '',
     },
-    '1r9lacg4': {
-      'ru': 'Контакт по переносу',
-      'en': '',
-    },
-    'e9v7xk9d': {
-      'ru': 'Телефон',
-      'en': '',
-    },
     'rx8izb3v': {
-      'ru': 'Контакт по переносу',
+      'ru': 'Контакт на месте',
       'en': '',
     },
     'z4pxvg0p': {
-      'ru': 'Телефон',
+      'ru': 'Телефон контакта',
+      'en': '',
+    },
+    '6268oajh': {
+      'ru': 'Комментарий',
       'en': '',
     },
   },
@@ -611,7 +615,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'wq0isda1': {
-      'ru': 'Банк',
+      'ru': 'Выгрузить',
       'en': '',
     },
     'n6doa9wq': {

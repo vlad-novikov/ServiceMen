@@ -11,6 +11,8 @@ class TaskUserListPageBakModel
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
+  int get tabBarPreviousIndex =>
+      tabBarController != null ? tabBarController!.previousIndex : 0;
 
   Stream<List<TasksRow>>? listViewSupabaseStream;
   // State field(s) for Checkbox widget.

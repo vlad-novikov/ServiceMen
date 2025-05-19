@@ -79,8 +79,9 @@ Future<String?> importExcelToDatabase() async {
       // check if record with this date and line exists
       bool taskExists = await existenceCheckByDateAndLine(taskDate, taskLine);
       addRow = !(badRow || taskExists);
+      FFAppState().test1 = 'ImportExcel addRow=' + addRow.toString();
       if (addRow == true) {
-        // Execute query
+        // Execute INSERT query
         var response = await client.from('tasks').insert({
           'task_date': stringDate,
           'line_no': row[0],
@@ -95,8 +96,17 @@ Future<String?> importExcelToDatabase() async {
           'location_contract': row[9],
           'task_status': taskStatus,
           'task_transfer': row[11],
-          'transfer_reason': row[13]
+          'transfer_date': (row[12] == "") ? null : row[12],
+          'transfer_reason': row[13],
+          'task_doer': row[14],
+          'transfer_person': row[15],
+          'transfer_phone': row[16],
+          'transfer_comment': row[17],
+          'equipment_id2': row[18],
+          'crm_id': row[19]
         }).select();
+
+        FFAppState().test1 = 'Import Excel Insert done';
         if (response == null) {
           return null;
         }
@@ -104,7 +114,7 @@ Future<String?> importExcelToDatabase() async {
         strError += ' Пропущена строка ' + i.toString() + '. ';
       }
     } // i ends
-    FFAppState().message = strError;
+    FFAppState().test1 = strError;
     return 'done';
   } catch (e) {
     // try end

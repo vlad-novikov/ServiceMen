@@ -16,6 +16,10 @@ class TypeImportStruct extends BaseStruct {
     String? description,
     DateTime? date,
     bool? imported,
+    String? crmId,
+    String? transferComment,
+    String? transferComment2,
+    String? equipmentId2,
   })  : _line = line,
         _name = name,
         _phone = phone,
@@ -24,7 +28,11 @@ class TypeImportStruct extends BaseStruct {
         _category = category,
         _description = description,
         _date = date,
-        _imported = imported;
+        _imported = imported,
+        _crmId = crmId,
+        _transferComment = transferComment,
+        _transferComment2 = transferComment2,
+        _equipmentId2 = equipmentId2;
 
   // "line" field.
   int? _line;
@@ -91,6 +99,34 @@ class TypeImportStruct extends BaseStruct {
 
   bool hasImported() => _imported != null;
 
+  // "crm_id" field.
+  String? _crmId;
+  String get crmId => _crmId ?? '';
+  set crmId(String? val) => _crmId = val;
+
+  bool hasCrmId() => _crmId != null;
+
+  // "transfer_comment" field.
+  String? _transferComment;
+  String get transferComment => _transferComment ?? '';
+  set transferComment(String? val) => _transferComment = val;
+
+  bool hasTransferComment() => _transferComment != null;
+
+  // "transfer_comment_2" field.
+  String? _transferComment2;
+  String get transferComment2 => _transferComment2 ?? '';
+  set transferComment2(String? val) => _transferComment2 = val;
+
+  bool hasTransferComment2() => _transferComment2 != null;
+
+  // "equipment_id2" field.
+  String? _equipmentId2;
+  String get equipmentId2 => _equipmentId2 ?? '';
+  set equipmentId2(String? val) => _equipmentId2 = val;
+
+  bool hasEquipmentId2() => _equipmentId2 != null;
+
   static TypeImportStruct fromMap(Map<String, dynamic> data) =>
       TypeImportStruct(
         line: castToType<int>(data['line']),
@@ -102,6 +138,10 @@ class TypeImportStruct extends BaseStruct {
         description: data['description'] as String?,
         date: data['date'] as DateTime?,
         imported: data['imported'] as bool?,
+        crmId: data['crm_id'] as String?,
+        transferComment: data['transfer_comment'] as String?,
+        transferComment2: data['transfer_comment_2'] as String?,
+        equipmentId2: data['equipment_id2'] as String?,
       );
 
   static TypeImportStruct? maybeFromMap(dynamic data) => data is Map
@@ -118,6 +158,10 @@ class TypeImportStruct extends BaseStruct {
         'description': _description,
         'date': _date,
         'imported': _imported,
+        'crm_id': _crmId,
+        'transfer_comment': _transferComment,
+        'transfer_comment_2': _transferComment2,
+        'equipment_id2': _equipmentId2,
       }.withoutNulls;
 
   @override
@@ -157,6 +201,22 @@ class TypeImportStruct extends BaseStruct {
         'imported': serializeParam(
           _imported,
           ParamType.bool,
+        ),
+        'crm_id': serializeParam(
+          _crmId,
+          ParamType.String,
+        ),
+        'transfer_comment': serializeParam(
+          _transferComment,
+          ParamType.String,
+        ),
+        'transfer_comment_2': serializeParam(
+          _transferComment2,
+          ParamType.String,
+        ),
+        'equipment_id2': serializeParam(
+          _equipmentId2,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -207,6 +267,26 @@ class TypeImportStruct extends BaseStruct {
           ParamType.bool,
           false,
         ),
+        crmId: deserializeParam(
+          data['crm_id'],
+          ParamType.String,
+          false,
+        ),
+        transferComment: deserializeParam(
+          data['transfer_comment'],
+          ParamType.String,
+          false,
+        ),
+        transferComment2: deserializeParam(
+          data['transfer_comment_2'],
+          ParamType.String,
+          false,
+        ),
+        equipmentId2: deserializeParam(
+          data['equipment_id2'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -223,12 +303,29 @@ class TypeImportStruct extends BaseStruct {
         category == other.category &&
         description == other.description &&
         date == other.date &&
-        imported == other.imported;
+        imported == other.imported &&
+        crmId == other.crmId &&
+        transferComment == other.transferComment &&
+        transferComment2 == other.transferComment2 &&
+        equipmentId2 == other.equipmentId2;
   }
 
   @override
-  int get hashCode => const ListEquality().hash(
-      [line, name, phone, address, id, category, description, date, imported]);
+  int get hashCode => const ListEquality().hash([
+        line,
+        name,
+        phone,
+        address,
+        id,
+        category,
+        description,
+        date,
+        imported,
+        crmId,
+        transferComment,
+        transferComment2,
+        equipmentId2
+      ]);
 }
 
 TypeImportStruct createTypeImportStruct({
@@ -241,6 +338,10 @@ TypeImportStruct createTypeImportStruct({
   String? description,
   DateTime? date,
   bool? imported,
+  String? crmId,
+  String? transferComment,
+  String? transferComment2,
+  String? equipmentId2,
 }) =>
     TypeImportStruct(
       line: line,
@@ -252,4 +353,8 @@ TypeImportStruct createTypeImportStruct({
       description: description,
       date: date,
       imported: imported,
+      crmId: crmId,
+      transferComment: transferComment,
+      transferComment2: transferComment2,
+      equipmentId2: equipmentId2,
     );
