@@ -1,10 +1,10 @@
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
-import 'task_edit_page_widget.dart' show TaskEditPageWidget;
+import 'user_task_edit_page_widget.dart' show UserTaskEditPageWidget;
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
+class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
   ///  Local state fields for this page.
 
   DateTime? pickedTransferDate;

@@ -19,8 +19,6 @@ class UserTaskListPageModel extends FlutterFlowModel<UserTaskListPageWidget> {
 
   // Model for DateFilterComponent component.
   late DateFilterComponentModel dateFilterComponentModel;
-  // Stores action output result for [Alert Dialog - Custom Dialog] action in Container widget.
-  String? statusName;
 
   @override
   void initState(BuildContext context) {

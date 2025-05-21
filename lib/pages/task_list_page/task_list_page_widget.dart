@@ -2,7 +2,6 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/date_filter_component_widget.dart';
 import '/components/side_navigation_component_widget.dart';
-import '/components/status_select_component_widget.dart';
 import '/components/user_select_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -152,7 +151,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                               ),
                             );
                           }
-                          List<TasksRow> mainContentTasksRowList =
+                          List<TasksRow> mainContainerTasksRowList =
                               snapshot.data!;
 
                           return Container(
@@ -972,7 +971,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                   Builder(
                                     builder: (context) {
                                       final mainContentVar =
-                                          mainContentTasksRowList.toList();
+                                          mainContainerTasksRowList.toList();
 
                                       return ListView.separated(
                                         padding: EdgeInsets.fromLTRB(
@@ -1479,226 +1478,103 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                         MainAxisAlignment.start,
                                                     children: [
                                                       Flexible(
-                                                        child: Builder(
-                                                          builder: (context) =>
-                                                              Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        2.0,
-                                                                        0.0,
-                                                                        2.0,
-                                                                        0.0),
-                                                            child: InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              onTap: () async {
-                                                                var _shouldSetState =
-                                                                    false;
-                                                                await showAlignedDialog(
-                                                                  context:
-                                                                      context,
-                                                                  isGlobal:
-                                                                      false,
-                                                                  avoidOverflow:
-                                                                      false,
-                                                                  targetAnchor: AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                                  followerAnchor: AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                                  builder:
-                                                                      (dialogContext) {
-                                                                    return Material(
-                                                                      color: Colors
-                                                                          .transparent,
-                                                                      child:
-                                                                          GestureDetector(
-                                                                        onTap:
-                                                                            () {
-                                                                          FocusScope.of(dialogContext)
-                                                                              .unfocus();
-                                                                          FocusManager
-                                                                              .instance
-                                                                              .primaryFocus
-                                                                              ?.unfocus();
-                                                                        },
-                                                                        child:
-                                                                            StatusSelectComponentWidget(),
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                ).then((value) =>
-                                                                    safeSetState(() =>
-                                                                        _model.statusName =
-                                                                            value));
-
-                                                                _shouldSetState =
-                                                                    true;
-                                                                if (_model.statusName !=
-                                                                        null &&
-                                                                    _model.statusName !=
-                                                                        '') {
-                                                                  await TasksTable()
-                                                                      .update(
-                                                                    data: {
-                                                                      'task_status':
-                                                                          _model
-                                                                              .statusName,
-                                                                      'task_transfer':
-                                                                          '',
-                                                                    },
-                                                                    matchingRows:
-                                                                        (rows) =>
-                                                                            rows.eqOrNull(
-                                                                      'id',
-                                                                      mainContentVarItem
-                                                                          .id,
-                                                                    ),
-                                                                  );
-                                                                } else {
-                                                                  if (_shouldSetState)
-                                                                    safeSetState(
-                                                                        () {});
-                                                                  return;
-                                                                }
-
-                                                                safeSetState(
-                                                                    () {});
-                                                                if (_model
-                                                                        .statusName ==
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      2.0,
+                                                                      0.0,
+                                                                      2.0,
+                                                                      0.0),
+                                                          child: Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: () {
+                                                                if (mainContentVarItem
+                                                                        .taskStatus ==
+                                                                    'выполнено') {
+                                                                  return FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondary;
+                                                                } else if (mainContentVarItem
+                                                                        .taskStatus ==
+                                                                    'требует назначения') {
+                                                                  return FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .warning;
+                                                                } else if (mainContentVarItem
+                                                                        .taskStatus ==
+                                                                    'не выполнено') {
+                                                                  return FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .tertiary;
+                                                                } else if (mainContentVarItem
+                                                                        .taskStatus ==
                                                                     'не выполнено (перенос)') {
-                                                                  await TasksTable()
-                                                                      .update(
-                                                                    data: {
-                                                                      'task_transfer':
-                                                                          'перенос',
-                                                                      'task_status':
-                                                                          'не выполнено',
-                                                                    },
-                                                                    matchingRows:
-                                                                        (rows) =>
-                                                                            rows.eqOrNull(
-                                                                      'id',
-                                                                      mainContentVarItem
-                                                                          .id,
-                                                                    ),
-                                                                  );
+                                                                  return FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .tertiary;
                                                                 } else {
-                                                                  if (_shouldSetState)
-                                                                    safeSetState(
-                                                                        () {});
-                                                                  return;
+                                                                  return Color(
+                                                                      0x00000000);
                                                                 }
-
-                                                                if (_shouldSetState)
-                                                                  safeSetState(
-                                                                      () {});
-                                                              },
-                                                              child: Container(
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: () {
-                                                                    if (mainContentVarItem
-                                                                            .taskStatus ==
-                                                                        'выполнено') {
-                                                                      return FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondary;
-                                                                    } else if (mainContentVarItem
-                                                                            .taskStatus ==
-                                                                        'требует назначения') {
-                                                                      return FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .warning;
-                                                                    } else if (mainContentVarItem
-                                                                            .taskStatus ==
-                                                                        'не выполнено') {
-                                                                      return FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .tertiary;
-                                                                    } else if (mainContentVarItem
-                                                                            .taskStatus ==
-                                                                        'не выполнено (перенос)') {
-                                                                      return FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .tertiary;
-                                                                    } else {
-                                                                      return Color(
-                                                                          0x00000000);
-                                                                    }
-                                                                  }(),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                  border: Border
-                                                                      .all(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground,
-                                                                    width: 0.0,
-                                                                  ),
+                                                              }(),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              border:
+                                                                  Border.all(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                width: 0.0,
+                                                              ),
+                                                            ),
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            child: Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      0.0, 0.0),
+                                                              child: Text(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  mainContentVarItem
+                                                                      .taskStatus,
+                                                                  'Статус',
                                                                 ),
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0),
-                                                                child: Align(
-                                                                  alignment:
-                                                                      AlignmentDirectional(
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                maxLines: 3,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmall
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodySmall
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      color: Color(
+                                                                          0xFF15161E),
+                                                                      fontSize:
+                                                                          12.0,
+                                                                      letterSpacing:
                                                                           0.0,
-                                                                          0.0),
-                                                                  child: Text(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      mainContentVarItem
-                                                                          .taskStatus,
-                                                                      'Статус',
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodySmall
+                                                                          .fontStyle,
                                                                     ),
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
-                                                                    maxLines: 3,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodySmall
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.plusJakartaSans(
-                                                                            fontWeight:
-                                                                                FontWeight.w500,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).bodySmall.fontStyle,
-                                                                          ),
-                                                                          color:
-                                                                              Color(0xFF15161E),
-                                                                          fontSize:
-                                                                              12.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w500,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .fontStyle,
-                                                                        ),
-                                                                  ),
-                                                                ),
                                                               ),
                                                             ),
                                                           ),

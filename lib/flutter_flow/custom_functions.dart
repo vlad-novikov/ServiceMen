@@ -66,3 +66,8 @@ String addressToURL(String address) {
   url = 'https://yandex.ru/maps/?mode=search&text=' + url;
   return url;
 }
+
+bool isEven(int? inputInteger) {
+  inputInteger = inputInteger ?? 0;
+  return inputInteger % 2 == 0;
+}

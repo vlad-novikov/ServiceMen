@@ -10,10 +10,6 @@ class EntryPageModel extends FlutterFlowModel<EntryPageWidget> {
   FocusNode? textField1FocusNode;
   TextEditingController? textField1TextController;
   String? Function(BuildContext, String?)? textField1TextControllerValidator;
-  // State field(s) for TextField2 widget.
-  FocusNode? textField2FocusNode;
-  TextEditingController? textField2TextController;
-  String? Function(BuildContext, String?)? textField2TextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -22,8 +18,5 @@ class EntryPageModel extends FlutterFlowModel<EntryPageWidget> {
   void dispose() {
     textField1FocusNode?.dispose();
     textField1TextController?.dispose();
-
-    textField2FocusNode?.dispose();
-    textField2TextController?.dispose();
   }
 }

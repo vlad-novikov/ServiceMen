@@ -170,6 +170,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: TestPageWidget.routeName,
           path: TestPageWidget.routePath,
           builder: (context, params) => TestPageWidget(),
+        ),
+        FFRoute(
+          name: UserTaskEditPageWidget.routeName,
+          path: UserTaskEditPageWidget.routePath,
+          builder: (context, params) => UserTaskEditPageWidget(
+            taskID: params.getParam(
+              'taskID',
+              ParamType.int,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

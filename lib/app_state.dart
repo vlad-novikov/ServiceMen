@@ -144,4 +144,25 @@ class FFAppState extends ChangeNotifier {
   set message(String value) {
     _message = value;
   }
+
+  /// last name of authentucated user
+  String _AppLastName = '';
+  String get AppLastName => _AppLastName;
+  set AppLastName(String value) {
+    _AppLastName = value;
+  }
+
+  /// Email of autheticated user
+  String _AppEmail = '';
+  String get AppEmail => _AppEmail;
+  set AppEmail(String value) {
+    _AppEmail = value;
+  }
+
+  /// Phone of authenticated user
+  String _AppPhone = '';
+  String get AppPhone => _AppPhone;
+  set AppPhone(String value) {
+    _AppPhone = value;
+  }
 }
