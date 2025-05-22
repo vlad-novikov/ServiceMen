@@ -174,6 +174,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: UserTaskEditPageWidget.routeName,
           path: UserTaskEditPageWidget.routePath,
+          requireAuth: true,
           builder: (context, params) => UserTaskEditPageWidget(
             taskID: params.getParam(
               'taskID',

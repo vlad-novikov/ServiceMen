@@ -127,4 +127,7 @@ class TasksRow extends SupabaseDataRow {
   String? get transferComment2 => getField<String>('transfer_comment2');
   set transferComment2(String? value) =>
       setField<String>('transfer_comment2', value);
+
+  DateTime? get finishDate => getField<DateTime>('finish_date');
+  set finishDate(DateTime? value) => setField<DateTime>('finish_date', value);
 }

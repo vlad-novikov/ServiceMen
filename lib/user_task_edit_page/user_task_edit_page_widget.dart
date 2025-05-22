@@ -64,6 +64,8 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
 
     _model.textTaskTransferFocusNode ??= FocusNode();
 
+    _model.textFinishTimeFocusNode ??= FocusNode();
+
     _model.textDoerFocusNode ??= FocusNode();
 
     _model.textDoerDescriptionFocusNode ??= FocusNode();
@@ -156,8 +158,8 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                             'task_status':
                                 _model.textTaskStatusTextController.text,
                             'transfer_description':
-                                _model.textController16.text,
-                            'transfer_person': _model.textController18.text,
+                                _model.textController17.text,
+                            'transfer_person': _model.textController19.text,
                             'trainees_number': _model.countControllerValue,
                             'transfer_date': supaSerialize<DateTime>(
                                 _model.pickedTransferDate),
@@ -169,9 +171,11 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                 _model.textFieldConnectionTextController1.text,
                             'task_transfer':
                                 _model.textTaskTransferTextController.text,
-                            'transfer_comment': _model.textController20.text,
-                            'transfer_phone': _model.textController19.text,
+                            'transfer_comment': _model.textController21.text,
+                            'transfer_phone': _model.textController20.text,
                             'location_doc': _model.switchValue,
+                            'finish_date':
+                                supaSerialize<DateTime>(_model.finishDateTime),
                           },
                           matchingRows: (rows) => rows.eqOrNull(
                             'id',
@@ -2424,12 +2428,29 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                           .textTaskTransferTextController
                                                           ?.text = 'перенос';
                                                     });
+                                                    if (_shouldSetState)
+                                                      safeSetState(() {});
+                                                    return;
                                                   } else {
                                                     safeSetState(() {
                                                       _model
                                                           .textTaskTransferTextController
                                                           ?.text = '';
                                                     });
+                                                  }
+
+                                                  if (_model.statusName ==
+                                                      'выполнено') {
+                                                    safeSetState(() {
+                                                      _model.textFinishTimeTextController
+                                                              ?.text =
+                                                          getCurrentTimestamp
+                                                              .toString();
+                                                    });
+                                                  } else {
+                                                    if (_shouldSetState)
+                                                      safeSetState(() {});
+                                                    return;
                                                   }
                                                 } else {
                                                   if (_shouldSetState)
@@ -2602,6 +2623,102 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   .textTaskTransferTextControllerValidator
                                                   .asValidator(context),
                                             ),
+                                          ),
+                                        ),
+                                        Container(
+                                          width: 200.0,
+                                          child: TextFormField(
+                                            controller: _model
+                                                    .textFinishTimeTextController ??=
+                                                TextEditingController(
+                                              text: columnTasksRow?.finishDate
+                                                  ?.toString(),
+                                            ),
+                                            focusNode:
+                                                _model.textFinishTimeFocusNode,
+                                            autofocus: false,
+                                            readOnly: true,
+                                            obscureText: false,
+                                            decoration: InputDecoration(
+                                              isDense: true,
+                                              labelText:
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                '4k53x1l2' /* Время завершения */,
+                                              ),
+                                              labelStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                              hintText:
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                '1ykgmx60' /* Время, кода статус поменялся н... */,
+                                              ),
+                                              enabledBorder: InputBorder.none,
+                                              focusedBorder: InputBorder.none,
+                                              errorBorder: InputBorder.none,
+                                              focusedErrorBorder:
+                                                  InputBorder.none,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                            cursorColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryText,
+                                            validator: _model
+                                                .textFinishTimeTextControllerValidator
+                                                .asValidator(context),
                                           ),
                                         ),
                                       ],
@@ -3274,7 +3391,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                             20.0, 5.0, 20.0, 5.0),
                                         child: TextFormField(
                                           controller:
-                                              _model.textController16 ??=
+                                              _model.textController17 ??=
                                                   TextEditingController(
                                             text: columnTasksRow
                                                 ?.transferDescription,
@@ -3412,7 +3529,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                           minLines: 1,
                                           keyboardType: TextInputType.phone,
                                           validator: _model
-                                              .textController16Validator
+                                              .textController17Validator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -3772,7 +3889,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
                                               controller:
-                                                  _model.textController18 ??=
+                                                  _model.textController19 ??=
                                                       TextEditingController(
                                                 text: columnTasksRow
                                                     ?.transferPerson,
@@ -3922,7 +4039,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textController18Validator
+                                                  .textController19Validator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -3934,7 +4051,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
                                               controller:
-                                                  _model.textController19 ??=
+                                                  _model.textController20 ??=
                                                       TextEditingController(
                                                 text: columnTasksRow
                                                     ?.transferPhone,
@@ -4084,7 +4201,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textController19Validator
+                                                  .textController20Validator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -4101,7 +4218,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
                                               controller:
-                                                  _model.textController20 ??=
+                                                  _model.textController21 ??=
                                                       TextEditingController(
                                                 text: columnTasksRow
                                                     ?.transferComment,
@@ -4251,7 +4368,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textController20Validator
+                                                  .textController21Validator
                                                   .asValidator(context),
                                             ),
                                           ),
