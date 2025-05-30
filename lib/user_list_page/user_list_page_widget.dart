@@ -809,12 +809,17 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                             listViewUsersRow] =
                                                         newValue!);
                                                   },
-                                                  side: BorderSide(
-                                                    width: 2,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .alternate,
-                                                  ),
+                                                  side: (FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate !=
+                                                          null)
+                                                      ? BorderSide(
+                                                          width: 2,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
+                                                        )
+                                                      : null,
                                                   activeColor:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -861,12 +866,17 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                                             listViewUsersRow] =
                                                         newValue!);
                                                   },
-                                                  side: BorderSide(
-                                                    width: 2,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .alternate,
-                                                  ),
+                                                  side: (FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate !=
+                                                          null)
+                                                      ? BorderSide(
+                                                          width: 2,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
+                                                        )
+                                                      : null,
                                                   activeColor:
                                                       FlutterFlowTheme.of(
                                                               context)

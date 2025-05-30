@@ -56,9 +56,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
 
     _model.textFieldFocusNode4 ??= FocusNode();
 
-    _model.textFieldFocusNode5 ??= FocusNode();
+    _model.textTaskCategoryFocusNode ??= FocusNode();
 
-    _model.textFieldFocusNode6 ??= FocusNode();
+    _model.textFieldFocusNode5 ??= FocusNode();
 
     _model.textTaskStatusFocusNode ??= FocusNode();
 
@@ -70,15 +70,15 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
 
     _model.textDoerDescriptionFocusNode ??= FocusNode();
 
-    _model.textFieldFocusNode7 ??= FocusNode();
+    _model.textFieldFocusNode6 ??= FocusNode();
 
     _model.textFieldTransferDateFocusNode ??= FocusNode();
+
+    _model.textFieldFocusNode7 ??= FocusNode();
 
     _model.textFieldFocusNode8 ??= FocusNode();
 
     _model.textFieldFocusNode9 ??= FocusNode();
-
-    _model.textFieldFocusNode10 ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -154,7 +154,8 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                             'location_phone': _model.textController3.text,
                             'location_address': _model.textController2.text,
                             'task_doer': _model.textDoerTextController.text,
-                            'task_category': _model.textController10.text,
+                            'task_category':
+                                _model.textTaskCategoryTextController.text,
                             'task_status':
                                 _model.textTaskStatusTextController.text,
                             'transfer_description':
@@ -1895,14 +1896,14 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
-                                              controller:
-                                                  _model.textController10 ??=
-                                                      TextEditingController(
+                                              controller: _model
+                                                      .textTaskCategoryTextController ??=
+                                                  TextEditingController(
                                                 text: columnTasksRow
                                                     ?.taskCategory,
                                               ),
-                                              focusNode:
-                                                  _model.textFieldFocusNode5,
+                                              focusNode: _model
+                                                  .textTaskCategoryFocusNode,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -2046,7 +2047,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textController10Validator
+                                                  .textTaskCategoryTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -2063,7 +2064,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 text: columnTasksRow?.crmId,
                                               ),
                                               focusNode:
-                                                  _model.textFieldFocusNode6,
+                                                  _model.textFieldFocusNode5,
                                               autofocus: false,
                                               readOnly: true,
                                               obscureText: false,
@@ -2993,35 +2994,41 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     .getText(
                                                   'mjgv9gn4' /* Документы в ТСП */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyLarge
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyLarge
-                                                                    .fontStyle,
-                                                          ),
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyLarge
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyLarge
-                                                                  .fontStyle,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyLarge
+                                                    .override(
+                                                      font: GoogleFonts.inter(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontStyle,
+                                                      ),
+                                                      color: columnTasksRow
+                                                                  ?.taskStatus ==
+                                                              'выполнено'
+                                                          ? Color(0xFFFF0000)
+                                                          : FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLarge
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLarge
+                                                              .fontStyle,
+                                                    ),
                                               ),
                                             ),
                                             Align(
@@ -3049,134 +3056,154 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                         .secondaryBackground,
                                               ),
                                             ),
-                                            if (_model.textController10.text ==
-                                                'ОБУЧЕНИЕ')
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 5.0, 0.0),
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'xcnu8wf1' /* Число обучаемых */,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                ),
-                                              ),
-                                            if (_model.textController10.text ==
-                                                'ОБУЧЕНИЕ')
+                                            if ((_model.textTaskCategoryTextController
+                                                        .text ==
+                                                    'УСТАНОВКА') ||
+                                                (_model.textTaskCategoryTextController
+                                                        .text ==
+                                                    'ОБУЧЕНИЕ'))
                                               Container(
-                                                width: 120.0,
-                                                height: 40.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                  shape: BoxShape.rectangle,
-                                                ),
-                                                child:
-                                                    FlutterFlowCountController(
-                                                  decrementIconBuilder:
-                                                      (enabled) => Icon(
-                                                    Icons.remove_rounded,
-                                                    color: enabled
-                                                        ? FlutterFlowTheme.of(
+                                                decoration: BoxDecoration(),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        FFLocalizations.of(
                                                                 context)
-                                                            .secondaryText
-                                                        : FlutterFlowTheme.of(
-                                                                context)
-                                                            .alternate,
-                                                    size: 24.0,
-                                                  ),
-                                                  incrementIconBuilder:
-                                                      (enabled) => Icon(
-                                                    Icons.add_rounded,
-                                                    color: enabled
-                                                        ? FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary
-                                                        : FlutterFlowTheme.of(
-                                                                context)
-                                                            .alternate,
-                                                    size: 24.0,
-                                                  ),
-                                                  countBuilder: (count) => Text(
-                                                    count.toString(),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .titleLarge
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .interTight(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
+                                                            .getText(
+                                                          'xcnu8wf1' /* Число обучаемых */,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      width: 120.0,
+                                                      height: 40.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        shape:
+                                                            BoxShape.rectangle,
+                                                      ),
+                                                      child:
+                                                          FlutterFlowCountController(
+                                                        decrementIconBuilder:
+                                                            (enabled) => Icon(
+                                                          Icons.remove_rounded,
+                                                          color: enabled
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .secondaryText
+                                                              : FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
+                                                          size: 24.0,
+                                                        ),
+                                                        incrementIconBuilder:
+                                                            (enabled) => Icon(
+                                                          Icons.add_rounded,
+                                                          color: enabled
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .primary
+                                                              : FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
+                                                          size: 24.0,
+                                                        ),
+                                                        countBuilder: (count) =>
+                                                            Text(
+                                                          count.toString(),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .titleLarge
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .interTight(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleLarge
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleLarge
+                                                                      .fontStyle,
+                                                                ),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleLarge
                                                                     .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
+                                                                fontStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleLarge
                                                                     .fontStyle,
-                                                          ),
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleLarge
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleLarge
-                                                                  .fontStyle,
+                                                              ),
                                                         ),
-                                                  ),
-                                                  count: _model
-                                                          .countControllerValue ??=
-                                                      columnTasksRow!
-                                                          .traineesNumber!,
-                                                  updateCount: (count) =>
-                                                      safeSetState(() => _model
-                                                              .countControllerValue =
-                                                          count),
-                                                  stepSize: 1,
-                                                  minimum: 0,
-                                                  maximum: 99,
-                                                  contentPadding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(12.0, 0.0,
-                                                              12.0, 0.0),
+                                                        count: _model
+                                                                .countControllerValue ??=
+                                                            columnTasksRow!
+                                                                .traineesNumber!,
+                                                        updateCount: (count) =>
+                                                            safeSetState(() =>
+                                                                _model.countControllerValue =
+                                                                    count),
+                                                        stepSize: 1,
+                                                        minimum: 0,
+                                                        maximum: 99,
+                                                        contentPadding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    12.0,
+                                                                    0.0,
+                                                                    12.0,
+                                                                    0.0),
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
                                           ],
@@ -3396,7 +3423,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                             text: columnTasksRow
                                                 ?.transferDescription,
                                           ),
-                                          focusNode: _model.textFieldFocusNode7,
+                                          focusNode: _model.textFieldFocusNode6,
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
@@ -3895,7 +3922,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     ?.transferPerson,
                                               ),
                                               focusNode:
-                                                  _model.textFieldFocusNode8,
+                                                  _model.textFieldFocusNode7,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -4057,7 +4084,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     ?.transferPhone,
                                               ),
                                               focusNode:
-                                                  _model.textFieldFocusNode9,
+                                                  _model.textFieldFocusNode8,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -4224,7 +4251,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     ?.transferComment,
                                               ),
                                               focusNode:
-                                                  _model.textFieldFocusNode10,
+                                                  _model.textFieldFocusNode9,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(

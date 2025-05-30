@@ -1122,11 +1122,12 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                                 (newValue) async {
                                                                               safeSetState(() => _model.checkboxValueMap1[listViewTasksRow] = newValue!);
                                                                             },
-                                                                            side:
-                                                                                BorderSide(
-                                                                              width: 2,
-                                                                              color: Color(0xFFE0E3E7),
-                                                                            ),
+                                                                            side: (Color(0xFFE0E3E7) != null)
+                                                                                ? BorderSide(
+                                                                                    width: 2,
+                                                                                    color: Color(0xFFE0E3E7),
+                                                                                  )
+                                                                                : null,
                                                                             activeColor:
                                                                                 Color(0xFF6F61EF),
                                                                             checkColor:
@@ -1478,13 +1479,13 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                           safeSetState(() =>
                                                                               _model.checkboxValue4 = newValue!);
                                                                         },
-                                                                        side:
-                                                                            BorderSide(
-                                                                          width:
-                                                                              2,
-                                                                          color:
-                                                                              Color(0xFFE0E3E7),
-                                                                        ),
+                                                                        side: (Color(0xFFE0E3E7) !=
+                                                                                null)
+                                                                            ? BorderSide(
+                                                                                width: 2,
+                                                                                color: Color(0xFFE0E3E7),
+                                                                              )
+                                                                            : null,
                                                                         activeColor:
                                                                             Color(0xFF6F61EF),
                                                                         checkColor:
@@ -1635,13 +1636,13 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                           safeSetState(() =>
                                                                               _model.checkboxValue5 = newValue!);
                                                                         },
-                                                                        side:
-                                                                            BorderSide(
-                                                                          width:
-                                                                              2,
-                                                                          color:
-                                                                              Color(0xFF606A85),
-                                                                        ),
+                                                                        side: (Color(0xFF606A85) !=
+                                                                                null)
+                                                                            ? BorderSide(
+                                                                                width: 2,
+                                                                                color: Color(0xFF606A85),
+                                                                              )
+                                                                            : null,
                                                                         activeColor:
                                                                             Color(0xFF6F61EF),
                                                                         checkColor:
@@ -1792,13 +1793,13 @@ class _TaskUserListPageBakWidgetState extends State<TaskUserListPageBakWidget>
                                                                           safeSetState(() =>
                                                                               _model.checkboxValue6 = newValue!);
                                                                         },
-                                                                        side:
-                                                                            BorderSide(
-                                                                          width:
-                                                                              2,
-                                                                          color:
-                                                                              Color(0xFF606A85),
-                                                                        ),
+                                                                        side: (Color(0xFF606A85) !=
+                                                                                null)
+                                                                            ? BorderSide(
+                                                                                width: 2,
+                                                                                color: Color(0xFF606A85),
+                                                                              )
+                                                                            : null,
                                                                         activeColor:
                                                                             Color(0xFF6F61EF),
                                                                         checkColor:

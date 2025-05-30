@@ -54,12 +54,13 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
   FocusNode? textFieldFocusNode4;
   TextEditingController? textController9;
   String? Function(BuildContext, String?)? textController9Validator;
+  // State field(s) for TextTaskCategory widget.
+  FocusNode? textTaskCategoryFocusNode;
+  TextEditingController? textTaskCategoryTextController;
+  String? Function(BuildContext, String?)?
+      textTaskCategoryTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode5;
-  TextEditingController? textController10;
-  String? Function(BuildContext, String?)? textController10Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode6;
   TextEditingController? textController11;
   String? Function(BuildContext, String?)? textController11Validator;
   // State field(s) for TextTaskStatus widget.
@@ -95,7 +96,7 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
   String? Function(BuildContext, String?)?
       textDoerDescriptionTextControllerValidator;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode7;
+  FocusNode? textFieldFocusNode6;
   TextEditingController? textController17;
   String? Function(BuildContext, String?)? textController17Validator;
   // State field(s) for TextFieldTransferDate widget.
@@ -106,15 +107,15 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
       textFieldTransferDateTextControllerValidator;
   DateTime? datePicked;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode8;
+  FocusNode? textFieldFocusNode7;
   TextEditingController? textController19;
   String? Function(BuildContext, String?)? textController19Validator;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode9;
+  FocusNode? textFieldFocusNode8;
   TextEditingController? textController20;
   String? Function(BuildContext, String?)? textController20Validator;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode10;
+  FocusNode? textFieldFocusNode9;
   TextEditingController? textController21;
   String? Function(BuildContext, String?)? textController21Validator;
 
@@ -150,10 +151,10 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
     textFieldFocusNode4?.dispose();
     textController9?.dispose();
 
-    textFieldFocusNode5?.dispose();
-    textController10?.dispose();
+    textTaskCategoryFocusNode?.dispose();
+    textTaskCategoryTextController?.dispose();
 
-    textFieldFocusNode6?.dispose();
+    textFieldFocusNode5?.dispose();
     textController11?.dispose();
 
     textTaskStatusFocusNode?.dispose();
@@ -171,19 +172,19 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
     textDoerDescriptionFocusNode?.dispose();
     textDoerDescriptionTextController?.dispose();
 
-    textFieldFocusNode7?.dispose();
+    textFieldFocusNode6?.dispose();
     textController17?.dispose();
 
     textFieldTransferDateFocusNode?.dispose();
     textFieldTransferDateTextController?.dispose();
 
-    textFieldFocusNode8?.dispose();
+    textFieldFocusNode7?.dispose();
     textController19?.dispose();
 
-    textFieldFocusNode9?.dispose();
+    textFieldFocusNode8?.dispose();
     textController20?.dispose();
 
-    textFieldFocusNode10?.dispose();
+    textFieldFocusNode9?.dispose();
     textController21?.dispose();
   }
 }
