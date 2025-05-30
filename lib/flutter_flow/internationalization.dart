@@ -1012,7 +1012,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'dgts325d': {
-      'ru': '',
+      'ru': 'Признак переноса',
       'en': '',
     },
     '4k53x1l2': {

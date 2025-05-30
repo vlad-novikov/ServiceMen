@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -2483,6 +2484,11 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               readOnly: true,
                                               obscureText: false,
                                               decoration: InputDecoration(
+                                                labelText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'dgts325d' /* Признак переноса */,
+                                                ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -2720,6 +2726,64 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                             validator: _model
                                                 .textFinishTimeTextControllerValidator
                                                 .asValidator(context),
+                                          ),
+                                        ),
+                                        FFButtonWidget(
+                                          onPressed: () {
+                                            print('ButtonFinish pressed ...');
+                                          },
+                                          text:
+                                              _model.textTaskStatusTextController
+                                                          .text ==
+                                                      'в работе'
+                                                  ? 'Завершить'
+                                                  : 'Открыть',
+                                          icon: Icon(
+                                            Icons.thumb_up,
+                                            size: 15.0,
+                                          ),
+                                          options: FFButtonOptions(
+                                            height: 40.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            textStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .titleSmall
+                                                .override(
+                                                  font: GoogleFonts.interTight(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmall
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmall
+                                                            .fontStyle,
+                                                  ),
+                                                  color: Colors.white,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontStyle,
+                                                ),
+                                            elevation: 0.0,
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
                                           ),
                                         ),
                                       ],
@@ -3010,8 +3074,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                                 .bodyLarge
                                                                 .fontStyle,
                                                       ),
-                                                      color: columnTasksRow
-                                                                  ?.taskStatus ==
+                                                      color: _model
+                                                                  .textTaskStatusTextController
+                                                                  .text ==
                                                               'выполнено'
                                                           ? Color(0xFFFF0000)
                                                           : FlutterFlowTheme.of(
