@@ -20,7 +20,7 @@ class TaskListPageModel extends FlutterFlowModel<TaskListPageWidget> {
   late DateFilterComponentModel dateFilterComponentModel;
   // Stores action output result for [Custom Action - importExcelToDatabase] action in ButtonReadXLSX widget.
   String? importResult;
-  // Stores action output result for [Alert Dialog - Custom Dialog] action in Container widget.
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in ButtonTaskDoer widget.
   String? doerName;
 
   @override

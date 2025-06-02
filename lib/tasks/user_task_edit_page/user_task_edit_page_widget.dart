@@ -178,6 +178,8 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                             'location_doc': _model.switchValue,
                             'finish_date':
                                 supaSerialize<DateTime>(_model.finishDateTime),
+                            'finish_time': supaSerialize<PostgresTime>(
+                                PostgresTime(_model.finishDateTime)),
                           },
                           matchingRows: (rows) => rows.eqOrNull(
                             'id',
@@ -296,6 +298,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                         ),
                                         focusNode: _model.textFieldFocusNode1,
                                         autofocus: false,
+                                        readOnly: true,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: FFLocalizations.of(context)
@@ -446,6 +449,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               focusNode:
                                                   _model.textFieldFocusNode2,
                                               autofocus: false,
+                                              readOnly: true,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
@@ -640,6 +644,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               focusNode:
                                                   _model.textFieldFocusNode3,
                                               autofocus: false,
+                                              readOnly: true,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
@@ -805,6 +810,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               focusNode: _model
                                                   .textFieldContractFocusNode,
                                               autofocus: false,
+                                              readOnly: true,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
@@ -1017,6 +1023,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               focusNode:
                                                   _model.textFieldIdFocusNode,
                                               autofocus: false,
+                                              readOnly: true,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
@@ -1179,6 +1186,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               focusNode: _model
                                                   .textFieldModelFocusNode,
                                               autofocus: false,
+                                              readOnly: true,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
@@ -1351,6 +1359,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               focusNode: _model
                                                   .textFieldConnectionFocusNode1,
                                               autofocus: false,
+                                              readOnly: true,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
@@ -1514,6 +1523,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               focusNode: _model
                                                   .textFieldConnectionFocusNode2,
                                               autofocus: false,
+                                              readOnly: true,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
@@ -1681,6 +1691,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               focusNode:
                                                   _model.textFieldFocusNode4,
                                               autofocus: false,
+                                              readOnly: true,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
@@ -1906,6 +1917,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               focusNode: _model
                                                   .textTaskCategoryFocusNode,
                                               autofocus: false,
+                                              readOnly: true,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
@@ -2191,7 +2203,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Expanded(
+                                        Flexible(
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -2354,118 +2366,122 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                             ),
                                           ),
                                         ),
-                                        Builder(
-                                          builder: (context) => Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 20.0, 0.0),
-                                            child: FlutterFlowIconButton(
-                                              borderRadius: 8.0,
-                                              buttonSize: 40.0,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              icon: Icon(
-                                                Icons
-                                                    .check_circle_outline_sharp,
-                                                color: Colors.white,
-                                                size: 24.0,
-                                              ),
-                                              onPressed: () async {
-                                                var _shouldSetState = false;
-                                                await showAlignedDialog(
-                                                  context: context,
-                                                  isGlobal: false,
-                                                  avoidOverflow: true,
-                                                  targetAnchor:
-                                                      AlignmentDirectional(
-                                                              0.0, 0.0)
-                                                          .resolve(
-                                                              Directionality.of(
-                                                                  context)),
-                                                  followerAnchor:
-                                                      AlignmentDirectional(
-                                                              0.0, 0.0)
-                                                          .resolve(
-                                                              Directionality.of(
-                                                                  context)),
-                                                  builder: (dialogContext) {
-                                                    return Material(
-                                                      color: Colors.transparent,
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          FocusScope.of(
-                                                                  dialogContext)
-                                                              .unfocus();
-                                                          FocusManager.instance
-                                                              .primaryFocus
-                                                              ?.unfocus();
-                                                        },
-                                                        child:
-                                                            StatusSelectComponentWidget(),
-                                                      ),
-                                                    );
-                                                  },
-                                                ).then((value) => safeSetState(
-                                                    () => _model.statusName =
-                                                        value));
+                                        if (false)
+                                          Builder(
+                                            builder: (context) => Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 20.0, 0.0),
+                                              child: FlutterFlowIconButton(
+                                                borderRadius: 8.0,
+                                                buttonSize: 40.0,
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                icon: Icon(
+                                                  Icons
+                                                      .check_circle_outline_sharp,
+                                                  color: Colors.white,
+                                                  size: 24.0,
+                                                ),
+                                                onPressed: () async {
+                                                  var _shouldSetState = false;
+                                                  await showAlignedDialog(
+                                                    context: context,
+                                                    isGlobal: false,
+                                                    avoidOverflow: true,
+                                                    targetAnchor:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    followerAnchor:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    builder: (dialogContext) {
+                                                      return Material(
+                                                        color:
+                                                            Colors.transparent,
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            FocusScope.of(
+                                                                    dialogContext)
+                                                                .unfocus();
+                                                            FocusManager
+                                                                .instance
+                                                                .primaryFocus
+                                                                ?.unfocus();
+                                                          },
+                                                          child:
+                                                              StatusSelectComponentWidget(),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      safeSetState(() => _model
+                                                          .statusName = value));
 
-                                                _shouldSetState = true;
-                                                if (_model.statusName != null &&
-                                                    _model.statusName != '') {
-                                                  safeSetState(() {
-                                                    _model.textTaskStatusTextController
-                                                            ?.text =
-                                                        _model.statusName!;
-                                                  });
-                                                  if (_model.statusName ==
-                                                      'не выполнено (перенос)') {
+                                                  _shouldSetState = true;
+                                                  if (_model.statusName !=
+                                                          null &&
+                                                      _model.statusName != '') {
                                                     safeSetState(() {
-                                                      _model
-                                                          .textTaskStatusTextController
-                                                          ?.text = 'не выполнено';
-                                                    });
-                                                    safeSetState(() {
-                                                      _model
-                                                          .textTaskTransferTextController
-                                                          ?.text = 'перенос';
-                                                    });
-                                                    if (_shouldSetState)
-                                                      safeSetState(() {});
-                                                    return;
-                                                  } else {
-                                                    safeSetState(() {
-                                                      _model
-                                                          .textTaskTransferTextController
-                                                          ?.text = '';
-                                                    });
-                                                  }
-
-                                                  if (_model.statusName ==
-                                                      'выполнено') {
-                                                    safeSetState(() {
-                                                      _model.textFinishTimeTextController
+                                                      _model.textTaskStatusTextController
                                                               ?.text =
-                                                          getCurrentTimestamp
-                                                              .toString();
+                                                          _model.statusName!;
                                                     });
+                                                    if (_model.statusName ==
+                                                        'не выполнено (перенос)') {
+                                                      safeSetState(() {
+                                                        _model.textTaskStatusTextController
+                                                                ?.text =
+                                                            'не выполнено';
+                                                      });
+                                                      safeSetState(() {
+                                                        _model
+                                                            .textTaskTransferTextController
+                                                            ?.text = 'перенос';
+                                                      });
+                                                      if (_shouldSetState)
+                                                        safeSetState(() {});
+                                                      return;
+                                                    } else {
+                                                      safeSetState(() {
+                                                        _model
+                                                            .textTaskTransferTextController
+                                                            ?.text = '';
+                                                      });
+                                                    }
+
+                                                    if (_model.statusName ==
+                                                        'выполнено') {
+                                                      safeSetState(() {
+                                                        _model.textFinishTimeTextController
+                                                                ?.text =
+                                                            getCurrentTimestamp
+                                                                .toString();
+                                                      });
+                                                    } else {
+                                                      if (_shouldSetState)
+                                                        safeSetState(() {});
+                                                      return;
+                                                    }
                                                   } else {
                                                     if (_shouldSetState)
                                                       safeSetState(() {});
                                                     return;
                                                   }
-                                                } else {
+
                                                   if (_shouldSetState)
                                                     safeSetState(() {});
-                                                  return;
-                                                }
-
-                                                if (_shouldSetState)
-                                                  safeSetState(() {});
-                                              },
+                                                },
+                                              ),
                                             ),
                                           ),
-                                        ),
                                         Expanded(
                                           child: Padding(
                                             padding:
@@ -2632,29 +2648,222 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                             ),
                                           ),
                                         ),
-                                        Container(
-                                          width: 200.0,
-                                          child: TextFormField(
-                                            controller: _model
-                                                    .textFinishTimeTextController ??=
-                                                TextEditingController(
-                                              text: columnTasksRow?.finishDate
-                                                  ?.toString(),
-                                            ),
-                                            focusNode:
-                                                _model.textFinishTimeFocusNode,
-                                            autofocus: false,
-                                            readOnly: true,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              isDense: true,
-                                              labelText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                '4k53x1l2' /* Время завершения */,
+                                        if (_model.textTaskStatusTextController
+                                                .text ==
+                                            'в работе')
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 0.0, 5.0, 0.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                // Set Status=Finished
+                                                safeSetState(() {
+                                                  _model
+                                                      .textTaskStatusTextController
+                                                      ?.text = 'выполнено';
+                                                });
+                                                // Set Finish Time Field
+                                                safeSetState(() {
+                                                  _model
+                                                      .textFinishTimeTextController
+                                                      ?.text = dateTimeFormat(
+                                                    "Hm",
+                                                    getCurrentTimestamp,
+                                                    locale: FFLocalizations.of(
+                                                            context)
+                                                        .languageCode,
+                                                  );
+                                                });
+                                                // Set Time Var
+                                                _model.finishDateTime =
+                                                    getCurrentTimestamp;
+                                                safeSetState(() {});
+                                              },
+                                              text: FFLocalizations.of(context)
+                                                  .getText(
+                                                '4c7yivag' /* Завершить */,
                                               ),
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
+                                              icon: Icon(
+                                                Icons.done_all,
+                                                size: 15.0,
+                                              ),
+                                              options: FFButtonOptions(
+                                                height: 40.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color: Color(0x8C39D2C0),
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .interTight(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                elevation: 0.0,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                          ),
+                                        if (_model.textTaskStatusTextController
+                                                .text ==
+                                            'в работе')
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 0.0, 5.0, 0.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                // Set Status=Not Finished
+                                                safeSetState(() {
+                                                  _model
+                                                      .textTaskStatusTextController
+                                                      ?.text = 'не выполнено';
+                                                });
+                                                // Set Transfer Property
+                                                safeSetState(() {
+                                                  _model
+                                                      .textTaskTransferTextController
+                                                      ?.text = 'перенос';
+                                                });
+                                                // Set Finish Time
+                                                safeSetState(() {
+                                                  _model
+                                                      .textFinishTimeTextController
+                                                      ?.text = dateTimeFormat(
+                                                    "Hm",
+                                                    getCurrentTimestamp,
+                                                    locale: FFLocalizations.of(
+                                                            context)
+                                                        .languageCode,
+                                                  );
+                                                });
+                                              },
+                                              text: FFLocalizations.of(context)
+                                                  .getText(
+                                                'wnwvrfui' /* Перенести */,
+                                              ),
+                                              icon: Icon(
+                                                Icons.access_time,
+                                                size: 15.0,
+                                              ),
+                                              options: FFButtonOptions(
+                                                height: 40.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color: Color(0x88EE8B60),
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .interTight(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                elevation: 0.0,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                          ),
+                                        if (((_model.textTaskStatusTextController
+                                                        .text ==
+                                                    'выполнено') &&
+                                                (_model.textTaskTransferTextController
+                                                            .text ==
+                                                        '')) ||
+                                            ((_model.textTaskStatusTextController
+                                                        .text ==
+                                                    'не выполнено') &&
+                                                (_model.textTaskTransferTextController
+                                                        .text ==
+                                                    'перенос')))
+                                          Flexible(
+                                            child: Container(
+                                              width: 200.0,
+                                              child: TextFormField(
+                                                controller: _model
+                                                        .textFinishTimeTextController ??=
+                                                    TextEditingController(
+                                                  text: dateTimeFormat(
+                                                    "Hm",
+                                                    columnTasksRow
+                                                        ?.finishTime?.time,
+                                                    locale: FFLocalizations.of(
+                                                            context)
+                                                        .languageCode,
+                                                  ),
+                                                ),
+                                                focusNode: _model
+                                                    .textFinishTimeFocusNode,
+                                                autofocus: false,
+                                                readOnly: true,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  isDense: true,
+                                                  labelText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    '4k53x1l2' /* Время завершения */,
+                                                  ),
+                                                  labelStyle: FlutterFlowTheme
+                                                          .of(context)
                                                       .bodyMedium
                                                       .override(
                                                         font: GoogleFonts.inter(
@@ -2682,110 +2891,144 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                              hintText:
-                                                  FFLocalizations.of(context)
+                                                  hintText: FFLocalizations.of(
+                                                          context)
                                                       .getText(
-                                                '1ykgmx60' /* Время, кода статус поменялся н... */,
-                                              ),
-                                              enabledBorder: InputBorder.none,
-                                              focusedBorder: InputBorder.none,
-                                              errorBorder: InputBorder.none,
-                                              focusedErrorBorder:
-                                                  InputBorder.none,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
+                                                    '1ykgmx60' /* Время, кода статус поменялся н... */,
                                                   ),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
+                                                  enabledBorder:
+                                                      InputBorder.none,
+                                                  focusedBorder:
+                                                      InputBorder.none,
+                                                  errorBorder: InputBorder.none,
+                                                  focusedErrorBorder:
+                                                      InputBorder.none,
                                                 ),
-                                            cursorColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryText,
-                                            validator: _model
-                                                .textFinishTimeTextControllerValidator
-                                                .asValidator(context),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                cursorColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                validator: _model
+                                                    .textFinishTimeTextControllerValidator
+                                                    .asValidator(context),
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                        FFButtonWidget(
-                                          onPressed: () {
-                                            print('ButtonFinish pressed ...');
-                                          },
-                                          text:
-                                              _model.textTaskStatusTextController
-                                                          .text ==
-                                                      'в работе'
-                                                  ? 'Завершить'
-                                                  : 'Открыть',
-                                          icon: Icon(
-                                            Icons.thumb_up,
-                                            size: 15.0,
-                                          ),
-                                          options: FFButtonOptions(
-                                            height: 40.0,
+                                        if (((_model.textTaskStatusTextController
+                                                        .text ==
+                                                    'выполнено') &&
+                                                (_model.textTaskTransferTextController
+                                                            .text ==
+                                                        '')) ||
+                                            ((_model.textTaskStatusTextController
+                                                        .text ==
+                                                    'не выполнено') &&
+                                                (_model.textTaskTransferTextController
+                                                        .text ==
+                                                    'перенос')))
+                                          Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 0.0, 16.0, 0.0),
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            textStyle: FlutterFlowTheme.of(
-                                                    context)
-                                                .titleSmall
-                                                .override(
-                                                  font: GoogleFonts.interTight(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmall
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmall
-                                                            .fontStyle,
-                                                  ),
-                                                  color: Colors.white,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .fontStyle,
-                                                ),
-                                            elevation: 0.0,
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
+                                                    5.0, 0.0, 5.0, 0.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                // Set Status In Work
+                                                safeSetState(() {
+                                                  _model
+                                                      .textTaskStatusTextController
+                                                      ?.text = 'в работе';
+                                                });
+                                                // Clear Transfer Property
+                                                safeSetState(() {
+                                                  _model
+                                                      .textTaskTransferTextController
+                                                      ?.text = '';
+                                                });
+                                              },
+                                              text: FFLocalizations.of(context)
+                                                  .getText(
+                                                'fv9a4ux2' /* Возобновить */,
+                                              ),
+                                              icon: Icon(
+                                                Icons.remove_done,
+                                                size: 15.0,
+                                              ),
+                                              options: FFButtonOptions(
+                                                height: 40.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .interTight(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                elevation: 0.0,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
                                           ),
-                                        ),
                                       ],
                                     ),
                                     Container(
@@ -2970,86 +3213,89 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 ),
                                               ),
                                             ),
-                                            Builder(
-                                              builder: (context) => Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 20.0, 0.0),
-                                                child: FlutterFlowIconButton(
-                                                  borderRadius: 8.0,
-                                                  buttonSize: 40.0,
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                  icon: Icon(
-                                                    Icons.person,
-                                                    color: Colors.white,
-                                                    size: 24.0,
-                                                  ),
-                                                  onPressed: () async {
-                                                    var _shouldSetState = false;
-                                                    await showAlignedDialog(
-                                                      context: context,
-                                                      isGlobal: false,
-                                                      avoidOverflow: true,
-                                                      targetAnchor:
-                                                          AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                      followerAnchor:
-                                                          AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                      builder: (dialogContext) {
-                                                        return Material(
-                                                          color: Colors
-                                                              .transparent,
-                                                          child:
-                                                              GestureDetector(
-                                                            onTap: () {
-                                                              FocusScope.of(
-                                                                      dialogContext)
-                                                                  .unfocus();
-                                                              FocusManager
-                                                                  .instance
-                                                                  .primaryFocus
-                                                                  ?.unfocus();
-                                                            },
+                                            if (false)
+                                              Builder(
+                                                builder: (context) => Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 20.0, 0.0),
+                                                  child: FlutterFlowIconButton(
+                                                    borderRadius: 8.0,
+                                                    buttonSize: 40.0,
+                                                    fillColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                    icon: Icon(
+                                                      Icons.person,
+                                                      color: Colors.white,
+                                                      size: 24.0,
+                                                    ),
+                                                    onPressed: () async {
+                                                      var _shouldSetState =
+                                                          false;
+                                                      await showAlignedDialog(
+                                                        context: context,
+                                                        isGlobal: false,
+                                                        avoidOverflow: true,
+                                                        targetAnchor:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        followerAnchor:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        builder:
+                                                            (dialogContext) {
+                                                          return Material(
+                                                            color: Colors
+                                                                .transparent,
                                                             child:
-                                                                UserSelectComponentWidget(),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ).then((value) =>
-                                                        safeSetState(() =>
-                                                            _model.doerName =
-                                                                value));
+                                                                GestureDetector(
+                                                              onTap: () {
+                                                                FocusScope.of(
+                                                                        dialogContext)
+                                                                    .unfocus();
+                                                                FocusManager
+                                                                    .instance
+                                                                    .primaryFocus
+                                                                    ?.unfocus();
+                                                              },
+                                                              child:
+                                                                  UserSelectComponentWidget(),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          safeSetState(() =>
+                                                              _model.doerName =
+                                                                  value));
 
-                                                    _shouldSetState = true;
-                                                    if (!(_model.doerName !=
-                                                            null &&
-                                                        _model.doerName !=
-                                                            '')) {
+                                                      _shouldSetState = true;
+                                                      if (!(_model.doerName !=
+                                                              null &&
+                                                          _model.doerName !=
+                                                              '')) {
+                                                        if (_shouldSetState)
+                                                          safeSetState(() {});
+                                                        return;
+                                                      }
+                                                      safeSetState(() {
+                                                        _model.textDoerTextController
+                                                                ?.text =
+                                                            _model.doerName!;
+                                                      });
                                                       if (_shouldSetState)
                                                         safeSetState(() {});
-                                                      return;
-                                                    }
-                                                    safeSetState(() {
-                                                      _model.textDoerTextController
-                                                              ?.text =
-                                                          _model.doerName!;
-                                                    });
-                                                    if (_shouldSetState)
-                                                      safeSetState(() {});
-                                                  },
+                                                    },
+                                                  ),
                                                 ),
                                               ),
-                                            ),
                                             Align(
                                               alignment: AlignmentDirectional(
                                                   1.0, 0.0),

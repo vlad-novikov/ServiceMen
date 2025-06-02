@@ -226,6 +226,8 @@ dynamic deserializeParam<T>(
             return TasksDuplicateRow(data);
           case TasksRow:
             return TasksRow(data);
+          case TasksBakRow:
+            return TasksBakRow(data);
           case UsersRow:
             return UsersRow(data);
           default:

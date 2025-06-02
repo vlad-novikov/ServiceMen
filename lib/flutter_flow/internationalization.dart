@@ -497,8 +497,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Статус',
       'en': '',
     },
+    '8xm2tw8t': {
+      'ru': 'Время завершения',
+      'en': '',
+    },
     'upst8cya': {
-      'ru': '',
+      'ru': 'Это перенос?',
       'en': '',
     },
     'okpa75kk': {
@@ -1015,12 +1019,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Признак переноса',
       'en': '',
     },
+    '4c7yivag': {
+      'ru': 'Завершить',
+      'en': '',
+    },
+    'wnwvrfui': {
+      'ru': 'Перенести',
+      'en': '',
+    },
     '4k53x1l2': {
       'ru': 'Время завершения',
       'en': '',
     },
     '1ykgmx60': {
       'ru': 'Время, кода статус поменялся на ЗАВЕРШЕНО',
+      'en': '',
+    },
+    'fv9a4ux2': {
+      'ru': 'Возобновить',
       'en': '',
     },
     'y0fopdx4': {

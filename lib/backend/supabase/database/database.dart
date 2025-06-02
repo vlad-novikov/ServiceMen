@@ -8,4 +8,5 @@ export 'table.dart';
 export 'tables/tasks_duplicate_2.dart';
 export 'tables/tasks_duplicate.dart';
 export 'tables/tasks.dart';
+export 'tables/tasks_bak.dart';
 export 'tables/users.dart';

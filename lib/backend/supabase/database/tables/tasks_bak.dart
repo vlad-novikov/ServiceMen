@@ -1,18 +1,18 @@
 import '../database.dart';
 
-class TasksTable extends SupabaseTable<TasksRow> {
+class TasksBakTable extends SupabaseTable<TasksBakRow> {
   @override
-  String get tableName => 'tasks';
+  String get tableName => 'tasks_bak';
 
   @override
-  TasksRow createRow(Map<String, dynamic> data) => TasksRow(data);
+  TasksBakRow createRow(Map<String, dynamic> data) => TasksBakRow(data);
 }
 
-class TasksRow extends SupabaseDataRow {
-  TasksRow(Map<String, dynamic> data) : super(data);
+class TasksBakRow extends SupabaseDataRow {
+  TasksBakRow(Map<String, dynamic> data) : super(data);
 
   @override
-  SupabaseTable get table => TasksTable();
+  SupabaseTable get table => TasksBakTable();
 
   int get id => getField<int>('id')!;
   set id(int value) => setField<int>('id', value);
@@ -130,8 +130,4 @@ class TasksRow extends SupabaseDataRow {
 
   DateTime? get finishDate => getField<DateTime>('finish_date');
   set finishDate(DateTime? value) => setField<DateTime>('finish_date', value);
-
-  PostgresTime? get finishTime => getField<PostgresTime>('finish_time');
-  set finishTime(PostgresTime? value) =>
-      setField<PostgresTime>('finish_time', value);
 }

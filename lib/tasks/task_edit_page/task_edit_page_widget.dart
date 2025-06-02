@@ -46,13 +46,13 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
 
     _model.textFieldContractFocusNode ??= FocusNode();
 
-    _model.textFieldIdFocusNode ??= FocusNode();
+    _model.textEquipmentID1FocusNode ??= FocusNode();
 
-    _model.textFieldModelFocusNode ??= FocusNode();
+    _model.textModelFocusNode ??= FocusNode();
 
-    _model.textFieldConnectionFocusNode1 ??= FocusNode();
+    _model.textEquipmentID2FocusNode ??= FocusNode();
 
-    _model.textFieldConnectionFocusNode2 ??= FocusNode();
+    _model.textFieldConnectionFocusNode ??= FocusNode();
 
     _model.textFieldFocusNode4 ??= FocusNode();
 
@@ -61,6 +61,8 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
     _model.textFieldFocusNode6 ??= FocusNode();
 
     _model.textTaskStatusFocusNode ??= FocusNode();
+
+    _model.textFinishTimeFocusNode ??= FocusNode();
 
     _model.textTaskTransferFocusNode ??= FocusNode();
 
@@ -139,16 +141,12 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                       onTap: () async {
                         await TasksTable().update(
                           data: {
-                            'location_name': _model.textController1.text,
-                            'location_phone': _model.textController3.text,
-                            'location_address': _model.textController2.text,
                             'task_doer': _model.textDoerTextController.text,
-                            'task_category': _model.textController10.text,
                             'task_status':
                                 _model.textTaskStatusTextController.text,
                             'transfer_description':
-                                _model.textController16.text,
-                            'transfer_person': _model.textController18.text,
+                                _model.textController17.text,
+                            'transfer_person': _model.textController19.text,
                             'trainees_number': _model.countControllerValue,
                             'transfer_date': supaSerialize<DateTime>(
                                 _model.pickedTransferDate),
@@ -157,11 +155,11 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                             'location_contract':
                                 _model.textFieldContractTextController.text,
                             'equipment_connection':
-                                _model.textFieldConnectionTextController1.text,
+                                _model.textFieldConnectionTextController.text,
                             'task_transfer':
                                 _model.textTaskTransferTextController.text,
-                            'transfer_comment': _model.textController20.text,
-                            'transfer_phone': _model.textController19.text,
+                            'transfer_comment': _model.textController21.text,
+                            'transfer_phone': _model.textController20.text,
                             'location_doc': _model.switchValue,
                           },
                           matchingRows: (rows) => rows.eqOrNull(
@@ -985,13 +983,13 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
                                               controller: _model
-                                                      .textFieldIdTextController ??=
+                                                      .textEquipmentID1TextController ??=
                                                   TextEditingController(
                                                 text:
                                                     columnTasksRow?.equipmentId,
                                               ),
-                                              focusNode:
-                                                  _model.textFieldIdFocusNode,
+                                              focusNode: _model
+                                                  .textEquipmentID1FocusNode,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -1135,7 +1133,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textFieldIdTextControllerValidator
+                                                  .textEquipmentID1TextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -1147,13 +1145,13 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
                                               controller: _model
-                                                      .textFieldModelTextController ??=
+                                                      .textModelTextController ??=
                                                   TextEditingController(
                                                 text: columnTasksRow
                                                     ?.equipmentModel,
                                               ),
-                                              focusNode: _model
-                                                  .textFieldModelFocusNode,
+                                              focusNode:
+                                                  _model.textModelFocusNode,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -1298,7 +1296,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textFieldModelTextControllerValidator
+                                                  .textModelTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -1319,13 +1317,13 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
                                               controller: _model
-                                                      .textFieldConnectionTextController1 ??=
+                                                      .textEquipmentID2TextController ??=
                                                   TextEditingController(
                                                 text: columnTasksRow
                                                     ?.equipmentId2,
                                               ),
                                               focusNode: _model
-                                                  .textFieldConnectionFocusNode1,
+                                                  .textEquipmentID2FocusNode,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -1470,7 +1468,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textFieldConnectionTextController1Validator
+                                                  .textEquipmentID2TextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -1482,13 +1480,13 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
                                               controller: _model
-                                                      .textFieldConnectionTextController2 ??=
+                                                      .textFieldConnectionTextController ??=
                                                   TextEditingController(
                                                 text: columnTasksRow
                                                     ?.equipmentConnection,
                                               ),
                                               focusNode: _model
-                                                  .textFieldConnectionFocusNode2,
+                                                  .textFieldConnectionFocusNode,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -1633,7 +1631,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textFieldConnectionTextController2Validator
+                                                  .textFieldConnectionTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -2432,6 +2430,178 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
                                               controller: _model
+                                                      .textFinishTimeTextController ??=
+                                                  TextEditingController(
+                                                text: dateTimeFormat(
+                                                  "Hm",
+                                                  columnTasksRow
+                                                      ?.finishTime?.time,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ),
+                                              ),
+                                              focusNode: _model
+                                                  .textFinishTimeFocusNode,
+                                              autofocus: false,
+                                              readOnly: true,
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                labelText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  '8xm2tw8t' /* Время завершения */,
+                                                ),
+                                                labelStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                hintStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.inter(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent1,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                focusedErrorBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                filled: true,
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBackground,
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontStyle,
+                                                      ),
+                                              minLines: 1,
+                                              keyboardType: TextInputType.phone,
+                                              validator: _model
+                                                  .textFinishTimeTextControllerValidator
+                                                  .asValidator(context),
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 5.0, 20.0, 5.0),
+                                            child: TextFormField(
+                                              controller: _model
                                                       .textTaskTransferTextController ??=
                                                   TextEditingController(
                                                 text: columnTasksRow
@@ -2443,6 +2613,11 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                               readOnly: true,
                                               obscureText: false,
                                               decoration: InputDecoration(
+                                                labelText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'upst8cya' /* Это перенос? */,
+                                                ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -3261,7 +3436,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                             20.0, 5.0, 20.0, 5.0),
                                         child: TextFormField(
                                           controller:
-                                              _model.textController16 ??=
+                                              _model.textController17 ??=
                                                   TextEditingController(
                                             text: columnTasksRow
                                                 ?.transferDescription,
@@ -3399,7 +3574,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                           minLines: 1,
                                           keyboardType: TextInputType.phone,
                                           validator: _model
-                                              .textController16Validator
+                                              .textController17Validator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -3759,7 +3934,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
                                               controller:
-                                                  _model.textController18 ??=
+                                                  _model.textController19 ??=
                                                       TextEditingController(
                                                 text: columnTasksRow
                                                     ?.transferPerson,
@@ -3909,7 +4084,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textController18Validator
+                                                  .textController19Validator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -3921,7 +4096,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
                                               controller:
-                                                  _model.textController19 ??=
+                                                  _model.textController20 ??=
                                                       TextEditingController(
                                                 text: columnTasksRow
                                                     ?.transferPhone,
@@ -4071,7 +4246,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textController19Validator
+                                                  .textController20Validator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -4088,7 +4263,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
                                               controller:
-                                                  _model.textController20 ??=
+                                                  _model.textController21 ??=
                                                       TextEditingController(
                                                 text: columnTasksRow
                                                     ?.transferComment,
@@ -4238,7 +4413,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textController20Validator
+                                                  .textController21Validator
                                                   .asValidator(context),
                                             ),
                                           ),
