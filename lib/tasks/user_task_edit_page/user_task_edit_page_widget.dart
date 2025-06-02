@@ -3496,8 +3496,11 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                         ),
                                                         count: _model
                                                                 .countControllerValue ??=
-                                                            columnTasksRow!
-                                                                .traineesNumber!,
+                                                            valueOrDefault<int>(
+                                                          columnTasksRow
+                                                              ?.traineesNumber,
+                                                          0,
+                                                        ),
                                                         updateCount: (count) =>
                                                             safeSetState(() =>
                                                                 _model.countControllerValue =
