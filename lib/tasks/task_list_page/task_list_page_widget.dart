@@ -1397,6 +1397,8 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                                     'task_doer':
                                                                         _model
                                                                             .doerName,
+                                                                    'task_status':
+                                                                        'в работе',
                                                                   },
                                                                   matchingRows:
                                                                       (rows) =>
