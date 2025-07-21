@@ -52,4 +52,16 @@ class UsersRow extends SupabaseDataRow {
 
   bool? get isActive => getField<bool>('is_active');
   set isActive(bool? value) => setField<bool>('is_active', value);
+
+  String? get color => getField<String>('color');
+  set color(String? value) => setField<String>('color', value);
+
+  double? get colorRed => getField<double>('color_red');
+  set colorRed(double? value) => setField<double>('color_red', value);
+
+  double? get colorGreen => getField<double>('color_green');
+  set colorGreen(double? value) => setField<double>('color_green', value);
+
+  double? get colorBlue => getField<double>('color_blue');
+  set colorBlue(double? value) => setField<double>('color_blue', value);
 }

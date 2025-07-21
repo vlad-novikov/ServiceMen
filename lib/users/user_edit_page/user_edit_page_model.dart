@@ -4,6 +4,18 @@ import 'user_edit_page_widget.dart' show UserEditPageWidget;
 import 'package:flutter/material.dart';
 
 class UserEditPageModel extends FlutterFlowModel<UserEditPageWidget> {
+  ///  Local state fields for this page.
+
+  Color? selectedColor = Color(4283120111);
+
+  String selectedColorString = 'не выбран';
+
+  double? selectedRed;
+
+  double? selectedGreen;
+
+  double? selectedBlue;
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for TextField widget.
@@ -22,6 +34,7 @@ class UserEditPageModel extends FlutterFlowModel<UserEditPageWidget> {
   FocusNode? textFieldFocusNode4;
   TextEditingController? textController4;
   String? Function(BuildContext, String?)? textController4Validator;
+  Color? colorPicked;
   // State field(s) for SwitchIsAdminisytator widget.
   bool? switchIsAdminisytatorValue;
   // State field(s) for SwitchIsImporter widget.

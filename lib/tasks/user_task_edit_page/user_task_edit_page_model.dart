@@ -1,4 +1,5 @@
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/index.dart';
 import 'user_task_edit_page_widget.dart' show UserTaskEditPageWidget;
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode3;
   TextEditingController? textController3;
-  final textFieldMask3 = MaskTextInputFormatter(mask: '+# (###) ###-##-##');
+  late MaskTextInputFormatter textFieldMask3;
   String? Function(BuildContext, String?)? textController3Validator;
   // State field(s) for TextFieldContract widget.
   FocusNode? textFieldContractFocusNode;
@@ -86,10 +87,10 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
   String? Function(BuildContext, String?)? textDoerTextControllerValidator;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in IconButton widget.
   String? doerName;
-  // State field(s) for Switch widget.
-  bool? switchValue;
   // State field(s) for CountController widget.
   int? countControllerValue;
+  // State field(s) for RadioDocOption widget.
+  FormFieldController<String>? radioDocOptionValueController;
   // State field(s) for TextDoerDescription widget.
   FocusNode? textDoerDescriptionFocusNode;
   TextEditingController? textDoerDescriptionTextController;
@@ -102,7 +103,7 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
   // State field(s) for TextFieldTransferDate widget.
   FocusNode? textFieldTransferDateFocusNode;
   TextEditingController? textFieldTransferDateTextController;
-  final textFieldTransferDateMask = MaskTextInputFormatter(mask: '##.##.####');
+  late MaskTextInputFormatter textFieldTransferDateMask;
   String? Function(BuildContext, String?)?
       textFieldTransferDateTextControllerValidator;
   DateTime? datePicked;
@@ -187,4 +188,7 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
     textFieldFocusNode9?.dispose();
     textController21?.dispose();
   }
+
+  /// Additional helper methods.
+  String? get radioDocOptionValue => radioDocOptionValueController?.value;
 }

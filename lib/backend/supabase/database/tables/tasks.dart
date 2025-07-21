@@ -134,4 +134,11 @@ class TasksRow extends SupabaseDataRow {
   PostgresTime? get finishTime => getField<PostgresTime>('finish_time');
   set finishTime(PostgresTime? value) =>
       setField<PostgresTime>('finish_time', value);
+
+  int? get taskDocStatus => getField<int>('task_doc_status');
+  set taskDocStatus(int? value) => setField<int>('task_doc_status', value);
+
+  String? get taskDocOption => getField<String>('task_doc_option');
+  set taskDocOption(String? value) =>
+      setField<String>('task_doc_option', value);
 }

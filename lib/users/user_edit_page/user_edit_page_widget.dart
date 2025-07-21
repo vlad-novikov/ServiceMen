@@ -3,9 +3,10 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'user_edit_page_model.dart';
 export 'user_edit_page_model.dart';
@@ -66,6 +67,88 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            floatingActionButton: FloatingActionButton.extended(
+              onPressed: () {
+                print('FABSave pressed ...');
+              },
+              backgroundColor: FlutterFlowTheme.of(context).primary,
+              elevation: 8.0,
+              label: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed(
+                          UserListPageWidget.routeName,
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.topToBottom,
+                              duration: Duration(milliseconds: 100),
+                            ),
+                          },
+                        );
+                      },
+                      child: Icon(
+                        Icons.edit_off,
+                        color: FlutterFlowTheme.of(context).info,
+                        size: 24.0,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        await UsersTable().update(
+                          data: {
+                            'first_name': _model.textController1.text,
+                            'last_name': _model.textController2.text,
+                            'email': _model.textController3.text,
+                            'phone': _model.textController4.text,
+                            'color_red': _model.selectedRed,
+                            'color_green': _model.selectedGreen,
+                            'color_blue': _model.selectedBlue,
+                          },
+                          matchingRows: (rows) => rows.eqOrNull(
+                            'id',
+                            widget.userID,
+                          ),
+                        );
+
+                        context.pushNamed(
+                          UserListPageWidget.routeName,
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.topToBottom,
+                              duration: Duration(milliseconds: 100),
+                            ),
+                          },
+                        );
+                      },
+                      child: Icon(
+                        Icons.edit,
+                        color: FlutterFlowTheme.of(context).info,
+                        size: 24.0,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             appBar: AppBar(
               backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
               automaticallyImplyLeading: false,
@@ -75,18 +158,6 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    FlutterFlowIconButton(
-                      borderRadius: 8.0,
-                      buttonSize: 80.0,
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 48.0,
-                      ),
-                      onPressed: () async {
-                        context.safePop();
-                      },
-                    ),
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -142,28 +213,31 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                         ),
                       ],
                     ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 16.0, 8.0),
-                      child: FlutterFlowIconButton(
-                        borderColor: Color(0xFFE5E7EB),
-                        borderRadius: 12.0,
-                        borderWidth: 2.0,
-                        buttonSize: 40.0,
-                        fillColor: Colors.white,
-                        icon: Icon(
-                          Icons.logout_sharp,
-                          color: Color(0xFF15161E),
-                          size: 24.0,
-                        ),
-                        onPressed: () async {
-                          GoRouter.of(context).prepareAuthEvent();
-                          await authManager.signOut();
-                          GoRouter.of(context).clearRedirectLocation();
+                    Align(
+                      alignment: AlignmentDirectional(1.0, 0.0),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            12.0, 8.0, 16.0, 8.0),
+                        child: FlutterFlowIconButton(
+                          borderColor: Color(0xFFE5E7EB),
+                          borderRadius: 12.0,
+                          borderWidth: 2.0,
+                          buttonSize: 40.0,
+                          fillColor: Colors.white,
+                          icon: Icon(
+                            Icons.logout_sharp,
+                            color: Color(0xFF15161E),
+                            size: 24.0,
+                          ),
+                          onPressed: () async {
+                            GoRouter.of(context).prepareAuthEvent();
+                            await authManager.signOut();
+                            GoRouter.of(context).clearRedirectLocation();
 
-                          context.goNamedAuth(
-                              LoginPageWidget.routeName, context.mounted);
-                        },
+                            context.goNamedAuth(
+                                LoginPageWidget.routeName, context.mounted);
+                          },
+                        ),
                       ),
                     ),
                   ],
@@ -756,6 +830,163 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                       validator: _model.textController4Validator
                                           .asValidator(context),
                                     ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'b5o2soiy' /* Цвет */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                        ),
+                                        Text(
+                                          '${_model.selectedRed?.toString()}${_model.selectedGreen?.toString()}${_model.selectedBlue?.toString()}',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5.0, 0.0, 5.0, 0.0),
+                                          child: Container(
+                                            width: 80.0,
+                                            height: 30.0,
+                                            decoration: BoxDecoration(
+                                              color: _model.selectedColor,
+                                              border: Border.all(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(-1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 0.0, 5.0, 0.0),
+                                            child: FlutterFlowIconButton(
+                                              borderRadius: 8.0,
+                                              buttonSize: 40.0,
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              icon: Icon(
+                                                Icons.tag_faces,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                size: 24.0,
+                                              ),
+                                              onPressed: () async {
+                                                final _colorPickedColor =
+                                                    await showFFColorPicker(
+                                                  context,
+                                                  currentColor:
+                                                      _model.colorPicked ??
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                  showRecentColors: true,
+                                                  allowOpacity: true,
+                                                  textColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                                  secondaryTextColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryText,
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground,
+                                                  primaryButtonBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                  primaryButtonTextColor:
+                                                      Colors.white,
+                                                  primaryButtonBorderColor:
+                                                      Colors.transparent,
+                                                  displayAsBottomSheet:
+                                                      isMobileWidth(context),
+                                                );
+
+                                                if (_colorPickedColor != null) {
+                                                  safeSetState(() =>
+                                                      _model.colorPicked =
+                                                          _colorPickedColor);
+                                                }
+
+                                                _model.selectedColor =
+                                                    _model.colorPicked;
+                                                _model.selectedRed =
+                                                    functions.colorToR(
+                                                        _model.selectedColor!);
+                                                _model.selectedGreen =
+                                                    functions.colorToG(
+                                                        _model.selectedColor!);
+                                                _model.selectedBlue =
+                                                    functions.colorToB(
+                                                        _model.selectedColor!);
+                                                safeSetState(() {});
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ].divide(SizedBox(height: 16.0)),
                                 ),
                               ),
@@ -1164,123 +1395,6 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                 ),
                               ),
                             ),
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                flex: 4,
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    context.pushNamed(
-                                        UserListPageWidget.routeName);
-                                  },
-                                  text: FFLocalizations.of(context).getText(
-                                    '181nonad' /* Выйти */,
-                                  ),
-                                  options: FFButtonOptions(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 1.0,
-                                    height: 56.0,
-                                    padding: EdgeInsets.all(8.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          font: GoogleFonts.interTight(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMedium
-                                                    .fontStyle,
-                                          ),
-                                          color:
-                                              FlutterFlowTheme.of(context).info,
-                                          letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMedium
-                                                  .fontStyle,
-                                        ),
-                                    elevation: 3.0,
-                                    borderRadius: BorderRadius.circular(28.0),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 4,
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    await UsersTable().update(
-                                      data: {
-                                        'first_name':
-                                            _model.textController1.text,
-                                        'last_name':
-                                            _model.textController2.text,
-                                        'email': _model.textController3.text,
-                                        'phone': _model.textController4.text,
-                                        'is_importer': false,
-                                      },
-                                      matchingRows: (rows) => rows.eqOrNull(
-                                        'id',
-                                        columnUsersRow?.id,
-                                      ),
-                                    );
-
-                                    context.pushNamed(
-                                        UserListPageWidget.routeName);
-                                  },
-                                  text: FFLocalizations.of(context).getText(
-                                    'ioyc0ohw' /* Сохранить и выйти */,
-                                  ),
-                                  options: FFButtonOptions(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 1.0,
-                                    height: 56.0,
-                                    padding: EdgeInsets.all(8.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          font: GoogleFonts.interTight(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMedium
-                                                    .fontStyle,
-                                          ),
-                                          color:
-                                              FlutterFlowTheme.of(context).info,
-                                          letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMedium
-                                                  .fontStyle,
-                                        ),
-                                    elevation: 3.0,
-                                    borderRadius: BorderRadius.circular(28.0),
-                                  ),
-                                ),
-                              ),
-                            ],
                           ),
                         ].divide(SizedBox(height: 24.0)),
                       ),

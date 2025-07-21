@@ -720,6 +720,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Мобильный телефон',
       'en': '',
     },
+    'b5o2soiy': {
+      'ru': 'Цвет',
+      'en': '',
+    },
     '4ancyzv9': {
       'ru': 'Права в Приложении',
       'en': '',
@@ -746,14 +750,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'zei4f0j1': {
       'ru': 'Администрирование',
-      'en': '',
-    },
-    '181nonad': {
-      'ru': 'Выйти',
-      'en': '',
-    },
-    'ioyc0ohw': {
-      'ru': 'Сохранить и выйти',
       'en': '',
     },
   },
@@ -1043,12 +1039,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Исполнитель',
       'en': '',
     },
-    'mjgv9gn4': {
+    'xcnu8wf1': {
+      'ru': 'Число обучаемых',
+      'en': '',
+    },
+    '8p1eirxx': {
       'ru': 'Документы в ТСП',
       'en': '',
     },
-    'xcnu8wf1': {
-      'ru': 'Число обучаемых',
+    'zx083wxw': {
+      'ru': 'Да',
+      'en': '',
+    },
+    'fge0srne': {
+      'ru': 'Нет',
+      'en': '',
+    },
+    'md8jarhl': {
+      'ru': 'Не требуется',
       'en': '',
     },
     't2y64bc6': {

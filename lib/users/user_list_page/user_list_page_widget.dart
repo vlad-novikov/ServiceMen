@@ -121,18 +121,22 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                     updateCallback: () => safeSetState(() {}),
                     child: SideNavigationComponentWidget(),
                   ),
-                  Expanded(
-                    child: Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
+                  Align(
+                    alignment: AlignmentDirectional(0.0, -1.0),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                       child: Container(
-                        width: double.infinity,
                         constraints: BoxConstraints(
                           maxWidth: 970.0,
                         ),
                         decoration: BoxDecoration(),
-                        child: SingleChildScrollView(
+                        alignment: AlignmentDirectional(-1.0, -1.0),
+                        child: Align(
+                          alignment: AlignmentDirectional(-1.0, -1.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
@@ -500,437 +504,491 @@ class _UserListPageWidgetState extends State<UserListPageWidget> {
                                   ),
                                 ),
                               ),
-                              StreamBuilder<List<UsersRow>>(
-                                stream: _model.listViewSupabaseStream ??=
-                                    SupaFlow.client
-                                        .from("users")
-                                        .stream(primaryKey: ['id']).map(
-                                            (list) => list
-                                                .map((item) => UsersRow(item))
-                                                .toList()),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  List<UsersRow> listViewUsersRowList =
-                                      snapshot.data!;
-
-                                  return ListView.separated(
-                                    padding: EdgeInsets.fromLTRB(
-                                      0,
-                                      0.0,
-                                      0,
-                                      44.0,
+                              Expanded(
+                                child: Align(
+                                  alignment: AlignmentDirectional(-1.0, -1.0),
+                                  child: FutureBuilder<List<UsersRow>>(
+                                    future: UsersTable().queryRows(
+                                      queryFn: (q) => q.order('last_name'),
                                     ),
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: listViewUsersRowList.length,
-                                    separatorBuilder: (_, __) =>
-                                        SizedBox(height: 1.0),
-                                    itemBuilder: (context, listViewIndex) {
-                                      final listViewUsersRow =
-                                          listViewUsersRowList[listViewIndex];
-                                      return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 12.0, 16.0, 12.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Flexible(
-                                              flex: 1,
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    -1.0, 0.0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 10.0, 0.0),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      (valueOrDefault<int>(
-                                                                listViewIndex,
-                                                                0,
-                                                              ) +
-                                                              1)
-                                                          .toString(),
-                                                      '0',
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelSmall
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .plusJakartaSans(
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelSmall
-                                                                    .fontStyle,
-                                                          ),
-                                                          color:
-                                                              Color(0xFF606A85),
-                                                          fontSize: 12.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelSmall
-                                                                  .fontStyle,
-                                                        ),
-                                                  ),
-                                                ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
                                               ),
                                             ),
-                                            Flexible(
-                                              flex: 4,
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    -1.0, 0.0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 10.0, 0.0),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      listViewUsersRow.lastName,
-                                                      'Фамилия',
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelSmall
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .plusJakartaSans(
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelSmall
-                                                                    .fontStyle,
-                                                          ),
-                                                          color:
-                                                              Color(0xFF606A85),
-                                                          fontSize: 12.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelSmall
-                                                                  .fontStyle,
-                                                        ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Flexible(
-                                              flex: 4,
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    -1.0, 0.0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 10.0, 0.0),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      listViewUsersRow
-                                                          .firstName,
-                                                      'Имя',
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelSmall
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .plusJakartaSans(
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelSmall
-                                                                    .fontStyle,
-                                                          ),
-                                                          color:
-                                                              Color(0xFF606A85),
-                                                          fontSize: 12.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelSmall
-                                                                  .fontStyle,
-                                                        ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Flexible(
-                                              flex: 4,
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    -1.0, 0.0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 10.0, 0.0),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      listViewUsersRow.email,
-                                                      'Почта',
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelSmall
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .plusJakartaSans(
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelSmall
-                                                                    .fontStyle,
-                                                          ),
-                                                          color:
-                                                              Color(0xFF606A85),
-                                                          fontSize: 12.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelSmall
-                                                                  .fontStyle,
-                                                        ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Flexible(
-                                              flex: 4,
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    -1.0, 0.0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 10.0, 0.0),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      listViewUsersRow.phone,
-                                                      'Телефон',
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelSmall
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .plusJakartaSans(
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelSmall
-                                                                    .fontStyle,
-                                                          ),
-                                                          color:
-                                                              Color(0xFF606A85),
-                                                          fontSize: 12.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelSmall
-                                                                  .fontStyle,
-                                                        ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Flexible(
-                                              flex: 2,
-                                              child: Theme(
-                                                data: ThemeData(
-                                                  checkboxTheme:
-                                                      CheckboxThemeData(
-                                                    visualDensity:
-                                                        VisualDensity.compact,
-                                                    materialTapTargetSize:
-                                                        MaterialTapTargetSize
-                                                            .shrinkWrap,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              4.0),
-                                                    ),
-                                                  ),
-                                                  unselectedWidgetColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate,
-                                                ),
-                                                child: Checkbox(
-                                                  value: _model
-                                                              .checkboxValueMap1[
-                                                          listViewUsersRow] ??=
-                                                      listViewUsersRow.isDoer!,
-                                                  onChanged: (newValue) async {
-                                                    safeSetState(() => _model
-                                                                .checkboxValueMap1[
-                                                            listViewUsersRow] =
-                                                        newValue!);
-                                                  },
-                                                  side: (FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate !=
-                                                          null)
-                                                      ? BorderSide(
-                                                          width: 2,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
-                                                        )
-                                                      : null,
-                                                  activeColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                  checkColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .info,
-                                                ),
-                                              ),
-                                            ),
-                                            Flexible(
-                                              flex: 2,
-                                              child: Theme(
-                                                data: ThemeData(
-                                                  checkboxTheme:
-                                                      CheckboxThemeData(
-                                                    visualDensity:
-                                                        VisualDensity.compact,
-                                                    materialTapTargetSize:
-                                                        MaterialTapTargetSize
-                                                            .shrinkWrap,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              4.0),
-                                                    ),
-                                                  ),
-                                                  unselectedWidgetColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate,
-                                                ),
-                                                child: Checkbox(
-                                                  value: _model
-                                                              .checkboxValueMap2[
-                                                          listViewUsersRow] ??=
-                                                      listViewUsersRow
-                                                          .isAdministrator!,
-                                                  onChanged: (newValue) async {
-                                                    safeSetState(() => _model
-                                                                .checkboxValueMap2[
-                                                            listViewUsersRow] =
-                                                        newValue!);
-                                                  },
-                                                  side: (FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate !=
-                                                          null)
-                                                      ? BorderSide(
-                                                          width: 2,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
-                                                        )
-                                                      : null,
-                                                  activeColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                  checkColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .info,
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                color: Color(0x4C39D2C0),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                border: Border.all(
-                                                  color: Color(0xFF39D2C0),
-                                                ),
-                                              ),
-                                            ),
-                                            Flexible(
-                                              flex: 2,
-                                              child: InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  context.pushNamed(
-                                                    UserEditPageWidget
-                                                        .routeName,
-                                                    queryParameters: {
-                                                      'userID': serializeParam(
-                                                        listViewUsersRow.id,
-                                                        ParamType.String,
-                                                      ),
-                                                    }.withoutNulls,
-                                                  );
-                                                },
-                                                child: Icon(
-                                                  Icons.chevron_right_rounded,
-                                                  color: Color(0xFF57636C),
-                                                  size: 24.0,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
+                                          ),
+                                        );
+                                      }
+                                      List<UsersRow> listViewUsersRowList =
+                                          snapshot.data!;
+
+                                      return ListView.separated(
+                                        padding: EdgeInsets.fromLTRB(
+                                          0,
+                                          0.0,
+                                          0,
+                                          44.0,
                                         ),
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: listViewUsersRowList.length,
+                                        separatorBuilder: (_, __) =>
+                                            SizedBox(height: 1.0),
+                                        itemBuilder: (context, listViewIndex) {
+                                          final listViewUsersRow =
+                                              listViewUsersRowList[
+                                                  listViewIndex];
+                                          return Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 12.0, 16.0, 12.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Flexible(
+                                                  flex: 1,
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          (valueOrDefault<int>(
+                                                                    listViewIndex,
+                                                                    0,
+                                                                  ) +
+                                                                  1)
+                                                              .toString(),
+                                                          '0',
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelSmall
+                                                            .override(
+                                                              font: GoogleFonts
+                                                                  .plusJakartaSans(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .fontStyle,
+                                                              ),
+                                                              color: Color(
+                                                                  0xFF606A85),
+                                                              fontSize: 12.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmall
+                                                                      .fontStyle,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Flexible(
+                                                  flex: 4,
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          listViewUsersRow
+                                                              .lastName,
+                                                          'Фамилия',
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelSmall
+                                                            .override(
+                                                              font: GoogleFonts
+                                                                  .plusJakartaSans(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .fontStyle,
+                                                              ),
+                                                              color: Color(
+                                                                  0xFF606A85),
+                                                              fontSize: 12.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmall
+                                                                      .fontStyle,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Flexible(
+                                                  flex: 4,
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          listViewUsersRow
+                                                              .firstName,
+                                                          'Имя',
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelSmall
+                                                            .override(
+                                                              font: GoogleFonts
+                                                                  .plusJakartaSans(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .fontStyle,
+                                                              ),
+                                                              color: Color(
+                                                                  0xFF606A85),
+                                                              fontSize: 12.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmall
+                                                                      .fontStyle,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Flexible(
+                                                  flex: 4,
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          listViewUsersRow
+                                                              .email,
+                                                          'Почта',
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelSmall
+                                                            .override(
+                                                              font: GoogleFonts
+                                                                  .plusJakartaSans(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .fontStyle,
+                                                              ),
+                                                              color: Color(
+                                                                  0xFF606A85),
+                                                              fontSize: 12.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmall
+                                                                      .fontStyle,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Flexible(
+                                                  flex: 4,
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          listViewUsersRow
+                                                              .phone,
+                                                          'Телефон',
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelSmall
+                                                            .override(
+                                                              font: GoogleFonts
+                                                                  .plusJakartaSans(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .fontStyle,
+                                                              ),
+                                                              color: Color(
+                                                                  0xFF606A85),
+                                                              fontSize: 12.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmall
+                                                                      .fontStyle,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Flexible(
+                                                  flex: 2,
+                                                  child: Theme(
+                                                    data: ThemeData(
+                                                      checkboxTheme:
+                                                          CheckboxThemeData(
+                                                        visualDensity:
+                                                            VisualDensity
+                                                                .compact,
+                                                        materialTapTargetSize:
+                                                            MaterialTapTargetSize
+                                                                .shrinkWrap,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      4.0),
+                                                        ),
+                                                      ),
+                                                      unselectedWidgetColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                    ),
+                                                    child: Checkbox(
+                                                      value: _model
+                                                                  .checkboxValueMap1[
+                                                              listViewUsersRow] ??=
+                                                          listViewUsersRow
+                                                              .isDoer!,
+                                                      onChanged:
+                                                          (newValue) async {
+                                                        safeSetState(() => _model
+                                                                    .checkboxValueMap1[
+                                                                listViewUsersRow] =
+                                                            newValue!);
+                                                      },
+                                                      side: (FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate !=
+                                                              null)
+                                                          ? BorderSide(
+                                                              width: 2,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
+                                                            )
+                                                          : null,
+                                                      activeColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      checkColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Flexible(
+                                                  flex: 2,
+                                                  child: Theme(
+                                                    data: ThemeData(
+                                                      checkboxTheme:
+                                                          CheckboxThemeData(
+                                                        visualDensity:
+                                                            VisualDensity
+                                                                .compact,
+                                                        materialTapTargetSize:
+                                                            MaterialTapTargetSize
+                                                                .shrinkWrap,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      4.0),
+                                                        ),
+                                                      ),
+                                                      unselectedWidgetColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                    ),
+                                                    child: Checkbox(
+                                                      value: _model
+                                                                  .checkboxValueMap2[
+                                                              listViewUsersRow] ??=
+                                                          listViewUsersRow
+                                                              .isAdministrator!,
+                                                      onChanged:
+                                                          (newValue) async {
+                                                        safeSetState(() => _model
+                                                                    .checkboxValueMap2[
+                                                                listViewUsersRow] =
+                                                            newValue!);
+                                                      },
+                                                      side: (FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate !=
+                                                              null)
+                                                          ? BorderSide(
+                                                              width: 2,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
+                                                            )
+                                                          : null,
+                                                      activeColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      checkColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0x4C39D2C0),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                    border: Border.all(
+                                                      color: Color(0xFF39D2C0),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Flexible(
+                                                  flex: 2,
+                                                  child: InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      context.pushNamed(
+                                                        UserEditPageWidget
+                                                            .routeName,
+                                                        queryParameters: {
+                                                          'userID':
+                                                              serializeParam(
+                                                            listViewUsersRow.id,
+                                                            ParamType.String,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                    },
+                                                    child: Icon(
+                                                      Icons
+                                                          .arrow_circle_right_outlined,
+                                                      color: Color(0xFF57636C),
+                                                      size: 24.0,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        },
                                       );
                                     },
-                                  );
-                                },
+                                  ),
+                                ),
                               ),
                             ],
                           ),

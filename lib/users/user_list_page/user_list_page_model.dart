@@ -14,7 +14,6 @@ class UserListPageModel extends FlutterFlowModel<UserListPageWidget> {
 
   // Model for SideNavigationComponent component.
   late SideNavigationComponentModel sideNavigationComponentModel;
-  Stream<List<UsersRow>>? listViewSupabaseStream;
   // State field(s) for Checkbox widget.
   Map<UsersRow, bool> checkboxValueMap1 = {};
   List<UsersRow> get checkboxCheckedItems1 => checkboxValueMap1.entries

@@ -71,3 +71,24 @@ bool isEven(int? inputInteger) {
   inputInteger = inputInteger ?? 0;
   return inputInteger % 2 == 0;
 }
+
+double colorToR(Color color) {
+  return color.r;
+}
+
+double colorToG(Color color) {
+  return color.g;
+}
+
+Color colorFromRGB(
+  double r,
+  double g,
+  double b,
+) {
+  Color color = Color.from(alpha: 255, red: r, green: g, blue: b);
+  return color;
+}
+
+double colorToB(Color color) {
+  return color.b;
+}

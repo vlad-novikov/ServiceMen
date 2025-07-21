@@ -10,6 +10,7 @@ import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'task_edit_page_model.dart';
 export 'task_edit_page_model.dart';
 
@@ -44,6 +45,8 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
 
     _model.textFieldFocusNode3 ??= FocusNode();
 
+    _model.textFieldMask3 = MaskTextInputFormatter(mask: '+# (###) ###-##-##');
+
     _model.textFieldContractFocusNode ??= FocusNode();
 
     _model.textEquipmentID1FocusNode ??= FocusNode();
@@ -73,6 +76,9 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
     _model.textFieldFocusNode7 ??= FocusNode();
 
     _model.textFieldTransferDateFocusNode ??= FocusNode();
+
+    _model.textFieldTransferDateMask =
+        MaskTextInputFormatter(mask: '##.##.####');
 
     _model.textFieldFocusNode8 ??= FocusNode();
 
