@@ -54,19 +54,19 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
 
     _model.textFieldContractFocusNode ??= FocusNode();
 
-    _model.textFieldIdFocusNode ??= FocusNode();
+    _model.textFieldIDFocusNode ??= FocusNode();
 
     _model.textFieldModelFocusNode ??= FocusNode();
 
-    _model.textFieldConnectionFocusNode1 ??= FocusNode();
+    _model.textFieldID2FocusNode ??= FocusNode();
 
-    _model.textFieldConnectionFocusNode2 ??= FocusNode();
+    _model.textFieldConnectionFocusNode ??= FocusNode();
 
-    _model.textFieldFocusNode4 ??= FocusNode();
+    _model.textFieldTaskDescrFocusNode ??= FocusNode();
 
     _model.textTaskCategoryFocusNode ??= FocusNode();
 
-    _model.textFieldFocusNode5 ??= FocusNode();
+    _model.textFieldFocusNode4 ??= FocusNode();
 
     _model.textTaskStatusFocusNode ??= FocusNode();
 
@@ -85,11 +85,11 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
     _model.textFieldTransferDateMask =
         MaskTextInputFormatter(mask: '##.##.####');
 
+    _model.textFieldFocusNode5 ??= FocusNode();
+
     _model.textFieldFocusNode6 ??= FocusNode();
 
     _model.textFieldFocusNode7 ??= FocusNode();
-
-    _model.textFieldFocusNode8 ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -178,8 +178,6 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                         safeSetState(() {});
                         await TasksTable().update(
                           data: {
-                            'task_category':
-                                _model.textTaskCategoryTextController.text,
                             'task_status':
                                 _model.textTaskStatusTextController.text,
                             'transfer_description': _model
@@ -194,7 +192,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                             'location_contract':
                                 _model.textFieldContractTextController.text,
                             'equipment_connection':
-                                _model.textFieldConnectionTextController1.text,
+                                _model.textFieldConnectionTextController.text,
                             'task_transfer':
                                 _model.textTaskTransferTextController.text,
                             'transfer_comment': _model.textController21.text,
@@ -1065,13 +1063,13 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
                                               controller: _model
-                                                      .textFieldIdTextController ??=
+                                                      .textFieldIDTextController ??=
                                                   TextEditingController(
                                                 text:
                                                     columnTasksRow?.equipmentId,
                                               ),
                                               focusNode:
-                                                  _model.textFieldIdFocusNode,
+                                                  _model.textFieldIDFocusNode,
                                               autofocus: false,
                                               readOnly: true,
                                               obscureText: false,
@@ -1216,7 +1214,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textFieldIdTextControllerValidator
+                                                  .textFieldIDTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -1401,13 +1399,13 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
                                               controller: _model
-                                                      .textFieldConnectionTextController1 ??=
+                                                      .textFieldID2TextController ??=
                                                   TextEditingController(
                                                 text: columnTasksRow
                                                     ?.equipmentId2,
                                               ),
-                                              focusNode: _model
-                                                  .textFieldConnectionFocusNode1,
+                                              focusNode:
+                                                  _model.textFieldID2FocusNode,
                                               autofocus: false,
                                               readOnly: true,
                                               obscureText: false,
@@ -1553,7 +1551,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textFieldConnectionTextController1Validator
+                                                  .textFieldID2TextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -1565,13 +1563,13 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
                                               controller: _model
-                                                      .textFieldConnectionTextController2 ??=
+                                                      .textFieldConnectionTextController ??=
                                                   TextEditingController(
                                                 text: columnTasksRow
                                                     ?.equipmentConnection,
                                               ),
                                               focusNode: _model
-                                                  .textFieldConnectionFocusNode2,
+                                                  .textFieldConnectionFocusNode,
                                               autofocus: false,
                                               readOnly: true,
                                               obscureText: false,
@@ -1717,7 +1715,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textFieldConnectionTextController2Validator
+                                                  .textFieldConnectionTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -1733,13 +1731,13 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
-                                              controller:
-                                                  _model.textController9 ??=
-                                                      TextEditingController(
+                                              controller: _model
+                                                      .textFieldTaskDescrTextController ??=
+                                                  TextEditingController(
                                                 text: columnTasksRow?.taskDescr,
                                               ),
-                                              focusNode:
-                                                  _model.textFieldFocusNode4,
+                                              focusNode: _model
+                                                  .textFieldTaskDescrFocusNode,
                                               autofocus: false,
                                               readOnly: true,
                                               obscureText: false,
@@ -1885,7 +1883,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textController9Validator
+                                                  .textFieldTaskDescrTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -2127,7 +2125,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 text: columnTasksRow?.crmId,
                                               ),
                                               focusNode:
-                                                  _model.textFieldFocusNode5,
+                                                  _model.textFieldFocusNode4,
                                               autofocus: false,
                                               readOnly: true,
                                               obscureText: false,
@@ -4513,7 +4511,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     ?.transferPerson,
                                               ),
                                               focusNode:
-                                                  _model.textFieldFocusNode6,
+                                                  _model.textFieldFocusNode5,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -4675,7 +4673,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     ?.transferPhone,
                                               ),
                                               focusNode:
-                                                  _model.textFieldFocusNode7,
+                                                  _model.textFieldFocusNode6,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -4842,7 +4840,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     ?.transferComment,
                                               ),
                                               focusNode:
-                                                  _model.textFieldFocusNode8,
+                                                  _model.textFieldFocusNode7,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
