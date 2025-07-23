@@ -1055,10 +1055,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Нет',
       'en': '',
     },
-    'md8jarhl': {
-      'ru': 'Не требуется',
-      'en': '',
-    },
     't2y64bc6': {
       'ru': 'Комментарий исполнителя',
       'en': '',
@@ -1067,7 +1063,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Перенос',
       'en': '',
     },
-    'u6hfi18a': {
+    'iptemwzi': {
       'ru': 'Причина переноса',
       'en': '',
     },
@@ -1172,6 +1168,29 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'n4bkjr93': {
       'ru': 'Отчеты',
+      'en': '',
+    },
+  },
+  // ReasonSelectComponent
+  {
+    'jyxcass3': {
+      'ru': 'Выберите причину',
+      'en': '',
+    },
+    'eq24cu7s': {
+      'ru': 'По согласованию с банком',
+      'en': '',
+    },
+    '4k1pk620': {
+      'ru': 'По согласованию с ТСП',
+      'en': '',
+    },
+    '1qtnf757': {
+      'ru': 'Не дозвонились',
+      'en': '',
+    },
+    'f6f7uj5p': {
+      'ru': 'Закрыть',
       'en': '',
     },
   },

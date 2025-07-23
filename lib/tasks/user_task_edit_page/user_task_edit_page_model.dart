@@ -96,10 +96,13 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
   TextEditingController? textDoerDescriptionTextController;
   String? Function(BuildContext, String?)?
       textDoerDescriptionTextControllerValidator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode6;
-  TextEditingController? textController17;
-  String? Function(BuildContext, String?)? textController17Validator;
+  // State field(s) for TextFieldTransferDescription widget.
+  FocusNode? textFieldTransferDescriptionFocusNode;
+  TextEditingController? textFieldTransferDescriptionTextController;
+  String? Function(BuildContext, String?)?
+      textFieldTransferDescriptionTextControllerValidator;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in IconButtonReason widget.
+  String? reasonName;
   // State field(s) for TextFieldTransferDate widget.
   FocusNode? textFieldTransferDateFocusNode;
   TextEditingController? textFieldTransferDateTextController;
@@ -108,15 +111,15 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
       textFieldTransferDateTextControllerValidator;
   DateTime? datePicked;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode7;
+  FocusNode? textFieldFocusNode6;
   TextEditingController? textController19;
   String? Function(BuildContext, String?)? textController19Validator;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode8;
+  FocusNode? textFieldFocusNode7;
   TextEditingController? textController20;
   String? Function(BuildContext, String?)? textController20Validator;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode9;
+  FocusNode? textFieldFocusNode8;
   TextEditingController? textController21;
   String? Function(BuildContext, String?)? textController21Validator;
 
@@ -173,19 +176,19 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
     textDoerDescriptionFocusNode?.dispose();
     textDoerDescriptionTextController?.dispose();
 
-    textFieldFocusNode6?.dispose();
-    textController17?.dispose();
+    textFieldTransferDescriptionFocusNode?.dispose();
+    textFieldTransferDescriptionTextController?.dispose();
 
     textFieldTransferDateFocusNode?.dispose();
     textFieldTransferDateTextController?.dispose();
 
-    textFieldFocusNode7?.dispose();
+    textFieldFocusNode6?.dispose();
     textController19?.dispose();
 
-    textFieldFocusNode8?.dispose();
+    textFieldFocusNode7?.dispose();
     textController20?.dispose();
 
-    textFieldFocusNode9?.dispose();
+    textFieldFocusNode8?.dispose();
     textController21?.dispose();
   }
 

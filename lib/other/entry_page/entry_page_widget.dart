@@ -35,11 +35,19 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       // Set App Values
       FFAppState().AppCurrDate = getCurrentTimestamp;
-      await Future.delayed(const Duration(milliseconds: 3000));
+      await Future.delayed(
+        Duration(
+          milliseconds: 3000,
+        ),
+      );
       safeSetState(() {
         _model.textField1TextController?.text = '...переключаемся..';
       });
-      await Future.delayed(const Duration(milliseconds: 3000));
+      await Future.delayed(
+        Duration(
+          milliseconds: 3000,
+        ),
+      );
     });
 
     _model.textField1TextController ??= TextEditingController();
