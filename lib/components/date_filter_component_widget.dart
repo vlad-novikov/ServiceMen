@@ -225,7 +225,7 @@ class _DateFilterComponentWidgetState extends State<DateFilterComponentWidget> {
                       );
                       safeSetState(() {});
 
-                      safeSetState(() {});
+                      _model.updatePage(() {});
                     },
                   ),
                 ),

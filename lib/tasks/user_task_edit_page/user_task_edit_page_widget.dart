@@ -159,6 +159,33 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        if (!(_model.radioDocOptionValue != null &&
+                            _model.radioDocOptionValue != '')) {
+                          if (!((_model.textTaskStatusTextController.text ==
+                                  'не выполнено') &&
+                              (_model.textTaskTransferTextController.text ==
+                                  'перенос'))) {
+                            // Update aborted
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('Документ в ТСП!'),
+                                  content: Text(
+                                      'Не заполнено поле \"Документ в ТСП\", заявка не может быть завершена.'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                            return;
+                          }
+                        }
                         // статус ВЫПОЛНЕНО
                         safeSetState(() {
                           _model.textTaskStatusTextController?.text =
@@ -3814,7 +3841,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               ),
                                           maxLines: 5,
                                           minLines: 1,
-                                          keyboardType: TextInputType.phone,
+                                          keyboardType: TextInputType.multiline,
                                           validator: _model
                                               .textDoerDescriptionTextControllerValidator
                                               .asValidator(context),
@@ -4058,8 +4085,6 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                                   .fontStyle,
                                                         ),
                                                 minLines: 1,
-                                                keyboardType:
-                                                    TextInputType.phone,
                                                 validator: _model
                                                     .textFieldTransferDescriptionTextControllerValidator
                                                     .asValidator(context),
@@ -4653,7 +4678,6 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                                 .fontStyle,
                                                       ),
                                               minLines: 1,
-                                              keyboardType: TextInputType.phone,
                                               validator: _model
                                                   .textController19Validator
                                                   .asValidator(context),
@@ -4982,7 +5006,6 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                                 .fontStyle,
                                                       ),
                                               minLines: 1,
-                                              keyboardType: TextInputType.phone,
                                               validator: _model
                                                   .textController21Validator
                                                   .asValidator(context),
