@@ -665,6 +665,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // UserTaskListPage
   {
+    'gysx5kvv': {
+      'ru': 'Выгрузить',
+      'en': '',
+    },
     '8trc8c7s': {
       'ru': 'CRM',
       'en': '',

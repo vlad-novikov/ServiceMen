@@ -144,7 +144,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                         );
                       },
                       child: Icon(
-                        Icons.edit_off,
+                        Icons.cancel_outlined,
                         color: FlutterFlowTheme.of(context).info,
                         size: 24.0,
                       ),
@@ -159,39 +159,58 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        if (!(_model.radioDocOptionValue != null &&
-                            _model.radioDocOptionValue != '')) {
-                          if (!((_model.textTaskStatusTextController.text ==
-                                  'не выполнено') &&
-                              (_model.textTaskTransferTextController.text ==
-                                  'перенос'))) {
-                            // Update aborted
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: Text('Документ в ТСП!'),
-                                  content: Text(
-                                      'Не заполнено поле \"Документ в ТСП\", заявка не может быть завершена.'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text('Ok'),
-                                    ),
-                                  ],
+                        await Future.wait([
+                          Future(() async {
+                            if (_model.textTaskStatusTextController.text ==
+                                'в работе') {
+                              if (_model.radioDocOptionValue != null &&
+                                  _model.radioDocOptionValue != '') {
+                                // Ставим статус ВЫПОЛНЕНО
+                                safeSetState(() {
+                                  _model.textTaskStatusTextController?.text =
+                                      'выполнено';
+                                });
+                              } else {
+                                // Сообщаем об ошибке
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('Документ в ТСП!'),
+                                      content: Text(
+                                          'Не заполнено поле \"Документ в ТСП\", заявка не может быть завершена.'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
                                 );
-                              },
-                            );
-                            return;
-                          }
-                        }
-                        // статус ВЫПОЛНЕНО
-                        safeSetState(() {
-                          _model.textTaskStatusTextController?.text =
-                              'выполнено';
-                        });
-                        // Set Finish Time
+                                return;
+                              }
+
+                              // Обнуляем поле ПЕРЕНОС
+                              safeSetState(() {
+                                _model.textTaskTransferTextController?.text =
+                                    '';
+                              });
+                            } else {
+                              return;
+                            }
+                          }),
+                          Future(() async {
+                            if (!((_model.textTaskStatusTextController.text ==
+                                    'не выполнено') &&
+                                (_model.textTaskTransferTextController.text ==
+                                    'перенос'))) {
+                              return;
+                            }
+                          }),
+                        ]);
+                        // Ставим Время
                         safeSetState(() {
                           _model.textFinishTimeTextController?.text =
                               dateTimeFormat(
@@ -200,7 +219,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                             locale: FFLocalizations.of(context).languageCode,
                           );
                         });
-                        // Set Finish Time 2
+                        // Ставим Время 2
                         _model.finishDateTime = getCurrentTimestamp;
                         safeSetState(() {});
                         await TasksTable().update(
@@ -248,7 +267,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                         );
                       },
                       child: Icon(
-                        Icons.edit,
+                        Icons.thumb_up,
                         color: FlutterFlowTheme.of(context).info,
                         size: 24.0,
                       ),
