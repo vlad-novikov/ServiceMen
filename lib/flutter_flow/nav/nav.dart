@@ -368,8 +368,8 @@ class FFRoute {
               ? Container(
                   color: Colors.transparent,
                   child: Image.asset(
-                    'assets/images/atm-machine.png',
-                    fit: BoxFit.fitWidth,
+                    'assets/images/service-manager.png',
+                    fit: BoxFit.cover,
                   ),
                 )
               : page;

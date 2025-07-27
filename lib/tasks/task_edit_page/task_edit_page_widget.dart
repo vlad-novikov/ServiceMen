@@ -73,6 +73,8 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
 
     _model.textDoerDescriptionFocusNode ??= FocusNode();
 
+    _model.textInternalCommentFocusNode ??= FocusNode();
+
     _model.textFieldFocusNode7 ??= FocusNode();
 
     _model.textFieldTransferDateFocusNode ??= FocusNode();
@@ -151,8 +153,8 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                             'task_status':
                                 _model.textTaskStatusTextController.text,
                             'transfer_description':
-                                _model.textController17.text,
-                            'transfer_person': _model.textController19.text,
+                                _model.textController18.text,
+                            'transfer_person': _model.textController20.text,
                             'trainees_number': _model.countControllerValue,
                             'transfer_date': supaSerialize<DateTime>(
                                 _model.pickedTransferDate),
@@ -164,9 +166,11 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                 _model.textFieldConnectionTextController.text,
                             'task_transfer':
                                 _model.textTaskTransferTextController.text,
-                            'transfer_comment': _model.textController21.text,
-                            'transfer_phone': _model.textController20.text,
+                            'transfer_comment': _model.textController22.text,
+                            'transfer_phone': _model.textController21.text,
                             'location_doc': _model.switchValue,
+                            'internal_comment':
+                                _model.textInternalCommentTextController.text,
                           },
                           matchingRows: (rows) => rows.eqOrNull(
                             'id',
@@ -3248,154 +3252,332 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                     ),
                                     Container(
                                       decoration: BoxDecoration(),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            20.0, 5.0, 20.0, 5.0),
-                                        child: TextFormField(
-                                          controller: _model
-                                                  .textDoerDescriptionTextController ??=
-                                              TextEditingController(
-                                            text:
-                                                columnTasksRow?.doerDescription,
-                                          ),
-                                          focusNode: _model
-                                              .textDoerDescriptionFocusNode,
-                                          autofocus: false,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              '6l92lupm' /* Комментарий исполнителя */,
-                                            ),
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      font: GoogleFonts.inter(
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontStyle,
-                                                    ),
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      font: GoogleFonts.inter(
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontStyle,
-                                                    ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                                width: 1.0,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 5.0, 20.0, 5.0),
+                                            child: TextFormField(
+                                              controller: _model
+                                                      .textDoerDescriptionTextController ??=
+                                                  TextEditingController(
+                                                text: columnTasksRow
+                                                    ?.doerDescription,
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            filled: true,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryBackground,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyLarge
-                                              .override(
-                                                font: GoogleFonts.inter(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyLarge
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyLarge
-                                                          .fontStyle,
+                                              focusNode: _model
+                                                  .textDoerDescriptionFocusNode,
+                                              autofocus: false,
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                labelText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'grpf1ays' /* Комментарий исполнителя */,
                                                 ),
-                                                letterSpacing: 0.0,
-                                                fontWeight:
+                                                labelStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyLarge
-                                                        .fontWeight,
-                                                fontStyle:
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                hintStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyLarge
-                                                        .fontStyle,
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                focusedErrorBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                filled: true,
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBackground,
                                               ),
-                                          maxLines: 5,
-                                          minLines: 1,
-                                          keyboardType: TextInputType.phone,
-                                          validator: _model
-                                              .textDoerDescriptionTextControllerValidator
-                                              .asValidator(context),
-                                        ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontStyle,
+                                                      ),
+                                              maxLines: 5,
+                                              minLines: 1,
+                                              keyboardType: TextInputType.phone,
+                                              validator: _model
+                                                  .textDoerDescriptionTextControllerValidator
+                                                  .asValidator(context),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 5.0, 20.0, 5.0),
+                                            child: TextFormField(
+                                              controller: _model
+                                                      .textInternalCommentTextController ??=
+                                                  TextEditingController(
+                                                text: columnTasksRow
+                                                    ?.internalComment,
+                                              ),
+                                              focusNode: _model
+                                                  .textInternalCommentFocusNode,
+                                              autofocus: false,
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                labelText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'efv7yuba' /* Внутренний комментарий */,
+                                                ),
+                                                labelStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                hintStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                focusedErrorBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                filled: true,
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBackground,
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontStyle,
+                                                      ),
+                                              maxLines: 5,
+                                              minLines: 1,
+                                              keyboardType: TextInputType.phone,
+                                              validator: _model
+                                                  .textInternalCommentTextControllerValidator
+                                                  .asValidator(context),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ].divide(SizedBox(height: 10.0)),
@@ -3454,7 +3636,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                             20.0, 5.0, 20.0, 5.0),
                                         child: TextFormField(
                                           controller:
-                                              _model.textController17 ??=
+                                              _model.textController18 ??=
                                                   TextEditingController(
                                             text: columnTasksRow
                                                 ?.transferDescription,
@@ -3592,7 +3774,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                           minLines: 1,
                                           keyboardType: TextInputType.phone,
                                           validator: _model
-                                              .textController17Validator
+                                              .textController18Validator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -3952,7 +4134,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
                                               controller:
-                                                  _model.textController19 ??=
+                                                  _model.textController20 ??=
                                                       TextEditingController(
                                                 text: columnTasksRow
                                                     ?.transferPerson,
@@ -4102,7 +4284,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textController19Validator
+                                                  .textController20Validator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -4114,7 +4296,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
                                               controller:
-                                                  _model.textController20 ??=
+                                                  _model.textController21 ??=
                                                       TextEditingController(
                                                 text: columnTasksRow
                                                     ?.transferPhone,
@@ -4264,7 +4446,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textController20Validator
+                                                  .textController21Validator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -4281,7 +4463,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
                                               controller:
-                                                  _model.textController21 ??=
+                                                  _model.textController22 ??=
                                                       TextEditingController(
                                                 text: columnTasksRow
                                                     ?.transferComment,
@@ -4431,7 +4613,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textController21Validator
+                                                  .textController22Validator
                                                   .asValidator(context),
                                             ),
                                           ),

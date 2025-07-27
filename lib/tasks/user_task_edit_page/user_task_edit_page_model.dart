@@ -96,6 +96,11 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
   TextEditingController? textDoerDescriptionTextController;
   String? Function(BuildContext, String?)?
       textDoerDescriptionTextControllerValidator;
+  // State field(s) for TextInternalComment widget.
+  FocusNode? textInternalCommentFocusNode;
+  TextEditingController? textInternalCommentTextController;
+  String? Function(BuildContext, String?)?
+      textInternalCommentTextControllerValidator;
   // State field(s) for TextFieldTransferDescription widget.
   FocusNode? textFieldTransferDescriptionFocusNode;
   TextEditingController? textFieldTransferDescriptionTextController;
@@ -112,16 +117,16 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
   DateTime? datePicked;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode5;
-  TextEditingController? textController19;
-  String? Function(BuildContext, String?)? textController19Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode6;
   TextEditingController? textController20;
   String? Function(BuildContext, String?)? textController20Validator;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode7;
+  FocusNode? textFieldFocusNode6;
   TextEditingController? textController21;
   String? Function(BuildContext, String?)? textController21Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode7;
+  TextEditingController? textController22;
+  String? Function(BuildContext, String?)? textController22Validator;
 
   @override
   void initState(BuildContext context) {}
@@ -176,6 +181,9 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
     textDoerDescriptionFocusNode?.dispose();
     textDoerDescriptionTextController?.dispose();
 
+    textInternalCommentFocusNode?.dispose();
+    textInternalCommentTextController?.dispose();
+
     textFieldTransferDescriptionFocusNode?.dispose();
     textFieldTransferDescriptionTextController?.dispose();
 
@@ -183,13 +191,13 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
     textFieldTransferDateTextController?.dispose();
 
     textFieldFocusNode5?.dispose();
-    textController19?.dispose();
-
-    textFieldFocusNode6?.dispose();
     textController20?.dispose();
 
-    textFieldFocusNode7?.dispose();
+    textFieldFocusNode6?.dispose();
     textController21?.dispose();
+
+    textFieldFocusNode7?.dispose();
+    textController22?.dispose();
   }
 
   /// Additional helper methods.

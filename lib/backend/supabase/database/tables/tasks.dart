@@ -141,4 +141,8 @@ class TasksRow extends SupabaseDataRow {
   String? get taskDocOption => getField<String>('task_doc_option');
   set taskDocOption(String? value) =>
       setField<String>('task_doc_option', value);
+
+  String? get internalComment => getField<String>('internal_comment');
+  set internalComment(String? value) =>
+      setField<String>('internal_comment', value);
 }

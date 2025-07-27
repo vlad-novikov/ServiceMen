@@ -280,7 +280,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Система  Управления Заявками на Сервисное Обслуживание',
       'en': '',
     },
-    'cnza6boz': {
+    'mqifue98': {
       'ru': 'Home',
       'en': '',
     },
@@ -517,8 +517,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Число обучаемых',
       'en': '',
     },
-    '6l92lupm': {
+    'grpf1ays': {
       'ru': 'Комментарий исполнителя',
+      'en': '',
+    },
+    'efv7yuba': {
+      'ru': 'Внутренний комментарий',
       'en': '',
     },
     'tbucemny': {
@@ -1061,6 +1065,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     't2y64bc6': {
       'ru': 'Комментарий исполнителя',
+      'en': '',
+    },
+    'hqvjazyg': {
+      'ru': 'Внутренний комментарий',
       'en': '',
     },
     'nfl9fjm0': {

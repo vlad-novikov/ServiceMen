@@ -92,10 +92,15 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   TextEditingController? textDoerDescriptionTextController;
   String? Function(BuildContext, String?)?
       textDoerDescriptionTextControllerValidator;
+  // State field(s) for TextInternalComment widget.
+  FocusNode? textInternalCommentFocusNode;
+  TextEditingController? textInternalCommentTextController;
+  String? Function(BuildContext, String?)?
+      textInternalCommentTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode7;
-  TextEditingController? textController17;
-  String? Function(BuildContext, String?)? textController17Validator;
+  TextEditingController? textController18;
+  String? Function(BuildContext, String?)? textController18Validator;
   // State field(s) for TextFieldTransferDate widget.
   FocusNode? textFieldTransferDateFocusNode;
   TextEditingController? textFieldTransferDateTextController;
@@ -105,16 +110,16 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   DateTime? datePicked;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode8;
-  TextEditingController? textController19;
-  String? Function(BuildContext, String?)? textController19Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode9;
   TextEditingController? textController20;
   String? Function(BuildContext, String?)? textController20Validator;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode10;
+  FocusNode? textFieldFocusNode9;
   TextEditingController? textController21;
   String? Function(BuildContext, String?)? textController21Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode10;
+  TextEditingController? textController22;
+  String? Function(BuildContext, String?)? textController22Validator;
 
   @override
   void initState(BuildContext context) {}
@@ -169,19 +174,22 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
     textDoerDescriptionFocusNode?.dispose();
     textDoerDescriptionTextController?.dispose();
 
+    textInternalCommentFocusNode?.dispose();
+    textInternalCommentTextController?.dispose();
+
     textFieldFocusNode7?.dispose();
-    textController17?.dispose();
+    textController18?.dispose();
 
     textFieldTransferDateFocusNode?.dispose();
     textFieldTransferDateTextController?.dispose();
 
     textFieldFocusNode8?.dispose();
-    textController19?.dispose();
-
-    textFieldFocusNode9?.dispose();
     textController20?.dispose();
 
-    textFieldFocusNode10?.dispose();
+    textFieldFocusNode9?.dispose();
     textController21?.dispose();
+
+    textFieldFocusNode10?.dispose();
+    textController22?.dispose();
   }
 }
