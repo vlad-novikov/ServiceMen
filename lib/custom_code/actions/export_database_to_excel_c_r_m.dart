@@ -76,12 +76,12 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
         ' ';
     var transferDateString = row["transfer_date"] ?? '';
     excelSheet.appendRow([
-      ex.TextCellValue(row['line_no'].toString()), //  0
-      ex.TextCellValue(row['location_name'].toString()), // 1
-      ex.TextCellValue(row['location_phone'].toString()), //  2
-      ex.TextCellValue(row['task_category'].toString()), //  3
-      ex.TextCellValue(row['equipment_id'].toString()), //  4
-      ex.TextCellValue(row['location_address'].toString()), //  5
+      ex.TextCellValue(row['line_no'].toString()), //  0 a
+      ex.TextCellValue(row['location_name'].toString()), // 1 b
+      ex.TextCellValue(row['location_phone'].toString()), //  2 c
+      ex.TextCellValue(row['task_category'].toString()), //  3 d
+      ex.TextCellValue(row['equipment_id'].toString()), //  4 e
+      ex.TextCellValue(row['location_address'].toString()), //  5 f
       ex.TextCellValue(row['task_descr'].toString()), //  6
       ex.TextCellValue(row['equipment_connection'].toString()), //  7
       ex.TextCellValue(row['equipment_model'].toString()), //  8
@@ -89,14 +89,15 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       ex.TextCellValue(row['task_status'].toString()), // 10
       ex.TextCellValue(row['task_transfer'].toString()), // 11  слово перенос
       ex.TextCellValue(transferDateString), // 12
-      ex.TextCellValue(row['transfer_reason'].toString()), // 13
+      ex.TextCellValue(row['doer_description'].toString() +
+          row['transfer_reason'].toString()), // 13 N
       ex.TextCellValue(row['task_doer'].toString()), // 14
       ex.TextCellValue(row['transfer_person'].toString()), // 15
       ex.TextCellValue(row['transfer_phone'].toString()), // 16
       ex.TextCellValue(row['transfer_comment'].toString()), // 17
       ex.TextCellValue(row['equipment_id2'].toString()), //  18
-      ex.TextCellValue(row['crm_id'].toString()), //  19
-      ex.TextCellValue(row['doer_description'].toString()) //  20
+      ex.TextCellValue(row['crm_id'].toString()), //  19 T
+      //ex.TextCellValue(row['doer_description'].toString()) //  20 U
     ]);
 
     info = 'Export Step 23 Style changed in row' +

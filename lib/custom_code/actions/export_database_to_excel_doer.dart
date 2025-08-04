@@ -45,21 +45,21 @@ Future exportDatabaseToExcelDoer(
 // write Headers to sheet
   int rowCounter = 0;
   excelSheet.appendRow([
-    ex.TextCellValue("Тип операции"),
-    ex.TextCellValue("Дата"),
-    ex.TextCellValue("Название ТСП"),
-    ex.TextCellValue("Адрес ТСП"),
-    ex.TextCellValue("Номер РР"),
-    ex.TextCellValue("Количество обучаемых"),
-    ex.TextCellValue("Результат"),
-    ex.TextCellValue("Причина"),
-    ex.TextCellValue("Дата переноса"),
-    ex.TextCellValue("Комментарий"),
-    ex.TextCellValue("Исполнитель"),
-    ex.TextCellValue("Ответственный на объекте"),
-    ex.TextCellValue("Внутренний комментарий"),
-    ex.TextCellValue("Выезд"),
-    ex.TextCellValue("Парковка"),
+    ex.TextCellValue("Тип операции"), //0 a
+    ex.TextCellValue("Дата"), //1 b
+    ex.TextCellValue("Название ТСП"), //2 c
+    ex.TextCellValue("Адрес ТСП"), //3 d
+    ex.TextCellValue("Номер РР"), //4 e
+    ex.TextCellValue("Количество обучаемых"), //5 f
+    ex.TextCellValue("Результат"), //6 g
+    ex.TextCellValue("Причина"), // 7 h
+    ex.TextCellValue("Дата переноса"), //8 i
+    ex.TextCellValue("Комментарий"), //9 j
+    ex.TextCellValue("Исполнитель"), //10 k
+    ex.TextCellValue("Ответственный на объекте"), //11 l
+    ex.TextCellValue("Внутренний комментарий"), //12 m
+    ex.TextCellValue("Выезд"), //13 n
+    ex.TextCellValue("Парковка"), //14 o
   ]);
 // Execute query for Completed tasks
   FFAppState().test1 = 'Export Step   21 ';

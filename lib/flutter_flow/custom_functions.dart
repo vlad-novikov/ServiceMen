@@ -121,7 +121,8 @@ String convertStringDateToStringDateV2(String? stringDate) {
   if ((stringDate == null) || (stringDate == '')) {
     return DateTime(1).toString();
   }
-  stringDate = stringDate.substring(0, 9);
+  stringDate = stringDate.substring(
+      0, 10); // from zero letter to 10th letter (exclusive)
 
   stringDate = stringDate.replaceAll('-', '.');
 

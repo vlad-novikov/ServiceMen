@@ -998,11 +998,21 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                   mainContentVarIndex];
                                           return Container(
                                             decoration: BoxDecoration(
-                                              color: mainContentVarItem
-                                                          .taskStatus ==
-                                                      'выполнено'
-                                                  ? Color(0xFFA7F3EC)
-                                                  : Color(0xFFF7F4F4),
+                                              color: () {
+                                                if (mainContentVarItem
+                                                        .taskStatus ==
+                                                    'выполнено') {
+                                                  return Color(0xFFA7F3EC);
+                                                } else if (mainContentVarItem
+                                                        .taskTransfer ==
+                                                    'перенос') {
+                                                  return FlutterFlowTheme.of(
+                                                          context)
+                                                      .warning;
+                                                } else {
+                                                  return Color(0xFFF7F4F4);
+                                                }
+                                              }(),
                                             ),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
@@ -1483,48 +1493,95 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                   ),
                                                   Flexible(
                                                     flex: 4,
-                                                    child: Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: Text(
-                                                        valueOrDefault<String>(
-                                                          mainContentVarItem
-                                                              .taskStatus,
-                                                          'Статус',
-                                                        ),
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        maxLines: 3,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodySmall
-                                                            .override(
-                                                              font: GoogleFonts
-                                                                  .plusJakartaSans(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodySmall
-                                                                    .fontStyle,
-                                                              ),
-                                                              color: Color(
-                                                                  0xFF15161E),
-                                                              fontSize: 12.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Text(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              mainContentVarItem
+                                                                  .taskStatus,
+                                                              'Статус',
+                                                            ),
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            maxLines: 3,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodySmall
+                                                                .override(
+                                                                  font: GoogleFonts
+                                                                      .plusJakartaSans(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodySmall
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: Color(
+                                                                      0xFF15161E),
+                                                                  fontSize:
+                                                                      12.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  fontStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodySmall
                                                                       .fontStyle,
-                                                            ),
-                                                      ),
+                                                                ),
+                                                          ),
+                                                        ),
+                                                        Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Text(
+                                                            mainContentVarItem
+                                                                .taskTransfer!,
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            maxLines: 3,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodySmall
+                                                                .override(
+                                                                  font: GoogleFonts
+                                                                      .plusJakartaSans(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodySmall
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: Color(
+                                                                      0xFF15161E),
+                                                                  fontSize:
+                                                                      12.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmall
+                                                                      .fontStyle,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
                                                   ),
                                                   Container(
