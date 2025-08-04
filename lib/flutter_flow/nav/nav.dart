@@ -181,6 +181,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.int,
             ),
           ),
+        ),
+        FFRoute(
+          name: UserTaskEditPageCopyWidget.routeName,
+          path: UserTaskEditPageCopyWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => UserTaskEditPageCopyWidget(
+            taskID: params.getParam(
+              'taskID',
+              ParamType.int,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: UserTaskEditTabsWidget.routeName,
+          path: UserTaskEditTabsWidget.routePath,
+          builder: (context, params) => UserTaskEditTabsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

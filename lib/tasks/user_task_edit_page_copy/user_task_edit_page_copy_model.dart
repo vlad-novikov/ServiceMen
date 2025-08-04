@@ -1,11 +1,12 @@
-import '/components/docs_in_t_s_p_component_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/index.dart';
-import 'user_task_edit_page_widget.dart' show UserTaskEditPageWidget;
+import 'user_task_edit_page_copy_widget.dart' show UserTaskEditPageCopyWidget;
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
+class UserTaskEditPageCopyModel
+    extends FlutterFlowModel<UserTaskEditPageCopyWidget> {
   ///  Local state fields for this page.
 
   DateTime? pickedTransferDate;
@@ -87,10 +88,10 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
   String? Function(BuildContext, String?)? textDoerTextControllerValidator;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in IconButton widget.
   String? doerName;
-  // Model for DocsInTSPComponent component.
-  late DocsInTSPComponentModel docsInTSPComponentModel;
   // State field(s) for CountController widget.
   int? countControllerValue;
+  // State field(s) for RadioDocOption widget.
+  FormFieldController<String>? radioDocOptionValueController;
   // State field(s) for TextDoerDescription widget.
   FocusNode? textDoerDescriptionFocusNode;
   TextEditingController? textDoerDescriptionTextController;
@@ -101,18 +102,6 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
   TextEditingController? textInternalCommentTextController;
   String? Function(BuildContext, String?)?
       textInternalCommentTextControllerValidator;
-  // Stores action output result for [Alert Dialog - Custom Dialog] action in IconButtonInternal widget.
-  String? alertOutput;
-  // State field(s) for TextOutingComment widget.
-  FocusNode? textOutingCommentFocusNode;
-  TextEditingController? textOutingCommentTextController;
-  String? Function(BuildContext, String?)?
-      textOutingCommentTextControllerValidator;
-  // State field(s) for TextParkingComment widget.
-  FocusNode? textParkingCommentFocusNode;
-  TextEditingController? textParkingCommentTextController;
-  String? Function(BuildContext, String?)?
-      textParkingCommentTextControllerValidator;
   // State field(s) for TextFieldTransferDescription widget.
   FocusNode? textFieldTransferDescriptionFocusNode;
   TextEditingController? textFieldTransferDescriptionTextController;
@@ -129,22 +118,19 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
   DateTime? datePicked;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode5;
-  TextEditingController? textController22;
-  String? Function(BuildContext, String?)? textController22Validator;
+  TextEditingController? textController20;
+  String? Function(BuildContext, String?)? textController20Validator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode6;
-  TextEditingController? textController23;
-  String? Function(BuildContext, String?)? textController23Validator;
+  TextEditingController? textController21;
+  String? Function(BuildContext, String?)? textController21Validator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode7;
-  TextEditingController? textController24;
-  String? Function(BuildContext, String?)? textController24Validator;
+  TextEditingController? textController22;
+  String? Function(BuildContext, String?)? textController22Validator;
 
   @override
-  void initState(BuildContext context) {
-    docsInTSPComponentModel =
-        createModel(context, () => DocsInTSPComponentModel());
-  }
+  void initState(BuildContext context) {}
 
   @override
   void dispose() {
@@ -193,18 +179,11 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
     textDoerFocusNode?.dispose();
     textDoerTextController?.dispose();
 
-    docsInTSPComponentModel.dispose();
     textDoerDescriptionFocusNode?.dispose();
     textDoerDescriptionTextController?.dispose();
 
     textInternalCommentFocusNode?.dispose();
     textInternalCommentTextController?.dispose();
-
-    textOutingCommentFocusNode?.dispose();
-    textOutingCommentTextController?.dispose();
-
-    textParkingCommentFocusNode?.dispose();
-    textParkingCommentTextController?.dispose();
 
     textFieldTransferDescriptionFocusNode?.dispose();
     textFieldTransferDescriptionTextController?.dispose();
@@ -213,12 +192,15 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
     textFieldTransferDateTextController?.dispose();
 
     textFieldFocusNode5?.dispose();
-    textController22?.dispose();
+    textController20?.dispose();
 
     textFieldFocusNode6?.dispose();
-    textController23?.dispose();
+    textController21?.dispose();
 
     textFieldFocusNode7?.dispose();
-    textController24?.dispose();
+    textController22?.dispose();
   }
+
+  /// Additional helper methods.
+  String? get radioDocOptionValue => radioDocOptionValueController?.value;
 }

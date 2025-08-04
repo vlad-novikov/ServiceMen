@@ -274,6 +274,26 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                           controller:
                                               _model.passwordTextController,
                                           focusNode: _model.passwordFocusNode,
+                                          onFieldSubmitted: (_) async {
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
+
+                                            final user = await authManager
+                                                .signInWithEmail(
+                                              context,
+                                              _model.emailAddressTextController
+                                                  .text,
+                                              _model
+                                                  .passwordTextController.text,
+                                            );
+                                            if (user == null) {
+                                              return;
+                                            }
+
+                                            context.goNamedAuth(
+                                                EntryPageWidget.routeName,
+                                                context.mounted);
+                                          },
                                           autofocus: true,
                                           autofillHints: [
                                             AutofillHints.password

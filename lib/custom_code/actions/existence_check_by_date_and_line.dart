@@ -20,7 +20,7 @@ Future<bool> existenceCheckByDateAndLine(
   //FFAppState().test1 =   'Фильтры: Дата ' + taskDate.toString() + ' Cтрока ' + taskLine.toString();
   final client = SupaFlow.client;
 // Execute query
-  FFAppState().test1 = 'Existence Check step 2 ';
+  //FFAppState().test1 += 'Existence Check step 2 ';
   final response = await client
       .from('tasks')
       .select('id')
@@ -28,12 +28,11 @@ Future<bool> existenceCheckByDateAndLine(
       .eq('line_no', taskLine)
       .limit(1)
       .maybeSingle();
-  FFAppState().test1 =
-      'Existence Check step 3 NOT EXISTS ' + response.toString();
+  //FFAppState().test1 +=  'Existence Check step 3 NOT EXISTS ' + taskLine.toString();
   if (response == null) {
     return false;
   } else {
-    FFAppState().test1 = 'Existence Check step 3  EXISTS';
+    //FFAppState().test1 +=      'Existence Check step 3  EXISTS' + taskLine.toString();
     return true;
   }
 }

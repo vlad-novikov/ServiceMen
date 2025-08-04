@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-// ---- THIS UNIT EXPORTS EXCEL FILE FOR CRM SYSTEM IMPORTING ---
+// ---- THIS UNIT EXPORTS EXCEL FILE FOR PERSONAL REPORTING OF A DOER ---
 
 import 'package:file_picker/file_picker.dart';
 import 'package:excel/excel.dart' as ex;
@@ -56,7 +56,10 @@ Future exportDatabaseToExcelDoer(
     ex.TextCellValue("Дата переноса"),
     ex.TextCellValue("Комментарий"),
     ex.TextCellValue("Исполнитель"),
-    ex.TextCellValue("Ответсвенный на объекте")
+    ex.TextCellValue("Ответственный на объекте"),
+    ex.TextCellValue("Внутренний комментарий"),
+    ex.TextCellValue("Выезд"),
+    ex.TextCellValue("Парковка"),
   ]);
 // Execute query for Completed tasks
   FFAppState().test1 = 'Export Step   21 ';
@@ -67,11 +70,12 @@ Future exportDatabaseToExcelDoer(
           "task_date, task_category, task_status, task_descr, task_transfer, " +
           "task_doer, doer_description,  " +
           "equipment_id, equipment_model, equipment_connection," +
-          " transfer_date, transfer_reason, transfer_description, " +
+          "transfer_date, transfer_reason, transfer_description, " +
           "transfer_person, transfer_phone, " +
           "transfer_person_2, transfer_phone_2," +
           "transfer_comment, transfer_comment2, " +
-          "equipment_id2, crm_id")
+          "equipment_id2, crm_id," +
+          "internal_comment, outing_comment, parking_comment")
       .eq('task_date', taskDate)
       .order('line_no', ascending: true);
   FFAppState().test1 = 'Export Step 21 done Found ' +
@@ -80,27 +84,35 @@ Future exportDatabaseToExcelDoer(
       taskDate.toString();
 
   // write Completed rows to sheet
+  String stringTraineesNumber = '';
+  String stringTransferDate = '';
   for (var i = 0; i < response.length; i++) {
     rowCounter += 1;
     var row = response[i];
-
-    var transferDateString = row["transfer_date"] ?? '';
+    stringTraineesNumber = row['trainees_number'].toString();
+    if ((stringTraineesNumber.toLowerCase() == 'null') ||
+        (stringTraineesNumber == '0')) {
+      stringTraineesNumber = '';
+    }
     // Тип операции	Дата	Название ТСП	Адрес ТСП	Номер РР	Количество обучаемых
     // Результат	Причина	Дата переноса	Комментарий	Исполнитель	Ответственный на объекте
-    if (row['task_status'] == 'выполнено') {
+    if (row['task_doer'] == doer && row['task_status'] == 'выполнено') {
       excelSheet.appendRow([
         ex.TextCellValue(row['task_category'].toString().substring(0, 1)), //  0
         ex.TextCellValue(row['task_date'].toString()), //  1
         ex.TextCellValue(row['location_name'].toString()), // 2
         ex.TextCellValue(row['location_address'].toString()), //  3
         ex.TextCellValue(row['equipment_id'].toString()), //  4
-        ex.TextCellValue(row['trainees_number'].toString()), //  5
+        ex.TextCellValue(stringTraineesNumber), //  5
         ex.TextCellValue(row['task_status'].toString()), // 6
-        ex.TextCellValue(row['transfer_reason'].toString()), // 7
-        ex.TextCellValue(row['transfer_date'].toString()), // 8
-        ex.TextCellValue(row['transfer_comment'].toString()), // 9
+        ex.TextCellValue(row['doer_description'].toString()), // 7
+        ex.TextCellValue(''), // 8
+        ex.TextCellValue(''), // 9
         ex.TextCellValue(row['task_doer'].toString()), // 10
-        ex.TextCellValue(row['transfer_person'].toString()), // 11
+        ex.TextCellValue(''), // 11
+        ex.TextCellValue(row['internal_comment'].toString()), // 12
+        ex.TextCellValue(row['outing_comment'].toString()), // 13
+        ex.TextCellValue(row['parking_comment'].toString()), // 14
       ]);
     }
   }
@@ -109,13 +121,33 @@ Future exportDatabaseToExcelDoer(
   for (var i = 0; i < response.length; i++) {
     rowCounter += 1;
     var row = response[i];
-    if (row['task_status'] == 'не выполнено') {
+    if (row['task_doer'] == doer && row['task_status'] == 'не выполнено') {
+      stringTransferDate = row['transfer_date'].toString();
+      if (stringTransferDate.toLowerCase() == 'null') {
+        stringTransferDate = '';
+      }
+      if (stringTransferDate.toLowerCase() == '0001-01-01') {
+        stringTransferDate = '';
+      }
+
       excelSheet.appendRow([
         ex.TextCellValue(row['task_category'].toString().substring(0, 1)), //  0
         ex.TextCellValue(row['task_date'].toString()), //  1
         ex.TextCellValue(row['location_name'].toString()), // 2
         ex.TextCellValue(row['location_address'].toString()), //  3
         ex.TextCellValue(row['equipment_id'].toString()), //  4
+        ex.TextCellValue(''), //  5
+        ex.TextCellValue(row['task_status'].toString()), // 6
+        ex.TextCellValue(row['task_transfer'].toString()), // 7
+        ex.TextCellValue(stringTransferDate), // 8
+        ex.TextCellValue(row['transfer_comment'].toString()), // 9
+        ex.TextCellValue(row['task_doer'].toString()), // 10
+        ex.TextCellValue(row['transfer_person'].toString() +
+            ' ' +
+            row['transfer_phone'].toString()), // 11
+        ex.TextCellValue(row['internal_comment'].toString()), // 12
+        ex.TextCellValue(row['outing_comment'].toString()), // 13
+        ex.TextCellValue(row['parking_comment'].toString()), // 14
       ]);
     }
   }

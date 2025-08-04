@@ -182,7 +182,10 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                               _model.dateFilterComponentModel,
                                           updateCallback: () =>
                                               safeSetState(() {}),
-                                          child: DateFilterComponentWidget(),
+                                          child: DateFilterComponentWidget(
+                                            parameter1:
+                                                FFAppState().AppCurrDate,
+                                          ),
                                         ),
                                         if (false)
                                           Expanded(
@@ -452,8 +455,8 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                           ),
                                           Container(
                                             constraints: BoxConstraints(
-                                              minWidth: 100.0,
-                                              maxWidth: 100.0,
+                                              minWidth: 150.0,
+                                              maxWidth: 150.0,
                                               maxHeight: 60.0,
                                             ),
                                             decoration: BoxDecoration(),
@@ -848,8 +851,8 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                       Container(
                                                         constraints:
                                                             BoxConstraints(
-                                                          minWidth: 100.0,
-                                                          maxWidth: 100.0,
+                                                          minWidth: 150.0,
+                                                          maxWidth: 150.0,
                                                           maxHeight: 60.0,
                                                         ),
                                                         decoration:
@@ -995,7 +998,7 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                                             .taskCategory!)
                                                                         .substring(
                                                                             0,
-                                                                            1),
+                                                                            3),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .titleSmall
@@ -1007,6 +1010,8 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                                             fontStyle:
                                                                                 FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                           ),
+                                                                          color:
+                                                                              Color(0xB2F31311),
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight: FlutterFlowTheme.of(context)
@@ -1083,47 +1088,95 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                         child: Align(
                                                           alignment:
                                                               AlignmentDirectional(
-                                                                  -1.0, 0.0),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        5.0,
-                                                                        0.0,
-                                                                        5.0,
+                                                                  0.0, 0.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        -1.0,
                                                                         0.0),
-                                                            child: Text(
-                                                              userTasksItem
-                                                                  .taskStatus!,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .labelSmall
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .plusJakartaSans(
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelSmall
-                                                                          .fontStyle,
-                                                                    ),
-                                                                    color: Color(
-                                                                        0xFF606A85),
-                                                                    fontSize:
-                                                                        12.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
-                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
+                                                                  child: Text(
+                                                                    userTasksItem
+                                                                        .taskStatus!,
+                                                                    style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .labelSmall
-                                                                        .fontStyle,
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.plusJakartaSans(
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelSmall.fontStyle,
+                                                                          ),
+                                                                          color:
+                                                                              Color(0xFF606A85),
+                                                                          fontSize:
+                                                                              12.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelSmall
+                                                                              .fontStyle,
+                                                                        ),
                                                                   ),
-                                                            ),
+                                                                ),
+                                                              ),
+                                                              Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        -1.0,
+                                                                        0.0),
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
+                                                                  child: Text(
+                                                                    userTasksItem
+                                                                        .taskTransfer!,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmall
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.plusJakartaSans(
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelSmall.fontStyle,
+                                                                          ),
+                                                                          color:
+                                                                              Color(0xFF606A85),
+                                                                          fontSize:
+                                                                              12.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelSmall
+                                                                              .fontStyle,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
                                                           ),
                                                         ),
                                                       ),
@@ -1189,10 +1242,6 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                         },
                                       );
                                     },
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [],
                                   ),
                                 ],
                               ),

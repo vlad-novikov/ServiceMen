@@ -95,7 +95,8 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       ex.TextCellValue(row['transfer_phone'].toString()), // 16
       ex.TextCellValue(row['transfer_comment'].toString()), // 17
       ex.TextCellValue(row['equipment_id2'].toString()), //  18
-      ex.TextCellValue(row['crm_id'].toString()) //  19
+      ex.TextCellValue(row['crm_id'].toString()), //  19
+      ex.TextCellValue(row['doer_description'].toString()) //  20
     ]);
 
     info = 'Export Step 23 Style changed in row' +

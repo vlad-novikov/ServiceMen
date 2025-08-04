@@ -15,13 +15,16 @@ import 'package:file_picker/file_picker.dart';
 
 Future<String?> importExcelToDatabase() async {
   // Add your function code here!
+
   try {
+    FFAppState().test1 = '';
+    String strError = '';
     // Open the file picker to allow the user to select an Excel
     FilePickerResult? result = await FilePicker.platform
         .pickFiles(type: FileType.custom, allowedExtensions: ['xlsx']);
     // User canceled the picker
     if (result == null) {
-      return null;
+      return 'Файл не выбран.';
     }
     // Read the selected Excel file
     var bytes = result.files.first.bytes!;
@@ -30,60 +33,78 @@ Future<String?> importExcelToDatabase() async {
     // Get the first sheet in the Excel file
     var sheet = excel.tables.keys.first;
     var rows = excel.tables[sheet]?.rows;
-    List<String> row = [];
-    bool addRow = true;
-    bool badRow = false;
-    String strError = '';
+    rows = rows ?? [];
+    int maxR = excel.tables[sheet]?.maxRows ?? 0;
+    bool addRow;
+    bool badRow;
+    List<String> row;
 
     final client = SupaFlow.client;
 
-    // get date value from first row of worksheet and convert date format in string from dmy to ymd
-    //var cell = rows[0][1].value;
-    String? dateValue = rows?[0][1]?.value.toString();
-    if (dateValue == null) {
-      return null;
-    }
-    DateFormat format =
-        new DateFormat("dd.MM.yyyy"); // take date in excel format
-    DateTime taskDate = format.parse(dateValue);
-    var stringDate =
-        DateFormat('yyyy-MM-dd').format(taskDate); // convert date to DB format
-    for (var i = 1; i < rows!.length; i++) {
-      row = [];
+    int i1 = 0;
+    int i2 = 0;
+    // get  date value from first row of worksheet and
+    // convert date format in string from dmy to ymd
+    String stringTaskDate =
+        convertStringDateToStringDate(rows?[0][1]?.value.toString());
+    DateTime dtTaskDate =
+        convertStringDateToDate(rows?[0][1]?.value.toString());
+    FFAppState().test1 += ' Дата ' +
+        stringTaskDate +
+        ' из текста конвертирована в ' +
+        dtTaskDate.toString();
+
+    for (var r = 1; r < maxR; r++) {
+      FFAppState().test1 += ' row ' + r.toString();
+      row = []; // init empty row
       addRow = true; // row is added by default
-      badRow = false;
-      for (var j = 0; j < 21; j++) {
+      badRow = false; //  row is good by default
+      //FFAppState().test1 += '#1';
+      for (var c = 0; c < 20; c++) {
+        //FFAppState().test1 += ' col' + c.toString();
         // Get the cell value for this column
-        var cellValue = clearString(rows[i][j]!.value.toString());
-        if ((j < 3) && ((cellValue?.isEmpty ?? true) | (cellValue == ''))) {
+        var strValue = '';
+        Data? cellData = rows[r][c];
+        if (cellData != null) {
+          CellValue? cellValue = cellData.value;
+          if (cellValue != null) {
+            strValue = clearString(cellValue.toString());
+          }
+        }
+
+        //FFAppState().test1 += ' val ' + strValue;
+        if ((c < 2) && ((strValue?.isEmpty ?? true) | (strValue == ''))) {
           // if any value in first 3 columns of row is null or empty, we skip this row
           badRow = true;
         } else {
           try {
-            row.add(cellValue);
+            row.add(strValue);
           } catch (e) {
-            FFAppState().test1 = 'row[j] error=' + e.toString();
-            return null;
+            strError = e.toString();
+            return 'Ошибка при  импорте строки ' +
+                r.toString() +
+                ', столбца ' +
+                (c + 1).toString();
           }
         }
-      } // j end
-      int? taskLine = stringToIntegerFunction(row[0]);
-      if (taskLine == null) {
-        return null;
-      }
-
+      } // c end
+      int taskLine = stringToIntegerFunction(row[0]) ?? 0;
+      FFAppState().test1 += '#2';
       String taskStatus = row[10].toString();
       if (taskStatus == '') {
         taskStatus = 'требует назначения';
       }
+      String stringTransferDate = convertStringDateToStringDateV2(row[12]);
       // check if record with this date and line exists
-      bool taskExists = await existenceCheckByDateAndLine(taskDate, taskLine);
-      addRow = !(badRow || taskExists);
-      FFAppState().test1 = 'ImportExcel addRow=' + addRow.toString();
+      bool taskExists = false;
+      taskExists = await existenceCheckByDateAndLine(dtTaskDate, taskLine);
+      addRow = (!badRow) && (!taskExists);
+      FFAppState().test1 += '#3' + stringTransferDate;
       if (addRow == true) {
+        i1++;
         // Execute INSERT query
         var response = await client.from('tasks').insert({
-          'task_date': stringDate,
+          'task_date': stringTaskDate,
           'line_no': row[0],
           'location_name': row[1],
           'location_phone': row[2],
@@ -96,8 +117,8 @@ Future<String?> importExcelToDatabase() async {
           'location_contract': row[9],
           'task_status': taskStatus,
           'task_transfer': row[11],
-          'transfer_date': (row[12] == "") ? null : row[12],
           'transfer_reason': row[13],
+          'transfer_date': stringTransferDate,
           'task_doer': row[14],
           'transfer_person': row[15],
           'transfer_phone': row[16],
@@ -105,20 +126,21 @@ Future<String?> importExcelToDatabase() async {
           'equipment_id2': row[18],
           'crm_id': row[19]
         }).select();
-
-        FFAppState().test1 = 'Import Excel Insert done';
         if (response == null) {
-          return null;
+          i2++;
+
+          //return null;
         }
       } else {
-        strError += ' Пропущена строка ' + i.toString() + '. ';
+        strError += ' Пропущена строка ' + r.toString() + '. ';
       }
-    } // i ends
-    FFAppState().test1 = strError;
-    return 'done';
+      //FFAppState().test1 += '#4';
+    } // r ends
+    //FFAppState().test1 += '#5';
+    return ' Ошибок не обнаружено';
   } catch (e) {
     // try end
-    // showSnackbar();
-    return null;
+    FFAppState().test2 = 'ИСКЛЮЧЕНИЕ ' + e.toString();
+    return e.toString();
   }
 }

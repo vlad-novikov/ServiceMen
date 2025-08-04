@@ -92,3 +92,38 @@ Color colorFromRGB(
 double colorToB(Color color) {
   return color.b;
 }
+
+String convertStringDateToStringDate(String? stringDate) {
+  // Converting date in Excel format to date in db format
+  if ((stringDate == null) || (stringDate == '')) {
+    return DateTime(1).toString();
+  }
+  DateFormat format = new DateFormat("dd.MM.yyyy"); // take date in excel format
+  DateTime dtDate = format.parse(stringDate);
+
+  String stringNewDate =
+      DateFormat('yyyy.MM.dd').format(dtDate); // convert date to DB format
+  return stringNewDate;
+}
+
+DateTime convertStringDateToDate(String? stringDate) {
+  if ((stringDate == null) || (stringDate == '')) {
+    return DateTime(1);
+  }
+  // Converting string date in Excel format to date
+  DateFormat format = new DateFormat("dd.MM.yyyy"); // take date in excel format
+  DateTime dtDate = format.parse(stringDate);
+  return dtDate;
+}
+
+String convertStringDateToStringDateV2(String? stringDate) {
+  // Converting date in Excel format to date in db format
+  if ((stringDate == null) || (stringDate == '')) {
+    return DateTime(1).toString();
+  }
+  stringDate = stringDate.substring(0, 9);
+
+  stringDate = stringDate.replaceAll('-', '.');
+
+  return stringDate;
+}

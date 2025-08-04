@@ -25,3 +25,7 @@ export '/other/import_page/import_page_widget.dart' show ImportPageWidget;
 export '/other/test_page/test_page_widget.dart' show TestPageWidget;
 export '/tasks/user_task_edit_page/user_task_edit_page_widget.dart'
     show UserTaskEditPageWidget;
+export '/tasks/user_task_edit_page_copy/user_task_edit_page_copy_widget.dart'
+    show UserTaskEditPageCopyWidget;
+export '/tasks/user_task_edit_tabs/user_task_edit_tabs_widget.dart'
+    show UserTaskEditTabsWidget;

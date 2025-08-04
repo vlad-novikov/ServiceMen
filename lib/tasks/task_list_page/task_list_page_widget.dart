@@ -11,6 +11,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -36,6 +37,11 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TaskListPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      FFAppState().AppCurrDate = getCurrentTimestamp;
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -206,7 +212,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                     .showSnackBar(
                                                   SnackBar(
                                                     content: Text(
-                                                      'Импорт завершён.',
+                                                      'Импорт завершён. ${_model.importResult}',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1181,12 +1187,9 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                                     10.0,
                                                                     0.0),
                                                         child: Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            mainContentVarItem
-                                                                .taskCategory,
-                                                            'Вид работ',
-                                                          ),
+                                                          (mainContentVarItem
+                                                                  .taskCategory!)
+                                                              .substring(0, 3),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .labelSmall
@@ -1524,36 +1527,40 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                       ),
                                                     ),
                                                   ),
-                                                  InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      context.pushNamed(
-                                                        TaskEditPageWidget
-                                                            .routeName,
-                                                        queryParameters: {
-                                                          'taskID':
-                                                              serializeParam(
-                                                            mainContentVarItem
-                                                                .id,
-                                                            ParamType.int,
-                                                          ),
-                                                        }.withoutNulls,
-                                                      );
-                                                    },
-                                                    child: Icon(
-                                                      Icons.arrow_circle_right,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      size: 28.0,
+                                                  Container(
+                                                    decoration: BoxDecoration(),
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        context.pushNamed(
+                                                          TaskEditPageWidget
+                                                              .routeName,
+                                                          queryParameters: {
+                                                            'taskID':
+                                                                serializeParam(
+                                                              mainContentVarItem
+                                                                  .id,
+                                                              ParamType.int,
+                                                            ),
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: Icon(
+                                                        Icons
+                                                            .arrow_circle_right,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 30.0,
+                                                      ),
                                                     ),
                                                   ),
                                                 ],
@@ -1563,44 +1570,6 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                         },
                                       );
                                     },
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Expanded(
-                                        child: Text(
-                                          FFAppState().test1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font: GoogleFonts.inter(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                        ),
-                                      ),
-                                    ],
                                   ),
                                 ],
                               ),

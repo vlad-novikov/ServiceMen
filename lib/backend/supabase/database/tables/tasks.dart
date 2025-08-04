@@ -145,4 +145,17 @@ class TasksRow extends SupabaseDataRow {
   String? get internalComment => getField<String>('internal_comment');
   set internalComment(String? value) =>
       setField<String>('internal_comment', value);
+
+  bool? get outing => getField<bool>('outing');
+  set outing(bool? value) => setField<bool>('outing', value);
+
+  String? get outingComment => getField<String>('outing_comment');
+  set outingComment(String? value) => setField<String>('outing_comment', value);
+
+  bool? get parking => getField<bool>('parking');
+  set parking(bool? value) => setField<bool>('parking', value);
+
+  String? get parkingComment => getField<String>('parking_comment');
+  set parkingComment(String? value) =>
+      setField<String>('parking_comment', value);
 }
