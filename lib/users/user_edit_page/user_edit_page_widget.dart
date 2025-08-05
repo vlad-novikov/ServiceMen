@@ -3,10 +3,8 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'user_edit_page_model.dart';
 export 'user_edit_page_model.dart';
@@ -863,51 +861,6 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                                         .fontStyle,
                                               ),
                                         ),
-                                        Text(
-                                          '${_model.selectedRed?.toString()}${_model.selectedGreen?.toString()}${_model.selectedBlue?.toString()}',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font: GoogleFonts.inter(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  5.0, 0.0, 5.0, 0.0),
-                                          child: Container(
-                                            width: 80.0,
-                                            height: 30.0,
-                                            decoration: BoxDecoration(
-                                              color: _model.selectedColor,
-                                              border: Border.all(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
                                         Align(
                                           alignment:
                                               AlignmentDirectional(-1.0, 0.0),
@@ -928,59 +881,9 @@ class _UserEditPageWidgetState extends State<UserEditPageWidget> {
                                                         .info,
                                                 size: 24.0,
                                               ),
-                                              onPressed: () async {
-                                                final _colorPickedColor =
-                                                    await showFFColorPicker(
-                                                  context,
-                                                  currentColor:
-                                                      _model.colorPicked ??
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                  showRecentColors: true,
-                                                  allowOpacity: true,
-                                                  textColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText,
-                                                  secondaryTextColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryText,
-                                                  backgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryBackground,
-                                                  primaryButtonBackgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                  primaryButtonTextColor:
-                                                      Colors.white,
-                                                  primaryButtonBorderColor:
-                                                      Colors.transparent,
-                                                  displayAsBottomSheet:
-                                                      isMobileWidth(context),
-                                                );
-
-                                                if (_colorPickedColor != null) {
-                                                  safeSetState(() =>
-                                                      _model.colorPicked =
-                                                          _colorPickedColor);
-                                                }
-
-                                                _model.selectedColor =
-                                                    _model.colorPicked;
-                                                _model.selectedRed =
-                                                    functions.colorToR(
-                                                        _model.selectedColor!);
-                                                _model.selectedGreen =
-                                                    functions.colorToG(
-                                                        _model.selectedColor!);
-                                                _model.selectedBlue =
-                                                    functions.colorToB(
-                                                        _model.selectedColor!);
-                                                safeSetState(() {});
+                                              onPressed: () {
+                                                print(
+                                                    'IconButtonColor pressed ...');
                                               },
                                             ),
                                           ),

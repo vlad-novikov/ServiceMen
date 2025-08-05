@@ -34,7 +34,6 @@ class UserEditPageModel extends FlutterFlowModel<UserEditPageWidget> {
   FocusNode? textFieldFocusNode4;
   TextEditingController? textController4;
   String? Function(BuildContext, String?)? textController4Validator;
-  Color? colorPicked;
   // State field(s) for SwitchIsAdminisytator widget.
   bool? switchIsAdminisytatorValue;
   // State field(s) for SwitchIsImporter widget.
