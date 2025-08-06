@@ -185,7 +185,7 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                         );
                       },
                       text: FFLocalizations.of(context).getText(
-                        'gysx5kvv' /* Выгрузить */,
+                        'gysx5kvv' /*  */,
                       ),
                       icon: Icon(
                         Icons.output,
