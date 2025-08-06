@@ -673,10 +673,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // UserTaskListPage
   {
-    'gysx5kvv': {
-      'ru': 'Выгрузить',
-      'en': '',
-    },
     '8trc8c7s': {
       'ru': 'CRM',
       'en': '',
@@ -695,6 +691,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'q610qwth': {
       'ru': 'Адрес',
+      'en': '',
+    },
+    'gysx5kvv': {
+      'ru': 'Выгрузить',
       'en': '',
     },
     '7chmj9xz': {
@@ -1297,13 +1297,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'o5sagby2': {
       'ru': 'Закрыть',
-      'en': '',
-    },
-  },
-  // DateFilterComponent
-  {
-    'gvzroegk': {
-      'ru': 'На дату: ',
       'en': '',
     },
   },

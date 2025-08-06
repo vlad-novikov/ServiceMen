@@ -55,7 +55,7 @@ class _DateFilterComponentWidgetState extends State<DateFilterComponentWidget> {
         Align(
           alignment: AlignmentDirectional(-1.0, 0.0),
           child: Container(
-            width: 400.0,
+            width: 239.97,
             height: 55.0,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).primaryBackground,
@@ -68,31 +68,6 @@ class _DateFilterComponentWidgetState extends State<DateFilterComponentWidget> {
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
-                  child: Text(
-                    FFLocalizations.of(context).getText(
-                      'gvzroegk' /* На дату:  */,
-                    ),
-                    textAlign: TextAlign.end,
-                    style: FlutterFlowTheme.of(context).titleLarge.override(
-                          font: GoogleFonts.interTight(
-                            fontWeight: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .fontStyle,
-                          ),
-                          letterSpacing: 0.0,
-                          fontWeight: FlutterFlowTheme.of(context)
-                              .titleLarge
-                              .fontWeight,
-                          fontStyle:
-                              FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                        ),
-                  ),
-                ),
                 Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
@@ -233,7 +208,7 @@ class _DateFilterComponentWidgetState extends State<DateFilterComponentWidget> {
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: FlutterFlowIconButton(
                     borderRadius: 8.0,
-                    buttonSize: 40.0,
+                    buttonSize: 37.31,
                     icon: Icon(
                       Icons.arrow_circle_right_outlined,
                       color: FlutterFlowTheme.of(context).primaryText,
