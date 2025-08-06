@@ -40,6 +40,12 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
       _model.pageDate = FFAppState().AppCurrDate;
       _model.pageUserId = currentUserUid;
       safeSetState(() {});
+      FFAppState().AppCurDateStr = dateTimeFormat(
+        "yyyy-MM-dd",
+        FFAppState().AppCurrDate,
+        locale: FFLocalizations.of(context).languageCode,
+      );
+      safeSetState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -73,10 +79,13 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
               title: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Icon(
-                    Icons.person,
-                    color: FlutterFlowTheme.of(context).alternate,
-                    size: 30.0,
+                  Align(
+                    alignment: AlignmentDirectional(-1.0, 0.0),
+                    child: Icon(
+                      Icons.person,
+                      color: FlutterFlowTheme.of(context).alternate,
+                      size: 30.0,
+                    ),
                   ),
                   Expanded(
                     child: Align(
@@ -901,6 +910,7 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                                         .substring(
                                                                             0,
                                                                             3),
+                                                                    maxLines: 3,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .titleSmall
@@ -948,6 +958,7 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                                           .equipmentId,
                                                                       'Номер',
                                                                     ),
+                                                                    maxLines: 1,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .labelSmall
@@ -1103,6 +1114,7 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                                     .locationAddress,
                                                                 'Адрес',
                                                               ),
+                                                              maxLines: 2,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .labelSmall
