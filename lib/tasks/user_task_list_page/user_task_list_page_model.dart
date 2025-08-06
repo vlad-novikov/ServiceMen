@@ -1,4 +1,4 @@
-import '/components/date_filter_component_widget.dart';
+import '/components/date_filter_compact_component_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'user_task_list_page_widget.dart' show UserTaskListPageWidget;
@@ -17,17 +17,17 @@ class UserTaskListPageModel extends FlutterFlowModel<UserTaskListPageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // Model for DateFilterComponent component.
-  late DateFilterComponentModel dateFilterComponentModel;
+  // Model for DateFilterCompactComponent component.
+  late DateFilterCompactComponentModel dateFilterCompactComponentModel;
 
   @override
   void initState(BuildContext context) {
-    dateFilterComponentModel =
-        createModel(context, () => DateFilterComponentModel());
+    dateFilterCompactComponentModel =
+        createModel(context, () => DateFilterCompactComponentModel());
   }
 
   @override
   void dispose() {
-    dateFilterComponentModel.dispose();
+    dateFilterCompactComponentModel.dispose();
   }
 }

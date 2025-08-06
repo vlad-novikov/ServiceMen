@@ -1,6 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/date_filter_component_widget.dart';
+import '/components/date_filter_compact_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -73,6 +73,11 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
               title: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
+                  Icon(
+                    Icons.person,
+                    color: FlutterFlowTheme.of(context).alternate,
+                    size: 30.0,
+                  ),
                   Expanded(
                     child: Align(
                       alignment: AlignmentDirectional(-1.0, 0.0),
@@ -80,12 +85,17 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Container(
-                            child: wrapWithModel(
-                              model: _model.dateFilterComponentModel,
-                              updateCallback: () => safeSetState(() {}),
-                              child: DateFilterComponentWidget(
-                                parameter1: FFAppState().AppCurrDate,
-                              ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                wrapWithModel(
+                                  model: _model.dateFilterCompactComponentModel,
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: DateFilterCompactComponentWidget(
+                                    parameter1: FFAppState().AppCurrDate,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
