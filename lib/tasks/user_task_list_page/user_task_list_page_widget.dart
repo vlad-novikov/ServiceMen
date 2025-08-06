@@ -73,40 +73,54 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
               title: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Align(
-                    alignment: AlignmentDirectional(-1.0, 0.0),
-                    child: Text(
-                      '${FFAppState().AppLastName}  ( эл.почта ${FFAppState().AppEmail},  тел. ${FFAppState().AppPhone})',
-                      style: FlutterFlowTheme.of(context).titleMedium.override(
-                            font: GoogleFonts.interTight(
-                              fontWeight: FlutterFlowTheme.of(context)
-                                  .titleMedium
-                                  .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .titleMedium
-                                  .fontStyle,
-                            ),
-                            color: Colors.white,
-                            fontSize: 22.0,
-                            letterSpacing: 0.0,
-                            fontWeight: FlutterFlowTheme.of(context)
-                                .titleMedium
-                                .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .titleMedium
-                                .fontStyle,
-                          ),
-                    ),
-                  ),
                   Expanded(
-                    child: wrapWithModel(
-                      model: _model.dateFilterComponentModel,
-                      updateCallback: () => safeSetState(() {}),
-                      child: DateFilterComponentWidget(
-                        parameter1: FFAppState().AppCurrDate,
+                    child: Align(
+                      alignment: AlignmentDirectional(-1.0, 0.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            child: wrapWithModel(
+                              model: _model.dateFilterComponentModel,
+                              updateCallback: () => safeSetState(() {}),
+                              child: DateFilterComponentWidget(
+                                parameter1: FFAppState().AppCurrDate,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
+                  if (false &&
+                      responsiveVisibility(
+                        context: context,
+                        phone: false,
+                        tablet: false,
+                      ))
+                    Align(
+                      alignment: AlignmentDirectional(-1.0, 0.0),
+                      child: Text(
+                        '${FFAppState().AppLastName} ${FFAppState().AppEmail}',
+                        style: FlutterFlowTheme.of(context).titleSmall.override(
+                              font: GoogleFonts.interTight(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .fontStyle,
+                              ),
+                              letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .fontStyle,
+                            ),
+                      ),
+                    ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
@@ -189,28 +203,31 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 16.0, 8.0),
-                    child: FlutterFlowIconButton(
-                      borderColor: Color(0xFFE5E7EB),
-                      borderRadius: 12.0,
-                      borderWidth: 2.0,
-                      buttonSize: 40.0,
-                      fillColor: Colors.white,
-                      icon: Icon(
-                        Icons.logout_sharp,
-                        color: Color(0xFF15161E),
-                        size: 24.0,
-                      ),
-                      onPressed: () async {
-                        GoRouter.of(context).prepareAuthEvent();
-                        await authManager.signOut();
-                        GoRouter.of(context).clearRedirectLocation();
+                  Align(
+                    alignment: AlignmentDirectional(1.0, 0.0),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 16.0, 8.0),
+                      child: FlutterFlowIconButton(
+                        borderColor: Color(0xFFE5E7EB),
+                        borderRadius: 12.0,
+                        borderWidth: 2.0,
+                        buttonSize: 40.0,
+                        fillColor: Colors.white,
+                        icon: Icon(
+                          Icons.logout_sharp,
+                          color: Color(0xFF15161E),
+                          size: 24.0,
+                        ),
+                        onPressed: () async {
+                          GoRouter.of(context).prepareAuthEvent();
+                          await authManager.signOut();
+                          GoRouter.of(context).clearRedirectLocation();
 
-                        context.goNamedAuth(
-                            LoginPageWidget.routeName, context.mounted);
-                      },
+                          context.goNamedAuth(
+                              LoginPageWidget.routeName, context.mounted);
+                        },
+                      ),
                     ),
                   ),
                 ],
