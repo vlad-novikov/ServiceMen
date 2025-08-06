@@ -9,7 +9,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -162,9 +161,6 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
 
                           return Container(
                             width: double.infinity,
-                            constraints: BoxConstraints(
-                              maxWidth: 970.0,
-                            ),
                             decoration: BoxDecoration(),
                             child: SingleChildScrollView(
                               child: Column(
@@ -564,43 +560,6 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                         ),
                                       ],
                                     ),
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Expanded(
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'n6doa9wq' /*   */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font: GoogleFonts.inter(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                        ),
-                                      ),
-                                    ],
                                   ),
                                   Container(
                                     width: double.infinity,
@@ -1356,29 +1315,25 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                             onPressed:
                                                                 () async {
                                                               // Select doer
-                                                              await showAlignedDialog(
+                                                              await showDialog(
                                                                 context:
                                                                     context,
-                                                                isGlobal: false,
-                                                                avoidOverflow:
-                                                                    true,
-                                                                targetAnchor:
-                                                                    AlignmentDirectional(
-                                                                            0.0,
-                                                                            0.0)
-                                                                        .resolve(
-                                                                            Directionality.of(context)),
-                                                                followerAnchor:
-                                                                    AlignmentDirectional(
-                                                                            0.0,
-                                                                            0.0)
-                                                                        .resolve(
-                                                                            Directionality.of(context)),
                                                                 builder:
                                                                     (dialogContext) {
-                                                                  return Material(
-                                                                    color: Colors
-                                                                        .transparent,
+                                                                  return Dialog(
+                                                                    elevation:
+                                                                        0,
+                                                                    insetPadding:
+                                                                        EdgeInsets
+                                                                            .zero,
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    alignment: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
                                                                     child:
                                                                         GestureDetector(
                                                                       onTap:

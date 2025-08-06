@@ -11,28 +11,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'user_task_list_page_model.dart';
-export 'user_task_list_page_model.dart';
+import 'user_task_list_page_copy_model.dart';
+export 'user_task_list_page_copy_model.dart';
 
-class UserTaskListPageWidget extends StatefulWidget {
-  const UserTaskListPageWidget({super.key});
+class UserTaskListPageCopyWidget extends StatefulWidget {
+  const UserTaskListPageCopyWidget({super.key});
 
-  static String routeName = 'UserTaskListPage';
-  static String routePath = '/usertasks';
+  static String routeName = 'UserTaskListPageCopy';
+  static String routePath = '/usertasks1';
 
   @override
-  State<UserTaskListPageWidget> createState() => _UserTaskListPageWidgetState();
+  State<UserTaskListPageCopyWidget> createState() =>
+      _UserTaskListPageCopyWidgetState();
 }
 
-class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
-  late UserTaskListPageModel _model;
+class _UserTaskListPageCopyWidgetState
+    extends State<UserTaskListPageCopyWidget> {
+  late UserTaskListPageCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => UserTaskListPageModel());
+    _model = createModel(context, () => UserTaskListPageCopyModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -152,7 +154,7 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                         );
                       },
                       text: FFLocalizations.of(context).getText(
-                        'gysx5kvv' /* Выгрузить */,
+                        'yisunkh8' /* Выгрузить */,
                       ),
                       icon: Icon(
                         Icons.output,
@@ -298,7 +300,7 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                 child: Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    '8trc8c7s' /* CRM */,
+                                                    'd3ozbjsg' /* CRM */,
                                                   ),
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
@@ -348,7 +350,7 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                 child: Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'uc9e8l0p' /* Контакт */,
+                                                    'hm3shgrp' /* Контакт */,
                                                   ),
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
@@ -398,7 +400,7 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                 child: Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'wtvifokn' /* Оборудование */,
+                                                    'qly00276' /* Оборудование */,
                                                   ),
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
@@ -448,7 +450,7 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                 child: Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'xd4rec8r' /* Статус */,
+                                                    'wrjjh4f3' /* Статус */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -492,7 +494,7 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                                 child: Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'q610qwth' /* Адрес */,
+                                                    '6mtpwaf0' /* Адрес */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -531,7 +533,10 @@ class _UserTaskListPageWidgetState extends State<UserTaskListPageWidget> {
                                   Builder(
                                     builder: (context) {
                                       final userTasks =
-                                          mainContainerTasksRowList.toList();
+                                          mainContainerTasksRowList
+                                              .toList()
+                                              .take(200)
+                                              .toList();
 
                                       return ListView.separated(
                                         padding: EdgeInsets.fromLTRB(

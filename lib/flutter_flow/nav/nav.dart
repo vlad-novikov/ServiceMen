@@ -197,6 +197,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: UserTaskEditTabsWidget.routeName,
           path: UserTaskEditTabsWidget.routePath,
           builder: (context, params) => UserTaskEditTabsWidget(),
+        ),
+        FFRoute(
+          name: UserTaskListPageCopyWidget.routeName,
+          path: UserTaskListPageCopyWidget.routePath,
+          builder: (context, params) => UserTaskListPageCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

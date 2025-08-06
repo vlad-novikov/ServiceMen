@@ -55,8 +55,6 @@ class _DateFilterComponentWidgetState extends State<DateFilterComponentWidget> {
         Align(
           alignment: AlignmentDirectional(-1.0, 0.0),
           child: Container(
-            width: 239.97,
-            height: 55.0,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).primaryBackground,
               borderRadius: BorderRadius.circular(8.0),
@@ -74,7 +72,7 @@ class _DateFilterComponentWidgetState extends State<DateFilterComponentWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(1.0, 0.0, 0.0, 0.0),
                     child: FlutterFlowIconButton(
                       borderRadius: 8.0,
-                      buttonSize: 40.0,
+                      buttonSize: 36.0,
                       icon: Icon(
                         Icons.arrow_circle_left_outlined,
                         color: FlutterFlowTheme.of(context).primaryText,
@@ -208,7 +206,7 @@ class _DateFilterComponentWidgetState extends State<DateFilterComponentWidget> {
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: FlutterFlowIconButton(
                     borderRadius: 8.0,
-                    buttonSize: 37.31,
+                    buttonSize: 36.0,
                     icon: Icon(
                       Icons.arrow_circle_right_outlined,
                       color: FlutterFlowTheme.of(context).primaryText,

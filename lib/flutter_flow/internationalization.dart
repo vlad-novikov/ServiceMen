@@ -626,10 +626,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Выгрузить',
       'en': '',
     },
-    'n6doa9wq': {
-      'ru': ' ',
-      'en': '',
-    },
     'q3ry8b92': {
       'ru': '№',
       'en': '#',
@@ -1262,6 +1258,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     '1apz3faj': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
+  // UserTaskListPageCopy
+  {
+    'd3ozbjsg': {
+      'ru': 'CRM',
+      'en': '',
+    },
+    'hm3shgrp': {
+      'ru': 'Контакт',
+      'en': '',
+    },
+    'qly00276': {
+      'ru': 'Оборудование',
+      'en': '',
+    },
+    'wrjjh4f3': {
+      'ru': 'Статус',
+      'en': '',
+    },
+    '6mtpwaf0': {
+      'ru': 'Адрес',
+      'en': '',
+    },
+    'yisunkh8': {
+      'ru': 'Выгрузить',
+      'en': '',
+    },
+    'rzvat9xo': {
       'ru': 'Home',
       'en': '',
     },
