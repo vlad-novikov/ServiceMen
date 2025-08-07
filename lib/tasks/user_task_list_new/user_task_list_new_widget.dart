@@ -221,12 +221,11 @@ class _UserTaskListNewWidgetState extends State<UserTaskListNewWidget> {
             ),
             body: SafeArea(
               top: true,
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Align(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Align(
                       alignment: AlignmentDirectional(-1.0, -1.0),
                       child: FutureBuilder<List<TasksRow>>(
                         future: TasksTable().queryRows(
@@ -1138,8 +1137,8 @@ class _UserTaskListNewWidgetState extends State<UserTaskListNewWidget> {
                         },
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
