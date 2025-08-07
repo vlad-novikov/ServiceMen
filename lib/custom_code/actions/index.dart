@@ -13,3 +13,4 @@ export 'upload_custom_data_type_to_database.dart'
 export 'export_database_to_excel.dart' show exportDatabaseToExcel;
 export 'import_excel_to_database.dart' show importExcelToDatabase;
 export 'set_app_variables.dart' show setAppVariables;
+export 'set_app_state.dart' show setAppState;

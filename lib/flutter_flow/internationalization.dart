@@ -669,28 +669,28 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // UserTaskListPage
   {
-    '8trc8c7s': {
+    'p5dnrk8d': {
       'ru': 'CRM',
       'en': '',
     },
-    'uc9e8l0p': {
+    '5mksj0xt': {
       'ru': 'Контакт',
       'en': '',
     },
-    'wtvifokn': {
+    'qt8mevpy': {
       'ru': 'Оборудование',
       'en': '',
     },
-    'xd4rec8r': {
+    '1wu1nu2c': {
       'ru': 'Статус',
       'en': '',
     },
-    'q610qwth': {
+    'c20x2m0s': {
       'ru': 'Адрес',
       'en': '',
     },
-    'gysx5kvv': {
-      'ru': '',
+    '8g1yuket': {
+      'ru': 'Выгрузить',
       'en': '',
     },
     '7chmj9xz': {
@@ -1289,6 +1289,99 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'rzvat9xo': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
+  // UserTaskListNew
+  {
+    'ecbkhykd': {
+      'ru': 'CRM',
+      'en': '',
+    },
+    'usom6r50': {
+      'ru': 'Контакт',
+      'en': '',
+    },
+    'b01p2og5': {
+      'ru': 'Оборудование',
+      'en': '',
+    },
+    'd40adngc': {
+      'ru': 'Статус',
+      'en': '',
+    },
+    'w4zyb77s': {
+      'ru': 'Адрес',
+      'en': '',
+    },
+    'e2gzeldr': {
+      'ru': '',
+      'en': '',
+    },
+    'jvs7pxgp': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
+  // UserTaskListNewCopy
+  {
+    'wugiy55b': {
+      'ru': 'CRM',
+      'en': '',
+    },
+    '2eoljeca': {
+      'ru': 'Контакт',
+      'en': '',
+    },
+    '46z11nix': {
+      'ru': 'Оборудование',
+      'en': '',
+    },
+    '1eed39l5': {
+      'ru': 'Статус',
+      'en': '',
+    },
+    'r17lttdi': {
+      'ru': 'Адрес',
+      'en': '',
+    },
+    've7x3ioj': {
+      'ru': '',
+      'en': '',
+    },
+    'g1z9zwhj': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
+  // UserTaskListNewCopy2
+  {
+    'gzd2ev52': {
+      'ru': 'CRM',
+      'en': '',
+    },
+    'wgt388w0': {
+      'ru': 'Контакт',
+      'en': '',
+    },
+    'ou6mh9oy': {
+      'ru': 'Оборудование',
+      'en': '',
+    },
+    '4atjm38c': {
+      'ru': 'Статус',
+      'en': '',
+    },
+    '4mjv51i0': {
+      'ru': 'Адрес',
+      'en': '',
+    },
+    'rs2amcos': {
+      'ru': '',
+      'en': '',
+    },
+    'uo64d1ew': {
       'ru': 'Home',
       'en': '',
     },

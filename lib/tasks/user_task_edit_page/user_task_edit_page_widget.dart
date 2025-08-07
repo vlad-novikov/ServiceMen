@@ -131,7 +131,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                 children: [
                   FFButtonWidget(
                     onPressed: () async {
-                      context.pushNamed(UserTaskListPageWidget.routeName);
+                      context.pushNamed(UserTaskListNewWidget.routeName);
                     },
                     text: FFLocalizations.of(context).getText(
                       'okpy7njz' /* Отменить */,
@@ -181,6 +181,55 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                               _model.textTaskStatusTextController?.text =
                                   'выполнено';
                             });
+                            if (_model.docsInTSPComponentModel
+                                        .radioDocOptionValue ==
+                                    null ||
+                                _model.docsInTSPComponentModel
+                                        .radioDocOptionValue ==
+                                    '') {
+                              // Choose yes\no Doc Option
+                              var confirmDialogResponse =
+                                  await showDialog<bool>(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Документы в ТСП'),
+                                            content: Text(
+                                                'Уточните, находятся ли документы в ТСП?'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, false),
+                                                child: Text('Нет'),
+                                              ),
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, true),
+                                                child: Text('Да'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ) ??
+                                      false;
+                              if (confirmDialogResponse) {
+                                // Set YES in Doc Option
+                                safeSetState(() {
+                                  _model
+                                      .docsInTSPComponentModel
+                                      .radioDocOptionValueController
+                                      ?.value = 'Да';
+                                });
+                              } else {
+                                // Set NO in Doc Option
+                                safeSetState(() {
+                                  _model
+                                      .docsInTSPComponentModel
+                                      .radioDocOptionValueController
+                                      ?.value = 'Нет';
+                                });
+                              }
+                            }
                             // Обнуляем поле ПЕРЕНОС
                             safeSetState(() {
                               _model.textTaskTransferTextController?.text = '';
@@ -247,7 +296,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                       );
 
                       context.pushNamed(
-                        UserTaskListPageWidget.routeName,
+                        UserTaskListNewWidget.routeName,
                         extra: <String, dynamic>{
                           kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,

@@ -94,6 +94,7 @@ Future exportDatabaseToExcelDoer(
         (stringTraineesNumber == '0')) {
       stringTraineesNumber = '';
     }
+
     // Тип операции	Дата	Название ТСП	Адрес ТСП	Номер РР	Количество обучаемых
     // Результат	Причина	Дата переноса	Комментарий	Исполнитель	Ответственный на объекте
     if (row['task_doer'] == doer && row['task_status'] == 'выполнено') {
@@ -121,7 +122,9 @@ Future exportDatabaseToExcelDoer(
   for (var i = 0; i < response.length; i++) {
     rowCounter += 1;
     var row = response[i];
-    if (row['task_doer'] == doer && row['task_status'] == 'не выполнено') {
+    if (row['task_doer'] == doer &&
+        row['task_status'] == 'не выполнено' &&
+        row['task_transfer'] == 'перенос') {
       stringTransferDate = row['transfer_date'].toString();
       if (stringTransferDate.toLowerCase() == 'null') {
         stringTransferDate = '';

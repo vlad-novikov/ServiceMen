@@ -33,7 +33,7 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      // Set App Values
+      // Set AppDate
       FFAppState().AppCurrDate = getCurrentTimestamp;
       await Future.delayed(
         Duration(
@@ -207,7 +207,7 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                                                   if (entryPageUsersRow
                                                       .isDoer!) {
                                                     context.pushNamed(
-                                                        UserTaskListPageWidget
+                                                        UserTaskListNewWidget
                                                             .routeName);
                                                   } else {
                                                     context.pushNamed(

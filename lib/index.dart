@@ -31,3 +31,9 @@ export '/tasks/user_task_edit_tabs/user_task_edit_tabs_widget.dart'
     show UserTaskEditTabsWidget;
 export '/tasks/user_task_list_page_copy/user_task_list_page_copy_widget.dart'
     show UserTaskListPageCopyWidget;
+export '/tasks/user_task_list_new/user_task_list_new_widget.dart'
+    show UserTaskListNewWidget;
+export '/tasks/user_task_list_new_copy/user_task_list_new_copy_widget.dart'
+    show UserTaskListNewCopyWidget;
+export '/tasks/user_task_list_new_copy2/user_task_list_new_copy2_widget.dart'
+    show UserTaskListNewCopy2Widget;

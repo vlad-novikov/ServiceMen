@@ -137,7 +137,7 @@ class _UserTaskEditPageCopyWidgetState
                       highlightColor: Colors.transparent,
                       onTap: () async {
                         context.pushNamed(
-                          UserTaskListPageWidget.routeName,
+                          UserTaskListNewWidget.routeName,
                           extra: <String, dynamic>{
                             kTransitionInfoKey: TransitionInfo(
                               hasTransition: true,
@@ -262,7 +262,7 @@ class _UserTaskEditPageCopyWidgetState
                         );
 
                         context.pushNamed(
-                          UserTaskListPageWidget.routeName,
+                          UserTaskListNewWidget.routeName,
                           extra: <String, dynamic>{
                             kTransitionInfoKey: TransitionInfo(
                               hasTransition: true,

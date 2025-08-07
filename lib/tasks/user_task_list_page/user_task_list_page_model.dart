@@ -1,4 +1,5 @@
-import '/components/date_filter_compact_component_widget.dart';
+import '/backend/supabase/supabase.dart';
+import '/components/date_filter_component_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'user_task_list_page_widget.dart' show UserTaskListPageWidget;
@@ -17,17 +18,19 @@ class UserTaskListPageModel extends FlutterFlowModel<UserTaskListPageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // Model for DateFilterCompactComponent component.
-  late DateFilterCompactComponentModel dateFilterCompactComponentModel;
+  // Stores action output result for [Backend Call - Query Rows] action in UserTaskListPage widget.
+  List<UsersRow>? queryCurrentUser;
+  // Model for DateFilterComponent component.
+  late DateFilterComponentModel dateFilterComponentModel;
 
   @override
   void initState(BuildContext context) {
-    dateFilterCompactComponentModel =
-        createModel(context, () => DateFilterCompactComponentModel());
+    dateFilterComponentModel =
+        createModel(context, () => DateFilterComponentModel());
   }
 
   @override
   void dispose() {
-    dateFilterCompactComponentModel.dispose();
+    dateFilterComponentModel.dispose();
   }
 }

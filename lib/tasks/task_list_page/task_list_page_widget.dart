@@ -710,7 +710,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                             ),
                                           ),
                                           Flexible(
-                                            flex: 4,
+                                            flex: 3,
                                             child: Align(
                                               alignment: AlignmentDirectional(
                                                   -1.0, 0.0),
@@ -754,7 +754,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                             ),
                                           ),
                                           Flexible(
-                                            flex: 4,
+                                            flex: 6,
                                             child: Align(
                                               alignment: AlignmentDirectional(
                                                   -1.0, 0.0),
@@ -1142,7 +1142,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                     ),
                                                   ),
                                                   Flexible(
-                                                    flex: 4,
+                                                    flex: 3,
                                                     child: Align(
                                                       alignment:
                                                           AlignmentDirectional(
@@ -1191,7 +1191,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                     ),
                                                   ),
                                                   Flexible(
-                                                    flex: 4,
+                                                    flex: 6,
                                                     child: Align(
                                                       alignment:
                                                           AlignmentDirectional(
@@ -1367,6 +1367,18 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                                             .doerName,
                                                                     'task_status':
                                                                         'в работе',
+                                                                    'outing_comment':
+                                                                        '',
+                                                                    'parking_comment':
+                                                                        '',
+                                                                    'transfer_comment':
+                                                                        '',
+                                                                    'transfer_comment2':
+                                                                        '',
+                                                                    'internal_comment':
+                                                                        '',
+                                                                    'doer_description':
+                                                                        '',
                                                                   },
                                                                   matchingRows:
                                                                       (rows) =>
