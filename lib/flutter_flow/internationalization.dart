@@ -1295,6 +1295,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // UserTaskListNew
   {
+    'e2gzeldr': {
+      'ru': '',
+      'en': '',
+    },
     'ecbkhykd': {
       'ru': 'CRM',
       'en': '',
@@ -1313,10 +1317,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'w4zyb77s': {
       'ru': 'Адрес',
-      'en': '',
-    },
-    'e2gzeldr': {
-      'ru': '',
       'en': '',
     },
     'jvs7pxgp': {
@@ -1382,6 +1382,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'uo64d1ew': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
+  // UserTaskList
+  {
+    '5bxdkjbj': {
+      'ru': 'CRM',
+      'en': '',
+    },
+    'a6uk0n0k': {
+      'ru': 'Контакт',
+      'en': '',
+    },
+    'gxmdahqz': {
+      'ru': 'Оборудование',
+      'en': '',
+    },
+    'v460jgpm': {
+      'ru': 'Статус',
+      'en': '',
+    },
+    'im28okvn': {
+      'ru': 'Адрес',
+      'en': '',
+    },
+    'r0wodekz': {
+      'ru': '',
+      'en': '',
+    },
+    'n7a5c0d1': {
       'ru': 'Home',
       'en': '',
     },
@@ -1516,6 +1547,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'yzq8l7xi': {
       'ru': 'Замена работающего',
+      'en': '',
+    },
+    'pg63irts': {
+      'ru': 'Демонтаж',
       'en': '',
     },
     '84xc6dbs': {

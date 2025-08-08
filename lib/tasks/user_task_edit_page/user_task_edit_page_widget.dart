@@ -131,7 +131,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                 children: [
                   FFButtonWidget(
                     onPressed: () async {
-                      context.pushNamed(UserTaskListNewWidget.routeName);
+                      context.pushNamed(UserTaskListWidget.routeName);
                     },
                     text: FFLocalizations.of(context).getText(
                       'okpy7njz' /* Отменить */,
@@ -296,7 +296,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                       );
 
                       context.pushNamed(
-                        UserTaskListNewWidget.routeName,
+                        UserTaskListWidget.routeName,
                         extra: <String, dynamic>{
                           kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,

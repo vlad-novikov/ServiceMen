@@ -37,3 +37,5 @@ export '/tasks/user_task_list_new_copy/user_task_list_new_copy_widget.dart'
     show UserTaskListNewCopyWidget;
 export '/tasks/user_task_list_new_copy2/user_task_list_new_copy2_widget.dart'
     show UserTaskListNewCopy2Widget;
+export '/tasks/user_task_list/user_task_list_widget.dart'
+    show UserTaskListWidget;

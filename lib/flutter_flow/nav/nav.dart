@@ -217,6 +217,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: UserTaskListNewCopy2Widget.routeName,
           path: UserTaskListNewCopy2Widget.routePath,
           builder: (context, params) => UserTaskListNewCopy2Widget(),
+        ),
+        FFRoute(
+          name: UserTaskListWidget.routeName,
+          path: UserTaskListWidget.routePath,
+          builder: (context, params) => UserTaskListWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

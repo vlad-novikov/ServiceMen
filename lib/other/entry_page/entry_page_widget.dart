@@ -207,7 +207,7 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                                                   if (entryPageUsersRow
                                                       .isDoer!) {
                                                     context.pushNamed(
-                                                        UserTaskListNewWidget
+                                                        UserTaskListWidget
                                                             .routeName);
                                                   } else {
                                                     context.pushNamed(
