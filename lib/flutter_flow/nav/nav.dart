@@ -137,11 +137,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => TaskListPageWidget(),
         ),
         FFRoute(
-          name: UserTaskListPageWidget.routeName,
-          path: UserTaskListPageWidget.routePath,
-          builder: (context, params) => UserTaskListPageWidget(),
-        ),
-        FFRoute(
           name: UserEditPageWidget.routeName,
           path: UserEditPageWidget.routePath,
           builder: (context, params) => UserEditPageWidget(
@@ -199,29 +194,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => UserTaskEditTabsWidget(),
         ),
         FFRoute(
-          name: UserTaskListPageCopyWidget.routeName,
-          path: UserTaskListPageCopyWidget.routePath,
-          builder: (context, params) => UserTaskListPageCopyWidget(),
-        ),
-        FFRoute(
-          name: UserTaskListNewWidget.routeName,
-          path: UserTaskListNewWidget.routePath,
-          builder: (context, params) => UserTaskListNewWidget(),
-        ),
-        FFRoute(
-          name: UserTaskListNewCopyWidget.routeName,
-          path: UserTaskListNewCopyWidget.routePath,
-          builder: (context, params) => UserTaskListNewCopyWidget(),
-        ),
-        FFRoute(
-          name: UserTaskListNewCopy2Widget.routeName,
-          path: UserTaskListNewCopy2Widget.routePath,
-          builder: (context, params) => UserTaskListNewCopy2Widget(),
-        ),
-        FFRoute(
           name: UserTaskListWidget.routeName,
           path: UserTaskListWidget.routePath,
           builder: (context, params) => UserTaskListWidget(),
+        ),
+        FFRoute(
+          name: UserTaskListCopyWidget.routeName,
+          path: UserTaskListCopyWidget.routePath,
+          builder: (context, params) => UserTaskListCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

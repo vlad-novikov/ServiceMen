@@ -667,37 +667,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
     },
   },
-  // UserTaskListPage
-  {
-    'p5dnrk8d': {
-      'ru': 'CRM',
-      'en': '',
-    },
-    '5mksj0xt': {
-      'ru': 'Контакт',
-      'en': '',
-    },
-    'qt8mevpy': {
-      'ru': 'Оборудование',
-      'en': '',
-    },
-    '1wu1nu2c': {
-      'ru': 'Статус',
-      'en': '',
-    },
-    'c20x2m0s': {
-      'ru': 'Адрес',
-      'en': '',
-    },
-    '8g1yuket': {
-      'ru': 'Выгрузить',
-      'en': '',
-    },
-    '7chmj9xz': {
-      'ru': 'Home',
-      'en': '',
-    },
-  },
   // UserEditPage
   {
     '9yn7k3sp': {
@@ -1262,130 +1231,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
   },
-  // UserTaskListPageCopy
-  {
-    'd3ozbjsg': {
-      'ru': 'CRM',
-      'en': '',
-    },
-    'hm3shgrp': {
-      'ru': 'Контакт',
-      'en': '',
-    },
-    'qly00276': {
-      'ru': 'Оборудование',
-      'en': '',
-    },
-    'wrjjh4f3': {
-      'ru': 'Статус',
-      'en': '',
-    },
-    '6mtpwaf0': {
-      'ru': 'Адрес',
-      'en': '',
-    },
-    'yisunkh8': {
-      'ru': 'Выгрузить',
-      'en': '',
-    },
-    'rzvat9xo': {
-      'ru': 'Home',
-      'en': '',
-    },
-  },
-  // UserTaskListNew
-  {
-    'e2gzeldr': {
-      'ru': '',
-      'en': '',
-    },
-    'ecbkhykd': {
-      'ru': 'CRM',
-      'en': '',
-    },
-    'usom6r50': {
-      'ru': 'Контакт',
-      'en': '',
-    },
-    'b01p2og5': {
-      'ru': 'Оборудование',
-      'en': '',
-    },
-    'd40adngc': {
-      'ru': 'Статус',
-      'en': '',
-    },
-    'w4zyb77s': {
-      'ru': 'Адрес',
-      'en': '',
-    },
-    'jvs7pxgp': {
-      'ru': 'Home',
-      'en': '',
-    },
-  },
-  // UserTaskListNewCopy
-  {
-    'wugiy55b': {
-      'ru': 'CRM',
-      'en': '',
-    },
-    '2eoljeca': {
-      'ru': 'Контакт',
-      'en': '',
-    },
-    '46z11nix': {
-      'ru': 'Оборудование',
-      'en': '',
-    },
-    '1eed39l5': {
-      'ru': 'Статус',
-      'en': '',
-    },
-    'r17lttdi': {
-      'ru': 'Адрес',
-      'en': '',
-    },
-    've7x3ioj': {
-      'ru': '',
-      'en': '',
-    },
-    'g1z9zwhj': {
-      'ru': 'Home',
-      'en': '',
-    },
-  },
-  // UserTaskListNewCopy2
-  {
-    'gzd2ev52': {
-      'ru': 'CRM',
-      'en': '',
-    },
-    'wgt388w0': {
-      'ru': 'Контакт',
-      'en': '',
-    },
-    'ou6mh9oy': {
-      'ru': 'Оборудование',
-      'en': '',
-    },
-    '4atjm38c': {
-      'ru': 'Статус',
-      'en': '',
-    },
-    '4mjv51i0': {
-      'ru': 'Адрес',
-      'en': '',
-    },
-    'rs2amcos': {
-      'ru': '',
-      'en': '',
-    },
-    'uo64d1ew': {
-      'ru': 'Home',
-      'en': '',
-    },
-  },
   // UserTaskList
   {
     '5bxdkjbj': {
@@ -1413,6 +1258,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'n7a5c0d1': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
+  // UserTaskListCopy
+  {
+    'pfo3jmog': {
+      'ru': 'CRM',
+      'en': '',
+    },
+    'd3lofccu': {
+      'ru': 'Контакт',
+      'en': '',
+    },
+    '4o6yk3wk': {
+      'ru': 'Оборудование',
+      'en': '',
+    },
+    'xrvd9vt4': {
+      'ru': 'Статус',
+      'en': '',
+    },
+    'qffe8r12': {
+      'ru': 'Адрес',
+      'en': '',
+    },
+    'kvdd5g36': {
+      'ru': '',
+      'en': '',
+    },
+    '4yvuqufr': {
       'ru': 'Home',
       'en': '',
     },
