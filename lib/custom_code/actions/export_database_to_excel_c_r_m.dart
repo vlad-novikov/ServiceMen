@@ -77,10 +77,12 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
     var transferDateString = row["transfer_date"] ?? '';
     if (transferDateString == '0001-01-01') transferDateString = '';
 
+    String taskStatus = row['task_status'].toString();
     String taskTransfer = '';
     String doerDescription = '';
     String transferComment = '';
     if (row['task_status'] == 'в работе') {
+      taskStatus = ''; // странно, но такова просьба банка
       transferDateString = '';
     }
     if (row['task_status'] == 'выполнено') {
@@ -106,7 +108,7 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       ex.TextCellValue(row['equipment_connection'].toString()), //  7
       ex.TextCellValue(row['equipment_model'].toString()), //  8
       ex.TextCellValue(row['location_contract'].toString()), // 9
-      ex.TextCellValue(row['task_status'].toString()), // 10
+      ex.TextCellValue(taskStatus), // 10
       ex.TextCellValue(taskTransfer), // 11  слово перенос в поле task_transfer
       ex.TextCellValue(transferDateString), // 12
       ex.TextCellValue(doerDescription), // 13 N
