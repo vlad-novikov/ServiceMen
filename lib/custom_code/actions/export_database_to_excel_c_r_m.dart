@@ -80,7 +80,9 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
     String taskTransfer = '';
     String doerDescription = '';
     String transferComment = '';
-    if (row['task_status'] == 'в работе') {}
+    if (row['task_status'] == 'в работе') {
+      transferDateString = '';
+    }
     if (row['task_status'] == 'выполнено') {
       doerDescription = row['doer_description'].toString() +
           row['transfer_reason'].toString();
