@@ -62,21 +62,19 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
           "equipment_id2, crm_id")
       .eq('task_date', taskDate)
       .order('line_no', ascending: true);
-  info = 'Export Step 21 done ';
+  FFAppState().test1 = 'Export Step 21 done ';
 
   // write Completed rows to sheet
   for (var i = 0; i < response.length; i++) {
+    FFAppState().test1 += 'response ' + i.toString();
+
     var row = response[i];
-    info = 'Export Step date=' +
-        row['transfer_date'].toString() +
-        ' line= ' +
-        row['line_no'].toString() +
-        ' - ' +
-        row.toString() +
-        ' ';
+
     var transferDateString = row["transfer_date"] ?? '';
     if (transferDateString == '0001-01-01') transferDateString = '';
-
+    FFAppState().test1 += 'before ' + transferDateString.toString();
+    transferDateString = convertStringDateYMD2DMY(transferDateString);
+    FFAppState().test1 += 'after ' + transferDateString.toString();
     String taskStatus = row['task_status'].toString();
     String taskTransfer = '';
     String doerDescription = '';
@@ -111,7 +109,8 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       ex.TextCellValue(taskStatus), // 10
       ex.TextCellValue(taskTransfer), // 11  слово перенос в поле task_transfer
       ex.TextCellValue(transferDateString), // 12
-      ex.TextCellValue(doerDescription), // 13 N
+      ex.TextCellValue(
+          doerDescription + row['transfer_description'].toString()), // 13 N
       ex.TextCellValue(row['task_doer'].toString()), // 14
       ex.TextCellValue(row['transfer_person'].toString()), // 15
       ex.TextCellValue(row['transfer_phone'].toString()), // 16
@@ -120,13 +119,6 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       ex.TextCellValue(row['crm_id'].toString()), //  19 T
       //ex.TextCellValue(row['doer_description'].toString()) //  20 U
     ]);
-
-    info = 'Export Step 23 Style changed in row' +
-        rowCounter.toString() +
-        'Appended row' +
-        row['line_no'].toString() +
-        ' - ' +
-        row.toString();
   }
 
   // download file

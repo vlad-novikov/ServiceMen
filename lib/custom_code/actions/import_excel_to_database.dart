@@ -46,7 +46,7 @@ Future<String?> importExcelToDatabase() async {
     // get  date value from first row of worksheet and
     // convert date format in string from dmy to ymd
     String stringTaskDate =
-        convertStringDateToStringDate(rows?[0][1]?.value.toString());
+        convertStringDateDMYToYMD(rows?[0][1]?.value.toString());
     DateTime dtTaskDate =
         convertStringDateToDate(rows?[0][1]?.value.toString());
     FFAppState().test1 += ' Дата ' +

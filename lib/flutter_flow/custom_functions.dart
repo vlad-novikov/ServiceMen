@@ -93,7 +93,7 @@ double colorToB(Color color) {
   return color.b;
 }
 
-String convertStringDateToStringDate(String? stringDate) {
+String convertStringDateDMYToYMD(String? stringDate) {
   // Converting date in Excel format to date in db format
   if ((stringDate == null) || (stringDate == '')) {
     return DateTime(1).toString();
@@ -127,4 +127,17 @@ String convertStringDateToStringDateV2(String? stringDate) {
   stringDate = stringDate.replaceAll('-', '.');
 
   return stringDate;
+}
+
+String convertStringDateYMD2DMY(String stringDate) {
+// Converting date in Excel format to date in db format
+  if ((stringDate == null) || (stringDate == '')) {
+    return '';
+  }
+  DateFormat format = new DateFormat("yyyy-MM-dd"); // take date in excel format
+  DateTime dtDate = format.parse(stringDate);
+
+  String stringNewDate =
+      DateFormat('dd.MM.yyyy').format(dtDate); // convert date to DB format
+  return stringNewDate;
 }
