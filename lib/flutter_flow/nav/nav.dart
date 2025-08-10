@@ -217,6 +217,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: TeamPageWidget.routeName,
           path: TeamPageWidget.routePath,
           builder: (context, params) => TeamPageWidget(),
+        ),
+        FFRoute(
+          name: UserTaskListCopy3Widget.routeName,
+          path: UserTaskListCopy3Widget.routePath,
+          builder: (context, params) => UserTaskListCopy3Widget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -1522,6 +1522,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
   },
+  // UserTaskListCopy3
+  {
+    'r6aakq5u': {
+      'ru': 'CRM',
+      'en': '',
+    },
+    'xovqonch': {
+      'ru': 'Контакт',
+      'en': '',
+    },
+    'mwk2n0w8': {
+      'ru': 'Оборудование',
+      'en': '',
+    },
+    '9cm1k02b': {
+      'ru': 'Статус',
+      'en': '',
+    },
+    'y9fggvau': {
+      'ru': 'Адрес',
+      'en': '',
+    },
+    'vckii02w': {
+      'ru': '',
+      'en': '',
+    },
+    'wz76kt5b': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
   // dropdown_users
   {
     'u4bnu9xu': {

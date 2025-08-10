@@ -14,7 +14,7 @@ class TeamPageWidget extends StatefulWidget {
   const TeamPageWidget({super.key});
 
   static String routeName = 'TeamPage';
-  static String routePath = '/team';
+  static String routePath = '/myteam';
 
   @override
   State<TeamPageWidget> createState() => _TeamPageWidgetState();
