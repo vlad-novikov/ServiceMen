@@ -214,9 +214,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => UserTaskScrollWidget(),
         ),
         FFRoute(
-          name: MyTeamMarketplaceWidget.routeName,
-          path: MyTeamMarketplaceWidget.routePath,
-          builder: (context, params) => MyTeamMarketplaceWidget(),
+          name: TeamPageWidget.routeName,
+          path: TeamPageWidget.routePath,
+          builder: (context, params) => TeamPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

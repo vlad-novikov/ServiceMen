@@ -1355,7 +1355,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
   },
-  // myTeam_Marketplace
+  // TeamPage
   {
     'rku2faxf': {
       'ru': 'Search',

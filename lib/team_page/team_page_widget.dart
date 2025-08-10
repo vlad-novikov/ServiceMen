@@ -7,23 +7,22 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'my_team_marketplace_model.dart';
-export 'my_team_marketplace_model.dart';
+import 'team_page_model.dart';
+export 'team_page_model.dart';
 
-class MyTeamMarketplaceWidget extends StatefulWidget {
-  const MyTeamMarketplaceWidget({super.key});
+class TeamPageWidget extends StatefulWidget {
+  const TeamPageWidget({super.key});
 
-  static String routeName = 'myTeam_Marketplace';
+  static String routeName = 'TeamPage';
   static String routePath = '/team';
 
   @override
-  State<MyTeamMarketplaceWidget> createState() =>
-      _MyTeamMarketplaceWidgetState();
+  State<TeamPageWidget> createState() => _TeamPageWidgetState();
 }
 
-class _MyTeamMarketplaceWidgetState extends State<MyTeamMarketplaceWidget>
+class _TeamPageWidgetState extends State<TeamPageWidget>
     with TickerProviderStateMixin {
-  late MyTeamMarketplaceModel _model;
+  late TeamPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -32,7 +31,7 @@ class _MyTeamMarketplaceWidgetState extends State<MyTeamMarketplaceWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => MyTeamMarketplaceModel());
+    _model = createModel(context, () => TeamPageModel());
 
     animationsMap.addAll({
       'textOnPageLoadAnimation1': AnimationInfo(
@@ -96,7 +95,7 @@ class _MyTeamMarketplaceWidgetState extends State<MyTeamMarketplaceWidget>
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'myTeam_Marketplace',
+        title: 'TeamPage',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () {

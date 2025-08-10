@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'my_team_marketplace_widget.dart' show MyTeamMarketplaceWidget;
+import 'team_page_widget.dart' show TeamPageWidget;
 import 'package:flutter/material.dart';
 
-class MyTeamMarketplaceModel extends FlutterFlowModel<MyTeamMarketplaceWidget> {
+class TeamPageModel extends FlutterFlowModel<TeamPageWidget> {
   @override
   void initState(BuildContext context) {}
 
