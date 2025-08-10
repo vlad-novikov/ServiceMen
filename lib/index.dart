@@ -31,3 +31,9 @@ export '/tasks/user_task_list/user_task_list_widget.dart'
     show UserTaskListWidget;
 export '/tasks/user_task_list_copy/user_task_list_copy_widget.dart'
     show UserTaskListCopyWidget;
+export '/tasks/user_task_list_copy2/user_task_list_copy2_widget.dart'
+    show UserTaskListCopy2Widget;
+export '/tasks/user_task_scroll/user_task_scroll_widget.dart'
+    show UserTaskScrollWidget;
+export '/my_team_marketplace/my_team_marketplace_widget.dart'
+    show MyTeamMarketplaceWidget;

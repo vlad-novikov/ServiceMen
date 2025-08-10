@@ -202,6 +202,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: UserTaskListCopyWidget.routeName,
           path: UserTaskListCopyWidget.routePath,
           builder: (context, params) => UserTaskListCopyWidget(),
+        ),
+        FFRoute(
+          name: UserTaskListCopy2Widget.routeName,
+          path: UserTaskListCopy2Widget.routePath,
+          builder: (context, params) => UserTaskListCopy2Widget(),
+        ),
+        FFRoute(
+          name: UserTaskScrollWidget.routeName,
+          path: UserTaskScrollWidget.routePath,
+          builder: (context, params) => UserTaskScrollWidget(),
+        ),
+        FFRoute(
+          name: MyTeamMarketplaceWidget.routeName,
+          path: MyTeamMarketplaceWidget.routePath,
+          builder: (context, params) => MyTeamMarketplaceWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

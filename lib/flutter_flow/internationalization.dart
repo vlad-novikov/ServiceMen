@@ -1293,6 +1293,235 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
   },
+  // UserTaskListCopy2
+  {
+    '43wzawx9': {
+      'ru': 'CRM',
+      'en': '',
+    },
+    'kjrgccc2': {
+      'ru': 'Контакт',
+      'en': '',
+    },
+    'fvczknm1': {
+      'ru': 'Оборудование',
+      'en': '',
+    },
+    '3xx0ucvv': {
+      'ru': 'Статус',
+      'en': '',
+    },
+    'obi22b9n': {
+      'ru': 'Адрес',
+      'en': '',
+    },
+    'zguzfbgf': {
+      'ru': '',
+      'en': '',
+    },
+    'dfwo0hdr': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
+  // UserTaskScroll
+  {
+    'dvysuh50': {
+      'ru': 'CRM',
+      'en': '',
+    },
+    'i89uop2v': {
+      'ru': 'Контакт',
+      'en': '',
+    },
+    'keyaih9o': {
+      'ru': 'Оборудование',
+      'en': '',
+    },
+    '3vz9zx3d': {
+      'ru': 'Статус',
+      'en': '',
+    },
+    '1rhvnlea': {
+      'ru': 'Адрес',
+      'en': '',
+    },
+    'kjoxw5uw': {
+      'ru': '',
+      'en': '',
+    },
+    'ie7a98vh': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
+  // myTeam_Marketplace
+  {
+    'rku2faxf': {
+      'ru': 'Search',
+      'en': '',
+    },
+    'jr3q3fju': {
+      'ru': 'Dashboard',
+      'en': '',
+    },
+    'khky5rby': {
+      'ru': 'Customers',
+      'en': '',
+    },
+    'oqx6nmgm': {
+      'ru': 'Contracts',
+      'en': '',
+    },
+    'm2rdjldv': {
+      'ru': 'My Team',
+      'en': '',
+    },
+    'yi84e355': {
+      'ru': 'Profile',
+      'en': '',
+    },
+    'n35s23gb': {
+      'ru': 'Andrew D.',
+      'en': '',
+    },
+    'ha19vvy1': {
+      'ru': 'admin@gmail.com',
+      'en': '',
+    },
+    'crtjaigy': {
+      'ru': 'View Profile',
+      'en': '',
+    },
+    'xqr8r92b': {
+      'ru': 'My Team',
+      'en': '',
+    },
+    'xt4xvhyz': {
+      'ru': 'Member Name',
+      'en': '',
+    },
+    'iinjtbh1': {
+      'ru': 'Email',
+      'en': '',
+    },
+    'qboswy40': {
+      'ru': 'Last Active',
+      'en': '',
+    },
+    'kylbvq0a': {
+      'ru': 'Date Created',
+      'en': '',
+    },
+    'hji0vdrc': {
+      'ru': 'Status',
+      'en': '',
+    },
+    'nir29p5d': {
+      'ru': 'Alex Smith',
+      'en': '',
+    },
+    '21wt16x4': {
+      'ru': 'user@domainname.com',
+      'en': '',
+    },
+    'te015n56': {
+      'ru': 'user@domain.com',
+      'en': '',
+    },
+    'cri8wzo4': {
+      'ru': 'Contacted',
+      'en': '',
+    },
+    'gixe4c8q': {
+      'ru': 'Andrea Rudolph',
+      'en': '',
+    },
+    '4c8xiepn': {
+      'ru': 'user@domainname.com',
+      'en': '',
+    },
+    '6t8x5mbg': {
+      'ru': 'user@domain.com',
+      'en': '',
+    },
+    'qd51611n': {
+      'ru': 'Contacted',
+      'en': '',
+    },
+    'g0drg26s': {
+      'ru': 'Andrea Rudolph',
+      'en': '',
+    },
+    '3csxyp8l': {
+      'ru': 'user@domainname.com',
+      'en': '',
+    },
+    'l18tq0kj': {
+      'ru': 'user@domain.com',
+      'en': '',
+    },
+    'hymfat92': {
+      'ru': 'New',
+      'en': '',
+    },
+    'nxulz1g6': {
+      'ru': 'Andrea Rudolph',
+      'en': '',
+    },
+    'jqao10vs': {
+      'ru': 'user@domainname.com',
+      'en': '',
+    },
+    'e1bga18b': {
+      'ru': 'user@domain.com',
+      'en': '',
+    },
+    'dcwr009w': {
+      'ru': 'New',
+      'en': '',
+    },
+    '4txkayiq': {
+      'ru': 'Andrea Rudolph',
+      'en': '',
+    },
+    '28rpe2e9': {
+      'ru': 'user@domainname.com',
+      'en': '',
+    },
+    'n385c0s1': {
+      'ru': 'user@domain.com',
+      'en': '',
+    },
+    'ympa7aq1': {
+      'ru': 'New',
+      'en': '',
+    },
+    '2gein1nk': {
+      'ru': 'Andrea Rudolph',
+      'en': '',
+    },
+    'smhkas1q': {
+      'ru': 'user@domainname.com',
+      'en': '',
+    },
+    '8jjs1zsc': {
+      'ru': 'user@domain.com',
+      'en': '',
+    },
+    'yjf6ejex': {
+      'ru': 'Contacted',
+      'en': '',
+    },
+    '2815dj8a': {
+      'ru': 'Dashboard',
+      'en': '',
+    },
+    's5rzp5s8': {
+      'ru': '__',
+      'en': '',
+    },
+  },
   // dropdown_users
   {
     'u4bnu9xu': {
