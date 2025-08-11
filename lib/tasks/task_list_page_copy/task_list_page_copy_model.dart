@@ -2,19 +2,15 @@ import '/components/date_filter_component_widget.dart';
 import '/components/side_navigation_component_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
-import 'task_list_page_widget.dart' show TaskListPageWidget;
+import 'task_list_page_copy_widget.dart' show TaskListPageCopyWidget;
 import 'package:flutter/material.dart';
 
-class TaskListPageModel extends FlutterFlowModel<TaskListPageWidget> {
+class TaskListPageCopyModel extends FlutterFlowModel<TaskListPageCopyWidget> {
   ///  Local state fields for this page.
 
   DateTime? filterDate;
 
   DateTime? pageDate;
-
-  String pageUserName = ' ';
-
-  String pageUserId = ' ';
 
   ///  State fields for stateful widgets in this page.
 

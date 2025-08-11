@@ -222,6 +222,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: UserTaskListCopy3Widget.routeName,
           path: UserTaskListCopy3Widget.routePath,
           builder: (context, params) => UserTaskListCopy3Widget(),
+        ),
+        FFRoute(
+          name: TaskListPageCopyWidget.routeName,
+          path: TaskListPageCopyWidget.routePath,
+          builder: (context, params) => TaskListPageCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -1553,6 +1553,61 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
   },
+  // TaskListPageCopy
+  {
+    'souc12xt': {
+      'ru': 'Загрузить',
+      'en': '',
+    },
+    'l8nj4x46': {
+      'ru': 'Отчёт',
+      'en': '',
+    },
+    'cmvc1oq0': {
+      'ru': 'Выгрузить',
+      'en': '',
+    },
+    'k9erdsgz': {
+      'ru': '№',
+      'en': '#',
+    },
+    'y79aq7em': {
+      'ru': 'Название ТП',
+      'en': 'TP Name',
+    },
+    'x4yi5tgh': {
+      'ru': 'Описание',
+      'en': 'Mobile',
+    },
+    '5nnzs0go': {
+      'ru': 'Вид работ',
+      'en': 'Task Category',
+    },
+    'tp63tr7k': {
+      'ru': 'ID Терминала',
+      'en': 'Terminal ID',
+    },
+    '5xa9x768': {
+      'ru': 'Адрес',
+      'en': 'Address',
+    },
+    'agxcfq89': {
+      'ru': 'Исполнитель',
+      'en': 'Doer',
+    },
+    '3pvq14t6': {
+      'ru': 'Статус',
+      'en': 'Status',
+    },
+    'r7i0gmbz': {
+      'ru': 'Система управления заявками',
+      'en': 'Tasks and Doers',
+    },
+    'mj3jfw1a': {
+      'ru': 'Главня',
+      'en': 'Home',
+    },
+  },
   // dropdown_users
   {
     'u4bnu9xu': {

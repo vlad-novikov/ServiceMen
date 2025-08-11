@@ -38,3 +38,5 @@ export '/tasks/user_task_scroll/user_task_scroll_widget.dart'
 export '/team_page/team_page_widget.dart' show TeamPageWidget;
 export '/tasks/user_task_list_copy3/user_task_list_copy3_widget.dart'
     show UserTaskListCopy3Widget;
+export '/tasks/task_list_page_copy/task_list_page_copy_widget.dart'
+    show TaskListPageCopyWidget;
