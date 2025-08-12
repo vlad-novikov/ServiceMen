@@ -4120,12 +4120,6 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                 ),
                                                 focusNode: _model
                                                     .textFieldTransferDateFocusNode,
-                                                onChanged: (_) =>
-                                                    EasyDebounce.debounce(
-                                                  '_model.textFieldTransferDateTextController',
-                                                  Duration(milliseconds: 2000),
-                                                  () => safeSetState(() {}),
-                                                ),
                                                 autofocus: false,
                                                 readOnly: true,
                                                 obscureText: false,
@@ -4239,26 +4233,6 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .primaryBackground,
-                                                  suffixIcon: _model
-                                                          .textFieldTransferDateTextController!
-                                                          .text
-                                                          .isNotEmpty
-                                                      ? InkWell(
-                                                          onTap: () async {
-                                                            _model
-                                                                .textFieldTransferDateTextController
-                                                                ?.clear();
-                                                            safeSetState(() {});
-                                                          },
-                                                          child: Icon(
-                                                            Icons.clear,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            size: 22.0,
-                                                          ),
-                                                        )
-                                                      : null,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
