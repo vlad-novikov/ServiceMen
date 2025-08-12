@@ -3054,22 +3054,6 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                           .texttTransferReasonTextController
                                                           ?.text = '';
                                                     });
-                                                    // Unset Transfer Date
-                                                    safeSetState(() {
-                                                      _model
-                                                          .textFieldTransferDateTextController
-                                                          ?.text = null;
-                                                      _model
-                                                          .textFieldTransferDateMask
-                                                          .updateMask(
-                                                        newValue:
-                                                            TextEditingValue(
-                                                          text: _model
-                                                              .textFieldTransferDateTextController!
-                                                              .text,
-                                                        ),
-                                                      );
-                                                    });
                                                     if (_shouldSetState)
                                                       safeSetState(() {});
                                                   },
