@@ -4105,13 +4105,17 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                 controller: _model
                                                         .textFieldTransferDateTextController ??=
                                                     TextEditingController(
-                                                  text: dateTimeFormat(
-                                                    "dd-MM-yyyy",
-                                                    columnTasksRow
-                                                        ?.transferDate,
-                                                    locale: FFLocalizations.of(
-                                                            context)
-                                                        .languageCode,
+                                                  text: valueOrDefault<String>(
+                                                    dateTimeFormat(
+                                                      "dd-MM-yyyy",
+                                                      columnTasksRow
+                                                          ?.transferDate,
+                                                      locale:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .languageCode,
+                                                    ),
+                                                    '01-01-0001',
                                                   ),
                                                 ),
                                                 focusNode: _model
