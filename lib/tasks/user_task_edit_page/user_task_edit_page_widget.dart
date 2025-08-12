@@ -120,36 +120,47 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            floatingActionButton: FloatingActionButton.extended(
-              onPressed: () {
-                print('FABSave pressed ...');
-              },
-              backgroundColor: FlutterFlowTheme.of(context).primary,
-              elevation: 8.0,
-              label: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  FFButtonWidget(
-                    onPressed: () async {
-                      context.pushNamed(UserTaskListWidget.routeName);
-                    },
-                    text: FFLocalizations.of(context).getText(
-                      'okpy7njz' /* Отменить */,
-                    ),
-                    icon: Icon(
-                      Icons.cancel_outlined,
-                      size: 24.0,
-                    ),
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                font: GoogleFonts.interTight(
+            floatingActionButton: Opacity(
+              opacity: 0.9,
+              child: FloatingActionButton.extended(
+                onPressed: () {
+                  print('FABSave pressed ...');
+                },
+                backgroundColor: FlutterFlowTheme.of(context).primary,
+                elevation: 8.0,
+                label: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    FFButtonWidget(
+                      onPressed: () async {
+                        context.pushNamed(UserTaskListWidget.routeName);
+                      },
+                      text: FFLocalizations.of(context).getText(
+                        'okpy7njz' /*  */,
+                      ),
+                      icon: Icon(
+                        Icons.cancel_outlined,
+                        size: 24.0,
+                      ),
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
                                   fontWeight: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .fontWeight,
@@ -157,172 +168,178 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                       .titleSmall
                                       .fontStyle,
                                 ),
-                                color: Colors.white,
-                                letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .fontStyle,
-                              ),
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.circular(8.0),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                     ),
-                  ),
-                  FFButtonWidget(
-                    onPressed: () async {
-                      await Future.wait([
-                        Future(() async {
-                          if (_model.textTaskStatusTextController.text ==
-                              'в работе') {
-                            // Меняем Статус на "выполнено"
-                            safeSetState(() {
-                              _model.textTaskStatusTextController?.text =
-                                  'выполнено';
-                            });
-                            if (_model.docsInTSPComponentModel
-                                        .radioDocOptionValue ==
-                                    null ||
-                                _model.docsInTSPComponentModel
-                                        .radioDocOptionValue ==
-                                    '') {
-                              // Choose yes\no Doc Option
-                              var confirmDialogResponse =
-                                  await showDialog<bool>(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('Документы в ТСП'),
-                                            content: Text(
-                                                'Уточните, находятся ли документы в ТСП?'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, false),
-                                                child: Text('Нет'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, true),
-                                                child: Text('Да'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ) ??
-                                      false;
-                              if (confirmDialogResponse) {
-                                // Set YES in Doc Option
-                                safeSetState(() {
-                                  _model
-                                      .docsInTSPComponentModel
-                                      .radioDocOptionValueController
-                                      ?.value = 'Да';
-                                });
-                              } else {
-                                // Set NO in Doc Option
-                                safeSetState(() {
-                                  _model
-                                      .docsInTSPComponentModel
-                                      .radioDocOptionValueController
-                                      ?.value = 'Нет';
-                                });
+                    FFButtonWidget(
+                      onPressed: () async {
+                        await Future.wait([
+                          Future(() async {
+                            if (_model.textTaskStatusTextController.text ==
+                                'в работе') {
+                              // Меняем Статус на "выполнено"
+                              safeSetState(() {
+                                _model.textTaskStatusTextController?.text =
+                                    'выполнено';
+                              });
+                              if (_model.docsInTSPComponentModel
+                                          .radioDocOptionValue ==
+                                      null ||
+                                  _model.docsInTSPComponentModel
+                                          .radioDocOptionValue ==
+                                      '') {
+                                // Choose yes\no Doc Option
+                                var confirmDialogResponse =
+                                    await showDialog<bool>(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('Документы в ТСП'),
+                                              content: Text(
+                                                  'Уточните, находятся ли документы в ТСП?'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          false),
+                                                  child: Text('Нет'),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          true),
+                                                  child: Text('Да'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        ) ??
+                                        false;
+                                if (confirmDialogResponse) {
+                                  // Set YES in Doc Option
+                                  safeSetState(() {
+                                    _model
+                                        .docsInTSPComponentModel
+                                        .radioDocOptionValueController
+                                        ?.value = 'Да';
+                                  });
+                                } else {
+                                  // Set NO in Doc Option
+                                  safeSetState(() {
+                                    _model
+                                        .docsInTSPComponentModel
+                                        .radioDocOptionValueController
+                                        ?.value = 'Нет';
+                                  });
+                                }
+                              }
+                              // Обнуляем поле ПЕРЕНОС
+                              safeSetState(() {
+                                _model.textTaskTransferTextController?.text =
+                                    '';
+                              });
+                            } else {
+                              if (!((_model.textTaskStatusTextController.text ==
+                                      'не выполнено') &&
+                                  (_model.textTaskTransferTextController.text ==
+                                      'перенос'))) {
+                                return;
                               }
                             }
-                            // Обнуляем поле ПЕРЕНОС
-                            safeSetState(() {
-                              _model.textTaskTransferTextController?.text = '';
-                            });
-                          } else {
-                            if (!((_model.textTaskStatusTextController.text ==
-                                    'не выполнено') &&
-                                (_model.textTaskTransferTextController.text ==
-                                    'перенос'))) {
-                              return;
-                            }
-                          }
-                        }),
-                      ]);
-                      // Ставим Время
-                      safeSetState(() {
-                        _model.textFinishTimeTextController?.text =
-                            dateTimeFormat(
-                          "Hm",
-                          getCurrentTimestamp,
-                          locale: FFLocalizations.of(context).languageCode,
-                        );
-                      });
-                      // Ставим Время 2
-                      _model.finishDateTime = getCurrentTimestamp;
-                      safeSetState(() {});
-                      await TasksTable().update(
-                        data: {
-                          'task_status':
-                              _model.textTaskStatusTextController.text,
-                          'transfer_description': _model
-                              .textFieldTransferDescriptionTextController.text,
-                          'transfer_person': _model.textController22.text,
-                          'trainees_number': _model.countControllerValue,
-                          'transfer_date': supaSerialize<DateTime>(
-                              _model.pickedTransferDate),
-                          'doer_description':
-                              _model.textDoerDescriptionTextController.text,
-                          'location_contract':
-                              _model.textFieldContractTextController.text,
-                          'equipment_connection':
-                              _model.textFieldConnectionTextController.text,
-                          'task_transfer':
-                              _model.textTaskTransferTextController.text,
-                          'transfer_comment': _model.textController24.text,
-                          'transfer_phone': _model.textController23.text,
-                          'finish_date':
-                              supaSerialize<DateTime>(_model.finishDateTime),
-                          'finish_time': supaSerialize<PostgresTime>(
-                              PostgresTime(_model.finishDateTime)),
-                          'task_doc_option': _model
-                              .docsInTSPComponentModel.radioDocOptionValue,
-                          'internal_comment':
-                              _model.textInternalCommentTextController.text,
-                          'outing_comment':
-                              _model.textOutingCommentTextController.text,
-                          'parking_comment':
-                              _model.textOutingCommentTextController.text,
-                        },
-                        matchingRows: (rows) => rows.eqOrNull(
-                          'id',
-                          widget.taskID,
-                        ),
-                      );
-
-                      context.pushNamed(
-                        UserTaskListWidget.routeName,
-                        extra: <String, dynamic>{
-                          kTransitionInfoKey: TransitionInfo(
-                            hasTransition: true,
-                            transitionType: PageTransitionType.topToBottom,
-                            duration: Duration(milliseconds: 100),
+                          }),
+                        ]);
+                        // Ставим Время
+                        safeSetState(() {
+                          _model.textFinishTimeTextController?.text =
+                              dateTimeFormat(
+                            "Hm",
+                            getCurrentTimestamp,
+                            locale: FFLocalizations.of(context).languageCode,
+                          );
+                        });
+                        // Ставим Время 2
+                        _model.finishDateTime = getCurrentTimestamp;
+                        safeSetState(() {});
+                        await TasksTable().update(
+                          data: {
+                            'task_status':
+                                _model.textTaskStatusTextController.text,
+                            'transfer_description': _model
+                                .textFieldTransferDescriptionTextController
+                                .text,
+                            'transfer_person': _model.textController22.text,
+                            'trainees_number': _model.countControllerValue,
+                            'transfer_date': supaSerialize<DateTime>(
+                                _model.pickedTransferDate),
+                            'doer_description':
+                                _model.textDoerDescriptionTextController.text,
+                            'location_contract':
+                                _model.textFieldContractTextController.text,
+                            'equipment_connection':
+                                _model.textFieldConnectionTextController.text,
+                            'task_transfer':
+                                _model.textTaskTransferTextController.text,
+                            'transfer_comment': _model.textController24.text,
+                            'transfer_phone': _model.textController23.text,
+                            'finish_date':
+                                supaSerialize<DateTime>(_model.finishDateTime),
+                            'finish_time': supaSerialize<PostgresTime>(
+                                PostgresTime(_model.finishDateTime)),
+                            'task_doc_option': _model
+                                .docsInTSPComponentModel.radioDocOptionValue,
+                            'internal_comment':
+                                _model.textInternalCommentTextController.text,
+                            'outing_comment':
+                                _model.textOutingCommentTextController.text,
+                            'parking_comment':
+                                _model.textOutingCommentTextController.text,
+                          },
+                          matchingRows: (rows) => rows.eqOrNull(
+                            'id',
+                            widget.taskID,
                           ),
-                        },
-                      );
-                    },
-                    text: FFLocalizations.of(context).getText(
-                      'bejh558x' /* Выполнить */,
-                    ),
-                    icon: Icon(
-                      Icons.thumb_up,
-                      size: 24.0,
-                    ),
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                font: GoogleFonts.interTight(
+                        );
+
+                        context.pushNamed(
+                          UserTaskListWidget.routeName,
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.topToBottom,
+                              duration: Duration(milliseconds: 100),
+                            ),
+                          },
+                        );
+                      },
+                      text: FFLocalizations.of(context).getText(
+                        'bejh558x' /*  */,
+                      ),
+                      icon: Icon(
+                        Icons.thumb_up,
+                        size: 24.0,
+                      ),
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
                                   fontWeight: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .fontWeight,
@@ -330,20 +347,12 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                       .titleSmall
                                       .fontStyle,
                                 ),
-                                color: Colors.white,
-                                letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .fontStyle,
-                              ),
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.circular(8.0),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             body: SafeArea(
@@ -3484,6 +3493,44 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 ),
                                               ),
                                             ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 0.0, 5.0, 0.0),
+                                              child: Text(
+                                                _model.changedDoerComment
+                                                    .toString(),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                              ),
+                                            ),
                                             if ((_model.textTaskCategoryTextController
                                                         .text ==
                                                     'УСТАНОВКА') ||
@@ -3663,6 +3710,17 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     ),
                                                     focusNode: _model
                                                         .textDoerDescriptionFocusNode,
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      '_model.textDoerDescriptionTextController',
+                                                      Duration(
+                                                          milliseconds: 2000),
+                                                      () async {
+                                                        _model.changedDoerComment =
+                                                            true;
+                                                        safeSetState(() {});
+                                                      },
+                                                    ),
                                                     autofocus: false,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
@@ -3731,9 +3789,15 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
+                                                          color: _model
+                                                                  .changedDoerComment
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .primary
+                                                              : FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
                                                           width: 1.0,
                                                         ),
                                                         borderRadius:
@@ -3773,11 +3837,6 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                             BorderRadius
                                                                 .circular(8.0),
                                                       ),
-                                                      filled: true,
-                                                      fillColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryBackground,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -3837,6 +3896,12 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     ),
                                                     focusNode: _model
                                                         .textInternalCommentFocusNode,
+                                                    onFieldSubmitted:
+                                                        (_) async {
+                                                      _model.changedInternalComment =
+                                                          true;
+                                                      safeSetState(() {});
+                                                    },
                                                     autofocus: false,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
@@ -3905,9 +3970,15 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
+                                                          color: _model
+                                                                  .changedInternalComment
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .primary
+                                                              : FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
                                                           width: 1.0,
                                                         ),
                                                         borderRadius:
@@ -4091,6 +4162,12 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     ),
                                                     focusNode: _model
                                                         .textOutingCommentFocusNode,
+                                                    onFieldSubmitted:
+                                                        (_) async {
+                                                      _model.changedOutingComment =
+                                                          true;
+                                                      safeSetState(() {});
+                                                    },
                                                     autofocus: false,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
@@ -4159,9 +4236,15 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
+                                                          color: _model
+                                                                  .changedOutingComment
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .primary
+                                                              : FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
                                                           width: 1.0,
                                                         ),
                                                         borderRadius:
@@ -4265,6 +4348,12 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     ),
                                                     focusNode: _model
                                                         .textParkingCommentFocusNode,
+                                                    onFieldSubmitted:
+                                                        (_) async {
+                                                      _model.changedParkingComment =
+                                                          true;
+                                                      safeSetState(() {});
+                                                    },
                                                     autofocus: false,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
@@ -4333,9 +4422,15 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
+                                                          color: _model
+                                                                  .changedParkingComment
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .primary
+                                                              : FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
                                                           width: 1.0,
                                                         ),
                                                         borderRadius:
@@ -4499,6 +4594,11 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   Duration(milliseconds: 2000),
                                                   () => safeSetState(() {}),
                                                 ),
+                                                onFieldSubmitted: (_) async {
+                                                  _model.changedTransferDescription =
+                                                      true;
+                                                  safeSetState(() {});
+                                                },
                                                 autofocus: false,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
@@ -4566,8 +4666,12 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
+                                                      color: _model
+                                                              .changedTransferDescription
+                                                          ? FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary
+                                                          : FlutterFlowTheme.of(
                                                                   context)
                                                               .alternate,
                                                       width: 1.0,
@@ -5442,6 +5546,11 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               ),
                                               focusNode:
                                                   _model.textFieldFocusNode7,
+                                              onFieldSubmitted: (_) async {
+                                                _model.changedTransferComment =
+                                                    true;
+                                                safeSetState(() {});
+                                              },
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -5511,9 +5620,14 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 enabledBorder:
                                                     OutlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .alternate,
+                                                    color: _model
+                                                            .changedTransferComment
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary
+                                                        : FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:

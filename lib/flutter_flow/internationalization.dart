@@ -1061,11 +1061,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'okpy7njz': {
-      'ru': 'Отменить',
+      'ru': '',
       'en': '',
     },
     'bejh558x': {
-      'ru': 'Выполнить',
+      'ru': '',
       'en': '',
     },
   },

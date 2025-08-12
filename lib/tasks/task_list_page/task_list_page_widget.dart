@@ -1359,6 +1359,7 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                                       null &&
                                                                   _model.doerName !=
                                                                       '') {
+                                                                // Cleanup Comments
                                                                 await TasksTable()
                                                                     .update(
                                                                   data: {
@@ -1367,18 +1368,6 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                                             .doerName,
                                                                     'task_status':
                                                                         'в работе',
-                                                                    'outing_comment':
-                                                                        '',
-                                                                    'parking_comment':
-                                                                        '',
-                                                                    'transfer_comment':
-                                                                        '',
-                                                                    'transfer_comment2':
-                                                                        '',
-                                                                    'internal_comment':
-                                                                        '',
-                                                                    'doer_description':
-                                                                        '',
                                                                   },
                                                                   matchingRows:
                                                                       (rows) =>

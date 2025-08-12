@@ -158,4 +158,7 @@ class TasksRow extends SupabaseDataRow {
   String? get parkingComment => getField<String>('parking_comment');
   set parkingComment(String? value) =>
       setField<String>('parking_comment', value);
+
+  String? get colR => getField<String>('colR');
+  set colR(String? value) => setField<String>('colR', value);
 }

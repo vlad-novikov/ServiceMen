@@ -122,7 +122,7 @@ Future<String?> importExcelToDatabase() async {
           'task_doer': row[14],
           'transfer_person': row[15],
           'transfer_phone': row[16],
-          'transfer_comment': row[17],
+          'colR': row[17],
           'equipment_id2': row[18],
           'crm_id': row[19]
         }).select();

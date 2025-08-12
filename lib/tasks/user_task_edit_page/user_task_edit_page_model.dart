@@ -12,6 +12,18 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
 
   DateTime? finishDateTime;
 
+  bool changedDoerComment = false;
+
+  bool changedInternalComment = true;
+
+  bool changedOutingComment = false;
+
+  bool changedParkingComment = false;
+
+  bool changedTransferComment = false;
+
+  bool changedTransferDescription = false;
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for TextField widget.

@@ -59,7 +59,7 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
           "transfer_person, transfer_phone, " +
           "transfer_person_2, transfer_phone_2," +
           "transfer_comment, transfer_comment2, " +
-          "equipment_id2, crm_id")
+          "equipment_id2, crm_id,colR")
       .eq('task_date', taskDate)
       .order('line_no', ascending: true);
   FFAppState().test1 = 'Export Step 21 done ';
@@ -114,7 +114,7 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       ex.TextCellValue(row['task_doer'].toString()), // 14
       ex.TextCellValue(row['transfer_person'].toString()), // 15
       ex.TextCellValue(row['transfer_phone'].toString()), // 16
-      ex.TextCellValue(transferComment), // 17
+      ex.TextCellValue(row['colR'].toString()), // 17
       ex.TextCellValue(row['equipment_id2'].toString()), //  18
       ex.TextCellValue(row['crm_id'].toString()), //  19 T
       //ex.TextCellValue(row['doer_description'].toString()) //  20 U

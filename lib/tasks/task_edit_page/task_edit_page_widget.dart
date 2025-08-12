@@ -80,18 +80,18 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
 
     _model.textFieldParkingCommentFocusNode ??= FocusNode();
 
-    _model.textFieldFocusNode7 ??= FocusNode();
+    _model.texttTransferReasonFocusNode ??= FocusNode();
 
     _model.textFieldTransferDateFocusNode ??= FocusNode();
 
     _model.textFieldTransferDateMask =
         MaskTextInputFormatter(mask: '##.##.####');
 
-    _model.textFieldFocusNode8 ??= FocusNode();
+    _model.textTransferPesonFocusNode ??= FocusNode();
 
-    _model.textFieldFocusNode9 ??= FocusNode();
+    _model.textFieldFocusNode7 ??= FocusNode();
 
-    _model.textFieldFocusNode10 ??= FocusNode();
+    _model.textTransferCommentFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -158,8 +158,9 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                             'task_status':
                                 _model.textTaskStatusTextController.text,
                             'transfer_description':
-                                _model.textController20.text,
-                            'transfer_person': _model.textController22.text,
+                                _model.texttTransferReasonTextController.text,
+                            'transfer_person':
+                                _model.textTransferPesonTextController.text,
                             'trainees_number': _model.countControllerValue,
                             'transfer_date': supaSerialize<DateTime>(
                                 _model.pickedTransferDate),
@@ -171,7 +172,8 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                 _model.textFieldConnectionTextController.text,
                             'task_transfer':
                                 _model.textTaskTransferTextController.text,
-                            'transfer_comment': _model.textController24.text,
+                            'transfer_comment':
+                                _model.textTransferCommentTextController.text,
                             'transfer_phone': _model.textController23.text,
                             'internal_comment':
                                 _model.textInternalCommentTextController.text,
@@ -3034,15 +3036,39 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                         safeSetState(() {});
                                                       return;
                                                     }
+                                                    // Set  Doer Name
                                                     safeSetState(() {
                                                       _model.textDoerTextController
                                                               ?.text =
                                                           _model.doerName!;
                                                     });
+                                                    // Set Status
                                                     safeSetState(() {
                                                       _model
                                                           .textTaskStatusTextController
                                                           ?.text = 'в работе';
+                                                    });
+                                                    // Unset Transfer Reason
+                                                    safeSetState(() {
+                                                      _model
+                                                          .texttTransferReasonTextController
+                                                          ?.text = '';
+                                                    });
+                                                    // Unset Transfer Date
+                                                    safeSetState(() {
+                                                      _model
+                                                          .textFieldTransferDateTextController
+                                                          ?.text = null;
+                                                      _model
+                                                          .textFieldTransferDateMask
+                                                          .updateMask(
+                                                        newValue:
+                                                            TextEditingValue(
+                                                          text: _model
+                                                              .textFieldTransferDateTextController!
+                                                              .text,
+                                                        ),
+                                                      );
                                                     });
                                                     if (_shouldSetState)
                                                       safeSetState(() {});
@@ -3224,6 +3250,14 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                               ),
                                               focusNode: _model
                                                   .textDoerDescriptionFocusNode,
+                                              onChanged: (_) =>
+                                                  EasyDebounce.debounce(
+                                                '_model.textDoerDescriptionTextController',
+                                                Duration(milliseconds: 2000),
+                                                () async {
+                                                  safeSetState(() {});
+                                                },
+                                              ),
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -3913,13 +3947,14 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 5.0, 20.0, 5.0),
                                         child: TextFormField(
-                                          controller:
-                                              _model.textController20 ??=
-                                                  TextEditingController(
+                                          controller: _model
+                                                  .texttTransferReasonTextController ??=
+                                              TextEditingController(
                                             text: columnTasksRow
                                                 ?.transferDescription,
                                           ),
-                                          focusNode: _model.textFieldFocusNode7,
+                                          focusNode: _model
+                                              .texttTransferReasonFocusNode,
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
@@ -4052,7 +4087,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                           minLines: 1,
                                           keyboardType: TextInputType.phone,
                                           validator: _model
-                                              .textController20Validator
+                                              .texttTransferReasonTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -4411,14 +4446,14 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
-                                              controller:
-                                                  _model.textController22 ??=
-                                                      TextEditingController(
+                                              controller: _model
+                                                      .textTransferPesonTextController ??=
+                                                  TextEditingController(
                                                 text: columnTasksRow
                                                     ?.transferPerson,
                                               ),
-                                              focusNode:
-                                                  _model.textFieldFocusNode8,
+                                              focusNode: _model
+                                                  .textTransferPesonFocusNode,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -4562,7 +4597,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textController22Validator
+                                                  .textTransferPesonTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -4580,7 +4615,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                     ?.transferPhone,
                                               ),
                                               focusNode:
-                                                  _model.textFieldFocusNode9,
+                                                  _model.textFieldFocusNode7,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -4740,14 +4775,14 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
-                                              controller:
-                                                  _model.textController24 ??=
-                                                      TextEditingController(
+                                              controller: _model
+                                                      .textTransferCommentTextController ??=
+                                                  TextEditingController(
                                                 text: columnTasksRow
                                                     ?.transferComment,
                                               ),
-                                              focusNode:
-                                                  _model.textFieldFocusNode10,
+                                              focusNode: _model
+                                                  .textTransferCommentFocusNode,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -4891,7 +4926,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textController24Validator
+                                                  .textTransferCommentTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),

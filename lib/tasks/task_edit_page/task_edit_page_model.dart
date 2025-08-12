@@ -108,10 +108,11 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   TextEditingController? textFieldParkingCommentTextController;
   String? Function(BuildContext, String?)?
       textFieldParkingCommentTextControllerValidator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode7;
-  TextEditingController? textController20;
-  String? Function(BuildContext, String?)? textController20Validator;
+  // State field(s) for TexttTransferReason widget.
+  FocusNode? texttTransferReasonFocusNode;
+  TextEditingController? texttTransferReasonTextController;
+  String? Function(BuildContext, String?)?
+      texttTransferReasonTextControllerValidator;
   // State field(s) for TextFieldTransferDate widget.
   FocusNode? textFieldTransferDateFocusNode;
   TextEditingController? textFieldTransferDateTextController;
@@ -119,18 +120,20 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   String? Function(BuildContext, String?)?
       textFieldTransferDateTextControllerValidator;
   DateTime? datePicked;
+  // State field(s) for TextTransferPeson widget.
+  FocusNode? textTransferPesonFocusNode;
+  TextEditingController? textTransferPesonTextController;
+  String? Function(BuildContext, String?)?
+      textTransferPesonTextControllerValidator;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode8;
-  TextEditingController? textController22;
-  String? Function(BuildContext, String?)? textController22Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode9;
+  FocusNode? textFieldFocusNode7;
   TextEditingController? textController23;
   String? Function(BuildContext, String?)? textController23Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode10;
-  TextEditingController? textController24;
-  String? Function(BuildContext, String?)? textController24Validator;
+  // State field(s) for TextTransferComment widget.
+  FocusNode? textTransferCommentFocusNode;
+  TextEditingController? textTransferCommentTextController;
+  String? Function(BuildContext, String?)?
+      textTransferCommentTextControllerValidator;
 
   @override
   void initState(BuildContext context) {
@@ -198,19 +201,19 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
     textFieldParkingCommentFocusNode?.dispose();
     textFieldParkingCommentTextController?.dispose();
 
-    textFieldFocusNode7?.dispose();
-    textController20?.dispose();
+    texttTransferReasonFocusNode?.dispose();
+    texttTransferReasonTextController?.dispose();
 
     textFieldTransferDateFocusNode?.dispose();
     textFieldTransferDateTextController?.dispose();
 
-    textFieldFocusNode8?.dispose();
-    textController22?.dispose();
+    textTransferPesonFocusNode?.dispose();
+    textTransferPesonTextController?.dispose();
 
-    textFieldFocusNode9?.dispose();
+    textFieldFocusNode7?.dispose();
     textController23?.dispose();
 
-    textFieldFocusNode10?.dispose();
-    textController24?.dispose();
+    textTransferCommentFocusNode?.dispose();
+    textTransferCommentTextController?.dispose();
   }
 }
