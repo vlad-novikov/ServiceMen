@@ -95,8 +95,6 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
 
     _model.textFieldFocusNode6 ??= FocusNode();
 
-    _model.textFieldFocusNode7 ??= FocusNode();
-
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -267,22 +265,16 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                           data: {
                             'task_status':
                                 _model.textTaskStatusTextController.text,
-                            'transfer_description': _model
-                                .textFieldTransferDescriptionTextController
-                                .text,
                             'transfer_person': _model.textController22.text,
                             'trainees_number': _model.countControllerValue,
                             'transfer_date': supaSerialize<DateTime>(
                                 _model.pickedTransferDate),
-                            'doer_description':
-                                _model.textDoerDescriptionTextController.text,
                             'location_contract':
                                 _model.textFieldContractTextController.text,
                             'equipment_connection':
                                 _model.textFieldConnectionTextController.text,
                             'task_transfer':
                                 _model.textTaskTransferTextController.text,
-                            'transfer_comment': _model.textController24.text,
                             'transfer_phone': _model.textController23.text,
                             'finish_date':
                                 supaSerialize<DateTime>(_model.finishDateTime),
@@ -290,18 +282,140 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                 PostgresTime(_model.finishDateTime)),
                             'task_doc_option': _model
                                 .docsInTSPComponentModel.radioDocOptionValue,
-                            'internal_comment':
-                                _model.textInternalCommentTextController.text,
-                            'outing_comment':
-                                _model.textOutingCommentTextController.text,
-                            'parking_comment':
-                                _model.textOutingCommentTextController.text,
                           },
                           matchingRows: (rows) => rows.eqOrNull(
                             'id',
                             widget.taskID,
                           ),
                         );
+                        if (_model.changedDoerComment) {
+                          // Update Doer Comment
+                          await TasksTable().update(
+                            data: {
+                              'doer_description':
+                                  _model.textDoerDescriptionTextController.text,
+                            },
+                            matchingRows: (rows) => rows.eqOrNull(
+                              'id',
+                              widget.taskID,
+                            ),
+                          );
+                        } else {
+                          // Update Doer Comment
+                          await TasksTable().update(
+                            data: {
+                              'doer_description': '',
+                            },
+                            matchingRows: (rows) => rows.eqOrNull(
+                              'id',
+                              widget.taskID,
+                            ),
+                          );
+                        }
+
+                        if (_model.changedInternalComment) {
+                          // Update Internal Comment
+                          await TasksTable().update(
+                            data: {
+                              'internal_comment':
+                                  _model.textInternalCommentTextController.text,
+                            },
+                            matchingRows: (rows) => rows.eqOrNull(
+                              'id',
+                              widget.taskID,
+                            ),
+                          );
+                        } else {
+                          // Update Internal Comment
+                          await TasksTable().update(
+                            data: {
+                              'internal_comment': '',
+                            },
+                            matchingRows: (rows) => rows.eqOrNull(
+                              'id',
+                              widget.taskID,
+                            ),
+                          );
+                        }
+
+                        if (_model.changedOutingComment) {
+                          // Update Outing Comment
+                          await TasksTable().update(
+                            data: {
+                              'outing_comment': (_model
+                                          .textOutingCommentFocusNode
+                                          ?.hasFocus ??
+                                      false)
+                                  .toString(),
+                            },
+                            matchingRows: (rows) => rows.eqOrNull(
+                              'id',
+                              widget.taskID,
+                            ),
+                          );
+                        } else {
+                          // Update Outing Comment
+                          await TasksTable().update(
+                            data: {
+                              'outing_comment': '',
+                            },
+                            matchingRows: (rows) => rows.eqOrNull(
+                              'id',
+                              widget.taskID,
+                            ),
+                          );
+                        }
+
+                        if (_model.changedParkingComment) {
+                          // Update Parking Comment
+                          await TasksTable().update(
+                            data: {
+                              'parking_comment':
+                                  _model.textParkingCommentTextController.text,
+                            },
+                            matchingRows: (rows) => rows.eqOrNull(
+                              'id',
+                              widget.taskID,
+                            ),
+                          );
+                        } else {
+                          // Update Parking Comment
+                          await TasksTable().update(
+                            data: {
+                              'parking_comment': '',
+                            },
+                            matchingRows: (rows) => rows.eqOrNull(
+                              'id',
+                              widget.taskID,
+                            ),
+                          );
+                        }
+
+                        if (_model.changedTransferDescription) {
+                          // Update Transfer Descr
+                          await TasksTable().update(
+                            data: {
+                              'transfer_description': _model
+                                  .textFieldTransferDescriptionTextController
+                                  .text,
+                            },
+                            matchingRows: (rows) => rows.eqOrNull(
+                              'id',
+                              widget.taskID,
+                            ),
+                          );
+                        } else {
+                          // Update Transfer Descr
+                          await TasksTable().update(
+                            data: {
+                              'transfer_description': '',
+                            },
+                            matchingRows: (rows) => rows.eqOrNull(
+                              'id',
+                              widget.taskID,
+                            ),
+                          );
+                        }
 
                         context.pushNamed(
                           UserTaskListWidget.routeName,
@@ -3493,44 +3607,6 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 ),
                                               ),
                                             ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 5.0, 0.0),
-                                              child: Text(
-                                                _model.changedDoerComment
-                                                    .toString(),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                              ),
-                                            ),
                                             if ((_model.textTaskCategoryTextController
                                                         .text ==
                                                     'УСТАНОВКА') ||
@@ -3789,15 +3865,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
-                                                          color: _model
-                                                                  .changedDoerComment
-                                                              ? FlutterFlowTheme
-                                                                      .of(
-                                                                          context)
-                                                                  .primary
-                                                              : FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .alternate,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
                                                           width: 1.0,
                                                         ),
                                                         borderRadius:
@@ -3877,6 +3947,14 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   ),
                                                 ),
                                               ),
+                                              if (_model.changedDoerComment)
+                                                Icon(
+                                                  Icons.check,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  size: 24.0,
+                                                ),
                                             ],
                                           ),
                                           Row(
@@ -3896,12 +3974,17 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     ),
                                                     focusNode: _model
                                                         .textInternalCommentFocusNode,
-                                                    onFieldSubmitted:
-                                                        (_) async {
-                                                      _model.changedInternalComment =
-                                                          true;
-                                                      safeSetState(() {});
-                                                    },
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      '_model.textInternalCommentTextController',
+                                                      Duration(
+                                                          milliseconds: 2000),
+                                                      () async {
+                                                        _model.changedInternalComment =
+                                                            true;
+                                                        safeSetState(() {});
+                                                      },
+                                                    ),
                                                     autofocus: false,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
@@ -3970,15 +4053,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
-                                                          color: _model
-                                                                  .changedInternalComment
-                                                              ? FlutterFlowTheme
-                                                                      .of(
-                                                                          context)
-                                                                  .primary
-                                                              : FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .alternate,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
                                                           width: 1.0,
                                                         ),
                                                         borderRadius:
@@ -4018,11 +4095,6 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                             BorderRadius
                                                                 .circular(8.0),
                                                       ),
-                                                      filled: true,
-                                                      fillColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryBackground,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -4143,6 +4215,14 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   ),
                                                 ),
                                               ),
+                                              if (_model.changedInternalComment)
+                                                Icon(
+                                                  Icons.check,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  size: 24.0,
+                                                ),
                                             ],
                                           ),
                                           Row(
@@ -4162,12 +4242,17 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     ),
                                                     focusNode: _model
                                                         .textOutingCommentFocusNode,
-                                                    onFieldSubmitted:
-                                                        (_) async {
-                                                      _model.changedOutingComment =
-                                                          true;
-                                                      safeSetState(() {});
-                                                    },
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      '_model.textOutingCommentTextController',
+                                                      Duration(
+                                                          milliseconds: 2000),
+                                                      () async {
+                                                        _model.changedOutingComment =
+                                                            true;
+                                                        safeSetState(() {});
+                                                      },
+                                                    ),
                                                     autofocus: false,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
@@ -4236,15 +4321,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
-                                                          color: _model
-                                                                  .changedOutingComment
-                                                              ? FlutterFlowTheme
-                                                                      .of(
-                                                                          context)
-                                                                  .primary
-                                                              : FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .alternate,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
                                                           width: 1.0,
                                                         ),
                                                         borderRadius:
@@ -4329,6 +4408,14 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   ),
                                                 ),
                                               ),
+                                              if (_model.changedOutingComment)
+                                                Icon(
+                                                  Icons.check,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  size: 24.0,
+                                                ),
                                             ],
                                           ),
                                           Row(
@@ -4348,12 +4435,17 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     ),
                                                     focusNode: _model
                                                         .textParkingCommentFocusNode,
-                                                    onFieldSubmitted:
-                                                        (_) async {
-                                                      _model.changedParkingComment =
-                                                          true;
-                                                      safeSetState(() {});
-                                                    },
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      '_model.textParkingCommentTextController',
+                                                      Duration(
+                                                          milliseconds: 2000),
+                                                      () async {
+                                                        _model.changedParkingComment =
+                                                            true;
+                                                        safeSetState(() {});
+                                                      },
+                                                    ),
                                                     autofocus: false,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
@@ -4422,15 +4514,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
-                                                          color: _model
-                                                                  .changedParkingComment
-                                                              ? FlutterFlowTheme
-                                                                      .of(
-                                                                          context)
-                                                                  .primary
-                                                              : FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .alternate,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
                                                           width: 1.0,
                                                         ),
                                                         borderRadius:
@@ -4470,11 +4556,6 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                             BorderRadius
                                                                 .circular(8.0),
                                                       ),
-                                                      filled: true,
-                                                      fillColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryBackground,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -4515,6 +4596,14 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   ),
                                                 ),
                                               ),
+                                              if (_model.changedParkingComment)
+                                                Icon(
+                                                  Icons.check,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  size: 24.0,
+                                                ),
                                             ],
                                           ),
                                         ],
@@ -4592,13 +4681,12 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     EasyDebounce.debounce(
                                                   '_model.textFieldTransferDescriptionTextController',
                                                   Duration(milliseconds: 2000),
-                                                  () => safeSetState(() {}),
+                                                  () async {
+                                                    _model.changedTransferDescription =
+                                                        true;
+                                                    safeSetState(() {});
+                                                  },
                                                 ),
-                                                onFieldSubmitted: (_) async {
-                                                  _model.changedTransferDescription =
-                                                      true;
-                                                  safeSetState(() {});
-                                                },
                                                 autofocus: false,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
@@ -4666,12 +4754,8 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color: _model
-                                                              .changedTransferDescription
-                                                          ? FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary
-                                                          : FlutterFlowTheme.of(
+                                                      color:
+                                                          FlutterFlowTheme.of(
                                                                   context)
                                                               .alternate,
                                                       width: 1.0,
@@ -4710,11 +4794,6 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                         BorderRadius.circular(
                                                             8.0),
                                                   ),
-                                                  filled: true,
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryBackground,
                                                   suffixIcon: _model
                                                           .textFieldTransferDescriptionTextController!
                                                           .text
@@ -4724,6 +4803,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                             _model
                                                                 .textFieldTransferDescriptionTextController
                                                                 ?.clear();
+                                                            _model.changedTransferDescription =
+                                                                true;
+                                                            safeSetState(() {});
                                                             safeSetState(() {});
                                                           },
                                                           child: Icon(
@@ -4853,6 +4935,14 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               ),
                                             ),
                                           ),
+                                          if (_model.changedTransferDescription)
+                                            Icon(
+                                              Icons.check,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 24.0,
+                                            ),
                                         ],
                                       ),
                                     ),
@@ -5523,182 +5613,6 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               keyboardType: TextInputType.phone,
                                               validator: _model
                                                   .textController23Validator
-                                                  .asValidator(context),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 5.0, 20.0, 5.0),
-                                            child: TextFormField(
-                                              controller:
-                                                  _model.textController24 ??=
-                                                      TextEditingController(
-                                                text: columnTasksRow
-                                                    ?.transferComment,
-                                              ),
-                                              focusNode:
-                                                  _model.textFieldFocusNode7,
-                                              onFieldSubmitted: (_) async {
-                                                _model.changedTransferComment =
-                                                    true;
-                                                safeSetState(() {});
-                                              },
-                                              autofocus: false,
-                                              obscureText: false,
-                                              decoration: InputDecoration(
-                                                labelText:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  'q35pl7q4' /* Комментарий */,
-                                                ),
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: _model
-                                                            .changedTransferComment
-                                                        ? FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary
-                                                        : FlutterFlowTheme.of(
-                                                                context)
-                                                            .alternate,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: Color(0x00000000),
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: Color(0x00000000),
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                focusedErrorBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: Color(0x00000000),
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                filled: true,
-                                                fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyLarge
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyLarge
-                                                                  .fontStyle,
-                                                        ),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyLarge
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyLarge
-                                                                .fontStyle,
-                                                      ),
-                                              minLines: 1,
-                                              validator: _model
-                                                  .textController24Validator
                                                   .asValidator(context),
                                             ),
                                           ),

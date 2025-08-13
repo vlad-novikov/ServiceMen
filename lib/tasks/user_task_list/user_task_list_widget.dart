@@ -563,7 +563,7 @@ class _UserTaskListWidgetState extends State<UserTaskListWidget> {
                                                   child: Container(
                                                     height: 80.0,
                                                     constraints: BoxConstraints(
-                                                      maxHeight: 55.0,
+                                                      maxHeight: 60.0,
                                                     ),
                                                     decoration: BoxDecoration(
                                                       color: () {
@@ -647,7 +647,7 @@ class _UserTaskListWidgetState extends State<UserTaskListWidget> {
                                                                   maxWidth:
                                                                       100.0,
                                                                   maxHeight:
-                                                                      50.0,
+                                                                      60.0,
                                                                 ),
                                                                 decoration:
                                                                     BoxDecoration(),

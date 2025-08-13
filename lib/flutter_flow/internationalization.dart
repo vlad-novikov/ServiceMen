@@ -1056,10 +1056,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Контакт на месте 2',
       'en': '',
     },
-    'q35pl7q4': {
-      'ru': 'Комментарий',
-      'en': '',
-    },
     'okpy7njz': {
       'ru': '',
       'en': '',

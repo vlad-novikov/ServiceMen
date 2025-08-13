@@ -14,7 +14,7 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
 
   bool changedDoerComment = false;
 
-  bool changedInternalComment = true;
+  bool changedInternalComment = false;
 
   bool changedOutingComment = false;
 
@@ -147,10 +147,6 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
   FocusNode? textFieldFocusNode6;
   TextEditingController? textController23;
   String? Function(BuildContext, String?)? textController23Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode7;
-  TextEditingController? textController24;
-  String? Function(BuildContext, String?)? textController24Validator;
 
   @override
   void initState(BuildContext context) {
@@ -229,8 +225,5 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
 
     textFieldFocusNode6?.dispose();
     textController23?.dispose();
-
-    textFieldFocusNode7?.dispose();
-    textController24?.dispose();
   }
 }
