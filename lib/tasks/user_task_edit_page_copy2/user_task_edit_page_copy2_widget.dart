@@ -16,33 +16,35 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'user_task_edit_page_model.dart';
-export 'user_task_edit_page_model.dart';
+import 'user_task_edit_page_copy2_model.dart';
+export 'user_task_edit_page_copy2_model.dart';
 
-class UserTaskEditPageWidget extends StatefulWidget {
-  const UserTaskEditPageWidget({
+class UserTaskEditPageCopy2Widget extends StatefulWidget {
+  const UserTaskEditPageCopy2Widget({
     super.key,
     required this.taskID,
   });
 
   final int? taskID;
 
-  static String routeName = 'UserTaskEditPage';
-  static String routePath = '/usertask';
+  static String routeName = 'UserTaskEditPageCopy2';
+  static String routePath = '/usertask2';
 
   @override
-  State<UserTaskEditPageWidget> createState() => _UserTaskEditPageWidgetState();
+  State<UserTaskEditPageCopy2Widget> createState() =>
+      _UserTaskEditPageCopy2WidgetState();
 }
 
-class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
-  late UserTaskEditPageModel _model;
+class _UserTaskEditPageCopy2WidgetState
+    extends State<UserTaskEditPageCopy2Widget> {
+  late UserTaskEditPageCopy2Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => UserTaskEditPageModel());
+    _model = createModel(context, () => UserTaskEditPageCopy2Model());
 
     _model.textFieldFocusNode1 ??= FocusNode();
 
@@ -134,7 +136,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                         context.pushNamed(UserTaskListWidget.routeName);
                       },
                       text: FFLocalizations.of(context).getText(
-                        'okpy7njz' /*  */,
+                        'aojbfv7d' /*  */,
                       ),
                       icon: Icon(
                         Icons.cancel_outlined,
@@ -342,8 +344,11 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                           // Update Outing Comment
                           await TasksTable().update(
                             data: {
-                              'outing_comment':
-                                  _model.textOutingCommentTextController.text,
+                              'outing_comment': (_model
+                                          .textOutingCommentFocusNode
+                                          ?.hasFocus ??
+                                      false)
+                                  .toString(),
                             },
                             matchingRows: (rows) => rows.eqOrNull(
                               'id',
@@ -426,7 +431,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                         );
                       },
                       text: FFLocalizations.of(context).getText(
-                        'bejh558x' /*  */,
+                        '7q58qki3' /*  */,
                       ),
                       icon: Icon(
                         Icons.thumb_up,
@@ -516,7 +521,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                           10.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          '8596afql' /* Информация о ТСП */,
+                                          'yuih1136' /* Информация о ТСП */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .titleSmall
@@ -561,7 +566,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                         decoration: InputDecoration(
                                           labelText: FFLocalizations.of(context)
                                               .getText(
-                                            'lttea7yv' /* Название ТСП */,
+                                            'rs0mf24y' /* Название ТСП */,
                                           ),
                                           labelStyle: FlutterFlowTheme.of(
                                                   context)
@@ -713,7 +718,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  '5iavadtc' /* Адрес ТСП */,
+                                                  'wheo7iq2' /* Адрес ТСП */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -908,7 +913,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'wko6co5x' /* Телефон */,
+                                                  'ecv1erf7' /* Телефон */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -1106,7 +1111,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                             labelText:
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                              'o6pympai' /* Договор эквайринга */,
+                                              'kmhg8avi' /* Договор эквайринга */,
                                             ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
@@ -1255,7 +1260,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                           10.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          '6qgs0csn' /* Информация об оборудовании */,
+                                          'hhzt78u8' /* Информация об оборудовании */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .titleSmall
@@ -1306,7 +1311,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'mlu906bg' /* Номер РР */,
+                                                  'fa9fui0d' /* Номер РР */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -1469,7 +1474,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'e420s824' /* Модель */,
+                                                  'c8ew95qu' /* Модель */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -1642,7 +1647,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'zhz925jw' /* Номер #2 */,
+                                                  '2itzb68e' /* Номер #2 */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -1806,7 +1811,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  '1n776z7b' /* Тип связи */,
+                                                  '5wuw7oa6' /* Тип связи */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -1974,7 +1979,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'rt35ln2v' /* Причина неисправности */,
+                                                  'wto903zl' /* Причина неисправности */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -2146,7 +2151,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'wtpqbyut' /* Выполнение */,
+                                            'f6djvaas' /* Выполнение */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .titleSmall
@@ -2200,7 +2205,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'uopszla7' /* Вид работ */,
+                                                  'zkkxmiga' /* Вид работ */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -2362,7 +2367,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'l2vhk9k4' /* CRM ID */,
+                                                  'xvym29bc' /* CRM ID */,
                                                 ),
                                                 hintStyle:
                                                     FlutterFlowTheme.of(context)
@@ -2501,7 +2506,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  '0bpuqtla' /* Статус */,
+                                                  'pnr0c3tb' /* Статус */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -2780,7 +2785,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'dgts325d' /* Признак переноса */,
+                                                  'enzolfas' /* Признак переноса */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -2959,7 +2964,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               },
                                               text: FFLocalizations.of(context)
                                                   .getText(
-                                                '4c7yivag' /* Завершить */,
+                                                'mbnjphyc' /* Завершить */,
                                               ),
                                               icon: Icon(
                                                 Icons.done_all,
@@ -3047,7 +3052,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               },
                                               text: FFLocalizations.of(context)
                                                   .getText(
-                                                'wnwvrfui' /* Перенести */,
+                                                'l27fbhd1' /* Перенести */,
                                               ),
                                               icon: Icon(
                                                 Icons.access_time,
@@ -3137,7 +3142,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    '4k53x1l2' /* Время завершения */,
+                                                    'oo1vbghb' /* Время завершения */,
                                                   ),
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
@@ -3171,7 +3176,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   hintText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    '1ykgmx60' /* Время, кода статус поменялся н... */,
+                                                    'wo0rr1dk' /* Время, кода статус поменялся н... */,
                                                   ),
                                                   enabledBorder:
                                                       InputBorder.none,
@@ -3252,7 +3257,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               },
                                               text: FFLocalizations.of(context)
                                                   .getText(
-                                                'fv9a4ux2' /* Возобновить */,
+                                                'd7475j0j' /* Возобновить */,
                                               ),
                                               icon: Icon(
                                                 Icons.remove_done,
@@ -3346,7 +3351,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'y0fopdx4' /* Исполнитель */,
+                                                          '91js1wo9' /* Исполнитель */,
                                                         ),
                                                         labelStyle:
                                                             FlutterFlowTheme.of(
@@ -3628,7 +3633,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          'xcnu8wf1' /* Число обучаемых */,
+                                                          'fr4tb70b' /* Число обучаемых */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -3801,7 +3806,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                        'f6qrdrxx' /* Комментарий исполнителя */,
+                                                        'wl44tbe9' /* Комментарий исполнителя */,
                                                       ),
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
@@ -3989,7 +3994,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                        'etddsg8u' /* Внутренний комментарий */,
+                                                        '5gmjaigz' /* Внутренний комментарий */,
                                                       ),
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
@@ -4257,7 +4262,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                        'vj7037r5' /* Комментарий к выезду */,
+                                                        'htainhyd' /* Комментарий к выезду */,
                                                       ),
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
@@ -4450,7 +4455,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                        'ba0rsb7q' /* Комментарий к парковке */,
+                                                        'sdrgfj6m' /* Комментарий к парковке */,
                                                       ),
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
@@ -4625,7 +4630,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'nfl9fjm0' /* Перенос */,
+                                            'renseo5u' /* Перенос */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .titleSmall
@@ -4690,7 +4695,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'iptemwzi' /* Причина переноса */,
+                                                    'xp1h536c' /* Причина переноса */,
                                                   ),
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
@@ -4980,7 +4985,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    '4yr4x3am' /* Дата переноса */,
+                                                    'ra81gtjt' /* Дата переноса */,
                                                   ),
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
@@ -5311,7 +5316,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'o96lfj4q' /* Контакт на месте */,
+                                                  'qr4aqtul' /* Контакт на месте */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -5472,7 +5477,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'nq2subo4' /* Контакт на месте 2 */,
+                                                  'jti1soci' /* Контакт на месте 2 */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)

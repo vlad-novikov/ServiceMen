@@ -40,3 +40,7 @@ export '/tasks/user_task_list_copy3/user_task_list_copy3_widget.dart'
     show UserTaskListCopy3Widget;
 export '/tasks/task_list_page_copy/task_list_page_copy_widget.dart'
     show TaskListPageCopyWidget;
+export '/tasks/user_task_list_copy4/user_task_list_copy4_widget.dart'
+    show UserTaskListCopy4Widget;
+export '/tasks/user_task_edit_page_copy2/user_task_edit_page_copy2_widget.dart'
+    show UserTaskEditPageCopy2Widget;
