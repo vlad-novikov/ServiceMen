@@ -23,16 +23,10 @@ export '/other/import_page/import_page_widget.dart' show ImportPageWidget;
 export '/other/test_page/test_page_widget.dart' show TestPageWidget;
 export '/tasks/user_task_edit_page/user_task_edit_page_widget.dart'
     show UserTaskEditPageWidget;
-export '/tasks/user_task_edit_page_copy/user_task_edit_page_copy_widget.dart'
-    show UserTaskEditPageCopyWidget;
 export '/tasks/user_task_edit_tabs/user_task_edit_tabs_widget.dart'
     show UserTaskEditTabsWidget;
 export '/tasks/user_task_list/user_task_list_widget.dart'
     show UserTaskListWidget;
-export '/tasks/user_task_list_copy/user_task_list_copy_widget.dart'
-    show UserTaskListCopyWidget;
-export '/tasks/user_task_list_copy2/user_task_list_copy2_widget.dart'
-    show UserTaskListCopy2Widget;
 export '/tasks/user_task_scroll/user_task_scroll_widget.dart'
     show UserTaskScrollWidget;
 export '/team_page/team_page_widget.dart' show TeamPageWidget;
@@ -42,5 +36,5 @@ export '/tasks/task_list_page_copy/task_list_page_copy_widget.dart'
     show TaskListPageCopyWidget;
 export '/tasks/user_task_list_copy4/user_task_list_copy4_widget.dart'
     show UserTaskListCopy4Widget;
-export '/tasks/user_task_edit_page_copy2/user_task_edit_page_copy2_widget.dart'
-    show UserTaskEditPageCopy2Widget;
+export '/tasks/user_task_edit_page_copy/user_task_edit_page_copy_widget.dart'
+    show UserTaskEditPageCopyWidget;

@@ -86,14 +86,13 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
 
     _model.textFieldTransferDescriptionFocusNode ??= FocusNode();
 
-    _model.textFieldTransferDateFocusNode ??= FocusNode();
+    _model.textTransferDateFocusNode ??= FocusNode();
 
-    _model.textFieldTransferDateMask =
-        MaskTextInputFormatter(mask: '##.##.####');
+    _model.textTransferDateMask = MaskTextInputFormatter(mask: '##.##.####');
 
-    _model.textFieldFocusNode5 ??= FocusNode();
+    _model.textTransferPhoneFocusNode1 ??= FocusNode();
 
-    _model.textFieldFocusNode6 ??= FocusNode();
+    _model.textTransferPhoneFocusNode2 ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -107,396 +106,421 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Title(
-        title: 'Заявка Инженера',
-        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
-        child: GestureDetector(
-          onTap: () {
-            FocusScope.of(context).unfocus();
-            FocusManager.instance.primaryFocus?.unfocus();
-          },
-          child: Scaffold(
-            key: scaffoldKey,
+    return FutureBuilder<List<TasksRow>>(
+      future: TasksTable().querySingleRow(
+        queryFn: (q) => q.eqOrNull(
+          'id',
+          widget.taskID,
+        ),
+      ),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Scaffold(
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            floatingActionButton: Opacity(
-              opacity: 0.9,
-              child: FloatingActionButton.extended(
-                onPressed: () {
-                  print('FABSave pressed ...');
-                },
-                backgroundColor: FlutterFlowTheme.of(context).primary,
-                elevation: 8.0,
-                label: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    FFButtonWidget(
-                      onPressed: () async {
-                        context.pushNamed(UserTaskListWidget.routeName);
-                      },
-                      text: FFLocalizations.of(context).getText(
-                        'okpy7njz' /*  */,
-                      ),
-                      icon: Icon(
-                        Icons.cancel_outlined,
-                        size: 24.0,
-                      ),
-                      options: FFButtonOptions(
-                        height: 40.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  font: GoogleFonts.interTight(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                                  color: Colors.white,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontStyle,
-                                ),
-                        elevation: 0.0,
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                    FFButtonWidget(
-                      onPressed: () async {
-                        await Future.wait([
-                          Future(() async {
-                            if (_model.textTaskStatusTextController.text ==
-                                'в работе') {
-                              // Меняем Статус на "выполнено"
-                              safeSetState(() {
-                                _model.textTaskStatusTextController?.text =
-                                    'выполнено';
-                              });
-                              if (_model.docsInTSPComponentModel
-                                          .radioDocOptionValue ==
-                                      null ||
-                                  _model.docsInTSPComponentModel
-                                          .radioDocOptionValue ==
-                                      '') {
-                                // Choose yes\no Doc Option
-                                var confirmDialogResponse =
-                                    await showDialog<bool>(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('Документы в ТСП'),
-                                              content: Text(
-                                                  'Уточните, находятся ли документы в ТСП?'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          false),
-                                                  child: Text('Нет'),
-                                                ),
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          true),
-                                                  child: Text('Да'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        ) ??
-                                        false;
-                                if (confirmDialogResponse) {
-                                  // Set YES in Doc Option
-                                  safeSetState(() {
-                                    _model
-                                        .docsInTSPComponentModel
-                                        .radioDocOptionValueController
-                                        ?.value = 'Да';
-                                  });
-                                } else {
-                                  // Set NO in Doc Option
-                                  safeSetState(() {
-                                    _model
-                                        .docsInTSPComponentModel
-                                        .radioDocOptionValueController
-                                        ?.value = 'Нет';
-                                  });
-                                }
-                              }
-                              // Обнуляем поле ПЕРЕНОС
-                              safeSetState(() {
-                                _model.textTaskTransferTextController?.text =
-                                    '';
-                              });
-                            } else {
-                              if (!((_model.textTaskStatusTextController.text ==
-                                      'не выполнено') &&
-                                  (_model.textTaskTransferTextController.text ==
-                                      'перенос'))) {
-                                return;
-                              }
-                            }
-                          }),
-                        ]);
-                        // Ставим Время
-                        safeSetState(() {
-                          _model.textFinishTimeTextController?.text =
-                              dateTimeFormat(
-                            "Hm",
-                            getCurrentTimestamp,
-                            locale: FFLocalizations.of(context).languageCode,
-                          );
-                        });
-                        // Ставим Время 2
-                        _model.finishDateTime = getCurrentTimestamp;
-                        safeSetState(() {});
-                        await TasksTable().update(
-                          data: {
-                            'task_status':
-                                _model.textTaskStatusTextController.text,
-                            'transfer_person': _model.textController22.text,
-                            'trainees_number': _model.countControllerValue,
-                            'transfer_date': supaSerialize<DateTime>(
-                                _model.pickedTransferDate),
-                            'location_contract':
-                                _model.textFieldContractTextController.text,
-                            'equipment_connection':
-                                _model.textFieldConnectionTextController.text,
-                            'task_transfer':
-                                _model.textTaskTransferTextController.text,
-                            'transfer_phone': _model.textController23.text,
-                            'finish_date':
-                                supaSerialize<DateTime>(_model.finishDateTime),
-                            'finish_time': supaSerialize<PostgresTime>(
-                                PostgresTime(_model.finishDateTime)),
-                            'task_doc_option': _model
-                                .docsInTSPComponentModel.radioDocOptionValue,
-                          },
-                          matchingRows: (rows) => rows.eqOrNull(
-                            'id',
-                            widget.taskID,
-                          ),
-                        );
-                        if (_model.changedDoerComment) {
-                          // Update Doer Comment
-                          await TasksTable().update(
-                            data: {
-                              'doer_description':
-                                  _model.textDoerDescriptionTextController.text,
-                            },
-                            matchingRows: (rows) => rows.eqOrNull(
-                              'id',
-                              widget.taskID,
-                            ),
-                          );
-                        } else {
-                          // Update Doer Comment
-                          await TasksTable().update(
-                            data: {
-                              'doer_description': '',
-                            },
-                            matchingRows: (rows) => rows.eqOrNull(
-                              'id',
-                              widget.taskID,
-                            ),
-                          );
-                        }
-
-                        if (_model.changedInternalComment) {
-                          // Update Internal Comment
-                          await TasksTable().update(
-                            data: {
-                              'internal_comment':
-                                  _model.textInternalCommentTextController.text,
-                            },
-                            matchingRows: (rows) => rows.eqOrNull(
-                              'id',
-                              widget.taskID,
-                            ),
-                          );
-                        } else {
-                          // Update Internal Comment
-                          await TasksTable().update(
-                            data: {
-                              'internal_comment': '',
-                            },
-                            matchingRows: (rows) => rows.eqOrNull(
-                              'id',
-                              widget.taskID,
-                            ),
-                          );
-                        }
-
-                        if (_model.changedOutingComment) {
-                          // Update Outing Comment
-                          await TasksTable().update(
-                            data: {
-                              'outing_comment':
-                                  _model.textOutingCommentTextController.text,
-                            },
-                            matchingRows: (rows) => rows.eqOrNull(
-                              'id',
-                              widget.taskID,
-                            ),
-                          );
-                        } else {
-                          // Update Outing Comment
-                          await TasksTable().update(
-                            data: {
-                              'outing_comment': '',
-                            },
-                            matchingRows: (rows) => rows.eqOrNull(
-                              'id',
-                              widget.taskID,
-                            ),
-                          );
-                        }
-
-                        if (_model.changedParkingComment) {
-                          // Update Parking Comment
-                          await TasksTable().update(
-                            data: {
-                              'parking_comment':
-                                  _model.textParkingCommentTextController.text,
-                            },
-                            matchingRows: (rows) => rows.eqOrNull(
-                              'id',
-                              widget.taskID,
-                            ),
-                          );
-                        } else {
-                          // Update Parking Comment
-                          await TasksTable().update(
-                            data: {
-                              'parking_comment': '',
-                            },
-                            matchingRows: (rows) => rows.eqOrNull(
-                              'id',
-                              widget.taskID,
-                            ),
-                          );
-                        }
-
-                        if (_model.changedTransferDescription) {
-                          // Update Transfer Descr
-                          await TasksTable().update(
-                            data: {
-                              'transfer_description': _model
-                                  .textFieldTransferDescriptionTextController
-                                  .text,
-                            },
-                            matchingRows: (rows) => rows.eqOrNull(
-                              'id',
-                              widget.taskID,
-                            ),
-                          );
-                        } else {
-                          // Update Transfer Descr
-                          await TasksTable().update(
-                            data: {
-                              'transfer_description': '',
-                            },
-                            matchingRows: (rows) => rows.eqOrNull(
-                              'id',
-                              widget.taskID,
-                            ),
-                          );
-                        }
-
-                        context.pushNamed(
-                          UserTaskListWidget.routeName,
-                          extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
-                              hasTransition: true,
-                              transitionType: PageTransitionType.topToBottom,
-                              duration: Duration(milliseconds: 100),
-                            ),
-                          },
-                        );
-                      },
-                      text: FFLocalizations.of(context).getText(
-                        'bejh558x' /*  */,
-                      ),
-                      icon: Icon(
-                        Icons.thumb_up,
-                        size: 24.0,
-                      ),
-                      options: FFButtonOptions(
-                        height: 40.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  font: GoogleFonts.interTight(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                                  color: Colors.white,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontStyle,
-                                ),
-                        elevation: 0.0,
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                  ],
+            body: Center(
+              child: SizedBox(
+                width: 50.0,
+                height: 50.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).primary,
+                  ),
                 ),
               ),
             ),
-            body: SafeArea(
-              top: true,
-              child: FutureBuilder<List<TasksRow>>(
-                future: TasksTable().querySingleRow(
-                  queryFn: (q) => q.eqOrNull(
-                    'id',
-                    widget.taskID,
-                  ),
-                ),
-                builder: (context, snapshot) {
-                  // Customize what your widget looks like when it's loading.
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: SizedBox(
-                        width: 50.0,
-                        height: 50.0,
-                        child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            FlutterFlowTheme.of(context).primary,
+          );
+        }
+        List<TasksRow> userTaskEditPageTasksRowList = snapshot.data!;
+
+        final userTaskEditPageTasksRow = userTaskEditPageTasksRowList.isNotEmpty
+            ? userTaskEditPageTasksRowList.first
+            : null;
+
+        return Title(
+            title: 'Заявка Инженера',
+            color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
+            child: GestureDetector(
+              onTap: () {
+                FocusScope.of(context).unfocus();
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
+              child: Scaffold(
+                key: scaffoldKey,
+                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+                floatingActionButton: Opacity(
+                  opacity: 0.9,
+                  child: FloatingActionButton.extended(
+                    onPressed: () {
+                      print('FABSave pressed ...');
+                    },
+                    backgroundColor: FlutterFlowTheme.of(context).primary,
+                    elevation: 8.0,
+                    label: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        FFButtonWidget(
+                          onPressed: () async {
+                            context.pushNamed(UserTaskListWidget.routeName);
+                          },
+                          text: FFLocalizations.of(context).getText(
+                            'okpy7njz' /*  */,
+                          ),
+                          icon: Icon(
+                            Icons.cancel_outlined,
+                            size: 24.0,
+                          ),
+                          options: FFButtonOptions(
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 0.0, 16.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                            elevation: 0.0,
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
                         ),
-                      ),
-                    );
-                  }
-                  List<TasksRow> columnTasksRowList = snapshot.data!;
+                        FFButtonWidget(
+                          onPressed: () async {
+                            await Future.wait([
+                              Future(() async {
+                                if (_model.textTaskStatusTextController.text ==
+                                    'в работе') {
+                                  // Меняем Статус на "выполнено"
+                                  safeSetState(() {
+                                    _model.textTaskStatusTextController?.text =
+                                        'выполнено';
+                                  });
+                                  if (_model.docsInTSPComponentModel
+                                              .radioDocOptionValue ==
+                                          null ||
+                                      _model.docsInTSPComponentModel
+                                              .radioDocOptionValue ==
+                                          '') {
+                                    // Choose yes\no Doc Option
+                                    var confirmDialogResponse =
+                                        await showDialog<bool>(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title:
+                                                      Text('Документы в ТСП'),
+                                                  content: Text(
+                                                      'Уточните, находятся ли документы в ТСП?'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext,
+                                                              false),
+                                                      child: Text('Нет'),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext,
+                                                              true),
+                                                      child: Text('Да'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            ) ??
+                                            false;
+                                    if (confirmDialogResponse) {
+                                      // Set YES in Doc Option
+                                      safeSetState(() {
+                                        _model
+                                            .docsInTSPComponentModel
+                                            .radioDocOptionValueController
+                                            ?.value = 'Да';
+                                      });
+                                    } else {
+                                      // Set NO in Doc Option
+                                      safeSetState(() {
+                                        _model
+                                            .docsInTSPComponentModel
+                                            .radioDocOptionValueController
+                                            ?.value = 'Нет';
+                                      });
+                                    }
+                                  }
+                                  // Обнуляем поле ПЕРЕНОС
+                                  safeSetState(() {
+                                    _model.textTaskTransferTextController
+                                        ?.text = '';
+                                  });
+                                } else {
+                                  if (!((_model.textTaskStatusTextController
+                                              .text ==
+                                          'не выполнено') &&
+                                      (_model.textTaskTransferTextController
+                                              .text ==
+                                          'перенос'))) {
+                                    return;
+                                  }
+                                }
+                              }),
+                            ]);
+                            // Ставим Время Окончания
+                            safeSetState(() {
+                              _model.textFinishTimeTextController?.text =
+                                  dateTimeFormat(
+                                "Hm",
+                                getCurrentTimestamp,
+                                locale:
+                                    FFLocalizations.of(context).languageCode,
+                              );
+                            });
+                            // Ставим Дату Время Окончания
+                            _model.finishDateTime = getCurrentTimestamp;
+                            safeSetState(() {});
+                            // Update fields in db
+                            await TasksTable().update(
+                              data: {
+                                'task_status':
+                                    _model.textTaskStatusTextController.text,
+                                'transfer_person': _model
+                                    .textTransferPhoneTextController1.text,
+                                'trainees_number': _model.countControllerValue,
+                                'location_contract':
+                                    _model.textFieldContractTextController.text,
+                                'equipment_connection': _model
+                                    .textFieldConnectionTextController.text,
+                                'task_transfer':
+                                    _model.textTaskTransferTextController.text,
+                                'transfer_phone': _model
+                                    .textTransferPhoneTextController2.text,
+                                'finish_date': supaSerialize<DateTime>(
+                                    _model.finishDateTime),
+                                'finish_time': supaSerialize<PostgresTime>(
+                                    PostgresTime(_model.finishDateTime)),
+                                'task_doc_option': _model
+                                    .docsInTSPComponentModel
+                                    .radioDocOptionValue,
+                              },
+                              matchingRows: (rows) => rows.eqOrNull(
+                                'id',
+                                widget.taskID,
+                              ),
+                            );
+                            if (_model.changedTransferDate == true) {
+                              // Update transfer date in db
+                              await TasksTable().update(
+                                data: {
+                                  'transfer_date': supaSerialize<DateTime>(
+                                      _model.transferDateTime),
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  userTaskEditPageTasksRow?.id,
+                                ),
+                              );
+                            }
+                            if (_model.changedDoerComment) {
+                              // Update Doer Comment
+                              await TasksTable().update(
+                                data: {
+                                  'doer_description': _model
+                                      .textDoerDescriptionTextController.text,
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            } else {
+                              // Update Doer Comment
+                              await TasksTable().update(
+                                data: {
+                                  'doer_description': '',
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            }
 
-                  final columnTasksRow = columnTasksRowList.isNotEmpty
-                      ? columnTasksRowList.first
-                      : null;
+                            if (_model.changedInternalComment) {
+                              // Update Internal Comment
+                              await TasksTable().update(
+                                data: {
+                                  'internal_comment': _model
+                                      .textInternalCommentTextController.text,
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            } else {
+                              // Update Internal Comment
+                              await TasksTable().update(
+                                data: {
+                                  'internal_comment': '',
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            }
 
-                  return SingleChildScrollView(
+                            if (_model.changedOutingComment) {
+                              // Update Outing Comment
+                              await TasksTable().update(
+                                data: {
+                                  'outing_comment': _model
+                                      .textOutingCommentTextController.text,
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            } else {
+                              // Update Outing Comment
+                              await TasksTable().update(
+                                data: {
+                                  'outing_comment': '',
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            }
+
+                            if (_model.changedParkingComment) {
+                              // Update Parking Comment
+                              await TasksTable().update(
+                                data: {
+                                  'parking_comment': _model
+                                      .textParkingCommentTextController.text,
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            } else {
+                              // Update Parking Comment
+                              await TasksTable().update(
+                                data: {
+                                  'parking_comment': '',
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            }
+
+                            if (_model.changedTransferDescription) {
+                              // Update Transfer Descr
+                              await TasksTable().update(
+                                data: {
+                                  'transfer_description': _model
+                                      .textFieldTransferDescriptionTextController
+                                      .text,
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            } else {
+                              // Update Transfer Descr
+                              await TasksTable().update(
+                                data: {
+                                  'transfer_description': '',
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            }
+
+                            context.pushNamed(
+                              UserTaskListWidget.routeName,
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType:
+                                      PageTransitionType.topToBottom,
+                                  duration: Duration(milliseconds: 100),
+                                ),
+                              },
+                            );
+                          },
+                          text: FFLocalizations.of(context).getText(
+                            'bejh558x' /*  */,
+                          ),
+                          icon: Icon(
+                            Icons.thumb_up,
+                            size: 24.0,
+                          ),
+                          options: FFButtonOptions(
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 0.0, 16.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                            elevation: 0.0,
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                body: SafeArea(
+                  top: true,
+                  child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -552,7 +576,8 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                       child: TextFormField(
                                         controller: _model.textController1 ??=
                                             TextEditingController(
-                                          text: columnTasksRow?.locationName,
+                                          text: userTaskEditPageTasksRow
+                                              ?.locationName,
                                         ),
                                         focusNode: _model.textFieldFocusNode1,
                                         autofocus: false,
@@ -701,7 +726,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller:
                                                   _model.textController2 ??=
                                                       TextEditingController(
-                                                text: columnTasksRow
+                                                text: userTaskEditPageTasksRow
                                                     ?.locationAddress,
                                               ),
                                               focusNode:
@@ -896,7 +921,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller:
                                                   _model.textController3 ??=
                                                       TextEditingController(
-                                                text: columnTasksRow
+                                                text: userTaskEditPageTasksRow
                                                     ?.locationPhone,
                                               ),
                                               focusNode:
@@ -1073,7 +1098,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                             onPressed: () async {
                                               await launchUrl(Uri(
                                                 scheme: 'tel',
-                                                path: columnTasksRow!
+                                                path: userTaskEditPageTasksRow!
                                                     .locationPhone!,
                                               ));
                                             },
@@ -1094,7 +1119,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                           controller: _model
                                                   .textFieldContractTextController ??=
                                               TextEditingController(
-                                            text: columnTasksRow
+                                            text: userTaskEditPageTasksRow
                                                 ?.locationContract,
                                           ),
                                           focusNode:
@@ -1294,8 +1319,8 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textFieldIDTextController ??=
                                                   TextEditingController(
-                                                text:
-                                                    columnTasksRow?.equipmentId,
+                                                text: userTaskEditPageTasksRow
+                                                    ?.equipmentId,
                                               ),
                                               focusNode:
                                                   _model.textFieldIDFocusNode,
@@ -1457,7 +1482,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textFieldModelTextController ??=
                                                   TextEditingController(
-                                                text: columnTasksRow
+                                                text: userTaskEditPageTasksRow
                                                     ?.equipmentModel,
                                               ),
                                               focusNode: _model
@@ -1630,7 +1655,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textFieldID2TextController ??=
                                                   TextEditingController(
-                                                text: columnTasksRow
+                                                text: userTaskEditPageTasksRow
                                                     ?.equipmentId2,
                                               ),
                                               focusNode:
@@ -1794,7 +1819,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textFieldConnectionTextController ??=
                                                   TextEditingController(
-                                                text: columnTasksRow
+                                                text: userTaskEditPageTasksRow
                                                     ?.equipmentConnection,
                                               ),
                                               focusNode: _model
@@ -1963,7 +1988,8 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textFieldTaskDescrTextController ??=
                                                   TextEditingController(
-                                                text: columnTasksRow?.taskDescr,
+                                                text: userTaskEditPageTasksRow
+                                                    ?.taskDescr,
                                               ),
                                               focusNode: _model
                                                   .textFieldTaskDescrFocusNode,
@@ -2188,7 +2214,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textTaskCategoryTextController ??=
                                                   TextEditingController(
-                                                text: columnTasksRow
+                                                text: userTaskEditPageTasksRow
                                                     ?.taskCategory,
                                               ),
                                               focusNode: _model
@@ -2351,7 +2377,8 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller:
                                                   _model.textController11 ??=
                                                       TextEditingController(
-                                                text: columnTasksRow?.crmId,
+                                                text: userTaskEditPageTasksRow
+                                                    ?.crmId,
                                               ),
                                               focusNode:
                                                   _model.textFieldFocusNode4,
@@ -2489,8 +2516,8 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textTaskStatusTextController ??=
                                                   TextEditingController(
-                                                text:
-                                                    columnTasksRow?.taskStatus,
+                                                text: userTaskEditPageTasksRow
+                                                    ?.taskStatus,
                                               ),
                                               focusNode: _model
                                                   .textTaskStatusFocusNode,
@@ -2768,7 +2795,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textTaskTransferTextController ??=
                                                   TextEditingController(
-                                                text: columnTasksRow
+                                                text: userTaskEditPageTasksRow
                                                     ?.taskTransfer,
                                               ),
                                               focusNode: _model
@@ -3120,7 +3147,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     TextEditingController(
                                                   text: dateTimeFormat(
                                                     "Hm",
-                                                    columnTasksRow
+                                                    userTaskEditPageTasksRow
                                                         ?.finishTime?.time,
                                                     locale: FFLocalizations.of(
                                                             context)
@@ -3249,6 +3276,20 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                       .textTaskTransferTextController
                                                       ?.text = '';
                                                 });
+                                                // Set all Changed to True
+                                                _model.changedDoerComment =
+                                                    true;
+                                                _model.changedInternalComment =
+                                                    true;
+                                                _model.changedOutingComment =
+                                                    true;
+                                                _model.changedParkingComment =
+                                                    true;
+                                                _model.changedTransferDescription =
+                                                    true;
+                                                _model.changedTransferDate =
+                                                    true;
+                                                safeSetState(() {});
                                               },
                                               text: FFLocalizations.of(context)
                                                   .getText(
@@ -3331,8 +3372,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                       controller: _model
                                                               .textDoerTextController ??=
                                                           TextEditingController(
-                                                        text: columnTasksRow
-                                                            ?.taskDoer,
+                                                        text:
+                                                            userTaskEditPageTasksRow
+                                                                ?.taskDoer,
                                                       ),
                                                       focusNode: _model
                                                           .textDoerFocusNode,
@@ -3599,168 +3641,164 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 updateCallback: () =>
                                                     safeSetState(() {}),
                                                 child: DocsInTSPComponentWidget(
-                                                  parameter1: columnTasksRow
-                                                      ?.taskDocOption,
+                                                  parameter1:
+                                                      userTaskEditPageTasksRow
+                                                          ?.taskDocOption,
                                                 ),
                                               ),
                                             ),
-                                            if ((_model.textTaskCategoryTextController
-                                                        .text ==
-                                                    'УСТАНОВКА') ||
-                                                (_model.textTaskCategoryTextController
-                                                        .text ==
-                                                    'ОБУЧЕНИЕ'))
-                                              Container(
-                                                decoration: BoxDecoration(),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  10.0,
-                                                                  0.0,
-                                                                  5.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'xcnu8wf1' /* Число обучаемых */,
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      width: 120.0,
-                                                      height: 40.0,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                        shape:
-                                                            BoxShape.rectangle,
-                                                      ),
-                                                      child:
-                                                          FlutterFlowCountController(
-                                                        decrementIconBuilder:
-                                                            (enabled) => Icon(
-                                                          Icons.remove_rounded,
-                                                          color: enabled
-                                                              ? FlutterFlowTheme
-                                                                      .of(
-                                                                          context)
-                                                                  .secondaryText
-                                                              : FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .alternate,
-                                                          size: 24.0,
-                                                        ),
-                                                        incrementIconBuilder:
-                                                            (enabled) => Icon(
-                                                          Icons.add_rounded,
-                                                          color: enabled
-                                                              ? FlutterFlowTheme
-                                                                      .of(
-                                                                          context)
-                                                                  .primary
-                                                              : FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .alternate,
-                                                          size: 24.0,
-                                                        ),
-                                                        countBuilder: (count) =>
-                                                            Text(
-                                                          count.toString(),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .titleLarge
-                                                              .override(
-                                                                font: GoogleFonts
-                                                                    .interTight(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleLarge
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleLarge
-                                                                      .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleLarge
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleLarge
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                        count: _model
-                                                                .countControllerValue ??=
-                                                            valueOrDefault<int>(
-                                                          columnTasksRow
-                                                              ?.traineesNumber,
-                                                          0,
-                                                        ),
-                                                        updateCount: (count) =>
-                                                            safeSetState(() =>
-                                                                _model.countControllerValue =
-                                                                    count),
-                                                        stepSize: 1,
-                                                        minimum: 0,
-                                                        maximum: 99,
-                                                        contentPadding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    12.0,
-                                                                    0.0,
-                                                                    12.0,
-                                                                    0.0),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
                                           ],
                                         ),
                                       ),
                                     ),
+                                    if ((_model.textTaskCategoryTextController
+                                                .text ==
+                                            'УСТАНОВКА') ||
+                                        (_model.textTaskCategoryTextController
+                                                .text ==
+                                            'ОБУЧЕНИЕ'))
+                                      Container(
+                                        decoration: BoxDecoration(),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20.0, 5.0, 20.0, 5.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 5.0, 0.0),
+                                                child: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'xcnu8wf1' /* Число обучаемых */,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                ),
+                                              ),
+                                              Container(
+                                                width: 120.0,
+                                                height: 40.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  shape: BoxShape.rectangle,
+                                                ),
+                                                child:
+                                                    FlutterFlowCountController(
+                                                  decrementIconBuilder:
+                                                      (enabled) => Icon(
+                                                    Icons.remove_rounded,
+                                                    color: enabled
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryText
+                                                        : FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
+                                                    size: 24.0,
+                                                  ),
+                                                  incrementIconBuilder:
+                                                      (enabled) => Icon(
+                                                    Icons.add_rounded,
+                                                    color: enabled
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary
+                                                        : FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
+                                                    size: 24.0,
+                                                  ),
+                                                  countBuilder: (count) => Text(
+                                                    count.toString(),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleLarge
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .interTight(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleLarge
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleLarge
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleLarge
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleLarge
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                  count: _model
+                                                          .countControllerValue ??=
+                                                      valueOrDefault<int>(
+                                                    userTaskEditPageTasksRow
+                                                        ?.traineesNumber,
+                                                    0,
+                                                  ),
+                                                  updateCount: (count) =>
+                                                      safeSetState(() => _model
+                                                              .countControllerValue =
+                                                          count),
+                                                  stepSize: 1,
+                                                  minimum: 0,
+                                                  maximum: 99,
+                                                  contentPadding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(12.0, 0.0,
+                                                              12.0, 0.0),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
                                     Container(
                                       decoration: BoxDecoration(),
                                       child: Column(
@@ -3778,8 +3816,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     controller: _model
                                                             .textDoerDescriptionTextController ??=
                                                         TextEditingController(
-                                                      text: columnTasksRow
-                                                          ?.doerDescription,
+                                                      text:
+                                                          userTaskEditPageTasksRow
+                                                              ?.doerDescription,
                                                     ),
                                                     focusNode: _model
                                                         .textDoerDescriptionFocusNode,
@@ -3966,8 +4005,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     controller: _model
                                                             .textInternalCommentTextController ??=
                                                         TextEditingController(
-                                                      text: columnTasksRow
-                                                          ?.internalComment,
+                                                      text:
+                                                          userTaskEditPageTasksRow
+                                                              ?.internalComment,
                                                     ),
                                                     focusNode: _model
                                                         .textInternalCommentFocusNode,
@@ -4234,8 +4274,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     controller: _model
                                                             .textOutingCommentTextController ??=
                                                         TextEditingController(
-                                                      text: columnTasksRow
-                                                          ?.outingComment,
+                                                      text:
+                                                          userTaskEditPageTasksRow
+                                                              ?.outingComment,
                                                     ),
                                                     focusNode: _model
                                                         .textOutingCommentFocusNode,
@@ -4427,8 +4468,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     controller: _model
                                                             .textParkingCommentTextController ??=
                                                         TextEditingController(
-                                                      text: columnTasksRow
-                                                          ?.parkingComment,
+                                                      text:
+                                                          userTaskEditPageTasksRow
+                                                              ?.parkingComment,
                                                     ),
                                                     focusNode: _model
                                                         .textParkingCommentFocusNode,
@@ -4669,7 +4711,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 controller: _model
                                                         .textFieldTransferDescriptionTextController ??=
                                                     TextEditingController(
-                                                  text: columnTasksRow
+                                                  text: userTaskEditPageTasksRow
                                                       ?.transferDescription,
                                                 ),
                                                 focusNode: _model
@@ -4912,14 +4954,16 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   if (_model.reasonName !=
                                                           null &&
                                                       _model.reasonName != '') {
+                                                    // Set Field Value
                                                     safeSetState(() {
                                                       _model.textFieldTransferDescriptionTextController
                                                               ?.text =
                                                           _model.reasonName!;
                                                     });
-                                                    if (_shouldSetState)
-                                                      safeSetState(() {});
-                                                    return;
+                                                    // Set Changed to True
+                                                    _model.changedTransferDescription =
+                                                        true;
+                                                    safeSetState(() {});
                                                   } else {
                                                     if (_shouldSetState)
                                                       safeSetState(() {});
@@ -4954,11 +4998,11 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                       20.0, 5.0, 5.0, 5.0),
                                               child: TextFormField(
                                                 controller: _model
-                                                        .textFieldTransferDateTextController ??=
+                                                        .textTransferDateTextController ??=
                                                     TextEditingController(
                                                   text: dateTimeFormat(
                                                     "dd-MM-yyyy",
-                                                    columnTasksRow
+                                                    userTaskEditPageTasksRow
                                                         ?.transferDate,
                                                     locale: FFLocalizations.of(
                                                             context)
@@ -4966,10 +5010,10 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   ),
                                                 ),
                                                 focusNode: _model
-                                                    .textFieldTransferDateFocusNode,
+                                                    .textTransferDateFocusNode,
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
-                                                  '_model.textFieldTransferDateTextController',
+                                                  '_model.textTransferDateTextController',
                                                   Duration(milliseconds: 2000),
                                                   () => safeSetState(() {}),
                                                 ),
@@ -4980,7 +5024,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    '4yr4x3am' /* Дата переноса */,
+                                                    '0bk8ne22' /* Дата переноса */,
                                                   ),
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
@@ -5087,13 +5131,13 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                               context)
                                                           .primaryBackground,
                                                   suffixIcon: _model
-                                                          .textFieldTransferDateTextController!
+                                                          .textTransferDateTextController!
                                                           .text
                                                           .isNotEmpty
                                                       ? InkWell(
                                                           onTap: () async {
                                                             _model
-                                                                .textFieldTransferDateTextController
+                                                                .textTransferDateTextController
                                                                 ?.clear();
                                                             safeSetState(() {});
                                                           },
@@ -5140,11 +5184,10 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 keyboardType:
                                                     TextInputType.datetime,
                                                 validator: _model
-                                                    .textFieldTransferDateTextControllerValidator
+                                                    .textTransferDateTextControllerValidator
                                                     .asValidator(context),
                                                 inputFormatters: [
-                                                  _model
-                                                      .textFieldTransferDateMask
+                                                  _model.textTransferDateMask
                                                 ],
                                               ),
                                             ),
@@ -5257,30 +5300,25 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     null)) {
                                                   return;
                                                 }
-                                                // Save picked to Date field
+                                                // Save Value to Text Field
                                                 safeSetState(() {
                                                   _model
-                                                      .textFieldTransferDateTextController
-                                                      ?.text = dateTimeFormat(
-                                                    "dd-MM-yyyy",
-                                                    _model.datePicked,
-                                                    locale: FFLocalizations.of(
-                                                            context)
-                                                        .languageCode,
-                                                  );
-                                                  _model
-                                                      .textFieldTransferDateMask
+                                                      .textTransferDateTextController
+                                                      ?.text = '';
+                                                  _model.textTransferDateMask
                                                       .updateMask(
                                                     newValue: TextEditingValue(
                                                       text: _model
-                                                          .textFieldTransferDateTextController!
+                                                          .textTransferDateTextController!
                                                           .text,
                                                     ),
                                                   );
                                                 });
                                                 // Save picked to DateTime Var
-                                                _model.pickedTransferDate =
+                                                _model.transferDateTime =
                                                     _model.datePicked;
+                                                _model.changedTransferDate =
+                                                    true;
                                                 safeSetState(() {});
                                               },
                                             ),
@@ -5297,14 +5335,14 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
-                                              controller:
-                                                  _model.textController22 ??=
-                                                      TextEditingController(
-                                                text: columnTasksRow
+                                              controller: _model
+                                                      .textTransferPhoneTextController1 ??=
+                                                  TextEditingController(
+                                                text: userTaskEditPageTasksRow
                                                     ?.transferPerson,
                                               ),
-                                              focusNode:
-                                                  _model.textFieldFocusNode5,
+                                              focusNode: _model
+                                                  .textTransferPhoneFocusNode1,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -5447,7 +5485,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                       ),
                                               minLines: 1,
                                               validator: _model
-                                                  .textController22Validator
+                                                  .textTransferPhoneTextController1Validator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -5458,21 +5496,21 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 5.0, 20.0, 5.0),
                                             child: TextFormField(
-                                              controller:
-                                                  _model.textController23 ??=
-                                                      TextEditingController(
-                                                text: columnTasksRow
+                                              controller: _model
+                                                      .textTransferPhoneTextController2 ??=
+                                                  TextEditingController(
+                                                text: userTaskEditPageTasksRow
                                                     ?.transferPhone,
                                               ),
-                                              focusNode:
-                                                  _model.textFieldFocusNode6,
+                                              focusNode: _model
+                                                  .textTransferPhoneFocusNode2,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'nq2subo4' /* Контакт на месте 2 */,
+                                                  'nq2subo4' /* Телефон */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -5609,7 +5647,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               minLines: 1,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
-                                                  .textController23Validator
+                                                  .textTransferPhoneTextController2Validator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -5623,11 +5661,11 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                         ),
                       ],
                     ),
-                  );
-                },
+                  ),
+                ),
               ),
-            ),
-          ),
-        ));
+            ));
+      },
+    );
   }
 }

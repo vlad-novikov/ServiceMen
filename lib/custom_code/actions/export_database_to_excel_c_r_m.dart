@@ -78,6 +78,8 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
     String taskStatus = row['task_status'].toString();
     String taskTransfer = '';
     String doerDescription = '';
+    String transferPerson = '';
+    String transferPhone = '';
     String transferComment = '';
     if (row['task_status'] == 'в работе') {
       taskStatus = ''; // странно, но такова просьба банка
@@ -93,6 +95,14 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       doerDescription = row['doer_description'].toString() +
           row['transfer_reason'].toString();
       transferComment = row['transfer_comment'].toString();
+    }
+    if (row['transfer_phone'].toString() == '') {
+      // если столбец Q заполнен, в столбце P пишем "конктное лицо"
+      transferPerson = '';
+      transferPhone = '';
+    } else {
+      transferPerson = 'контактное лицо';
+      transferPhone = row['transfer_phone'].toString();
     }
 
     excelSheet.appendRow([
@@ -112,8 +122,8 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       ex.TextCellValue(
           doerDescription + row['transfer_description'].toString()), // 13 N
       ex.TextCellValue(row['task_doer'].toString()), // 14
-      ex.TextCellValue(row['transfer_person'].toString()), // 15
-      ex.TextCellValue(row['transfer_phone'].toString()), // 16
+      ex.TextCellValue(transferPerson), // 15
+      ex.TextCellValue(transferPhone), // 16
       ex.TextCellValue(row['colR'].toString()), // 17
       ex.TextCellValue(row['equipment_id2'].toString()), //  18
       ex.TextCellValue(row['crm_id'].toString()), //  19 T

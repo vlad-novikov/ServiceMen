@@ -178,17 +178,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: UserTaskEditPageCopyWidget.routeName,
-          path: UserTaskEditPageCopyWidget.routePath,
-          requireAuth: true,
-          builder: (context, params) => UserTaskEditPageCopyWidget(
-            taskID: params.getParam(
-              'taskID',
-              ParamType.int,
-            ),
-          ),
-        ),
-        FFRoute(
           name: UserTaskEditTabsWidget.routeName,
           path: UserTaskEditTabsWidget.routePath,
           builder: (context, params) => UserTaskEditTabsWidget(),
@@ -197,16 +186,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: UserTaskListWidget.routeName,
           path: UserTaskListWidget.routePath,
           builder: (context, params) => UserTaskListWidget(),
-        ),
-        FFRoute(
-          name: UserTaskListCopyWidget.routeName,
-          path: UserTaskListCopyWidget.routePath,
-          builder: (context, params) => UserTaskListCopyWidget(),
-        ),
-        FFRoute(
-          name: UserTaskListCopy2Widget.routeName,
-          path: UserTaskListCopy2Widget.routePath,
-          builder: (context, params) => UserTaskListCopy2Widget(),
         ),
         FFRoute(
           name: UserTaskScrollWidget.routeName,
@@ -234,10 +213,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => UserTaskListCopy4Widget(),
         ),
         FFRoute(
-          name: UserTaskEditPageCopy2Widget.routeName,
-          path: UserTaskEditPageCopy2Widget.routePath,
+          name: UserTaskEditPageCopyWidget.routeName,
+          path: UserTaskEditPageCopyWidget.routePath,
           requireAuth: true,
-          builder: (context, params) => UserTaskEditPageCopy2Widget(
+          builder: (context, params) => UserTaskEditPageCopyWidget(
             taskID: params.getParam(
               'taskID',
               ParamType.int,
