@@ -40,6 +40,7 @@ class _UserTaskListWidgetState extends State<UserTaskListWidget> {
       _model.pageDate = FFAppState().AppCurrDate;
       _model.pageUserId = currentUserUid;
       safeSetState(() {});
+      // Get Current User row
       _model.queryCurrentUser = await UsersTable().queryRows(
         queryFn: (q) => q.eqOrNull(
           'email',
@@ -51,6 +52,7 @@ class _UserTaskListWidgetState extends State<UserTaskListWidget> {
         FFAppState().AppCurrDate = getCurrentTimestamp;
         safeSetState(() {});
       }
+      // Set Current Name and Date string
       FFAppState().AppCurDateStr = dateTimeFormat(
         "yyyy-MM-dd",
         FFAppState().AppCurrDate,
@@ -243,11 +245,11 @@ class _UserTaskListWidgetState extends State<UserTaskListWidget> {
                           if (!snapshot.hasData) {
                             return Center(
                               child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
+                                width: 90.0,
+                                height: 90.0,
                                 child: CircularProgressIndicator(
                                   valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).primary,
+                                    FlutterFlowTheme.of(context).success,
                                   ),
                                 ),
                               ),

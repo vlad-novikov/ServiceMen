@@ -61,7 +61,7 @@ Future<String?> importExcelToDatabase() async {
       rowColor = []; //init empty row colors
       addRow = true; // row is added by default
       badRow = false; //  row is good by default
-      //FFAppState().test1 += '#1';
+      FFAppState().test1 += '#1';
       for (var c = 0; c < 20; c++) {
         //FFAppState().test1 += ' col' + c.toString();
         // Get the cell value for this column
@@ -71,18 +71,25 @@ Future<String?> importExcelToDatabase() async {
         ////
         if (cellData != null) {
           CellValue? cellValue = cellData.value;
+          CellStyle? cellStyle = cellData.cellStyle;
           if (cellValue != null) {
             strValue = clearString(cellValue.toString());
           }
+          if (cellStyle != null) {
+            strColor =
+                clearString(cellStyle.backgroundColor.colorHex.toString());
+            strColor = clearString(cellStyle.toString());
+          }
         }
 
-        //FFAppState().test1 += ' val ' + strValue;
+        FFAppState().test1 += ' col ' + strColor;
         if ((c < 2) && ((strValue?.isEmpty ?? true) | (strValue == ''))) {
           // if any value in first 3 columns of row is null or empty, we skip this row
           badRow = true;
         } else {
           try {
             row.add(strValue);
+            rowColor.add(strColor);
           } catch (e) {
             strError = e.toString();
             return 'Ошибка при  импорте строки ' +
@@ -128,7 +135,9 @@ Future<String?> importExcelToDatabase() async {
           'transfer_phone': row[16],
           'colR': row[17],
           'equipment_id2': row[18],
-          'crm_id': row[19]
+          'crm_id': row[19],
+          'colD_color': rowColor[3],
+          'colE_color': rowColor[4]
         }).select();
         if (response == null) {
           i2++;

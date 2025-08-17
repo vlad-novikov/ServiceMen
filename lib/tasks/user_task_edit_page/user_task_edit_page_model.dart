@@ -22,7 +22,7 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
 
   bool changedTransferComment = false;
 
-  bool changedTransferDescription = false;
+  bool changedTransferReason = false;
 
   bool changedTransferDate = false;
 
@@ -127,11 +127,11 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
   TextEditingController? textParkingCommentTextController;
   String? Function(BuildContext, String?)?
       textParkingCommentTextControllerValidator;
-  // State field(s) for TextFieldTransferDescription widget.
-  FocusNode? textFieldTransferDescriptionFocusNode;
-  TextEditingController? textFieldTransferDescriptionTextController;
+  // State field(s) for TextFieldTransferReason widget.
+  FocusNode? textFieldTransferReasonFocusNode;
+  TextEditingController? textFieldTransferReasonTextController;
   String? Function(BuildContext, String?)?
-      textFieldTransferDescriptionTextControllerValidator;
+      textFieldTransferReasonTextControllerValidator;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in IconButtonReason widget.
   String? reasonName;
   // State field(s) for TextTransferDate widget.
@@ -218,8 +218,8 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
     textParkingCommentFocusNode?.dispose();
     textParkingCommentTextController?.dispose();
 
-    textFieldTransferDescriptionFocusNode?.dispose();
-    textFieldTransferDescriptionTextController?.dispose();
+    textFieldTransferReasonFocusNode?.dispose();
+    textFieldTransferReasonTextController?.dispose();
 
     textTransferDateFocusNode?.dispose();
     textTransferDateTextController?.dispose();

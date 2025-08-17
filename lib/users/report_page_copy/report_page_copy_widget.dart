@@ -542,8 +542,8 @@ class _ReportPageCopyWidgetState extends State<ReportPageCopyWidget> {
                                               if (!snapshot.hasData) {
                                                 return Center(
                                                   child: SizedBox(
-                                                    width: 50.0,
-                                                    height: 50.0,
+                                                    width: 90.0,
+                                                    height: 90.0,
                                                     child:
                                                         CircularProgressIndicator(
                                                       valueColor:
@@ -551,7 +551,7 @@ class _ReportPageCopyWidgetState extends State<ReportPageCopyWidget> {
                                                               Color>(
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .primary,
+                                                            .success,
                                                       ),
                                                     ),
                                                   ),

@@ -39,7 +39,28 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      FFAppState().AppCurrDate = getCurrentTimestamp;
+      // Get Current User row
+      _model.queryCurrentUser = await UsersTable().queryRows(
+        queryFn: (q) => q.eqOrNull(
+          'email',
+          currentUserEmail,
+        ),
+      );
+      if (!(FFAppState().AppCurrDate != null)) {
+        // Set Date if not set yet
+        FFAppState().AppCurrDate = getCurrentTimestamp;
+        safeSetState(() {});
+      }
+      // Set Current Name and Date string
+      FFAppState().AppCurDateStr = dateTimeFormat(
+        "yyyy-MM-dd",
+        FFAppState().AppCurrDate,
+        locale: FFLocalizations.of(context).languageCode,
+      );
+      FFAppState().AppCurName =
+          _model.queryCurrentUser!.take(1).toList().firstOrNull!.lastName!;
+      FFAppState().AppLastName = _model.queryCurrentUser!.firstOrNull!.email!;
+      safeSetState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -146,11 +167,11 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                           if (!snapshot.hasData) {
                             return Center(
                               child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
+                                width: 90.0,
+                                height: 90.0,
                                 child: CircularProgressIndicator(
                                   valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).primary,
+                                    FlutterFlowTheme.of(context).success,
                                   ),
                                 ),
                               ),

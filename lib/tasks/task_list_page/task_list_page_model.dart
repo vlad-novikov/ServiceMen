@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/components/date_filter_component_widget.dart';
 import '/components/side_navigation_component_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -18,6 +19,8 @@ class TaskListPageModel extends FlutterFlowModel<TaskListPageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Backend Call - Query Rows] action in TaskListPage widget.
+  List<UsersRow>? queryCurrentUser;
   // Model for SideNavigationComponent component.
   late SideNavigationComponentModel sideNavigationComponentModel;
   // Model for DateFilterComponent component.

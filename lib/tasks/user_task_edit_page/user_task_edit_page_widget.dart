@@ -84,7 +84,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
 
     _model.textParkingCommentFocusNode ??= FocusNode();
 
-    _model.textFieldTransferDescriptionFocusNode ??= FocusNode();
+    _model.textFieldTransferReasonFocusNode ??= FocusNode();
 
     _model.textTransferDateFocusNode ??= FocusNode();
 
@@ -120,11 +120,11 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: Center(
               child: SizedBox(
-                width: 50.0,
-                height: 50.0,
+                width: 90.0,
+                height: 90.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    FlutterFlowTheme.of(context).success,
                   ),
                 ),
               ),
@@ -266,7 +266,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                       });
                                     }
                                   }
-                                  // Обнуляем поле ПЕРЕНОС
+                                  // Set Transfer
                                   safeSetState(() {
                                     _model.textTaskTransferTextController
                                         ?.text = '';
@@ -451,12 +451,12 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                               );
                             }
 
-                            if (_model.changedTransferDescription) {
+                            if (_model.changedTransferReason) {
                               // Update Transfer Descr
                               await TasksTable().update(
                                 data: {
-                                  'transfer_description': _model
-                                      .textFieldTransferDescriptionTextController
+                                  'transfer_reason': _model
+                                      .textFieldTransferReasonTextController
                                       .text,
                                 },
                                 matchingRows: (rows) => rows.eqOrNull(
@@ -468,7 +468,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                               // Update Transfer Descr
                               await TasksTable().update(
                                 data: {
-                                  'transfer_description': '',
+                                  'transfer_reason': '',
                                 },
                                 matchingRows: (rows) => rows.eqOrNull(
                                   'id',
@@ -3298,7 +3298,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     true;
                                                 _model.changedParkingComment =
                                                     true;
-                                                _model.changedTransferDescription =
+                                                _model.changedTransferReason =
                                                     true;
                                                 _model.changedTransferDate =
                                                     true;
@@ -4722,19 +4722,19 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                       20.0, 5.0, 20.0, 5.0),
                                               child: TextFormField(
                                                 controller: _model
-                                                        .textFieldTransferDescriptionTextController ??=
+                                                        .textFieldTransferReasonTextController ??=
                                                     TextEditingController(
                                                   text: userTaskEditPageTasksRow
-                                                      ?.transferDescription,
+                                                      ?.transferReason,
                                                 ),
                                                 focusNode: _model
-                                                    .textFieldTransferDescriptionFocusNode,
+                                                    .textFieldTransferReasonFocusNode,
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
-                                                  '_model.textFieldTransferDescriptionTextController',
+                                                  '_model.textFieldTransferReasonTextController',
                                                   Duration(milliseconds: 2000),
                                                   () async {
-                                                    _model.changedTransferDescription =
+                                                    _model.changedTransferReason =
                                                         true;
                                                     safeSetState(() {});
                                                   },
@@ -4847,15 +4847,15 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                             8.0),
                                                   ),
                                                   suffixIcon: _model
-                                                          .textFieldTransferDescriptionTextController!
+                                                          .textFieldTransferReasonTextController!
                                                           .text
                                                           .isNotEmpty
                                                       ? InkWell(
                                                           onTap: () async {
                                                             _model
-                                                                .textFieldTransferDescriptionTextController
+                                                                .textFieldTransferReasonTextController
                                                                 ?.clear();
-                                                            _model.changedTransferDescription =
+                                                            _model.changedTransferReason =
                                                                 true;
                                                             safeSetState(() {});
                                                             safeSetState(() {});
@@ -4901,7 +4901,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                         ),
                                                 minLines: 1,
                                                 validator: _model
-                                                    .textFieldTransferDescriptionTextControllerValidator
+                                                    .textFieldTransferReasonTextControllerValidator
                                                     .asValidator(context),
                                               ),
                                             ),
@@ -4969,12 +4969,12 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                       _model.reasonName != '') {
                                                     // Set Field Value
                                                     safeSetState(() {
-                                                      _model.textFieldTransferDescriptionTextController
+                                                      _model.textFieldTransferReasonTextController
                                                               ?.text =
                                                           _model.reasonName!;
                                                     });
                                                     // Set Changed to True
-                                                    _model.changedTransferDescription =
+                                                    _model.changedTransferReason =
                                                         true;
                                                     safeSetState(() {});
                                                   } else {
@@ -4989,7 +4989,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               ),
                                             ),
                                           ),
-                                          if (_model.changedTransferDescription)
+                                          if (_model.changedTransferReason)
                                             Icon(
                                               Icons.check,
                                               color:
@@ -5315,10 +5315,15 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 }
                                                 // Save Value to Text Field
                                                 safeSetState(() {
-                                                  _model.textTransferDateTextController
-                                                          ?.text =
-                                                      _model.datePicked!
-                                                          .toString();
+                                                  _model
+                                                      .textTransferDateTextController
+                                                      ?.text = dateTimeFormat(
+                                                    "dd-MM-yyyy",
+                                                    _model.datePicked,
+                                                    locale: FFLocalizations.of(
+                                                            context)
+                                                        .languageCode,
+                                                  );
                                                   _model.textTransferDateMask
                                                       .updateMask(
                                                     newValue: TextEditingValue(

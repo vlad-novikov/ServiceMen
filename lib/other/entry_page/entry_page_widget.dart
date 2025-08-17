@@ -81,11 +81,11 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
             backgroundColor: Colors.white,
             body: Center(
               child: SizedBox(
-                width: 50.0,
-                height: 50.0,
+                width: 90.0,
+                height: 90.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    FlutterFlowTheme.of(context).success,
                   ),
                 ),
               ),
