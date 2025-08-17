@@ -222,6 +222,8 @@ dynamic deserializeParam<T>(
         switch (T) {
           case TasksDuplicate2Row:
             return TasksDuplicate2Row(data);
+          case TasksDuplicate3Row:
+            return TasksDuplicate3Row(data);
           case TasksDuplicateRow:
             return TasksDuplicateRow(data);
           case TasksRow:

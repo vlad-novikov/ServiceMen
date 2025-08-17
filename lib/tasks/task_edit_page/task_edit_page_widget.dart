@@ -2063,7 +2063,6 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                               focusNode:
                                                   _model.textFieldFocusNode6,
                                               autofocus: false,
-                                              readOnly: true,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
@@ -2632,7 +2631,6 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                               focusNode: _model
                                                   .textTaskTransferFocusNode,
                                               autofocus: false,
-                                              readOnly: true,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
@@ -4105,7 +4103,6 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                 focusNode: _model
                                                     .textFieldTransferDateFocusNode,
                                                 autofocus: false,
-                                                readOnly: true,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelText: FFLocalizations.of(

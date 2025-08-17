@@ -1,18 +1,19 @@
 import '../database.dart';
 
-class TasksTable extends SupabaseTable<TasksRow> {
+class TasksDuplicate3Table extends SupabaseTable<TasksDuplicate3Row> {
   @override
-  String get tableName => 'tasks';
+  String get tableName => 'tasks_duplicate_3';
 
   @override
-  TasksRow createRow(Map<String, dynamic> data) => TasksRow(data);
+  TasksDuplicate3Row createRow(Map<String, dynamic> data) =>
+      TasksDuplicate3Row(data);
 }
 
-class TasksRow extends SupabaseDataRow {
-  TasksRow(Map<String, dynamic> data) : super(data);
+class TasksDuplicate3Row extends SupabaseDataRow {
+  TasksDuplicate3Row(Map<String, dynamic> data) : super(data);
 
   @override
-  SupabaseTable get table => TasksTable();
+  SupabaseTable get table => TasksDuplicate3Table();
 
   int get id => getField<int>('id')!;
   set id(int value) => setField<int>('id', value);
@@ -161,10 +162,4 @@ class TasksRow extends SupabaseDataRow {
 
   String? get colR => getField<String>('colR');
   set colR(String? value) => setField<String>('colR', value);
-
-  String? get colDColor => getField<String>('colD_color');
-  set colDColor(String? value) => setField<String>('colD_color', value);
-
-  String? get colEColor => getField<String>('colE_color');
-  set colEColor(String? value) => setField<String>('colE_color', value);
 }

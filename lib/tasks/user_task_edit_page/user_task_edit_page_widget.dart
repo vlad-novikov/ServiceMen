@@ -337,7 +337,20 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                   userTaskEditPageTasksRow?.id,
                                 ),
                               );
+                            } else {
+                              // Unset transfer date in db
+                              await TasksTable().update(
+                                data: {
+                                  'transfer_date':
+                                      supaSerialize<DateTime>(null),
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  userTaskEditPageTasksRow?.id,
+                                ),
+                              );
                             }
+
                             if (_model.changedDoerComment) {
                               // Update Doer Comment
                               await TasksTable().update(
@@ -5302,9 +5315,10 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 }
                                                 // Save Value to Text Field
                                                 safeSetState(() {
-                                                  _model
-                                                      .textTransferDateTextController
-                                                      ?.text = '';
+                                                  _model.textTransferDateTextController
+                                                          ?.text =
+                                                      _model.datePicked!
+                                                          .toString();
                                                   _model.textTransferDateMask
                                                       .updateMask(
                                                     newValue: TextEditingValue(
@@ -5323,6 +5337,14 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               },
                                             ),
                                           ),
+                                          if (_model.changedTransferDate)
+                                            Icon(
+                                              Icons.check,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 24.0,
+                                            ),
                                         ],
                                       ),
                                     ),

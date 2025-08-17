@@ -38,6 +38,7 @@ Future<String?> importExcelToDatabase() async {
     bool addRow;
     bool badRow;
     List<String> row;
+    List<String> rowColor;
 
     final client = SupaFlow.client;
 
@@ -57,6 +58,7 @@ Future<String?> importExcelToDatabase() async {
     for (var r = 1; r < maxR; r++) {
       FFAppState().test1 += ' row ' + r.toString();
       row = []; // init empty row
+      rowColor = []; //init empty row colors
       addRow = true; // row is added by default
       badRow = false; //  row is good by default
       //FFAppState().test1 += '#1';
@@ -64,7 +66,9 @@ Future<String?> importExcelToDatabase() async {
         //FFAppState().test1 += ' col' + c.toString();
         // Get the cell value for this column
         var strValue = '';
+        var strColor = '';
         Data? cellData = rows[r][c];
+        ////
         if (cellData != null) {
           CellValue? cellValue = cellData.value;
           if (cellValue != null) {
