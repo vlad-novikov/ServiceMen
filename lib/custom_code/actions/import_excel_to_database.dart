@@ -78,11 +78,14 @@ Future<String?> importExcelToDatabase() async {
           if (cellStyle != null) {
             strColor =
                 clearString(cellStyle.backgroundColor.colorHex.toString());
-            strColor = clearString(cellStyle.toString());
+            //strColor = clearString(cellStyle.toString());
           }
         }
 
-        FFAppState().test1 += ' col ' + strColor;
+        if (c == 3 || c == 4) {
+          FFAppState().test1 +=
+              '\ In col ' + c.toString() + ' color is ' + strColor;
+        }
         if ((c < 2) && ((strValue?.isEmpty ?? true) | (strValue == ''))) {
           // if any value in first 3 columns of row is null or empty, we skip this row
           badRow = true;

@@ -59,7 +59,7 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
           "transfer_person, transfer_phone, " +
           "transfer_person_2, transfer_phone_2," +
           "transfer_comment, transfer_comment2, " +
-          "equipment_id2, crm_id,colR")
+          "equipment_id2, crm_id, colR, colD_color, colE_color")
       .eq('task_date', taskDate)
       .order('line_no', ascending: true);
   FFAppState().test1 = 'Export Step 21 done ';
@@ -80,7 +80,6 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
     String doerDescription = '';
     String transferPerson = '';
     String transferPhone = '';
-    String transferComment = '';
     if (row['task_status'] == 'в работе') {
       taskStatus = ''; // странно, но такова просьба банка
       transferDateString = '';
@@ -94,7 +93,6 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       taskTransfer = row['task_transfer'].toString();
       doerDescription = row['doer_description'].toString() +
           row['transfer_reason'].toString();
-      transferComment = row['transfer_comment'].toString();
     }
     if (row['transfer_phone'].toString() == '') {
       // если столбец Q заполнен, в столбце P пишем "конктное лицо"
@@ -129,6 +127,19 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       ex.TextCellValue(row['crm_id'].toString()), //  19 T
       //ex.TextCellValue(row['doer_description'].toString()) //  20 U
     ]);
+    //int colorValue = int.parse(row['colE_color'].toString(), radix: 16);
+    String stringColorHex = row['colE_color'].toString();
+    if (stringColorHex != 'none') {
+      stringColorHex = '#' + stringColorHex;
+    }
+    ex.ExcelColor excelColor = ex.ExcelColor.fromHexString(stringColorHex);
+    ex.CellStyle cellStyle = ex.CellStyle(backgroundColorHex: excelColor);
+
+    ex.CellIndex index =
+        ex.CellIndex.indexByColumnRow(columnIndex: 4, rowIndex: i + 1);
+
+    var cell = excelSheet.cell(index);
+    cell.cellStyle = cellStyle;
   }
 
   // download file

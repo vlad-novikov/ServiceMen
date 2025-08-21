@@ -141,3 +141,19 @@ String convertStringDateYMD2DMY(String stringDate) {
       DateFormat('dd.MM.yyyy').format(dtDate); // convert date to DB format
   return stringNewDate;
 }
+
+Color colorFromHexString(String hexColor) {
+// Remove '#' if present
+  String formattedHex = hexColor.replaceAll('#', '');
+
+  // Ensure full ARGB format (prepend 'FF' for full opacity if needed)
+  if (formattedHex.length == 6) {
+    formattedHex = 'FF' + formattedHex;
+  }
+
+  // Parse the hexadecimal string to an integer
+  int colorValue = int.parse(formattedHex, radix: 16);
+
+  // Create the Color object
+  return Color(colorValue);
+}
