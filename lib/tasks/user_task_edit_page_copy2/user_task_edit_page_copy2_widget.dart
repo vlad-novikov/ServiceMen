@@ -16,33 +16,35 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'user_task_edit_page_model.dart';
-export 'user_task_edit_page_model.dart';
+import 'user_task_edit_page_copy2_model.dart';
+export 'user_task_edit_page_copy2_model.dart';
 
-class UserTaskEditPageWidget extends StatefulWidget {
-  const UserTaskEditPageWidget({
+class UserTaskEditPageCopy2Widget extends StatefulWidget {
+  const UserTaskEditPageCopy2Widget({
     super.key,
     required this.taskID,
   });
 
   final int? taskID;
 
-  static String routeName = 'UserTaskEditPage';
-  static String routePath = '/usertask';
+  static String routeName = 'UserTaskEditPageCopy2';
+  static String routePath = '/usertask2';
 
   @override
-  State<UserTaskEditPageWidget> createState() => _UserTaskEditPageWidgetState();
+  State<UserTaskEditPageCopy2Widget> createState() =>
+      _UserTaskEditPageCopy2WidgetState();
 }
 
-class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
-  late UserTaskEditPageModel _model;
+class _UserTaskEditPageCopy2WidgetState
+    extends State<UserTaskEditPageCopy2Widget> {
+  late UserTaskEditPageCopy2Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => UserTaskEditPageModel());
+    _model = createModel(context, () => UserTaskEditPageCopy2Model());
 
     _model.textFieldFocusNode1 ??= FocusNode();
 
@@ -133,11 +135,12 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
             ),
           );
         }
-        List<TasksRow> userTaskEditPageTasksRowList = snapshot.data!;
+        List<TasksRow> userTaskEditPageCopy2TasksRowList = snapshot.data!;
 
-        final userTaskEditPageTasksRow = userTaskEditPageTasksRowList.isNotEmpty
-            ? userTaskEditPageTasksRowList.first
-            : null;
+        final userTaskEditPageCopy2TasksRow =
+            userTaskEditPageCopy2TasksRowList.isNotEmpty
+                ? userTaskEditPageCopy2TasksRowList.first
+                : null;
 
         return Title(
             title: 'Заявка Инженера',
@@ -166,7 +169,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                             context.pushNamed(UserTaskListWidget.routeName);
                           },
                           text: FFLocalizations.of(context).getText(
-                            'okpy7njz' /*  */,
+                            'u08wjh7v' /*  */,
                           ),
                           icon: Icon(
                             Icons.cancel_outlined,
@@ -298,47 +301,6 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                             // Ставим Дату Время Окончания
                             _model.finishDateTime = getCurrentTimestamp;
                             safeSetState(() {});
-                            if (!_model.changedDoerComment) {
-                              safeSetState(() {
-                                _model.textDoerDescriptionTextController?.text =
-                                    '';
-                              });
-                            }
-                            if (!_model.changedInternalComment) {
-                              safeSetState(() {
-                                _model.textInternalCommentTextController?.text =
-                                    '';
-                              });
-                            }
-                            if (!_model.changedOutingComment) {
-                              safeSetState(() {
-                                _model.textOutingCommentTextController?.text =
-                                    '';
-                              });
-                            }
-                            if (!_model.changedParkingComment) {
-                              safeSetState(() {
-                                _model.textParkingCommentTextController?.text =
-                                    '';
-                              });
-                            }
-                            if (!_model.changedTransferDate) {
-                              _model.transferDateTime = null;
-                              safeSetState(() {});
-                            }
-                            if (!_model.changedTransferReason) {
-                              safeSetState(() {
-                                _model.textFieldTransferReasonTextController
-                                    ?.text = '';
-                              });
-                            }
-                            if (!_model.changedTransferComment) {
-                              // Set Empty Value
-                              safeSetState(() {
-                                _model.textFieldTrCommentTextController?.text =
-                                    '';
-                              });
-                            }
                             // Update fields in db
                             await TasksTable().update(
                               data: {
@@ -362,25 +324,188 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                 'task_doc_option': _model
                                     .docsInTSPComponentModel
                                     .radioDocOptionValue,
-                                'doer_description': _model
-                                    .textDoerDescriptionTextController.text,
-                                'internal_comment': _model
-                                    .textInternalCommentTextController.text,
-                                'outing_comment':
-                                    _model.textOutingCommentTextController.text,
-                                'parking_comment': _model
-                                    .textParkingCommentTextController.text,
-                                'transfer_date': supaSerialize<DateTime>(null),
-                                'transfer_reason': _model
-                                    .textFieldTransferReasonTextController.text,
-                                'transfer_comment': _model
-                                    .textFieldTrCommentTextController.text,
                               },
                               matchingRows: (rows) => rows.eqOrNull(
                                 'id',
                                 widget.taskID,
                               ),
                             );
+                            if (_model.changedTransferDate == true) {
+                              // Update transfer date in db
+                              await TasksTable().update(
+                                data: {
+                                  'transfer_date': supaSerialize<DateTime>(
+                                      _model.transferDateTime),
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  userTaskEditPageCopy2TasksRow?.id,
+                                ),
+                              );
+                            } else {
+                              // Unset transfer date in db
+                              await TasksTable().update(
+                                data: {
+                                  'transfer_date':
+                                      supaSerialize<DateTime>(null),
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  userTaskEditPageCopy2TasksRow?.id,
+                                ),
+                              );
+                            }
+
+                            if (_model.changedDoerComment) {
+                              // Update Doer Comment
+                              await TasksTable().update(
+                                data: {
+                                  'doer_description': _model
+                                      .textDoerDescriptionTextController.text,
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            } else {
+                              // Update Doer Comment
+                              await TasksTable().update(
+                                data: {
+                                  'doer_description': '',
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            }
+
+                            if (_model.changedInternalComment) {
+                              // Update Internal Comment
+                              await TasksTable().update(
+                                data: {
+                                  'internal_comment': _model
+                                      .textInternalCommentTextController.text,
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            } else {
+                              // Update Internal Comment
+                              await TasksTable().update(
+                                data: {
+                                  'internal_comment': '',
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            }
+
+                            if (_model.changedOutingComment) {
+                              // Update Outing Comment
+                              await TasksTable().update(
+                                data: {
+                                  'outing_comment': _model
+                                      .textOutingCommentTextController.text,
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            } else {
+                              // Update Outing Comment
+                              await TasksTable().update(
+                                data: {
+                                  'outing_comment': '',
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            }
+
+                            if (_model.changedParkingComment) {
+                              // Update Parking Comment
+                              await TasksTable().update(
+                                data: {
+                                  'parking_comment': _model
+                                      .textParkingCommentTextController.text,
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            } else {
+                              // Update Parking Comment
+                              await TasksTable().update(
+                                data: {
+                                  'parking_comment': '',
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            }
+
+                            if (_model.changedTransferReason) {
+                              // Update Transfer Reason
+                              await TasksTable().update(
+                                data: {
+                                  'transfer_reason': _model
+                                      .textFieldTransferReasonTextController
+                                      .text,
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            } else {
+                              // Update Transfer Reason
+                              await TasksTable().update(
+                                data: {
+                                  'transfer_reason': '',
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            }
+
+                            if (_model.changedTransferComment) {
+                              // Update Transfer Comment
+                              await TasksTable().update(
+                                data: {
+                                  'transfer_comment': _model
+                                      .textFieldTrCommentTextController.text,
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            } else {
+                              // Update Transfer Comment
+                              await TasksTable().update(
+                                data: {
+                                  'transfer_comment': '',
+                                },
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  widget.taskID,
+                                ),
+                              );
+                            }
 
                             context.pushNamed(
                               UserTaskListWidget.routeName,
@@ -395,7 +520,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                             );
                           },
                           text: FFLocalizations.of(context).getText(
-                            'bejh558x' /*  */,
+                            '9mvz0zc4' /*  */,
                           ),
                           icon: Icon(
                             Icons.thumb_up,
@@ -458,7 +583,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                           10.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          '8596afql' /* Информация о ТСП */,
+                                          'ppt6h74o' /* Информация о ТСП */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .titleSmall
@@ -494,7 +619,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                       child: TextFormField(
                                         controller: _model.textController1 ??=
                                             TextEditingController(
-                                          text: userTaskEditPageTasksRow
+                                          text: userTaskEditPageCopy2TasksRow
                                               ?.locationName,
                                         ),
                                         focusNode: _model.textFieldFocusNode1,
@@ -504,7 +629,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                         decoration: InputDecoration(
                                           labelText: FFLocalizations.of(context)
                                               .getText(
-                                            'lttea7yv' /* Название ТСП */,
+                                            'kejjpd92' /* Название ТСП */,
                                           ),
                                           labelStyle: FlutterFlowTheme.of(
                                                   context)
@@ -644,8 +769,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller:
                                                   _model.textController2 ??=
                                                       TextEditingController(
-                                                text: userTaskEditPageTasksRow
-                                                    ?.locationAddress,
+                                                text:
+                                                    userTaskEditPageCopy2TasksRow
+                                                        ?.locationAddress,
                                               ),
                                               focusNode:
                                                   _model.textFieldFocusNode2,
@@ -656,7 +782,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  '5iavadtc' /* Адрес ТСП */,
+                                                  'xhewfv00' /* Адрес ТСП */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -839,8 +965,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller:
                                                   _model.textController3 ??=
                                                       TextEditingController(
-                                                text: userTaskEditPageTasksRow
-                                                    ?.locationPhone,
+                                                text:
+                                                    userTaskEditPageCopy2TasksRow
+                                                        ?.locationPhone,
                                               ),
                                               focusNode:
                                                   _model.textFieldFocusNode3,
@@ -851,7 +978,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'wko6co5x' /* Телефон */,
+                                                  'u5rk0njv' /* Телефон */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -1016,8 +1143,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                             onPressed: () async {
                                               await launchUrl(Uri(
                                                 scheme: 'tel',
-                                                path: userTaskEditPageTasksRow!
-                                                    .locationPhone!,
+                                                path:
+                                                    userTaskEditPageCopy2TasksRow!
+                                                        .locationPhone!,
                                               ));
                                             },
                                           ),
@@ -1037,7 +1165,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                           controller: _model
                                                   .textFieldContractTextController ??=
                                               TextEditingController(
-                                            text: userTaskEditPageTasksRow
+                                            text: userTaskEditPageCopy2TasksRow
                                                 ?.locationContract,
                                           ),
                                           focusNode:
@@ -1049,7 +1177,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                             labelText:
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                              'o6pympai' /* Договор эквайринга */,
+                                              'nne0etce' /* Договор эквайринга */,
                                             ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
@@ -1198,7 +1326,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                           10.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          '6qgs0csn' /* Информация об оборудовании */,
+                                          '8anxdv9u' /* Информация об оборудовании */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .titleSmall
@@ -1237,8 +1365,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textFieldIDTextController ??=
                                                   TextEditingController(
-                                                text: userTaskEditPageTasksRow
-                                                    ?.equipmentId,
+                                                text:
+                                                    userTaskEditPageCopy2TasksRow
+                                                        ?.equipmentId,
                                               ),
                                               focusNode:
                                                   _model.textFieldIDFocusNode,
@@ -1249,7 +1378,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'mlu906bg' /* Номер РР */,
+                                                  '2xntzkez' /* Номер РР */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -1400,8 +1529,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textFieldModelTextController ??=
                                                   TextEditingController(
-                                                text: userTaskEditPageTasksRow
-                                                    ?.equipmentModel,
+                                                text:
+                                                    userTaskEditPageCopy2TasksRow
+                                                        ?.equipmentModel,
                                               ),
                                               focusNode: _model
                                                   .textFieldModelFocusNode,
@@ -1412,7 +1542,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'e420s824' /* Модель */,
+                                                  '0i5qi3u7' /* Модель */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -1573,8 +1703,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textFieldID2TextController ??=
                                                   TextEditingController(
-                                                text: userTaskEditPageTasksRow
-                                                    ?.equipmentId2,
+                                                text:
+                                                    userTaskEditPageCopy2TasksRow
+                                                        ?.equipmentId2,
                                               ),
                                               focusNode:
                                                   _model.textFieldID2FocusNode,
@@ -1585,7 +1716,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'zhz925jw' /* Номер #2 */,
+                                                  'edu5paa1' /* Номер #2 */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -1737,8 +1868,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textFieldConnectionTextController ??=
                                                   TextEditingController(
-                                                text: userTaskEditPageTasksRow
-                                                    ?.equipmentConnection,
+                                                text:
+                                                    userTaskEditPageCopy2TasksRow
+                                                        ?.equipmentConnection,
                                               ),
                                               focusNode: _model
                                                   .textFieldConnectionFocusNode,
@@ -1749,7 +1881,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  '1n776z7b' /* Тип связи */,
+                                                  'kegb8mrg' /* Тип связи */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -1906,8 +2038,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textFieldTaskDescrTextController ??=
                                                   TextEditingController(
-                                                text: userTaskEditPageTasksRow
-                                                    ?.taskDescr,
+                                                text:
+                                                    userTaskEditPageCopy2TasksRow
+                                                        ?.taskDescr,
                                               ),
                                               focusNode: _model
                                                   .textFieldTaskDescrFocusNode,
@@ -1918,7 +2051,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'rt35ln2v' /* Причина неисправности */,
+                                                  'dmmteww3' /* Причина неисправности */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -2090,7 +2223,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'wtpqbyut' /* Выполнение */,
+                                            'bc9ymtx5' /* Выполнение */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .titleSmall
@@ -2132,8 +2265,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textTaskCategoryTextController ??=
                                                   TextEditingController(
-                                                text: userTaskEditPageTasksRow
-                                                    ?.taskCategory,
+                                                text:
+                                                    userTaskEditPageCopy2TasksRow
+                                                        ?.taskCategory,
                                               ),
                                               focusNode: _model
                                                   .textTaskCategoryFocusNode,
@@ -2144,7 +2278,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'uopszla7' /* Вид работ */,
+                                                  '469mrd08' /* Вид работ */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -2295,8 +2429,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller:
                                                   _model.textController11 ??=
                                                       TextEditingController(
-                                                text: userTaskEditPageTasksRow
-                                                    ?.crmId,
+                                                text:
+                                                    userTaskEditPageCopy2TasksRow
+                                                        ?.crmId,
                                               ),
                                               focusNode:
                                                   _model.textFieldFocusNode4,
@@ -2307,7 +2442,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'l2vhk9k4' /* CRM ID */,
+                                                  'yzyjzagj' /* CRM ID */,
                                                 ),
                                                 hintStyle:
                                                     FlutterFlowTheme.of(context)
@@ -2434,8 +2569,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textTaskStatusTextController ??=
                                                   TextEditingController(
-                                                text: userTaskEditPageTasksRow
-                                                    ?.taskStatus,
+                                                text:
+                                                    userTaskEditPageCopy2TasksRow
+                                                        ?.taskStatus,
                                               ),
                                               focusNode: _model
                                                   .textTaskStatusFocusNode,
@@ -2446,7 +2582,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  '0bpuqtla' /* Статус */,
+                                                  'vgq6yn25' /* Статус */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -2713,8 +2849,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textTaskTransferTextController ??=
                                                   TextEditingController(
-                                                text: userTaskEditPageTasksRow
-                                                    ?.taskTransfer,
+                                                text:
+                                                    userTaskEditPageCopy2TasksRow
+                                                        ?.taskTransfer,
                                               ),
                                               focusNode: _model
                                                   .textTaskTransferFocusNode,
@@ -2725,7 +2862,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'dgts325d' /* Признак переноса */,
+                                                  'zbea844x' /* Признак переноса */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -2904,7 +3041,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               },
                                               text: FFLocalizations.of(context)
                                                   .getText(
-                                                '4c7yivag' /* Завершить */,
+                                                'kmsyejkc' /* Завершить */,
                                               ),
                                               icon: Icon(
                                                 Icons.done_all,
@@ -2992,7 +3129,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               },
                                               text: FFLocalizations.of(context)
                                                   .getText(
-                                                'wnwvrfui' /* Перенести */,
+                                                'helv91ji' /* Перенести */,
                                               ),
                                               icon: Icon(
                                                 Icons.access_time,
@@ -3065,7 +3202,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     TextEditingController(
                                                   text: dateTimeFormat(
                                                     "Hm",
-                                                    userTaskEditPageTasksRow
+                                                    userTaskEditPageCopy2TasksRow
                                                         ?.finishTime?.time,
                                                     locale: FFLocalizations.of(
                                                             context)
@@ -3082,7 +3219,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    '4k53x1l2' /* Время завершения */,
+                                                    'ama39j5c' /* Время завершения */,
                                                   ),
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
@@ -3116,7 +3253,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   hintText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    '1ykgmx60' /* Время, кода статус поменялся н... */,
+                                                    'zof0542k' /* Время, кода статус поменялся н... */,
                                                   ),
                                                   enabledBorder:
                                                       InputBorder.none,
@@ -3211,7 +3348,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               },
                                               text: FFLocalizations.of(context)
                                                   .getText(
-                                                'fv9a4ux2' /* Возобновить */,
+                                                'znjr2sl6' /* Возобновить */,
                                               ),
                                               icon: Icon(
                                                 Icons.remove_done,
@@ -3291,7 +3428,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                               .textDoerTextController ??=
                                                           TextEditingController(
                                                         text:
-                                                            userTaskEditPageTasksRow
+                                                            userTaskEditPageCopy2TasksRow
                                                                 ?.taskDoer,
                                                       ),
                                                       focusNode: _model
@@ -3306,7 +3443,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'y0fopdx4' /* Исполнитель */,
+                                                          'smjmxm1o' /* Исполнитель */,
                                                         ),
                                                         labelStyle:
                                                             FlutterFlowTheme.of(
@@ -3560,7 +3697,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     safeSetState(() {}),
                                                 child: DocsInTSPComponentWidget(
                                                   parameter1:
-                                                      userTaskEditPageTasksRow
+                                                      userTaskEditPageCopy2TasksRow
                                                           ?.taskDocOption,
                                                 ),
                                               ),
@@ -3591,7 +3728,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 child: Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'xcnu8wf1' /* Число обучаемых */,
+                                                    'zxam9u4q' /* Число обучаемых */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -3696,7 +3833,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   count: _model
                                                           .countControllerValue ??=
                                                       valueOrDefault<int>(
-                                                    userTaskEditPageTasksRow
+                                                    userTaskEditPageCopy2TasksRow
                                                         ?.traineesNumber,
                                                     0,
                                                   ),
@@ -3735,7 +3872,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                             .textDoerDescriptionTextController ??=
                                                         TextEditingController(
                                                       text:
-                                                          userTaskEditPageTasksRow
+                                                          userTaskEditPageCopy2TasksRow
                                                               ?.doerDescription,
                                                     ),
                                                     focusNode: _model
@@ -3758,7 +3895,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                        'f6qrdrxx' /* Комментарий исполнителя */,
+                                                        'o7fh1m0k' /* Комментарий исполнителя */,
                                                       ),
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
@@ -3924,7 +4061,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                             .textInternalCommentTextController ??=
                                                         TextEditingController(
                                                       text:
-                                                          userTaskEditPageTasksRow
+                                                          userTaskEditPageCopy2TasksRow
                                                               ?.internalComment,
                                                     ),
                                                     focusNode: _model
@@ -3947,7 +4084,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                        'etddsg8u' /* Внутренний комментарий */,
+                                                        'c7xpjyur' /* Внутренний комментарий */,
                                                       ),
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
@@ -4193,7 +4330,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                             .textOutingCommentTextController ??=
                                                         TextEditingController(
                                                       text:
-                                                          userTaskEditPageTasksRow
+                                                          userTaskEditPageCopy2TasksRow
                                                               ?.outingComment,
                                                     ),
                                                     focusNode: _model
@@ -4216,7 +4353,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                        'vj7037r5' /* Комментарий к выезду */,
+                                                        'nwcuf1i3' /* Комментарий к выезду */,
                                                       ),
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
@@ -4387,7 +4524,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                             .textParkingCommentTextController ??=
                                                         TextEditingController(
                                                       text:
-                                                          userTaskEditPageTasksRow
+                                                          userTaskEditPageCopy2TasksRow
                                                               ?.parkingComment,
                                                     ),
                                                     focusNode: _model
@@ -4410,7 +4547,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                        'ba0rsb7q' /* Комментарий к парковке */,
+                                                        'ava8agxk' /* Комментарий к парковке */,
                                                       ),
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
@@ -4585,7 +4722,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'nfl9fjm0' /* Перенос */,
+                                            'baepiuy5' /* Перенос */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .titleSmall
@@ -4629,8 +4766,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 controller: _model
                                                         .textFieldTransferReasonTextController ??=
                                                     TextEditingController(
-                                                  text: userTaskEditPageTasksRow
-                                                      ?.transferReason,
+                                                  text:
+                                                      userTaskEditPageCopy2TasksRow
+                                                          ?.transferReason,
                                                 ),
                                                 focusNode: _model
                                                     .textFieldTransferReasonFocusNode,
@@ -4651,7 +4789,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'iptemwzi' /* Причина переноса */,
+                                                    'a02ccnlr' /* Причина переноса */,
                                                   ),
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
@@ -4920,8 +5058,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 controller: _model
                                                         .textFieldTrCommentTextController ??=
                                                     TextEditingController(
-                                                  text: userTaskEditPageTasksRow
-                                                      ?.transferComment,
+                                                  text:
+                                                      userTaskEditPageCopy2TasksRow
+                                                          ?.transferComment,
                                                 ),
                                                 focusNode: _model
                                                     .textFieldTrCommentFocusNode,
@@ -4929,19 +5068,20 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     EasyDebounce.debounce(
                                                   '_model.textFieldTrCommentTextController',
                                                   Duration(milliseconds: 2000),
-                                                  () async {
-                                                    _model.changedTransferComment =
-                                                        true;
-                                                    safeSetState(() {});
-                                                  },
+                                                  () => safeSetState(() {}),
                                                 ),
+                                                onFieldSubmitted: (_) async {
+                                                  _model.changedTransferComment =
+                                                      true;
+                                                  safeSetState(() {});
+                                                },
                                                 autofocus: false,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    '88d7ye8a' /* Причина переноса */,
+                                                    'y5xcjfnx' /* Причина переноса */,
                                                   ),
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
@@ -5051,9 +5191,6 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                             _model
                                                                 .textFieldTrCommentTextController
                                                                 ?.clear();
-                                                            _model.changedTransferComment =
-                                                                true;
-                                                            safeSetState(() {});
                                                             safeSetState(() {});
                                                           },
                                                           child: Icon(
@@ -5131,7 +5268,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     TextEditingController(
                                                   text: dateTimeFormat(
                                                     "dd-MM-yyyy",
-                                                    userTaskEditPageTasksRow
+                                                    userTaskEditPageCopy2TasksRow
                                                         ?.transferDate,
                                                     locale: FFLocalizations.of(
                                                             context)
@@ -5153,7 +5290,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    '0bk8ne22' /* Дата переноса */,
+                                                    '2yqe8c94' /* Дата переноса */,
                                                   ),
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
@@ -5481,8 +5618,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textTransferPhoneTextController1 ??=
                                                   TextEditingController(
-                                                text: userTaskEditPageTasksRow
-                                                    ?.transferPerson,
+                                                text:
+                                                    userTaskEditPageCopy2TasksRow
+                                                        ?.transferPerson,
                                               ),
                                               focusNode: _model
                                                   .textTransferPhoneFocusNode1,
@@ -5492,7 +5630,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'o96lfj4q' /* Контакт на месте */,
+                                                  'cl4brznh' /* Контакт на месте */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -5642,8 +5780,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               controller: _model
                                                       .textTransferPhoneTextController2 ??=
                                                   TextEditingController(
-                                                text: userTaskEditPageTasksRow
-                                                    ?.transferPhone,
+                                                text:
+                                                    userTaskEditPageCopy2TasksRow
+                                                        ?.transferPhone,
                                               ),
                                               focusNode: _model
                                                   .textTransferPhoneFocusNode2,
@@ -5653,7 +5792,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'nq2subo4' /* Телефон */,
+                                                  'iheh3umi' /* Телефон */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)

@@ -38,3 +38,5 @@ export '/tasks/user_task_list_copy4/user_task_list_copy4_widget.dart'
     show UserTaskListCopy4Widget;
 export '/tasks/user_task_edit_page_copy/user_task_edit_page_copy_widget.dart'
     show UserTaskEditPageCopyWidget;
+export '/tasks/user_task_edit_page_copy2/user_task_edit_page_copy2_widget.dart'
+    show UserTaskEditPageCopy2Widget;

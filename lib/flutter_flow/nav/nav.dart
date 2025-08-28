@@ -222,6 +222,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.int,
             ),
           ),
+        ),
+        FFRoute(
+          name: UserTaskEditPageCopy2Widget.routeName,
+          path: UserTaskEditPageCopy2Widget.routePath,
+          requireAuth: true,
+          builder: (context, params) => UserTaskEditPageCopy2Widget(
+            taskID: params.getParam(
+              'taskID',
+              ParamType.int,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

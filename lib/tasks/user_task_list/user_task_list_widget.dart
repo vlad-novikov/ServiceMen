@@ -238,7 +238,6 @@ class _UserTaskListWidgetState extends State<UserTaskListWidget> {
                                 FFAppState().AppCurDateStr,
                               )
                               .order('line_no', ascending: true),
-                          limit: 100,
                         ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.

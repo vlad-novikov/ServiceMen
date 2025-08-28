@@ -113,6 +113,11 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   TextEditingController? texttTransferReasonTextController;
   String? Function(BuildContext, String?)?
       texttTransferReasonTextControllerValidator;
+  // State field(s) for TextTransferComment widget.
+  FocusNode? textTransferCommentFocusNode;
+  TextEditingController? textTransferCommentTextController;
+  String? Function(BuildContext, String?)?
+      textTransferCommentTextControllerValidator;
   // State field(s) for TextFieldTransferDate widget.
   FocusNode? textFieldTransferDateFocusNode;
   TextEditingController? textFieldTransferDateTextController;
@@ -127,13 +132,8 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
       textTransferPesonTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode7;
-  TextEditingController? textController23;
-  String? Function(BuildContext, String?)? textController23Validator;
-  // State field(s) for TextTransferComment widget.
-  FocusNode? textTransferCommentFocusNode;
-  TextEditingController? textTransferCommentTextController;
-  String? Function(BuildContext, String?)?
-      textTransferCommentTextControllerValidator;
+  TextEditingController? textController24;
+  String? Function(BuildContext, String?)? textController24Validator;
 
   @override
   void initState(BuildContext context) {
@@ -204,6 +204,9 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
     texttTransferReasonFocusNode?.dispose();
     texttTransferReasonTextController?.dispose();
 
+    textTransferCommentFocusNode?.dispose();
+    textTransferCommentTextController?.dispose();
+
     textFieldTransferDateFocusNode?.dispose();
     textFieldTransferDateTextController?.dispose();
 
@@ -211,9 +214,6 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
     textTransferPesonTextController?.dispose();
 
     textFieldFocusNode7?.dispose();
-    textController23?.dispose();
-
-    textTransferCommentFocusNode?.dispose();
-    textTransferCommentTextController?.dispose();
+    textController24?.dispose();
   }
 }

@@ -91,8 +91,9 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
     if (row['task_status'] == 'не выполнено') {
       // перенос
       taskTransfer = row['task_transfer'].toString();
-      doerDescription = row['doer_description'].toString() +
-          row['transfer_reason'].toString();
+      doerDescription = row['transfer_reason'].toString() +
+          row['doer_description'].toString() +
+          row['transfer_comment'].toString();
     }
     if (row['transfer_phone'].toString() == '') {
       // если столбец Q заполнен, в столбце P пишем "конктное лицо"
@@ -102,7 +103,7 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       transferPerson = 'контактное лицо';
       transferPhone = row['transfer_phone'].toString();
     }
-
+    FFAppState().test1 += ' before append';
     excelSheet.appendRow([
       ex.TextCellValue(row['line_no'].toString()), //  0 a
       ex.TextCellValue(row['location_name'].toString()), // 1 b
@@ -117,8 +118,7 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       ex.TextCellValue(taskStatus), // 10
       ex.TextCellValue(taskTransfer), // 11  слово перенос в поле task_transfer
       ex.TextCellValue(transferDateString), // 12
-      ex.TextCellValue(
-          doerDescription + row['transfer_description'].toString()), // 13 N
+      ex.TextCellValue(doerDescription), // 13 N
       ex.TextCellValue(row['task_doer'].toString()), // 14
       ex.TextCellValue(transferPerson), // 15
       ex.TextCellValue(transferPhone), // 16
@@ -127,19 +127,25 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       ex.TextCellValue(row['crm_id'].toString()), //  19 T
       //ex.TextCellValue(row['doer_description'].toString()) //  20 U
     ]);
+    FFAppState().test1 += ' after append';
     //int colorValue = int.parse(row['colE_color'].toString(), radix: 16);
     String stringColorHex = row['colE_color'].toString();
-    if (stringColorHex != 'none') {
+    if ((stringColorHex != 'none') && (stringColorHex != '')) {
       stringColorHex = '#' + stringColorHex;
     }
-    ex.ExcelColor excelColor = ex.ExcelColor.fromHexString(stringColorHex);
-    ex.CellStyle cellStyle = ex.CellStyle(backgroundColorHex: excelColor);
+    FFAppState().test1 += ' before Color  ' + stringColorHex;
 
-    ex.CellIndex index =
-        ex.CellIndex.indexByColumnRow(columnIndex: 4, rowIndex: i + 1);
-
-    var cell = excelSheet.cell(index);
-    cell.cellStyle = cellStyle;
+    if (stringColorHex != '') {
+      ex.ExcelColor excelColor = ex.ExcelColor.fromHexString(stringColorHex);
+      FFAppState().test1 += ' before style ';
+      ex.CellStyle cellStyle = ex.CellStyle(backgroundColorHex: excelColor);
+      FFAppState().test1 += ' before col index';
+      ex.CellIndex index =
+          ex.CellIndex.indexByColumnRow(columnIndex: 4, rowIndex: i + 1);
+      FFAppState().test1 += ' before style';
+      var cell = excelSheet.cell(index);
+      cell.cellStyle = cellStyle;
+    }
   }
 
   // download file
