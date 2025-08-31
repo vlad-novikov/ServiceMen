@@ -88,9 +88,10 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
 
     _model.textFieldTrCommentFocusNode ??= FocusNode();
 
-    _model.textTransferDateFocusNode ??= FocusNode();
+    _model.textFieldTransferDateFocusNode ??= FocusNode();
 
-    _model.textTransferDateMask = MaskTextInputFormatter(mask: '##.##.####');
+    _model.textFieldTransferDateMask =
+        MaskTextInputFormatter(mask: '##.##.####');
 
     _model.textTransferPhoneFocusNode1 ??= FocusNode();
 
@@ -322,22 +323,14 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                     '';
                               });
                             }
-                            if (!_model.changedTransferDate) {
-                              _model.transferDateTime = null;
+                            if (!_model.changedTransferDate) {}
+                            if (!_model.changedTransferReason) {}
+                            if (!_model.changedTransferComment) {}
+                            if (_model.transferDateTime == null) {
+                              // Set Transfer Date from Row
+                              _model.transferDateTime =
+                                  userTaskEditPageTasksRow?.transferDate;
                               safeSetState(() {});
-                            }
-                            if (!_model.changedTransferReason) {
-                              safeSetState(() {
-                                _model.textFieldTransferReasonTextController
-                                    ?.text = '';
-                              });
-                            }
-                            if (!_model.changedTransferComment) {
-                              // Set Empty Value
-                              safeSetState(() {
-                                _model.textFieldTrCommentTextController?.text =
-                                    '';
-                              });
                             }
                             // Update fields in db
                             await TasksTable().update(
@@ -370,7 +363,8 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                     _model.textOutingCommentTextController.text,
                                 'parking_comment': _model
                                     .textParkingCommentTextController.text,
-                                'transfer_date': supaSerialize<DateTime>(null),
+                                'transfer_date': supaSerialize<DateTime>(
+                                    _model.transferDateTime),
                                 'transfer_reason': _model
                                     .textFieldTransferReasonTextController.text,
                                 'transfer_comment': _model
@@ -4651,7 +4645,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'iptemwzi' /* Причина переноса */,
+                                                    'iptemwzi' /* Типовая причина переноса */,
                                                   ),
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
@@ -4752,29 +4746,6 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                         BorderRadius.circular(
                                                             8.0),
                                                   ),
-                                                  suffixIcon: _model
-                                                          .textFieldTransferReasonTextController!
-                                                          .text
-                                                          .isNotEmpty
-                                                      ? InkWell(
-                                                          onTap: () async {
-                                                            _model
-                                                                .textFieldTransferReasonTextController
-                                                                ?.clear();
-                                                            _model.changedTransferReason =
-                                                                true;
-                                                            safeSetState(() {});
-                                                            safeSetState(() {});
-                                                          },
-                                                          child: Icon(
-                                                            Icons.clear,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            size: 22.0,
-                                                          ),
-                                                        )
-                                                      : null,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -4941,7 +4912,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    '88d7ye8a' /* Причина переноса */,
+                                                    '88d7ye8a' /* Комментарий к причине переноса */,
                                                   ),
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
@@ -5096,6 +5067,8 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                                   .fontStyle,
                                                         ),
                                                 minLines: 1,
+                                                keyboardType:
+                                                    TextInputType.multiline,
                                                 validator: _model
                                                     .textFieldTrCommentTextControllerValidator
                                                     .asValidator(context),
@@ -5127,7 +5100,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                       20.0, 5.0, 5.0, 5.0),
                                               child: TextFormField(
                                                 controller: _model
-                                                        .textTransferDateTextController ??=
+                                                        .textFieldTransferDateTextController ??=
                                                     TextEditingController(
                                                   text: dateTimeFormat(
                                                     "dd-MM-yyyy",
@@ -5139,10 +5112,10 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   ),
                                                 ),
                                                 focusNode: _model
-                                                    .textTransferDateFocusNode,
+                                                    .textFieldTransferDateFocusNode,
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
-                                                  '_model.textTransferDateTextController',
+                                                  '_model.textFieldTransferDateTextController',
                                                   Duration(milliseconds: 2000),
                                                   () => safeSetState(() {}),
                                                 ),
@@ -5260,13 +5233,13 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                               context)
                                                           .primaryBackground,
                                                   suffixIcon: _model
-                                                          .textTransferDateTextController!
+                                                          .textFieldTransferDateTextController!
                                                           .text
                                                           .isNotEmpty
                                                       ? InkWell(
                                                           onTap: () async {
                                                             _model
-                                                                .textTransferDateTextController
+                                                                .textFieldTransferDateTextController
                                                                 ?.clear();
                                                             safeSetState(() {});
                                                           },
@@ -5313,10 +5286,11 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 keyboardType:
                                                     TextInputType.datetime,
                                                 validator: _model
-                                                    .textTransferDateTextControllerValidator
+                                                    .textFieldTransferDateTextControllerValidator
                                                     .asValidator(context),
                                                 inputFormatters: [
-                                                  _model.textTransferDateMask
+                                                  _model
+                                                      .textFieldTransferDateMask
                                                 ],
                                               ),
                                             ),
@@ -5344,7 +5318,8 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                   context: context,
                                                   initialDate:
                                                       getCurrentTimestamp,
-                                                  firstDate: DateTime(1900),
+                                                  firstDate:
+                                                      getCurrentTimestamp,
                                                   lastDate: DateTime(2050),
                                                   builder: (context, child) {
                                                     return wrapInMaterialDatePickerTheme(
@@ -5432,7 +5407,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 // Save Value to Text Field
                                                 safeSetState(() {
                                                   _model
-                                                      .textTransferDateTextController
+                                                      .textFieldTransferDateTextController
                                                       ?.text = dateTimeFormat(
                                                     "dd-MM-yyyy",
                                                     _model.datePicked,
@@ -5440,20 +5415,18 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                             context)
                                                         .languageCode,
                                                   );
-                                                  _model.textTransferDateMask
+                                                  _model
+                                                      .textFieldTransferDateMask
                                                       .updateMask(
                                                     newValue: TextEditingValue(
                                                       text: _model
-                                                          .textTransferDateTextController!
+                                                          .textFieldTransferDateTextController!
                                                           .text,
                                                     ),
                                                   );
                                                 });
-                                                // Save picked to DateTime Var
                                                 _model.transferDateTime =
                                                     _model.datePicked;
-                                                _model.changedTransferDate =
-                                                    true;
                                                 safeSetState(() {});
                                               },
                                             ),

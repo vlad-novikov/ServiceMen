@@ -108,11 +108,13 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   TextEditingController? textFieldParkingCommentTextController;
   String? Function(BuildContext, String?)?
       textFieldParkingCommentTextControllerValidator;
-  // State field(s) for TexttTransferReason widget.
-  FocusNode? texttTransferReasonFocusNode;
-  TextEditingController? texttTransferReasonTextController;
+  // State field(s) for TextFieldTransferReason widget.
+  FocusNode? textFieldTransferReasonFocusNode;
+  TextEditingController? textFieldTransferReasonTextController;
   String? Function(BuildContext, String?)?
-      texttTransferReasonTextControllerValidator;
+      textFieldTransferReasonTextControllerValidator;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in IconButtonReason widget.
+  String? reasonName;
   // State field(s) for TextTransferComment widget.
   FocusNode? textTransferCommentFocusNode;
   TextEditingController? textTransferCommentTextController;
@@ -201,8 +203,8 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
     textFieldParkingCommentFocusNode?.dispose();
     textFieldParkingCommentTextController?.dispose();
 
-    texttTransferReasonFocusNode?.dispose();
-    texttTransferReasonTextController?.dispose();
+    textFieldTransferReasonFocusNode?.dispose();
+    textFieldTransferReasonTextController?.dispose();
 
     textTransferCommentFocusNode?.dispose();
     textTransferCommentTextController?.dispose();

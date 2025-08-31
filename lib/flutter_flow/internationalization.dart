@@ -533,7 +533,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Перенос',
       'en': '',
     },
-    'w3xkl8bo': {
+    'yuu2h0td': {
       'ru': 'Причина переноса',
       'en': '',
     },
@@ -1041,11 +1041,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'iptemwzi': {
-      'ru': 'Причина переноса',
+      'ru': 'Типовая причина переноса',
       'en': '',
     },
     '88d7ye8a': {
-      'ru': 'Причина переноса',
+      'ru': 'Комментарий к причине переноса',
       'en': '',
     },
     '0bk8ne22': {

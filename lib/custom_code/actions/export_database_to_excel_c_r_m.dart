@@ -92,8 +92,9 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       // перенос
       taskTransfer = row['task_transfer'].toString();
       doerDescription = row['transfer_reason'].toString() +
-          row['doer_description'].toString() +
-          row['transfer_comment'].toString();
+          row['transfer_comment'].toString() +
+          ' ' +
+          row['doer_description'].toString();
     }
     if (row['transfer_phone'].toString() == '') {
       // если столбец Q заполнен, в столбце P пишем "конктное лицо"

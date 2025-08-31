@@ -139,12 +139,12 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
   TextEditingController? textFieldTrCommentTextController;
   String? Function(BuildContext, String?)?
       textFieldTrCommentTextControllerValidator;
-  // State field(s) for TextTransferDate widget.
-  FocusNode? textTransferDateFocusNode;
-  TextEditingController? textTransferDateTextController;
-  late MaskTextInputFormatter textTransferDateMask;
+  // State field(s) for TextFieldTransferDate widget.
+  FocusNode? textFieldTransferDateFocusNode;
+  TextEditingController? textFieldTransferDateTextController;
+  late MaskTextInputFormatter textFieldTransferDateMask;
   String? Function(BuildContext, String?)?
-      textTransferDateTextControllerValidator;
+      textFieldTransferDateTextControllerValidator;
   DateTime? datePicked;
   // State field(s) for TextTransferPhone widget.
   FocusNode? textTransferPhoneFocusNode1;
@@ -229,8 +229,8 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
     textFieldTrCommentFocusNode?.dispose();
     textFieldTrCommentTextController?.dispose();
 
-    textTransferDateFocusNode?.dispose();
-    textTransferDateTextController?.dispose();
+    textFieldTransferDateFocusNode?.dispose();
+    textFieldTransferDateTextController?.dispose();
 
     textTransferPhoneFocusNode1?.dispose();
     textTransferPhoneTextController1?.dispose();
