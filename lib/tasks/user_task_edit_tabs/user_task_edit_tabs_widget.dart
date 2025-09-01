@@ -9,7 +9,7 @@ class UserTaskEditTabsWidget extends StatefulWidget {
   const UserTaskEditTabsWidget({super.key});
 
   static String routeName = 'UserTaskEditTabs';
-  static String routePath = '/userTaskEditTabs';
+  static String routePath = '/tab';
 
   @override
   State<UserTaskEditTabsWidget> createState() => _UserTaskEditTabsWidgetState();
