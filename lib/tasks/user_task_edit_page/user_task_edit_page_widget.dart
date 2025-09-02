@@ -321,12 +321,18 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                             if (!_model.changedTransferDate) {}
                             if (!_model.changedTransferReason) {}
                             if (!_model.changedTransferComment) {}
-                            if (_model.transferDateTime == null) {
-                              // Set Transfer Date from Row
-                              _model.transferDateTime =
-                                  userTaskEditPageTasksRow?.transferDate;
-                              safeSetState(() {});
+                            if (_model.textTaskTransferTextController.text ==
+                                'перенос') {
+                              if (_model.transferDateTime == null) {
+                                // Set Transfer Date from Row
+                                _model.transferDateTime =
+                                    userTaskEditPageTasksRow?.transferDate;
+                              }
+                            } else {
+                              // Reset Transfer Date
+                              _model.transferDateTime = null;
                             }
+
                             // Update fields in db
                             await TasksTable().update(
                               data: {
