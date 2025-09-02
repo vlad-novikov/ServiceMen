@@ -321,8 +321,8 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                             if (!_model.changedTransferDate) {}
                             if (!_model.changedTransferReason) {}
                             if (!_model.changedTransferComment) {}
-                            if (_model.textTaskTransferTextController.text ==
-                                'перенос') {
+                            if (_model.textTaskTransferTextController.text !=
+                                    '') {
                               if (_model.transferDateTime == null) {
                                 // Set Transfer Date from Row
                                 _model.transferDateTime =
@@ -3170,7 +3170,13 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     'не выполнено') &&
                                                 (_model.textTaskTransferTextController
                                                         .text ==
-                                                    'перенос')))
+                                                    'перенос')) ||
+                                            ((_model.textTaskStatusTextController
+                                                        .text ==
+                                                    'не выполнено') &&
+                                                (_model.textTaskTransferTextController
+                                                        .text ==
+                                                    'контакт')))
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
