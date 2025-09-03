@@ -514,7 +514,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'grpf1ays': {
-      'ru': 'Комментарий исполнителя',
+      'ru': 'Комментарий исполнителя (старый)',
+      'en': '',
+    },
+    'ynjc3sfc': {
+      'ru': 'Комментарий исполнителя (новый)',
       'en': '',
     },
     'efv7yuba': {
@@ -1021,7 +1025,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'f6qrdrxx': {
-      'ru': 'Комментарий исполнителя',
+      'ru': 'Комментарий исполнителя (старый)',
+      'en': '',
+    },
+    'ygla2tgz': {
+      'ru': 'Комментарий исполнителя (новый)',
       'en': '',
     },
     'etddsg8u': {

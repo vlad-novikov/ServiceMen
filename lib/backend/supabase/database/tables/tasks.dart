@@ -167,4 +167,12 @@ class TasksRow extends SupabaseDataRow {
 
   String? get colEColor => getField<String>('colE_color');
   set colEColor(String? value) => setField<String>('colE_color', value);
+
+  int? get parentId => getField<int>('parent_id');
+  set parentId(int? value) => setField<int>('parent_id', value);
+
+  String? get doerDescriptionUpdate =>
+      getField<String>('doer_description_update');
+  set doerDescriptionUpdate(String? value) =>
+      setField<String>('doer_description_update', value);
 }

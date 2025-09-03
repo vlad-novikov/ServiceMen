@@ -93,6 +93,11 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
   TextEditingController? textDoerDescriptionTextController;
   String? Function(BuildContext, String?)?
       textDoerDescriptionTextControllerValidator;
+  // State field(s) for TextDoerDescriptionUpdate widget.
+  FocusNode? textDoerDescriptionUpdateFocusNode;
+  TextEditingController? textDoerDescriptionUpdateTextController;
+  String? Function(BuildContext, String?)?
+      textDoerDescriptionUpdateTextControllerValidator;
   // State field(s) for TextInternalComment widget.
   FocusNode? textInternalCommentFocusNode;
   TextEditingController? textInternalCommentTextController;
@@ -134,8 +139,8 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
       textTransferPesonTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode7;
-  TextEditingController? textController24;
-  String? Function(BuildContext, String?)? textController24Validator;
+  TextEditingController? textController25;
+  String? Function(BuildContext, String?)? textController25Validator;
 
   @override
   void initState(BuildContext context) {
@@ -194,6 +199,9 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
     textDoerDescriptionFocusNode?.dispose();
     textDoerDescriptionTextController?.dispose();
 
+    textDoerDescriptionUpdateFocusNode?.dispose();
+    textDoerDescriptionUpdateTextController?.dispose();
+
     textInternalCommentFocusNode?.dispose();
     textInternalCommentTextController?.dispose();
 
@@ -216,6 +224,6 @@ class TaskEditPageModel extends FlutterFlowModel<TaskEditPageWidget> {
     textTransferPesonTextController?.dispose();
 
     textFieldFocusNode7?.dispose();
-    textController24?.dispose();
+    textController25?.dispose();
   }
 }

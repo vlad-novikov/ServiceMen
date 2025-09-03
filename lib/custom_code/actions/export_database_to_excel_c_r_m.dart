@@ -53,7 +53,7 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       .select("line_no, location_name, location_address, location_phone, location_contract, " +
           "trainees_number," +
           "task_date, task_category, task_status, task_descr, task_transfer, " +
-          "task_doer, doer_description,  " +
+          "task_doer, doer_description,  doer_description_update,  " +
           "equipment_id, equipment_model, equipment_connection," +
           " transfer_date, transfer_reason, transfer_description, " +
           "transfer_person, transfer_phone, " +
@@ -92,9 +92,8 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       // перенос
       taskTransfer = row['task_transfer'].toString();
       doerDescription = row['transfer_reason'].toString() +
-          row['transfer_comment'].toString() +
           ' ' +
-          row['doer_description'].toString();
+          row['doer_description_update'].toString();
     }
     if (row['transfer_phone'].toString() == '') {
       // если столбец Q заполнен, в столбце P пишем "конктное лицо"
