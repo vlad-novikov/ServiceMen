@@ -212,10 +212,32 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                               Future(() async {
                                 if (_model.textTaskStatusTextController.text ==
                                     'в работе') {
-                                  // Меняем Статус на "выполнено"
+                                  // Set Status DONE
                                   safeSetState(() {
                                     _model.textTaskStatusTextController?.text =
                                         'выполнено';
+                                  });
+                                  // Unset Task Transfer
+                                  safeSetState(() {
+                                    _model.textTaskTransferTextController
+                                        ?.text = '';
+                                  });
+                                  // Unset Transfer Date
+                                  safeSetState(() {
+                                    _model.textFieldTransferDateTextController
+                                        ?.text = '';
+                                    _model.textFieldTransferDateMask.updateMask(
+                                      newValue: TextEditingValue(
+                                        text: _model
+                                            .textFieldTransferDateTextController!
+                                            .text,
+                                      ),
+                                    );
+                                  });
+                                  // Unset Transfer Reason
+                                  safeSetState(() {
+                                    _model.textFieldTransferReasonTextController
+                                        ?.text = '';
                                   });
                                   if (_model.docsInTSPComponentModel
                                               .radioDocOptionValue ==
