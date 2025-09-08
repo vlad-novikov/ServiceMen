@@ -157,3 +157,9 @@ Color colorFromHexString(String hexColor) {
   // Create the Color object
   return Color(colorValue);
 }
+
+String deleteTimezoneInStringDateTime(String stringDateTime) {
+  String newString1 = stringDateTime.replaceAll('T', ' ');
+  String newString2 = newString1.replaceAll(':00.000Z', '');
+  return newString2;
+}

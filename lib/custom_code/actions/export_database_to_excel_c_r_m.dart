@@ -80,6 +80,7 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
     String doerDescription = '';
     String transferPerson = '';
     String transferPhone = '';
+    String colR = '';
     if (row['task_status'] == 'в работе') {
       taskStatus = ''; // странно, но такова просьба банка
       transferDateString = '';
@@ -102,6 +103,8 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       transferPerson = 'контактное лицо';
       transferPhone = row['transfer_phone'].toString();
     }
+    colR = deleteTimezoneInStringDateTime(
+        row['colR'].toString()); // removing T and Z from string
     FFAppState().test1 += ' before append';
     excelSheet.appendRow([
       ex.TextCellValue(row['line_no'].toString()), //  0 a
@@ -121,7 +124,7 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       ex.TextCellValue(row['task_doer'].toString()), // 14
       ex.TextCellValue(transferPerson), // 15
       ex.TextCellValue(transferPhone), // 16
-      ex.TextCellValue(row['colR'].toString()), // 17
+      ex.TextCellValue(colR), // 17
       ex.TextCellValue(row['equipment_id2'].toString()), //  18
       ex.TextCellValue(row['crm_id'].toString()), //  19 T
       //ex.TextCellValue(row['doer_description'].toString()) //  20 U

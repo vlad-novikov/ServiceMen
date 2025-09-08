@@ -3277,8 +3277,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               ),
                                             ),
                                           ),
-                                        if (((_model.textTaskStatusTextController
-                                                        .text ==
+                                        if (((_model.textTaskStatusTextController.text ==
                                                     'выполнено') &&
                                                 (_model.textTaskTransferTextController
                                                             .text ==
@@ -3294,7 +3293,13 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     'не выполнено') &&
                                                 (_model.textTaskTransferTextController
                                                         .text ==
-                                                    'контакт')))
+                                                    'контакт')) ||
+                                            ((_model.textTaskStatusTextController
+                                                        .text ==
+                                                    'не выполнено') &&
+                                                (_model.textTaskTransferTextController
+                                                            .text ==
+                                                        '')))
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
