@@ -78,7 +78,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
 
     _model.textDoerDescriptionFocusNode ??= FocusNode();
 
-    _model.textDoerDescriptionUpdateFocusNode ??= FocusNode();
+    _model.textFieldDoerDescriptionUpdateFocusNode ??= FocusNode();
 
     _model.textInternalCommentFocusNode ??= FocusNode();
 
@@ -299,12 +299,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                         ?.text = '';
                                   });
                                 } else {
-                                  if (!((_model.textTaskStatusTextController
-                                              .text ==
-                                          'не выполнено') &&
-                                      (_model.textTaskTransferTextController
-                                              .text ==
-                                          'перенос'))) {
+                                  if (_model
+                                          .textTaskStatusTextController.text !=
+                                      'не выполнено') {
                                     return;
                                   }
                                 }
@@ -323,7 +320,6 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                             // Ставим Дату Время Окончания
                             _model.finishDateTime = getCurrentTimestamp;
                             safeSetState(() {});
-                            if (!_model.changedDoerComment) {}
                             if (!_model.changedInternalComment) {
                               safeSetState(() {
                                 _model.textInternalCommentTextController?.text =
@@ -380,9 +376,6 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                 'task_doc_option': _model
                                     .docsInTSPComponentModel
                                     .radioDocOptionValue,
-                                'doer_description_update': _model
-                                    .textDoerDescriptionUpdateTextController
-                                    .text,
                                 'internal_comment': _model
                                     .textInternalCommentTextController.text,
                                 'outing_comment':
@@ -395,6 +388,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                     .textFieldTransferReasonTextController.text,
                                 'transfer_comment': _model
                                     .textFieldTrCommentTextController.text,
+                                'doer_description_update': _model
+                                    .textFieldDoerDescriptionUpdateTextController
+                                    .text,
                               },
                               matchingRows: (rows) => rows.eqOrNull(
                                 'id',
@@ -2890,180 +2886,6 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                             ),
                                           ),
                                         ),
-                                        if (_model.textTaskStatusTextController
-                                                .text ==
-                                            'в работе!')
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 0.0, 5.0, 0.0),
-                                            child: FFButtonWidget(
-                                              onPressed: () async {
-                                                // Set Status=Finished
-                                                safeSetState(() {
-                                                  _model
-                                                      .textTaskStatusTextController
-                                                      ?.text = 'выполнено';
-                                                });
-                                                // Set Finish Time Field
-                                                safeSetState(() {
-                                                  _model
-                                                      .textFinishTimeTextController
-                                                      ?.text = dateTimeFormat(
-                                                    "Hm",
-                                                    getCurrentTimestamp,
-                                                    locale: FFLocalizations.of(
-                                                            context)
-                                                        .languageCode,
-                                                  );
-                                                });
-                                                // Set Time Var
-                                                _model.finishDateTime =
-                                                    getCurrentTimestamp;
-                                                safeSetState(() {});
-                                              },
-                                              text: FFLocalizations.of(context)
-                                                  .getText(
-                                                '4c7yivag' /* Завершить */,
-                                              ),
-                                              icon: Icon(
-                                                Icons.done_all,
-                                                size: 15.0,
-                                              ),
-                                              options: FFButtonOptions(
-                                                height: 40.0,
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        16.0, 0.0, 16.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color: Color(0x8C39D2C0),
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .interTight(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontStyle,
-                                                          ),
-                                                          color: Colors.white,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontStyle,
-                                                        ),
-                                                elevation: 0.0,
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                            ),
-                                          ),
-                                        if (_model.textTaskStatusTextController
-                                                .text ==
-                                            'в работе')
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 0.0, 5.0, 0.0),
-                                            child: FFButtonWidget(
-                                              onPressed: () async {
-                                                // Set Status=Not Finished
-                                                safeSetState(() {
-                                                  _model
-                                                      .textTaskStatusTextController
-                                                      ?.text = 'не выполнено';
-                                                });
-                                                // Set Transfer Property
-                                                safeSetState(() {
-                                                  _model
-                                                      .textTaskTransferTextController
-                                                      ?.text = 'перенос';
-                                                });
-                                                // Set Finish Time
-                                                safeSetState(() {
-                                                  _model
-                                                      .textFinishTimeTextController
-                                                      ?.text = dateTimeFormat(
-                                                    "Hm",
-                                                    getCurrentTimestamp,
-                                                    locale: FFLocalizations.of(
-                                                            context)
-                                                        .languageCode,
-                                                  );
-                                                });
-                                              },
-                                              text: FFLocalizations.of(context)
-                                                  .getText(
-                                                'wnwvrfui' /* Перенести */,
-                                              ),
-                                              icon: Icon(
-                                                Icons.access_time,
-                                                size: 15.0,
-                                              ),
-                                              options: FFButtonOptions(
-                                                height: 40.0,
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        16.0, 0.0, 16.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color: Color(0x88EE8B60),
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .interTight(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontStyle,
-                                                          ),
-                                                          color: Colors.white,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontStyle,
-                                                        ),
-                                                elevation: 0.0,
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                            ),
-                                          ),
                                         if (((_model.textTaskStatusTextController
                                                         .text ==
                                                     'выполнено') &&
@@ -3181,6 +3003,277 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                 validator: _model
                                                     .textFinishTimeTextControllerValidator
                                                     .asValidator(context),
+                                              ),
+                                            ),
+                                          ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        if (_model.textTaskStatusTextController
+                                                .text ==
+                                            'в работе!')
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 0.0, 5.0, 0.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                // Set Status=Finished
+                                                safeSetState(() {
+                                                  _model
+                                                      .textTaskStatusTextController
+                                                      ?.text = 'выполнено';
+                                                });
+                                                // Set Finish Time Field
+                                                safeSetState(() {
+                                                  _model
+                                                      .textFinishTimeTextController
+                                                      ?.text = dateTimeFormat(
+                                                    "Hm",
+                                                    getCurrentTimestamp,
+                                                    locale: FFLocalizations.of(
+                                                            context)
+                                                        .languageCode,
+                                                  );
+                                                });
+                                                // Set Time Var
+                                                _model.finishDateTime =
+                                                    getCurrentTimestamp;
+                                                safeSetState(() {});
+                                              },
+                                              text: FFLocalizations.of(context)
+                                                  .getText(
+                                                '4c7yivag' /* Завершить */,
+                                              ),
+                                              icon: Icon(
+                                                Icons.done_all,
+                                                size: 15.0,
+                                              ),
+                                              options: FFButtonOptions(
+                                                height: 40.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color: Color(0x8C39D2C0),
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .interTight(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                elevation: 0.0,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                          ),
+                                        if (_model.textTaskStatusTextController
+                                                .text ==
+                                            'в работе')
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 0.0, 5.0, 0.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                // Set Status UNDONE
+                                                safeSetState(() {
+                                                  _model
+                                                      .textTaskStatusTextController
+                                                      ?.text = 'не выполнено';
+                                                });
+                                                // Unset Status 2
+                                                safeSetState(() {
+                                                  _model
+                                                      .textTaskTransferTextController
+                                                      ?.text = '';
+                                                });
+                                                // Set Finish Time
+                                                safeSetState(() {
+                                                  _model
+                                                      .textFinishTimeTextController
+                                                      ?.text = dateTimeFormat(
+                                                    "Hm",
+                                                    getCurrentTimestamp,
+                                                    locale: FFLocalizations.of(
+                                                            context)
+                                                        .languageCode,
+                                                  );
+                                                });
+                                              },
+                                              text: FFLocalizations.of(context)
+                                                  .getText(
+                                                'wnwvrfui' /* Отменить */,
+                                              ),
+                                              icon: Icon(
+                                                Icons.cancel_outlined,
+                                                size: 15.0,
+                                              ),
+                                              options: FFButtonOptions(
+                                                height: 40.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .interTight(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                elevation: 0.0,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                          ),
+                                        if (_model.textTaskStatusTextController
+                                                .text ==
+                                            'в работе')
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 0.0, 5.0, 0.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                // Set Status UNDONE
+                                                safeSetState(() {
+                                                  _model
+                                                      .textTaskStatusTextController
+                                                      ?.text = 'не выполнено';
+                                                });
+                                                // Set Status 2 TRANSFER
+                                                safeSetState(() {
+                                                  _model
+                                                      .textTaskTransferTextController
+                                                      ?.text = 'перенос';
+                                                });
+                                                // Set Finish Time
+                                                safeSetState(() {
+                                                  _model
+                                                      .textFinishTimeTextController
+                                                      ?.text = dateTimeFormat(
+                                                    "Hm",
+                                                    getCurrentTimestamp,
+                                                    locale: FFLocalizations.of(
+                                                            context)
+                                                        .languageCode,
+                                                  );
+                                                });
+                                              },
+                                              text: FFLocalizations.of(context)
+                                                  .getText(
+                                                'fkxi8vua' /* Перенести */,
+                                              ),
+                                              icon: Icon(
+                                                Icons.access_time,
+                                                size: 15.0,
+                                              ),
+                                              options: FFButtonOptions(
+                                                height: 40.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .warning,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .interTight(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                elevation: 0.0,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
                                               ),
                                             ),
                                           ),
@@ -3940,16 +4033,16 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                           20.0, 5.0, 20.0, 5.0),
                                                   child: TextFormField(
                                                     controller: _model
-                                                            .textDoerDescriptionUpdateTextController ??=
+                                                            .textFieldDoerDescriptionUpdateTextController ??=
                                                         TextEditingController(
                                                       text: userTaskEditPageTasksRow
                                                           ?.doerDescriptionUpdate,
                                                     ),
                                                     focusNode: _model
-                                                        .textDoerDescriptionUpdateFocusNode,
+                                                        .textFieldDoerDescriptionUpdateFocusNode,
                                                     onChanged: (_) =>
                                                         EasyDebounce.debounce(
-                                                      '_model.textDoerDescriptionUpdateTextController',
+                                                      '_model.textFieldDoerDescriptionUpdateTextController',
                                                       Duration(
                                                           milliseconds: 2000),
                                                       () async {
@@ -4103,7 +4196,7 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                     keyboardType:
                                                         TextInputType.multiline,
                                                     validator: _model
-                                                        .textDoerDescriptionUpdateTextControllerValidator
+                                                        .textFieldDoerDescriptionUpdateTextControllerValidator
                                                         .asValidator(context),
                                                   ),
                                                 ),

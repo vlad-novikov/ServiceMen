@@ -2413,6 +2413,7 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                 _shouldSetState = true;
                                                 if (_model.statusName != null &&
                                                     _model.statusName != '') {
+                                                  // Set Status
                                                   safeSetState(() {
                                                     _model.textTaskStatusTextController
                                                             ?.text =
@@ -2420,17 +2421,20 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                   });
                                                   if (_model.statusName ==
                                                       'не выполнено (перенос)') {
+                                                    // Set Status UNDONE
                                                     safeSetState(() {
                                                       _model
                                                           .textTaskStatusTextController
                                                           ?.text = 'не выполнено';
                                                     });
+                                                    // Set Status 2 TRANSFER
                                                     safeSetState(() {
                                                       _model
                                                           .textTaskTransferTextController
                                                           ?.text = 'перенос';
                                                     });
                                                   } else {
+                                                    // Unset Status 2
                                                     safeSetState(() {
                                                       _model
                                                           .textTaskTransferTextController

@@ -110,11 +110,11 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
   TextEditingController? textDoerDescriptionTextController;
   String? Function(BuildContext, String?)?
       textDoerDescriptionTextControllerValidator;
-  // State field(s) for TextDoerDescriptionUpdate widget.
-  FocusNode? textDoerDescriptionUpdateFocusNode;
-  TextEditingController? textDoerDescriptionUpdateTextController;
+  // State field(s) for TextFieldDoerDescriptionUpdate widget.
+  FocusNode? textFieldDoerDescriptionUpdateFocusNode;
+  TextEditingController? textFieldDoerDescriptionUpdateTextController;
   String? Function(BuildContext, String?)?
-      textDoerDescriptionUpdateTextControllerValidator;
+      textFieldDoerDescriptionUpdateTextControllerValidator;
   // State field(s) for TextInternalComment widget.
   FocusNode? textInternalCommentFocusNode;
   TextEditingController? textInternalCommentTextController;
@@ -219,8 +219,8 @@ class UserTaskEditPageModel extends FlutterFlowModel<UserTaskEditPageWidget> {
     textDoerDescriptionFocusNode?.dispose();
     textDoerDescriptionTextController?.dispose();
 
-    textDoerDescriptionUpdateFocusNode?.dispose();
-    textDoerDescriptionUpdateTextController?.dispose();
+    textFieldDoerDescriptionUpdateFocusNode?.dispose();
+    textFieldDoerDescriptionUpdateTextController?.dispose();
 
     textInternalCommentFocusNode?.dispose();
     textInternalCommentTextController?.dispose();
