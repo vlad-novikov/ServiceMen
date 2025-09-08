@@ -2419,6 +2419,27 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                             ?.text =
                                                         _model.statusName!;
                                                   });
+                                                  // Unset Status 2
+                                                  safeSetState(() {
+                                                    _model
+                                                        .textTaskTransferTextController
+                                                        ?.text = '';
+                                                  });
+                                                  if (_model.statusName ==
+                                                      'не выполнено') {
+                                                    // Set Status UNDONE
+                                                    safeSetState(() {
+                                                      _model
+                                                          .textTaskStatusTextController
+                                                          ?.text = 'не выполнено';
+                                                    });
+                                                    // Set Status 2 CANCEL
+                                                    safeSetState(() {
+                                                      _model
+                                                          .textTaskTransferTextController
+                                                          ?.text = 'отмена';
+                                                    });
+                                                  }
                                                   if (_model.statusName ==
                                                       'не выполнено (перенос)') {
                                                     // Set Status UNDONE
@@ -2432,13 +2453,6 @@ class _TaskEditPageWidgetState extends State<TaskEditPageWidget> {
                                                       _model
                                                           .textTaskTransferTextController
                                                           ?.text = 'перенос';
-                                                    });
-                                                  } else {
-                                                    // Unset Status 2
-                                                    safeSetState(() {
-                                                      _model
-                                                          .textTaskTransferTextController
-                                                          ?.text = '';
                                                     });
                                                   }
                                                 } else {

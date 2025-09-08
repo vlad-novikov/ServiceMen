@@ -579,6 +579,12 @@ class _UserTaskListWidgetState extends State<UserTaskListWidget> {
                                                           return FlutterFlowTheme
                                                                   .of(context)
                                                               .warning;
+                                                        } else if (userTasksItem
+                                                                .taskTransfer ==
+                                                            'отмена') {
+                                                          return FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error;
                                                         } else {
                                                           return Color(
                                                               0xFFF7F4F4);

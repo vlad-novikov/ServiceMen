@@ -991,6 +991,12 @@ class _TaskListPageWidgetState extends State<TaskListPageWidget> {
                                                   return FlutterFlowTheme.of(
                                                           context)
                                                       .warning;
+                                                } else if (mainContentVarItem
+                                                        .taskTransfer ==
+                                                    'отмена') {
+                                                  return FlutterFlowTheme.of(
+                                                          context)
+                                                      .error;
                                                 } else {
                                                   return Color(0xFFF7F4F4);
                                                 }

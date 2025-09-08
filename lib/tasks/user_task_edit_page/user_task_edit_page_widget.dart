@@ -299,15 +299,34 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                         ?.text = '';
                                   });
                                 } else {
-                                  if (_model
-                                          .textTaskStatusTextController.text !=
-                                      'не выполнено') {
-                                    return;
+                                  return;
+                                }
+                              }),
+                              Future(() async {
+                                if (_model.textTaskStatusTextController.text ==
+                                    'не выполнено') {
+                                  if (_model.textTaskTransferTextController
+                                          .text ==
+                                      'перенос') {
+                                    if (_model.transferDateTime == null) {
+                                      // Set Transfer Date from Row
+                                      _model.transferDateTime =
+                                          userTaskEditPageTasksRow
+                                              ?.transferDate;
+                                    }
                                   }
+                                  if (_model.textTaskTransferTextController
+                                          .text ==
+                                      'отмена') {
+                                    // Unset Transfer Date
+                                    _model.transferDateTime = null;
+                                  }
+                                } else {
+                                  return;
                                 }
                               }),
                             ]);
-                            // Ставим Время Окончания
+                            // Set Finish Time
                             safeSetState(() {
                               _model.textFinishTimeTextController?.text =
                                   dateTimeFormat(
@@ -317,42 +336,9 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                     FFLocalizations.of(context).languageCode,
                               );
                             });
-                            // Ставим Дату Время Окончания
+                            // Set Finish Date
                             _model.finishDateTime = getCurrentTimestamp;
                             safeSetState(() {});
-                            if (!_model.changedInternalComment) {
-                              safeSetState(() {
-                                _model.textInternalCommentTextController?.text =
-                                    '';
-                              });
-                            }
-                            if (!_model.changedOutingComment) {
-                              safeSetState(() {
-                                _model.textOutingCommentTextController?.text =
-                                    '';
-                              });
-                            }
-                            if (!_model.changedParkingComment) {
-                              safeSetState(() {
-                                _model.textParkingCommentTextController?.text =
-                                    '';
-                              });
-                            }
-                            if (!_model.changedTransferDate) {}
-                            if (!_model.changedTransferReason) {}
-                            if (!_model.changedTransferComment) {}
-                            if (_model.textTaskTransferTextController.text !=
-                                    '') {
-                              if (_model.transferDateTime == null) {
-                                // Set Transfer Date from Row
-                                _model.transferDateTime =
-                                    userTaskEditPageTasksRow?.transferDate;
-                              }
-                            } else {
-                              // Reset Transfer Date
-                              _model.transferDateTime = null;
-                            }
-
                             // Update fields in db
                             await TasksTable().update(
                               data: {
@@ -3112,11 +3098,11 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                                       .textTaskStatusTextController
                                                       ?.text = 'не выполнено';
                                                 });
-                                                // Unset Status 2
+                                                // Set Status 2 CANCEL
                                                 safeSetState(() {
                                                   _model
                                                       .textTaskTransferTextController
-                                                      ?.text = '';
+                                                      ?.text = 'отмена';
                                                 });
                                                 // Set Finish Time
                                                 safeSetState(() {
