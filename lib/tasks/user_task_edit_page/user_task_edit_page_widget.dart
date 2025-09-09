@@ -3263,29 +3263,12 @@ class _UserTaskEditPageWidgetState extends State<UserTaskEditPageWidget> {
                                               ),
                                             ),
                                           ),
-                                        if (((_model.textTaskStatusTextController.text ==
-                                                    'выполнено') &&
-                                                (_model.textTaskTransferTextController
-                                                            .text ==
-                                                        '')) ||
-                                            ((_model.textTaskStatusTextController
-                                                        .text ==
-                                                    'не выполнено') &&
-                                                (_model.textTaskTransferTextController
-                                                        .text ==
-                                                    'перенос')) ||
-                                            ((_model.textTaskStatusTextController
-                                                        .text ==
-                                                    'не выполнено') &&
-                                                (_model.textTaskTransferTextController
-                                                        .text ==
-                                                    'контакт')) ||
-                                            ((_model.textTaskStatusTextController
-                                                        .text ==
-                                                    'не выполнено') &&
-                                                (_model.textTaskTransferTextController
-                                                            .text ==
-                                                        '')))
+                                        if ((_model.textTaskStatusTextController
+                                                    .text ==
+                                                'выполнено') ||
+                                            (_model.textTaskStatusTextController
+                                                    .text ==
+                                                'не выполнено'))
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
