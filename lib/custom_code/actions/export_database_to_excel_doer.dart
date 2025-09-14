@@ -68,7 +68,7 @@ Future exportDatabaseToExcelDoer(
       .select("line_no, location_name, location_address, location_phone, location_contract, " +
           "trainees_number," +
           "task_date, task_category, task_status, task_descr, task_transfer, " +
-          "task_doer, doer_description,  " +
+          "task_doer, doer_description,  doer_description_update, " +
           "equipment_id, equipment_model, equipment_connection," +
           "transfer_date, transfer_reason, transfer_description, " +
           "transfer_person, transfer_phone, " +
@@ -86,6 +86,7 @@ Future exportDatabaseToExcelDoer(
   // write Completed rows to sheet
   String stringTraineesNumber = '';
   String stringTransferDate = '';
+  String doerDescription = '';
   for (var i = 0; i < response.length; i++) {
     rowCounter += 1;
     var row = response[i];
@@ -94,7 +95,9 @@ Future exportDatabaseToExcelDoer(
         (stringTraineesNumber == '0')) {
       stringTraineesNumber = '';
     }
-
+    doerDescription = row['transfer_reason'].toString() +
+        ' ' +
+        row['doer_description_update'].toString();
     // Тип операции	Дата	Название ТСП	Адрес ТСП	Номер РР	Количество обучаемых
     // Результат	Причина	Дата переноса	Комментарий	Исполнитель	Ответственный на объекте
     if (row['task_doer'] == doer && row['task_status'] == 'выполнено') {
@@ -106,7 +109,7 @@ Future exportDatabaseToExcelDoer(
         ex.TextCellValue(row['equipment_id'].toString()), //  4
         ex.TextCellValue(stringTraineesNumber), //  5
         ex.TextCellValue(row['task_status'].toString()), // 6
-        ex.TextCellValue(row['doer_description'].toString()), // 7
+        ex.TextCellValue(doerDescription), // 7
         ex.TextCellValue(''), // 8
         ex.TextCellValue(''), // 9
         ex.TextCellValue(row['task_doer'].toString()), // 10
@@ -118,7 +121,7 @@ Future exportDatabaseToExcelDoer(
     }
   }
   excelSheet.appendRow([ex.TextCellValue("Невыполненные в конце списка")]);
-// write UnCompleted rows to sheet
+// write UnCompleted Transfer rows to sheet
   for (var i = 0; i < response.length; i++) {
     rowCounter += 1;
     var row = response[i];
@@ -132,7 +135,9 @@ Future exportDatabaseToExcelDoer(
       if (stringTransferDate.toLowerCase() == '0001-01-01') {
         stringTransferDate = '';
       }
-
+      doerDescription = row['transfer_reason'].toString() +
+          ' ' +
+          row['doer_description_update'].toString();
       excelSheet.appendRow([
         ex.TextCellValue(row['task_category'].toString().substring(0, 1)), //  0
         ex.TextCellValue(row['task_date'].toString()), //  1
@@ -143,7 +148,46 @@ Future exportDatabaseToExcelDoer(
         ex.TextCellValue(row['task_status'].toString()), // 6
         ex.TextCellValue(row['task_transfer'].toString()), // 7
         ex.TextCellValue(stringTransferDate), // 8
-        ex.TextCellValue(row['transfer_comment'].toString()), // 9
+        ex.TextCellValue(doerDescription), // 9
+        ex.TextCellValue(row['task_doer'].toString()), // 10
+        ex.TextCellValue(row['transfer_person'].toString() +
+            ' ' +
+            row['transfer_phone'].toString()), // 11
+        ex.TextCellValue(row['internal_comment'].toString()), // 12
+        ex.TextCellValue(row['outing_comment'].toString()), // 13
+        ex.TextCellValue(row['parking_comment'].toString()), // 14
+      ]);
+    }
+  }
+
+// write UnCompleted Cancel rows to sheet
+  for (var i = 0; i < response.length; i++) {
+    rowCounter += 1;
+    var row = response[i];
+    if (row['task_doer'] == doer &&
+        row['task_status'] == 'не выполнено' &&
+        row['task_transfer'] == 'отмена') {
+      stringTransferDate = row['transfer_date'].toString();
+      if (stringTransferDate.toLowerCase() == 'null') {
+        stringTransferDate = '';
+      }
+      if (stringTransferDate.toLowerCase() == '0001-01-01') {
+        stringTransferDate = '';
+      }
+      doerDescription = row['transfer_reason'].toString() +
+          ' ' +
+          row['doer_description_update'].toString();
+      excelSheet.appendRow([
+        ex.TextCellValue(row['task_category'].toString().substring(0, 1)), //  0
+        ex.TextCellValue(row['task_date'].toString()), //  1
+        ex.TextCellValue(row['location_name'].toString()), // 2
+        ex.TextCellValue(row['location_address'].toString()), //  3
+        ex.TextCellValue(row['equipment_id'].toString()), //  4
+        ex.TextCellValue(''), //  5
+        ex.TextCellValue(row['task_status'].toString()), // 6
+        ex.TextCellValue(row['task_transfer'].toString()), // 7
+        ex.TextCellValue(stringTransferDate), // 8
+        ex.TextCellValue(doerDescription), // 9
         ex.TextCellValue(row['task_doer'].toString()), // 10
         ex.TextCellValue(row['transfer_person'].toString() +
             ' ' +
