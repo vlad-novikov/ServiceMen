@@ -109,6 +109,7 @@ Future<String?> importExcelToDatabase() async {
         taskStatus = 'требует назначения';
       }
       String stringTransferDate = convertStringDateToStringDateV2(row[12]);
+      String stringColR = convertDateTimeToStringCRMDateTime(row[17]);
       // check if record with this date and line exists
       bool taskExists = false;
       taskExists = await existenceCheckByDateAndLine(dtTaskDate, taskLine);
@@ -136,7 +137,7 @@ Future<String?> importExcelToDatabase() async {
           'task_doer': row[14],
           'transfer_person': row[15],
           'transfer_phone': row[16],
-          'colR': row[17],
+          'colR': stringColR,
           'equipment_id2': row[18],
           'crm_id': row[19],
           'colD_color': rowColor[3],

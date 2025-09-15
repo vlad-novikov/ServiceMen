@@ -163,3 +163,21 @@ String deleteTimezoneInStringDateTime(String stringDateTime) {
   String newString2 = newString1.replaceAll(':00.000Z', '');
   return newString2;
 }
+
+String convertDateTimeToStringCRMDateTime(String stringDT) {
+  if ((stringDT == null) || (stringDT == '')) {
+    return '';
+  }
+  try {
+    // Converting string date in Excel format to date
+    DateFormat oldFormat =
+        new DateFormat('yyyy-MM-ddTHH:mmZ'); // take date in dart format
+    DateFormat newFormat =
+        new DateFormat('dd.MM.yyyy HH:mm'); // output date in excel format
+    DateTime dt = oldFormat.parse(stringDT);
+    String ds = newFormat.format(dt);
+    return ds;
+  } catch (e) {
+    return stringDT;
+  }
+}

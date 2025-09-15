@@ -103,8 +103,7 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
       transferPerson = 'контактное лицо';
       transferPhone = row['transfer_phone'].toString();
     }
-    colR = deleteTimezoneInStringDateTime(
-        row['colR'].toString()); // removing T and Z from string
+    colR = row['colR'].toString();
     FFAppState().test1 += ' before append';
     excelSheet.appendRow([
       ex.TextCellValue(row['line_no'].toString()), //  0 a
