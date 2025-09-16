@@ -171,7 +171,7 @@ String convertDateTimeToStringCRMDateTime(String stringDT) {
   try {
     // Converting string date in Excel format to date
     DateFormat oldFormat =
-        new DateFormat('yyyy-MM-ddTHH:mmZ'); // take date in dart format
+        new DateFormat('yyyy-MM-ddTHH:mm:ssZ'); // take date in dart format
     DateFormat newFormat =
         new DateFormat('dd.MM.yyyy HH:mm'); // output date in excel format
     DateTime dt = oldFormat.parse(stringDT);
