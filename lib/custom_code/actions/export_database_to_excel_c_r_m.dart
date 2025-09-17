@@ -130,23 +130,42 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
     ]);
     FFAppState().test1 += ' after append';
     //int colorValue = int.parse(row['colE_color'].toString(), radix: 16);
+    // Set color of column E cell
     String stringColorHex = row['colE_color'].toString();
     if ((stringColorHex != 'none') && (stringColorHex != '')) {
       stringColorHex = '#' + stringColorHex;
     }
     FFAppState().test1 += ' before Color  ' + stringColorHex;
-
+    //  init cell, index and style with some default values
+    ex.CellStyle style = ex.CellStyle(rotation: 0);
+    ex.CellIndex index = ex.CellIndex.indexByString('A1');
+    var cell = excelSheet.cell(index);
     if (stringColorHex != '') {
       ex.ExcelColor excelColor = ex.ExcelColor.fromHexString(stringColorHex);
       FFAppState().test1 += ' before style ';
-      ex.CellStyle cellStyle = ex.CellStyle(backgroundColorHex: excelColor);
+      style = ex.CellStyle(backgroundColorHex: excelColor);
       FFAppState().test1 += ' before col index';
-      ex.CellIndex index =
-          ex.CellIndex.indexByColumnRow(columnIndex: 4, rowIndex: i + 1);
+      index = ex.CellIndex.indexByColumnRow(
+          columnIndex: 4, rowIndex: i + 1); // select column 4 (E)
       FFAppState().test1 += ' before style';
-      var cell = excelSheet.cell(index);
-      cell.cellStyle = cellStyle;
+      cell = excelSheet.cell(index);
+      cell.cellStyle = style;
     }
+    // set number format of column M (12)
+    style = ex.CellStyle(
+        numberFormat: ex.CustomDateTimeNumFormat(formatCode: 'dd\.mm\.yyyy'));
+    index = ex.CellIndex.indexByColumnRow(
+        columnIndex: 12, rowIndex: i + 1); // select column 12 (M)
+    cell = excelSheet.cell(index);
+    cell.cellStyle = style;
+// set number format of column R (17)
+    style = ex.CellStyle(
+        numberFormat:
+            ex.CustomDateTimeNumFormat(formatCode: 'dd\.mm\.yyyy hh:mm'));
+    index = ex.CellIndex.indexByColumnRow(
+        columnIndex: 17, rowIndex: i + 1); // select column 17 (R)
+    cell = excelSheet.cell(index);
+    cell.cellStyle = style;
   }
 
   // download file

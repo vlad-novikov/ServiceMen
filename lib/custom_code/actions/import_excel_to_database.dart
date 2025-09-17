@@ -108,13 +108,17 @@ Future<String?> importExcelToDatabase() async {
       if (taskStatus == '') {
         taskStatus = 'требует назначения';
       }
+
       String stringTransferDate = convertStringDateToStringDateV2(row[12]);
       String stringColR = convertDateTimeToStringCRMDateTime(row[17]);
       // check if record with this date and line exists
       bool taskExists = false;
       taskExists = await existenceCheckByDateAndLine(dtTaskDate, taskLine);
       addRow = (!badRow) && (!taskExists);
-      FFAppState().test1 += '#3' + stringTransferDate;
+      FFAppState().test1 += '#3 convert transfer date from ' +
+          row[12] +
+          ' to ' +
+          stringTransferDate;
       if (addRow == true) {
         i1++;
         // Execute INSERT query
