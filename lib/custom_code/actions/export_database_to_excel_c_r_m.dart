@@ -159,9 +159,10 @@ Future exportDatabaseToExcelCRM(BuildContext context, DateTime taskDate) async {
     cell = excelSheet.cell(index);
     cell.cellStyle = style;
 // set number format of column R (17)
+    String stringFormat = '[\$-en-US,1]dd\.mm\.yyyy h:mm';
+// String StringFormat = 'dd\.mm\.yyyy hh:mm';
     style = ex.CellStyle(
-        numberFormat:
-            ex.CustomDateTimeNumFormat(formatCode: 'dd\.mm\.yyyy hh:mm'));
+        numberFormat: ex.CustomDateTimeNumFormat(formatCode: stringFormat));
     index = ex.CellIndex.indexByColumnRow(
         columnIndex: 17, rowIndex: i + 1); // select column 17 (R)
     cell = excelSheet.cell(index);
